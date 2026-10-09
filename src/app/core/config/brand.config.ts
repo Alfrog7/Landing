@@ -1,11 +1,15 @@
 export const BRAND_CONFIG = {
-  brandName: 'Melanie Silva',
+  brandName: 'Melanie',
+  brandSubtitle: 'Asesoría en Seguros',
+  ownerName: 'Melanie Silva Alarcón',
   roleTitle: 'Corredora de Seguros Colegiada SBS',
   licenseId: 'Matrícula J-0941',
-  supervisionBadge: 'Supervisado por la SBS',
+  sbsChip: 'SBS: Persona Natural Colegiada',
+  supervisionBadge: 'Matrícula SBS J-0941 · Asesora Persona Natural Colegiada',
+  quote: 'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {
-    phone: '+51 900 000 000',
-    whatsappNumber: '51900000000',
+    phone: '+51 987 654 321',
+    whatsappNumber: '51987654321', // Placeholder editable: reemplazar con el número oficial de Melanie
     email: 'contacto@melaniesilva.pe',
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
     location: 'Perú',

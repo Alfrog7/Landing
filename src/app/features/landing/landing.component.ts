@@ -1,108 +1,77 @@
-import { Component } from '@angular/core';
-import { ButtonComponent } from '../../shared/components/button/button.component';
+import { Component, signal } from '@angular/core';
 import { AccordionComponent } from '../../shared/components/accordion/accordion.component';
-import { BrokerComparisonComponent } from './components/broker-comparison/broker-comparison.component';
-import { CheckpointCtaComponent } from './components/checkpoint-cta/checkpoint-cta.component';
 import { HeroComponent } from './components/hero/hero.component';
-import { SolutionsGridComponent } from './components/solutions-grid/solutions-grid.component';
-import { FAQS } from '../faqs/faqs.data';
+import { SolutionsCarouselComponent } from './components/solutions-carousel/solutions-carousel.component';
+import { InsurersLogowallComponent } from './components/insurers-logowall/insurers-logowall.component';
+import { WhyMelanieComponent } from './components/why-melanie/why-melanie.component';
+import { AppointmentSchedulerComponent } from './components/appointment-scheduler/appointment-scheduler.component';
+import { FastQuoteService } from './fast-quote.service';
+import { LANDING_FAQS_DATA } from '../../core/data/landing.data';
+import { AudienceCategory, InsuranceService } from '../../core/models/insurance-service.model';
 
 @Component({
   selector: 'app-landing',
   imports: [
-    ButtonComponent,
     AccordionComponent,
     HeroComponent,
-    SolutionsGridComponent,
-    BrokerComparisonComponent,
-    CheckpointCtaComponent,
+    SolutionsCarouselComponent,
+    InsurersLogowallComponent,
+    WhyMelanieComponent,
+    AppointmentSchedulerComponent,
   ],
   template: `
-    <app-hero />
+    <app-hero
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)"
+      (quotePressed)="openQuote(null)"
+    />
 
-    <app-solutions-grid />
+    <app-solutions-carousel
+      [activeTab]="activeTab()"
+      (quotePressed)="openQuote($event)"
+    />
 
-    <app-broker-comparison />
+    <app-insurers-logowall />
 
-    <!-- Social Proof & Métricas -->
-    <section class="section metrics">
-      <div class="container">
-        <div class="metrics__grid">
-          @for (metric of metrics; track metric.label) {
-            <div class="metrics__item">
-              <span class="metrics__value">{{ metric.value }}</span>
-              <span class="metrics__label">{{ metric.label }}</span>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
+    <app-why-melanie />
 
-    <!-- FAQ Sintético -->
-    <section class="section">
+    <app-appointment-scheduler />
+
+    <section class="section" id="faq">
       <div class="container landing-faq">
-        <span class="eyebrow">Preguntas frecuentes</span>
-        <h2 class="section-title">Respuestas rápidas antes de cotizar</h2>
-        <app-accordion [items]="landingFaqs" />
-        <app-button variant="outline" href="/preguntas-frecuentes" [block]="true">
-          Ver el centro de ayuda completo
-        </app-button>
+        <div class="text-center landing-faq__head">
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2 class="section-title">Respuestas rápidas antes de cotizar</h2>
+        </div>
+        <app-accordion [items]="faqs" />
       </div>
     </section>
-
-    <app-checkpoint-cta />
   `,
   styles: [
     `
-      .metrics {
-        background: var(--color-surface);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
-      }
-      .metrics__grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        text-align: center;
-      }
-      .metrics__value {
-        display: block;
-        font-family: var(--font-heading);
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 800;
-        color: var(--color-primary);
-      }
-      .metrics__label {
-        font-size: 0.95rem;
-        color: var(--color-muted);
-        font-weight: 600;
-      }
       .landing-faq {
         max-width: 820px;
       }
+      .landing-faq__head {
+        margin-bottom: 1.8rem;
+      }
       .landing-faq app-accordion {
         display: block;
-        margin-bottom: 1.5rem;
-      }
-      @media (max-width: 700px) {
-        .metrics__grid {
-          grid-template-columns: 1fr;
-        }
       }
     `,
   ],
 })
 export class LandingComponent {
-  // Métricas de respaldo (social proof).
-  readonly metrics = [
-    { value: '+10 años', label: 'experiencia en seguros laborales' },
-    { value: '+150 empresas', label: 'protegidas en todo el Perú' },
-    { value: '99.8%', label: 'emisiones entregadas a tiempo' },
-  ];
+  readonly activeTab = signal<AudienceCategory>('empresas');
+  readonly faqs = LANDING_FAQS_DATA;
 
-  // Síntesis de 4 preguntas clave para el home (fuente única: faqs.data.ts).
-  readonly landingFaqs = FAQS.slice(0, 4).map((faq) => ({
-    question: faq.question,
-    answer: faq.answer,
-  }));
+  constructor(private readonly fastQuoteService: FastQuoteService) {}
+
+  onTabChange(tab: AudienceCategory): void {
+    this.activeTab.set(tab);
+  }
+
+  openQuote(service: InsuranceService | null): void {
+    this.fastQuoteService.open(service);
+  }
 }
