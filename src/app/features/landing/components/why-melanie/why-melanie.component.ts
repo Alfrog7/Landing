@@ -72,6 +72,11 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
         gap: 3rem;
         align-items: start;
       }
+      .why {
+        background: var(--color-bg);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
       .why__profile {
         background: var(--color-surface);
         border: 1px solid var(--color-border);

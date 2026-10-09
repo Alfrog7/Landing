@@ -1,7 +1,9 @@
 import {
   Component,
+  DestroyRef,
   afterNextRender,
   effect,
+  inject,
   input,
   output,
   signal,
@@ -10,7 +12,6 @@ import {
 } from '@angular/core';
 import { EmblaCarouselDirective } from 'embla-carousel-angular';
 import { EmblaEventType } from 'embla-carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { LucideChevronLeft, LucideChevronRight, LucidePlus } from '@lucide/angular';
 import {
   AudienceCategory,
@@ -214,9 +215,10 @@ export class SolutionCardComponent {
           class="solutions__viewport"
           emblaCarousel
           [options]="options"
-          [plugins]="plugins"
           [subscribeToEvents]="emblaEvents"
           (emblaChange)="onEmblaChange($event)"
+          (mouseenter)="stopAutoplay()"
+          (mouseleave)="startAutoplay()"
         >
           <div class="solutions__track">
             @for (service of filteredServices(); track service.id) {
@@ -351,28 +353,39 @@ export class SolutionsCarouselComponent {
   readonly dots = signal<number[]>([]);
 
   readonly options = { loop: true, align: 'start' as const, dragFree: false };
-  readonly autoplayPlugin = Autoplay({
-    delay: 3200,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-  });
-  readonly plugins = [this.autoplayPlugin];
   readonly emblaEvents: EmblaEventType[] = ['init', 'reInit', 'select'];
+  private autoplayTimer: number | null = null;
 
   constructor() {
     afterNextRender(() => {
-      setTimeout(() => this.syncFromApi());
+      setTimeout(() => {
+        this.syncFromApi();
+        this.startAutoplay();
+      });
     });
 
     effect(() => {
       this.activeTab();
       untracked(() => {
-        setTimeout(() => {
-          this.reInit();
-          this.autoplayPlugin.play();
-        });
+        setTimeout(() => this.reInit());
       });
     });
+
+    inject(DestroyRef).onDestroy(() => this.stopAutoplay());
+  }
+
+  startAutoplay(): void {
+    this.stopAutoplay();
+    this.autoplayTimer = window.setInterval(() => {
+      this.carousel().scrollNext();
+    }, 3200);
+  }
+
+  stopAutoplay(): void {
+    if (this.autoplayTimer !== null) {
+      window.clearInterval(this.autoplayTimer);
+      this.autoplayTimer = null;
+    }
   }
 
   readonly filteredServices = (): ServiceDetail[] =>

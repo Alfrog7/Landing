@@ -72,6 +72,9 @@ import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
   `,
   styles: [
     `
+      .matrix {
+        background: var(--color-bg);
+      }
       .matrix__head {
         max-width: 680px;
         margin: 0 auto 2.2rem;

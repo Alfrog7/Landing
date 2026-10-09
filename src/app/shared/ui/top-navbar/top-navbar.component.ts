@@ -15,7 +15,6 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
             {{ brand.brandName }}
             <small>{{ brand.brandSubtitle }}</small>
           </span>
-          <span class="navbar__chip">{{ brand.sbsChipShort }}</span>
         </a>
 
         <nav class="navbar__links" aria-label="Navegación principal">
@@ -102,21 +101,11 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
       }
       .navbar__brand-text small {
         font-family: var(--font-body);
-        font-size: 0.62rem;
+        font-size: 0.64rem;
         font-weight: 600;
         color: var(--color-primary-dark);
         letter-spacing: 0.08em;
         text-transform: uppercase;
-      }
-      .navbar__chip {
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--color-muted);
-        background: var(--color-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 999px;
-        padding: 0.28rem 0.75rem;
-        white-space: nowrap;
       }
       .navbar__links {
         display: flex;
@@ -177,15 +166,16 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
       .navbar__mobile-wa {
         color: var(--color-primary-dark) !important;
       }
-      @media (max-width: 1180px) {
-        .navbar__chip {
-          display: none;
-        }
-      }
       @media (max-width: 1024px) {
+        .navbar {
+          padding: 0.6rem 1rem;
+        }
         .navbar__links,
         .navbar__actions {
           display: none;
+        }
+        .navbar__brand-text {
+          font-size: 1.05rem;
         }
         .navbar__burger {
           display: block;
