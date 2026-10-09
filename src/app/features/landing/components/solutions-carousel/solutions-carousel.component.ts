@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { EmblaCarouselDirective } from 'embla-carousel-angular';
 import { EmblaEventType } from 'embla-carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import { LucideChevronLeft, LucideChevronRight, LucidePlus } from '@lucide/angular';
 import {
   AudienceCategory,
@@ -213,6 +214,7 @@ export class SolutionCardComponent {
           class="solutions__viewport"
           emblaCarousel
           [options]="options"
+          [plugins]="plugins"
           [subscribeToEvents]="emblaEvents"
           (emblaChange)="onEmblaChange($event)"
         >
@@ -251,6 +253,11 @@ export class SolutionCardComponent {
   `,
   styles: [
     `
+      .solutions {
+        background: var(--color-bg);
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
       .solutions__head {
         max-width: 640px;
         margin: 0 auto 2.2rem;
@@ -343,7 +350,13 @@ export class SolutionsCarouselComponent {
   readonly selectedIndex = signal(0);
   readonly dots = signal<number[]>([]);
 
-  readonly options = { loop: false, align: 'start' as const, dragFree: false };
+  readonly options = { loop: true, align: 'start' as const, dragFree: false };
+  readonly autoplayPlugin = Autoplay({
+    delay: 3200,
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+  });
+  readonly plugins = [this.autoplayPlugin];
   readonly emblaEvents: EmblaEventType[] = ['init', 'reInit', 'select'];
 
   constructor() {
@@ -354,7 +367,10 @@ export class SolutionsCarouselComponent {
     effect(() => {
       this.activeTab();
       untracked(() => {
-        setTimeout(() => this.reInit());
+        setTimeout(() => {
+          this.reInit();
+          this.autoplayPlugin.play();
+        });
       });
     });
   }

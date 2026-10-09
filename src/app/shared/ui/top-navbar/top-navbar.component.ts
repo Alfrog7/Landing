@@ -29,15 +29,6 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
           <a routerLink="/" fragment="agendar" class="navbar__link-quiet">
             Agendar Cita (15 min)
           </a>
-          <a
-            class="navbar__btn"
-            [href]="whatsappUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg lucideMessageCircle [size]="17" />
-            Conversar por WhatsApp
-          </a>
         </div>
 
         <button
@@ -153,24 +144,6 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
       }
       .navbar__link-quiet:hover {
         color: var(--color-primary-dark);
-      }
-      .navbar__btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: var(--color-primary);
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: 600;
-        padding: 0.65rem 1.3rem;
-        border-radius: 999px;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.25s ease;
-        white-space: nowrap;
-      }
-      .navbar__btn:hover {
-        background: var(--color-primary-dark);
-        box-shadow: var(--shadow-card-hover);
       }
       .navbar__burger {
         display: none;
