@@ -10,202 +10,180 @@ import {
 } from '@angular/core';
 import { EmblaCarouselDirective } from 'embla-carousel-angular';
 import { EmblaEventType } from 'embla-carousel';
-import {
-  LucideCar,
-  LucideChevronLeft,
-  LucideChevronRight,
-  LucideFileText,
-  LucideHammer,
-  LucideHeartPulse,
-  LucidePiggyBank,
-  LucidePlane,
-  LucideShieldCheck,
-  LucideUsers,
-} from '@lucide/angular';
+import { LucideChevronLeft, LucideChevronRight, LucidePlus } from '@lucide/angular';
 import {
   AudienceCategory,
-  InsuranceService,
+  ServiceDetail,
 } from '../../../../core/models/insurance-service.model';
-import { INSURANCE_SERVICES_DATA } from '../../../../core/data/landing.data';
+import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
 
 @Component({
   selector: 'app-solution-card',
-  imports: [
-    LucideCar,
-    LucideFileText,
-    LucideHammer,
-    LucideHeartPulse,
-    LucidePiggyBank,
-    LucidePlane,
-    LucideShieldCheck,
-    LucideUsers,
-  ],
+  imports: [LucidePlus],
   template: `
-    <article class="card" (click)="quotePressed.emit(service())">
-      <header class="card__head">
-        <span class="card__icon" [class]="'card__icon--' + service().badge.variant">
-          @switch (service().icon) {
-            @case ('file-text') {
-              <svg lucideFileText [size]="22" />
-            }
-            @case ('shield-check') {
-              <svg lucideShieldCheck [size]="22" />
-            }
-            @case ('users') {
-              <svg lucideUsers [size]="22" />
-            }
-            @case ('hammer') {
-              <svg lucideHammer [size]="22" />
-            }
-            @case ('piggy-bank') {
-              <svg lucidePiggyBank [size]="22" />
-            }
-            @case ('heart-pulse') {
-              <svg lucideHeartPulse [size]="22" />
-            }
-            @case ('car') {
-              <svg lucideCar [size]="22" />
-            }
-            @case ('plane') {
-              <svg lucidePlane [size]="22" />
-            }
-          }
-        </span>
-        <span class="card__badge" [class]="'card__badge--' + service().badge.variant">
-          {{ service().badge.text }}
-        </span>
-      </header>
-      <h3 class="card__title">{{ service().title }}</h3>
-      <p class="card__description">{{ service().description }}</p>
-      <div class="card__insurers">
-        @for (insurer of service().insurers; track insurer) {
-          <span class="card__pill">{{ insurer }}</span>
-        }
-      </div>
+    <article class="card" (click)="detailPressed.emit(service())">
+      <img [src]="service().image" [alt]="service().title" class="card__image" loading="lazy" />
+      <div class="card__shade"></div>
+
       <button
         type="button"
-        class="card__cta"
-        (click)="$event.stopPropagation(); quotePressed.emit(service())"
+        class="card__inspect"
+        (click)="$event.stopPropagation(); detailPressed.emit(service())"
+        [attr.aria-label]="'Ver ficha de ' + service().title"
       >
-        Cotizar {{ service().ctaLabel }} →
+        <svg lucidePlus [size]="20" />
       </button>
+
+      <div class="card__info">
+        <span class="card__badge">{{ service().badgeTime }}</span>
+        <h3 class="card__title">{{ service().title }}</h3>
+        <p class="card__summary">{{ service().summary }}</p>
+        <div class="card__insurers">
+          @for (insurer of service().insurers; track insurer) {
+            <span class="card__pill">{{ insurer }}</span>
+          }
+        </div>
+        <button
+          type="button"
+          class="card__cta"
+          (click)="$event.stopPropagation(); detailPressed.emit(service())"
+        >
+          Ver Ficha y Cotizar →
+        </button>
+      </div>
     </article>
   `,
   styles: [
     `
+      :host {
+        display: flex;
+        width: 100%;
+      }
       .card {
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
+        position: relative;
+        height: 380px;
+        width: 100%;
         border-radius: var(--radius-3xl);
-        box-shadow: var(--shadow-md);
-        padding: 1.5rem;
+        overflow: hidden;
+        box-shadow: var(--shadow-card-catalog);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+        justify-content: flex-end;
+        padding: 1.25rem;
         cursor: pointer;
-        transition: all 0.3s ease;
+        user-select: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .card:hover {
+        transform: translateY(-4px);
         box-shadow: var(--shadow-card-hover);
-        transform: translateY(-3px);
       }
-      .card__head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem;
+      .card__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
-      .card__icon {
+      .card__shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(15, 23, 42, 0.95) 0%,
+          rgba(15, 23, 42, 0.5) 55%,
+          transparent 100%
+        );
+      }
+      .card__inspect {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(6px);
+        color: var(--color-heading);
+        border: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
+        box-shadow: var(--shadow-sm);
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
       }
-      .card__icon--green {
-        background: var(--color-primary-light);
-        color: var(--color-primary-dark);
+      .card__inspect:hover {
+        background: #fff;
+        transform: scale(1.1);
       }
-      .card__icon--sky {
-        background: var(--color-sky-light);
-        color: var(--color-sky);
-      }
-      .card__icon--orange {
-        background: var(--color-orange-light);
-        color: var(--color-orange);
+      .card__info {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
       }
       .card__badge {
+        align-self: flex-start;
+        background: rgba(16, 185, 129, 0.9);
+        color: #fff;
         font-size: 0.72rem;
-        font-weight: 700;
-        padding: 0.35rem 0.8rem;
+        font-weight: 600;
+        padding: 0.25rem 0.75rem;
         border-radius: 999px;
-        white-space: nowrap;
-      }
-      .card__badge--green {
-        background: var(--color-primary-light);
-        color: var(--color-primary-dark);
-      }
-      .card__badge--sky {
-        background: var(--color-sky-light);
-        color: var(--color-sky);
-      }
-      .card__badge--orange {
-        background: var(--color-orange-light);
-        color: var(--color-orange);
+        margin-bottom: 0.5rem;
+        backdrop-filter: blur(4px);
       }
       .card__title {
-        font-size: 1.22rem;
+        color: #fff;
+        font-size: 1.2rem;
         font-weight: 800;
-        color: var(--color-heading);
-        margin: 0 0 0.5rem;
+        margin: 0 0 0.25rem;
       }
-      .card__description {
-        color: var(--color-muted);
-        font-size: 0.9rem;
-        line-height: 1.55;
-        margin: 0 0 1rem;
+      .card__summary {
+        color: #e2e8f0;
+        font-size: 0.78rem;
+        margin: 0 0 0.75rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .card__insurers {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.35rem;
-        margin-bottom: 1.2rem;
+        gap: 0.3rem;
+        margin-bottom: 0.8rem;
       }
       .card__pill {
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: var(--color-heading);
-        background: var(--color-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 999px;
-        padding: 0.25rem 0.65rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 0.62rem;
+        padding: 0.1rem 0.5rem;
+        border-radius: 6px;
       }
       .card__cta {
         width: 100%;
-        padding: 0.7rem 1rem;
-        background: var(--color-bg);
-        border: 1px solid var(--color-border);
+        padding: 0.65rem 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--color-heading);
+        border: 0;
         border-radius: var(--radius-lg);
         font-family: var(--font-body);
-        font-size: 0.88rem;
-        font-weight: 700;
-        color: var(--color-heading);
+        font-size: 0.78rem;
+        font-weight: 800;
         cursor: pointer;
-        transition: all 0.25s ease;
+        transition: background 0.2s ease;
       }
       .card__cta:hover {
-        background: var(--color-sky-light);
-        color: var(--color-sky);
-        border-color: var(--color-sky);
+        background: #fff;
       }
     `,
   ],
 })
 export class SolutionCardComponent {
-  readonly service = input.required<InsuranceService>();
-  readonly quotePressed = output<InsuranceService>();
+  readonly service = input.required<ServiceDetail>();
+  readonly detailPressed = output<ServiceDetail>();
 }
 
 @Component({
@@ -219,9 +197,7 @@ export class SolutionCardComponent {
           <h2 class="section-title">
             {{ activeTab() === 'empresas' ? 'Seguros para Empresas' : 'Seguros para Personas & Familias' }}
           </h2>
-          <p class="solutions__hint">
-            Desliza las tarjetas para comparar soluciones
-          </p>
+          <p class="solutions__hint">Desliza las tarjetas y pulsa (+) para ver la ficha completa</p>
         </div>
       </div>
       <div class="solutions__viewport-wrap">
@@ -233,13 +209,19 @@ export class SolutionCardComponent {
         >
           <svg lucideChevronLeft [size]="20" />
         </button>
-        <div class="solutions__viewport" emblaCarousel [options]="options" [subscribeToEvents]="emblaEvents" (emblaChange)="onEmblaChange($event)">
+        <div
+          class="solutions__viewport"
+          emblaCarousel
+          [options]="options"
+          [subscribeToEvents]="emblaEvents"
+          (emblaChange)="onEmblaChange($event)"
+        >
           <div class="solutions__track">
             @for (service of filteredServices(); track service.id) {
               <div class="solutions__slide">
                 <app-solution-card
                   [service]="service"
-                  (quotePressed)="quotePressed.emit($event)"
+                  (detailPressed)="detailPressed.emit($event)"
                 />
               </div>
             }
@@ -298,9 +280,6 @@ export class SolutionCardComponent {
         max-width: 320px;
         display: flex;
       }
-      .solutions__slide app-solution-card {
-        width: 100%;
-      }
       .solutions__nav {
         position: absolute;
         top: 50%;
@@ -358,7 +337,7 @@ export class SolutionCardComponent {
 })
 export class SolutionsCarouselComponent {
   readonly activeTab = input.required<AudienceCategory>();
-  readonly quotePressed = output<InsuranceService>();
+  readonly detailPressed = output<ServiceDetail>();
 
   readonly carousel = viewChild.required(EmblaCarouselDirective);
   readonly selectedIndex = signal(0);
@@ -380,6 +359,9 @@ export class SolutionsCarouselComponent {
     });
   }
 
+  readonly filteredServices = (): ServiceDetail[] =>
+    SERVICES_CATALOG_DATA.filter((s) => s.category === this.activeTab());
+
   private syncFromApi(): void {
     const api = this.carousel().emblaApi;
     if (!api) {
@@ -388,9 +370,6 @@ export class SolutionsCarouselComponent {
     this.dots.set(api.scrollSnapList().map((_, i) => i));
     this.selectedIndex.set(api.selectedScrollSnap());
   }
-
-  readonly filteredServices = (): InsuranceService[] =>
-    INSURANCE_SERVICES_DATA.filter((s) => s.category === this.activeTab());
 
   scrollPrev(): void {
     this.carousel().scrollPrev();

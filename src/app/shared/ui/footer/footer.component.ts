@@ -11,7 +11,11 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
       <div class="container footer__grid">
         <div class="footer__brand">
           <img [src]="brand.assets.logoDark" [alt]="brand.brandName" class="footer__logo" />
-          <p class="footer__credential">{{ brand.roleTitle }} — {{ brand.licenseId }}.<br />{{ brand.supervisionBadge }}.</p>
+          <p class="footer__credential">
+            <strong>{{ brand.brandName }} · {{ brand.brandSubtitle }}</strong><br />
+            {{ brand.ownerName }} — {{ brand.licenseId }}.<br />
+            Corredora de Seguros Colegiada SBS.
+          </p>
           <a
             class="footer__emergency"
             [href]="urgentUrl"
@@ -54,22 +58,24 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
         </div>
       </div>
       <div class="footer__bottom">
-        <p>© {{ year }} {{ brand.brandName }}. {{ brand.roleTitle }} — {{ brand.licenseId }}.</p>
+        <p>© {{ year }} {{ brand.ownerName }}. {{ brand.roleTitle }} — {{ brand.licenseId }}. Todos los derechos reservados.</p>
       </div>
     </footer>
   `,
   styles: [
     `
       .footer {
-        background: var(--color-secondary);
+        background: var(--color-footer);
         color: rgba(255, 255, 255, 0.78);
         margin-top: 0;
+        padding-top: 3.5rem;
+        padding-bottom: 2rem;
       }
       .footer__grid {
         display: grid;
         grid-template-columns: 1.4fr 1fr 1.1fr 1.2fr;
         gap: 2.5rem;
-        padding: 3.5rem 0 2.5rem;
+        padding: 0 0 2rem;
       }
       .footer__brand {
         display: flex;
@@ -84,6 +90,12 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
         font-size: 0.9rem;
         line-height: 1.55;
         margin: 0;
+        color: rgba(255, 255, 255, 0.78);
+      }
+      .footer__credential strong {
+        color: #fff;
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
       }
       .footer__emergency {
         display: inline-flex;

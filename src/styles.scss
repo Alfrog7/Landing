@@ -9,7 +9,8 @@
   --color-sky-light: #f0f9ff;
   --color-orange: #f97316;
   --color-orange-light: #fff7ed;
-  --color-secondary: #0f172a;
+  --color-secondary: #0b132b;
+  --color-footer: #0b132b;
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-whatsapp: #25d366;
@@ -33,9 +34,12 @@
 
   // Shadows (suaves, aireadas)
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 10px 30px -5px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 18px 36px -8px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
+  --shadow-floating-nav: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+  --shadow-card-catalog: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 18px 36px -8px rgba(15, 23, 42, 0.12);
+  --shadow-modal-split: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+  --shadow-md: var(--shadow-card-catalog);
+  --shadow-lg: var(--shadow-modal-split);
 }
 
 html {

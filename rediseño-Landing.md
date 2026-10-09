@@ -1,68 +1,78 @@
-# rediseño de landing.md
+# rediseño-Landing.md
 # ESPECIFICACIÓN TÉCNICA Y GUÍA DE REDISEÑO: PORTAL MELANIE SEGUROS
 
 ## 1. RESUMEN DE NEGOCIO, FILOSOFÍA Y DIRECTRICES SBS
 - **Titular Oficial:** Melanie Silva Alarcón · Corredora de Seguros Colegiada SBS (Matrícula J-0941).
 - **Cumplimiento SBS Estricto:** La SBS prohíbe taxativamente que corredores registrados como Persona Natural operen bajo nombres de empresas o personas jurídicas ficticias. Toda la identidad visual y legal debe presentarse a título personal (*Melanie Silva / Melanie · Asesoría en Seguros*).
-- **Filosofía UX (Anti-Estrés / Cero Fatiga Cognitiva):** Inspirada en la experiencia de *Compare the Market*. Se descarta la estética de web bancaria tradicional densa, fría y cargada de decretos legales intimidantes. La interfaz debe transmitir calma, orden, ligereza y cercanía.
-- **Mascota de Marca ("Meipo"):** Un koala asesor carismático con gafas y tableta que acompaña al usuario con micro-consejos y tips explicativos en lenguaje sencillo, humanizando el proceso de aseguramiento.
+- **Filosofía UX (Anti-Estrés / Cero Fatiga Cognitiva):** Inspirada en la experiencia de *Compare the Market*. Se descarta la estética de web bancaria tradicional densa, fría y cargada de decretos legales intimidantes. La interfaz transmite calma, orden, ligereza y cercanía.
+- **Mascota de Marca ("Meipo"):** Un koala asesor carismático con gafas y tableta digital que acompaña al usuario con micro-consejos y tips explicativos en lenguaje sencillo, humanizando el proceso de aseguramiento.
 
 ---
 
 ## 2. DEPENDENCIAS Y LIBRERÍAS EXTERNAS: JUSTIFICACIÓN Y USO
 
-Para asegurar un desarrollo limpio, accesible y sin recrear componentes complejos desde cero, se utilizan las siguientes librerías:
+Para asegurar un desarrollo limpio, accesible y sin recrear componentes complejos desde cero, se utilizan las siguientes dependencias:
 
 ### 2.1. Iconografía: `lucide-react`
 * **Por qué se usa:** Proporciona un set completo de iconos vectoriales consistentes, ligeros y con trazos configurables (`stroke-width`), evitando cargar fuentes pesadas o imágenes estáticas.
 * **Instalación:**
   ```bash
   npm install lucide-react
+Cómo se usa: Se importan los iconos específicos (ShieldCheck, Plus, Check, CheckCircle2, Clock, FileText, Calendar, ArrowRight, Phone, User) con tamaños y colores dinámicos vía clases de Tailwind CSS:
 
-
-  Cómo se usa: Se importan los iconos específicos (ShieldCheck, Calendar, ArrowRight, FileText, CheckCircle2, Clock, Phone, User) con tamaños y colores dinámicos vía clases de Tailwind CSS:
-
-  import { ShieldCheck, MessageCircle } from 'lucide-react';
+TypeScript
+import { ShieldCheck, Plus, CheckCircle2 } from 'lucide-react';
 <ShieldCheck className="w-6 h-6 text-emerald-500"/>
+2.2. Carrusel Horizontal ("Efecto Gusanito"): embla-carousel-react
+Por qué se usa: Melanie requiere que las tarjetas de soluciones se deslicen de manera fluida y táctil horizontalmente, sin romper la retícula ni saturar la pantalla. Embla Carousel es una librería ultraligera (menos de 7 KB), sin dependencias CSS pesadas, que ofrece arrastre nativo con mouse/touch, soporte de snap points y paginación por puntos (dots).
 
-### 2.2. Carrusel Horizontal ("Efecto Gusanito"): embla-carousel-react
-Por qué se usa: Melanie requiere que las tarjetas de soluciones se deslicen de manera fluida y táctil horizontalmente, sin romper la retícula ni saturar la pantalla. Embla Carousel es una librería ultraligera (menos de 7 KB), sin dependencias CSS pesadas, que ofrece arrastre nativo con mouse/touch, soporte de snap points y renderizado óptimo.
+Instalación:
+
+Bash
 npm install embla-carousel-react
 
 Cómo se usa: Se inicializa el hook useEmblaCarousel con opciones de alineación y scroll arrastrable:
+
+TypeScript
 import useEmblaCarousel from 'embla-carousel-react';
 const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', dragFree: false });
 // El contenedor debe tener la directiva `ref={emblaRef}` y la clase `overflow-hidden`.
-
-
-### 2.3. Primitivos Accesibles de UI: @radix-ui/react-dialog
-Por qué se usa: El modal de cotización rápida y el drawer deben cumplir con accesibilidad web (WCAG): bloqueo de scroll de fondo, gestión del foco (focus trapping), cierre con tecla Escape y accesibilidad para lectores de pantalla. Radix UI maneja toda la lógica sin imponer estilos predeterminados.
-npm install @radix-ui/react-dialog
-
-
-### 2.4. Microinteracciones Fluidas: framer-motion
-Por qué se usa: Permite alternar suavemente entre las pestañas [Empresas] y [Personas], desplegar el modal sin saltos visuales y brindar animaciones sutiles a la mascota Meipo.
-npm install framer-motion
+2.3. Primitivos Accesibles de UI: @radix-ui/react-dialog
+Por qué se usa: El modal interactivo de ficha técnica y cotización debe cumplir con accesibilidad web (WCAG): bloqueo de scroll de fondo, gestión del foco (focus trapping), cierre con tecla Escape y compatibilidad con lectores de pantalla sin imponer estilos visuales rígidos.
 
 Instalación:
+
+Bash
+npm install @radix-ui/react-dialog
+Cómo se usa: Envuelve el modal con Dialog.Root, Dialog.Trigger, Dialog.Portal, Dialog.Overlay y Dialog.Content, aplicando estilos directos mediante Tailwind.
+
+2.4. Microinteracciones Fluidas: framer-motion
+Por qué se usa: Permite alternar suavemente entre las pestañas [Empresas] y [Personas], desplegar el modal sin saltos visuales y brindar animaciones sutiles a la mascota Meipo y a los acordeones.
+
+Instalación:
+
+Bash
 npm install framer-motion
 
 Cómo se usa: Para componentes que cambian condicionalmente o modales flotantes:
+
+TypeScript
 import { motion, AnimatePresence } from 'framer-motion';
 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} />
-
-
-## 3. SISTEMA DE DISEÑO Y DESIGN TOKENS (TAILWIND CSS)
-## 3.1. Justificación de la Paleta Cromática
+3. SISTEMA DE DISEÑO Y DESIGN TOKENS (TAILWIND CSS)
+3.1. Justificación de la Paleta Cromática
 Blanco puro (#FFFFFF) y Gris Neutro Claro (#F8FAFC): Base dominante (85% de la interfaz). Elimina la sensación de pesadez corporativa y le da respiración al contenido.
 
 Verde Esmeralda / WhatsApp (#10B981 y #059669): Color primario de acción y CTA. Transmite tranquilidad, aprobación financiera y conexión inmediata con soporte directo.
 
 Azul Cielo Suave (#0EA5E9): Reemplaza a los azules marinos densos. Aporta serenidad en chips, badges informativos e iconos técnicos.
 
-Gris Grafito Oscuro (#0F172A): Garantiza contraste tipográfico sin la agresividad del negro puro (#000000).
+Gris Grafito Oscuro (#0F172A): Garantiza contraste tipográfico sin la agresividad del negro puro.
 
-## 3.2. Configuración en tailwind.config.js
+Azul Noche Institucional (#0B132B): Exclusivo para el bloque de cierre y pie de página (Footer), generando balance y formalidad legal.
+
+3.2. Configuración en tailwind.config.js
+JavaScript
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -79,16 +89,20 @@ module.exports = {
           muted: '#64748B',
           surface: '#F8FAFC',
           border: '#E2E8F0',
+          footer: '#0B132B'
         }
       },
       borderRadius: {
         '2xl': '1rem',
         '3xl': '1.5rem',
+        'full-pill': '9999px'
       },
       boxShadow: {
-        'soft': '0 10px 30px -5px rgba(15, 23, 42, 0.04)',
-        'card-hover': '0 18px 36px -8px rgba(15, 23, 42, 0.08)',
-        'modal': '0 25px 50px -12px rgba(15, 23, 42, 0.18)',
+        'floating-nav': '0 12px 30px -10px rgba(0, 0, 0, 0.08)',
+        'card-catalog': '0 8px 24px -4px rgba(15, 23, 42, 0.06)',
+        'card-hover': '0 18px 36px -8px rgba(15, 23, 42, 0.12)',
+        'modal-split': '0 25px 60px -15px rgba(15, 23, 42, 0.25)',
+        'soft': '0 10px 30px -5px rgba(15, 23, 42, 0.04)'
       }
     }
   },
@@ -96,11 +110,19 @@ module.exports = {
 };
 
 4. ESTRUCTURA DE ARCHIVOS MODULAR
+Plaintext
 src/
 ├── assets/
 │   ├── images/
 │   │   ├── melanie-profile.webp
-│   │   └── meipo-koala.webp
+│   │   ├── meipo-koala.webp
+│   │   └── services/
+│   │       ├── fianzas-obras.webp
+│   │       ├── seguro-credito.webp
+│   │       ├── sctr-mineria.webp
+│   │       ├── ingenieria-car.webp
+│   │       ├── vida-ahorro.webp
+│   │       └── salud-clinica.webp
 │   └── icons/
 ├── components/
 │   ├── common/
@@ -112,52 +134,52 @@ src/
 │   │   ├── AudienceTabs.tsx
 │   │   ├── SolutionsCarousel.tsx
 │   │   ├── SolutionCard.tsx
-│   │   ├── InsurersLogowall.tsx
+│   │   ├── InsurersCoverageTable.tsx
 │   │   ├── WhyMelanieSection.tsx
 │   │   ├── FastContactCta.tsx
 │   │   └── FaqAccordion.tsx
 │   ├── modals/
-│   │   └── FastQuoteModal.tsx
+│   │   └── ServiceDetailModal.tsx
 │   └── scheduler/
 │       ├── AppointmentScheduler.tsx
 │       └── DayTimePicker.tsx
 ├── data/
-│   ├── insuranceServices.ts
-│   ├── insurersData.ts
+│   ├── servicesData.ts
 │   └── faqsData.ts
 ├── types/
 │   └── index.ts
 └── utils/
     └── whatsapp.ts
-
-    
-
-5. MODELOS DE DATOS Y CONTRATOS TYPESCRIPT (src/types/index.ts)
+5. MODELOS DE DATOS TYPESCRIPT (src/types/index.ts)
+TypeScript
 export type AudienceCategory = 'empresas' | 'personas';
 
-export interface InsuranceService {
+export interface ServiceDetail {
   id: string;
   category: AudienceCategory;
   title: string;
-  badge: {
-    text: string;
-    variant: 'green' | 'sky' | 'orange';
-  };
-  description: string;
+  tag: string;
+  badgeTime: string;
+  summary: string;
+  image: string;
   insurers: string[];
-  ctaLabel: string;
-  modalConfig: {
-    serviceType: string;
-    tag: string;
-    tipText: string;
-    options: string[];
+  specs: {
+    coberturas: string[];
+    requisitos: string[];
+    tiempoEmision: string;
+    entidadesNormativas?: string;
   };
+  meipoTip: string;
 }
 
-export interface Insurer {
-  id: string;
-  name: string;
-  category: 'empresas' | 'personas' | 'ambas';
+export interface InsurerCoverageRow {
+  serviceName: string;
+  rimac: boolean | 'consultar';
+  pacifico: boolean | 'consultar';
+  mapfre: boolean | 'consultar';
+  positiva: boolean | 'consultar';
+  insurAvla: boolean | 'consultar';
+  chubb: boolean | 'consultar';
 }
 
 export interface BookingFormData {
@@ -168,79 +190,107 @@ export interface BookingFormData {
   whatsapp: string;
   serviceTopic: string;
 }
+6. DATA DE SERVICIOS Y MATRIZ MULTIASEGURADORA (src/data/servicesData.ts)
+TypeScript
+import { ServiceDetail, InsurerCoverageRow } from '../types';
 
-export interface FastQuoteFormData {
-  ruc: string;
-  businessName?: string;
-  selectedOption: string;
-  phone: string;
-}
-
-
-6. DATA MOCK Y CONFIGURACIÓN DEL NEGOCIO
-import { InsuranceService } from '../types';
-
-export const insuranceServicesData: InsuranceService[] = [
+export const servicesCatalog: ServiceDetail[] = [
   // SEGUROS PARA EMPRESAS
   {
     id: 'cartas-fianza',
     category: 'empresas',
     title: 'Cartas Fianza Express',
-    badge: { text: 'Emisión 48h', variant: 'green' },
-    description: 'Fiel Cumplimiento, Adelanto Directo y de Materiales para contratos públicos (OSCE / SEACE) y privados.',
+    tag: 'Garantías Contractuales',
+    badgeTime: 'Emisión 48h',
+    summary: 'Fiel Cumplimiento, Adelanto Directo y Materiales para licitaciones públicas y obras privadas.',
+    image: '/assets/images/services/fianzas-obras.webp',
     insurers: ['AVLA', 'Insur', 'Secrex', 'Mapfre'],
-    ctaLabel: 'Cotizar Fianza',
-    modalConfig: {
-      serviceType: 'GARANTÍAS CONTRACTUALES',
-      tag: 'SEACE 3.0',
-      tipText: 'Evaluamos tu línea afianzadora con AVLA, Insur y Secrex en menos de 48 horas sin costo alguno.',
-      options: ['Fiel Cumplimiento (10%)', 'Adelanto Directo', 'Adelanto Materiales', 'Seriedad Oferta']
-    }
+    specs: {
+      coberturas: [
+        'Fiel Cumplimiento de Contrato (10% del monto adjudicado)',
+        'Adelanto Directo de Efectivo para inicio de obra',
+        'Adelanto para Adquisición de Materiales e Insumos',
+        'Garantía de Seriedad de Oferta'
+      ],
+      requisitos: [
+        'RUC de la empresa adjudicada',
+        'Bases integradas o contrato firmado',
+        'Estados financieros de los dos últimos ejercicios contables'
+      ],
+      tiempoEmision: 'Máximo 48 horas tras aprobación de línea afianzadora',
+      entidadesNormativas: 'Válidas para OSCE, SEACE y Contratos Privados'
+    },
+    meipoTip: 'Evaluamos tu línea de fianza con AVLA, Insur y Secrex en simultáneo para conseguirte la tasa de prima más baja sin costo de gestión.'
   },
   {
     id: 'seguro-credito',
     category: 'empresas',
     title: 'Seguro de Crédito',
-    badge: { text: 'Blindaje Financiero', variant: 'sky' },
-    description: 'Protege tus facturas comerciales contra clientes morosos. Recupera hasta el 90% del valor facturado sin riesgo.',
+    tag: 'Protección Financiera',
+    badgeTime: 'Recupero 90%',
+    summary: 'Asegura tus cuentas por cobrar comerciales contra morosidad prolongada o quiebra de clientes.',
+    image: '/assets/images/services/seguro-credito.webp',
     insurers: ['Insur', 'Solunion / Allianz'],
-    ctaLabel: 'Blindar Cartera',
-    modalConfig: {
-      serviceType: 'PROTECCIÓN DE FACTURAS',
-      tag: 'CRÉDITO COMERCIAL',
-      tipText: 'Vende a crédito con la certeza de que tu factura está respaldada ante insolvencia de tus compradores.',
-      options: ['Facturas Locales', 'Crédito de Exportación', 'Cartera Global']
-    }
+    specs: {
+      coberturas: [
+        'Indemnización de hasta el 90% del valor de la factura impaga',
+        'Monitoreo y calificación continua de la solvencia de tus compradores',
+        'Gestión de cobranza judicial y extrajudicial internacional'
+      ],
+      requisitos: [
+        'Facturación comercial anual mínima requerida',
+        'Relación de principales clientes con líneas de crédito abiertas'
+      ],
+      tiempoEmision: 'Evaluación de cartera en 3 a 5 días hábiles'
+    },
+    meipoTip: 'Vende al crédito a 30, 60 o 90 días con total tranquilidad: si tu comprador quiebra o no paga, recuperas tu capital asegurado.'
   },
   {
-    id: 'planilla-obligatoria',
+    id: 'sctr-vida-ley',
     category: 'empresas',
-    title: 'Planilla Obligatoria',
-    badge: { text: 'SUNAFIL Express', variant: 'orange' },
-    description: 'SCTR Salud, SCTR Pensión (Ley 26790) y Seguro Vida Ley con constancias inmediatas para garitas mineras y de obra.',
+    title: 'Planilla Obligatoria (SCTR & Vida Ley)',
+    tag: 'Cumplimiento SUNAFIL',
+    badgeTime: 'Pase < 2h',
+    summary: 'SCTR Salud, SCTR Pensión y Seguro Vida Ley con constancias inmediatas para acceso a garita.',
+    image: '/assets/images/services/sctr-mineria.webp',
     insurers: ['Rímac', 'Pacífico', 'Mapfre', 'Protecta', 'La Positiva'],
-    ctaLabel: 'Activar SCTR',
-    modalConfig: {
-      serviceType: 'CUMPLIMIENTO LABORAL',
-      tag: 'PASES DE GARITA',
-      tipText: 'Emisión en menos de 2 horas con código de barras digital para ingreso express de tus colaboradores.',
-      options: ['SCTR Salud y Pensión', 'Seguro Vida Ley', 'Pack Integral SCTR + Vida Ley']
-    }
+    specs: {
+      coberturas: [
+        'SCTR Salud: Cobertura médica y hospitalaria integral al 100%',
+        'SCTR Pensión: Pensiones de invalidez y sobrevivencia por accidentes de trabajo',
+        'Vida Ley: Indemnización por muerte natural (16 rem.) e invalidez permanente (32 rem.)'
+      ],
+      requisitos: [
+        'T-Registro de colaboradores en nómina',
+        'Planilla mensual en formato Excel con actividades declaradas'
+      ],
+      tiempoEmision: 'Emisión express en menos de 2 horas con código digital'
+    },
+    meipoTip: '¿Tienes una emergencia de ingreso a mina u obra? Emitimos la constancia provisional validada para que tu personal entre a tiempo.'
   },
   {
-    id: 'polizas-tecnicas',
+    id: 'polizas-ingenieria',
     category: 'empresas',
-    title: 'Pólizas Técnicas e Ingeniería',
-    badge: { text: 'Obras & Maquinaria', variant: 'sky' },
-    description: 'Pólizas Todo Riesgo Construcción (CAR), Montaje (EAR), Maquinaria (TREC) y Responsabilidad Civil para directores (D&O).',
+    title: 'Pólizas de Ingeniería & RC',
+    tag: 'Obras & Infraestructura',
+    badgeTime: 'Todo Riesgo',
+    summary: 'Seguros CAR, EAR, TREC y Responsabilidad Civil para directores (D&O) y obras civiles.',
+    image: '/assets/images/services/ingenieria-car.webp',
     insurers: ['Chubb', 'AVLA', 'Pacífico', 'Mapfre'],
-    ctaLabel: 'Evaluar Obra',
-    modalConfig: {
-      serviceType: 'INGENIERÍA Y RIESGOS',
-      tag: 'CAR / EAR / TREC',
-      tipText: 'Estructuración técnica rápida para bases de licitación y auditorías de contratistas.',
-      options: ['Póliza CAR (Construcción)', 'Póliza EAR (Montaje)', 'Póliza TREC (Equipos)', 'Responsabilidad Civil D&O']
-    }
+    specs: {
+      coberturas: [
+        'Póliza CAR: Daños materiales a la obra civil durante la construcción',
+        'Póliza EAR: Montaje y prueba de maquinaria pesada o industrial',
+        'Póliza TREC: Daños accidentales o volcadura de maquinaria en campo',
+        'Responsabilidad Civil extracontractual frente a terceros y predios colindantes'
+      ],
+      requisitos: [
+        'Memoria descriptiva y presupuesto de obra',
+        'Cronograma de ejecución valorizado'
+      ],
+      tiempoEmision: 'Estructuración técnica en 48 a 72 horas'
+    },
+    meipoTip: 'Revisamos las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.'
   },
 
   // SEGUROS PARA PERSONAS & FAMILIAS
@@ -248,84 +298,82 @@ export const insuranceServicesData: InsuranceService[] = [
     id: 'vida-devolucion',
     category: 'personas',
     title: 'Vida con Devolución',
-    badge: { text: 'Ahorro Rentable', variant: 'green' },
-    description: 'Sustituto inteligente del desgravamen bancario: traslada el costo del seguro de tu crédito a una póliza con retorno garantizado.',
+    tag: 'Ahorro Inteligente',
+    badgeTime: 'Retorno 100%+',
+    summary: 'Reemplaza el seguro de desgravamen bancario por una póliza que te devuelve el dinero con rentabilidad.',
+    image: '/assets/images/services/vida-ahorro.webp',
     insurers: ['Allwest / Ohio National', 'Mapfre', 'Pacífico', 'Rímac'],
-    ctaLabel: 'Simular Ahorro',
-    modalConfig: {
-      serviceType: 'ENDOSO DE DESGRAVAMEN',
-      tag: 'AHORRO INTELIGENTE',
-      tipText: 'En vez de perder el dinero del desgravamen con el banco, endosa tu póliza y recupéralo al término del préstamo.',
-      options: ['Reemplazo Hipotecario', 'Ahorro a 10 años', 'Protección Familiar Integral']
-    }
+    specs: {
+      coberturas: [
+        'Fondo de ahorro acumulado con rentabilidad garantizada',
+        'Indemnización a beneficiarios ante fallecimiento',
+        'Póliza totalmente endosable ante entidades bancarias para hipotecas'
+      ],
+      requisitos: [
+        'DNI del asegurado titular',
+        'Cronograma o saldo actual del crédito hipotecario/vehicular'
+      ],
+      tiempoEmision: 'Emisión e informe de endoso bancario en 5 días'
+    },
+    meipoTip: 'No regales el desgravamen al banco. Al endosar esta póliza, todo el monto mensual se acumula a tu favor y lo cobras al vencer el plazo.'
   },
   {
     id: 'salud-eps',
     category: 'personas',
-    title: 'Salud Privada y EPS',
-    badge: { text: 'Clínicas Top', variant: 'sky' },
-    description: 'Atención médica ambulatoria y hospitalaria en clínicas de primer nivel, consultas preventivas y medicinas continuas.',
+    title: 'Salud Integral & EPS',
+    tag: 'Medicina Privada',
+    badgeTime: 'Clínicas Top',
+    summary: 'Atención ambulatoria, cirugías y hospitalización en clínicas privadas de primer nivel nacional.',
+    image: '/assets/images/services/salud-clinica.webp',
     insurers: ['Sanitas', 'Pacífico', 'Rímac', 'Mapfre'],
-    ctaLabel: 'Cotizar Salud',
-    modalConfig: {
-      serviceType: 'SALUD PRIVADA',
-      tag: 'COBERTURA 100%',
-      tipText: 'Encontramos el plan de salud familiar o EPS que mejor cubra tu red de clínicas preferida.',
-      options: ['Plan Individual', 'Plan Familiar', 'Plan EPS Autónomo']
-    }
-  },
-  {
-    id: 'vehicular-soat',
-    category: 'personas',
-    title: 'Vehicular y SOAT Express',
-    badge: { text: 'Auxilio 24/7', variant: 'orange' },
-    description: 'Protección vehicular con auxilio mecánico rápido, chofer de reemplazo y gestión ágil de peritajes y siniestros.',
-    insurers: ['Pacífico', 'Mapfre', 'La Positiva', 'Quálitas'],
-    ctaLabel: 'Cotizar Auto',
-    modalConfig: {
-      serviceType: 'PROTECCIÓN VEHICULAR',
-      tag: 'SINIESTROS EXPRESS',
-      tipText: 'Asistencia y defensa inmediata ante el procurador de la aseguradora en caso de choque o robo.',
-      options: ['Todo Riesgo Particular', 'Pérdida Total Express', 'SOAT Digital']
-    }
-  },
-  {
-    id: 'hogar-viajes',
-    category: 'personas',
-    title: 'Hogar Seguro y Asistencia en Viajes',
-    badge: { text: 'Cobertura Global', variant: 'sky' },
-    description: 'Protección para tu hogar frente a lluvias e incendios, y asistencia médica internacional válida en todo el mundo.',
-    insurers: ['Global Assistant', 'TravelApp', 'Pacífico'],
-    ctaLabel: 'Ver Coberturas',
-    modalConfig: {
-      serviceType: 'ASISTENCIA Y BIENES',
-      tag: 'MUNDIAL',
-      tipText: 'Planes de asistencia médica para viajes internacionales sin restricciones consulares ni deducibles.',
-      options: ['Seguro de Hogar / Inundación', 'Asistencia Viaje Internacional', 'Seguro Escolar']
-    }
+    specs: {
+      coberturas: [
+        'Atención médica ambulatoria al 85% - 100% en red clínica',
+        'Emergencias médicas accidentales cubiertas al 100%',
+        'Cobertura de maternidad, odontología y chequeos preventivos anuales'
+      ],
+      requisitos: [
+        'DNI de titulares y dependientes',
+        'Declaración jurada de salud sin preexistencias no declaradas'
+      ],
+      tiempoEmision: 'Activación en 24 a 48 horas'
+    },
+    meipoTip: 'Te ayudamos a comparar copagos y deducibles entre Sanitas, Pacífico y Rímac para elegir la red de clínicas más conveniente.'
   }
 ];
 
+export const insurersMatrixData: InsurerCoverageRow[] = [
+  { serviceName: 'Cartas Fianza (Licitaciones OSCE)', rimac: 'consultar', pacifico: false, mapfre: true, positiva: false, insurAvla: true, chubb: false },
+  { serviceName: 'Seguro de Crédito (Facturas B2B)', rimac: false, pacifico: false, mapfre: false, positiva: false, insurAvla: true, chubb: false },
+  { serviceName: 'SCTR Salud y Pensión', rimac: true, pacifico: true, mapfre: true, positiva: true, insurAvla: false, chubb: false },
+  { serviceName: 'Seguro Vida Ley', rimac: true, pacifico: true, mapfre: true, positiva: true, insurAvla: false, chubb: false },
+  { serviceName: 'Pólizas de Ingeniería (CAR / EAR)', rimac: true, pacifico: true, mapfre: true, positiva: 'consultar', insurAvla: true, chubb: true },
+  { serviceName: 'Responsabilidad Civil D&O', rimac: true, pacifico: true, mapfre: true, positiva: false, insurAvla: false, chubb: true },
+  { serviceName: 'Vida con Devolución (Desgravamen)', rimac: true, pacifico: true, mapfre: true, positiva: true, insurAvla: false, chubb: false },
+  { serviceName: 'Salud Individual y EPS', rimac: true, pacifico: true, mapfre: true, positiva: true, insurAvla: false, chubb: false }
+
+];
 
 7. ESPECIFICACIÓN DETALLADA DE COMPONENTES DE UI
-7.1. Navbar Global (Navbar.tsx)
-Estilo: fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-brand-border h-20 flex items-center justify-between px-4 lg:px-12.
+7.1. Navbar Flotante Tipo Cápsula (Navbar.tsx)
+Comportamiento: Barra flotante tipo cápsula (floating pill glassmorphism), anclada de forma fija en la parte superior:
+fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50.
 
-Identidad de Marca:
+Estilos: bg-white/90 backdrop-blur-md border border-brand-border/80 shadow-floating-nav rounded-full px-6 py-3 flex items-center justify-between.
 
-Logo textual: "Melanie" en semibold con subtítulo "Asesoría en Seguros".
+Identidad Izquierda:
 
-Chip regulatorio SBS: bg-brand-surface border border-brand-border rounded-full px-3 py-1 text-xs text-brand-dark flex items-center gap-1.5. Texto: "SBS: Persona Natural Colegiada".
+Logo textual: "Melanie" (text-lg font-bold text-brand-dark) + subtítulo tipográfico "Asesoría en Seguros".
 
-Enlaces Centrales: "Soluciones", "Sobre Melanie", "Preguntas Frecuentes" con scroll suave.
+Chip regulatorio SBS: bg-brand-surface border border-brand-border px-3 py-1 rounded-full text-xs text-brand-muted hidden md:flex items-center gap-1.5. Texto: "SBS: Matrícula J-0941".
+
+Enlaces Centrales: "Soluciones", "¿Por qué Melanie?", "Aseguradoras", "Preguntas" con scroll suave.
 
 Acciones Derecha:
 
-Enlace secundario: "Agendar Cita" (scroll hacia la sección del calendario).
+Enlace secundario: "Agendar Cita (15 min)" (scroll hacia la sección del calendario).
 
-Botón primario verde: bg-brand-green hover:bg-brand-green-dark text-white font-medium rounded-full px-5 py-2.5 flex items-center gap-2 transition-colors shadow-soft. Icono de WhatsApp + texto "Conversar por WhatsApp".
-
-Icono de usuario a la derecha para portal de clientes.
+Botón primario verde: bg-brand-green hover:bg-brand-green-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full flex items-center gap-2 shadow-sm transition-all. Icono de WhatsApp + texto "Conversar por WhatsApp".
 
 7.2. Hero Section (HeroSection.tsx)
 Disposición: Layout en 2 columnas con amplio espaciado vertical (pt-28 pb-16).
@@ -352,9 +400,9 @@ Micro-beneficios con check: "✓ Sin costos ocultos" · "✓ Emisión express" �
 
 Columna Derecha:
 
-Ilustración destacada de Meipo (koala 3D con chaleco, anteojos y tableta).
+Ilustración destacada de Meipo (koala 3D con chaleco verde, anteojos y tableta).
 
-Globo de diálogo emergente: "¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨".
+Globo de diálogo interactivo: "¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨".
 
 Badges flotantes interactivos:
 
@@ -362,40 +410,59 @@ Badges flotantes interactivos:
 
 "Ahorro hasta el 25% en comparativa neutral"
 
-7.3. Carrusel Deslizable de Soluciones (SolutionsCarousel.tsx)
-Estructura y Comportamiento "Tipo Gusanito":
+7.3. Cards de Servicios Estilo Catálogo Visual (SolutionCard.tsx y SolutionsCarousel.tsx)
+Estructura del Carrusel ("Tipo Gusanito"):
 
 Montado con embla-carousel-react.
 
-Contenedor externo con flechas de navegación < y > en los extremos.
+Contenedor externo con flechas laterales < y > y tres puntos animados (dots) de paginación.
 
 Carril interno (flex gap-6 select-none): Cada tarjeta tiene un ancho fijo (min-w-[290px] md:min-w-[320px] max-w-[320px]).
 
-Efecto Peek: En pantallas de escritorio y móviles, la siguiente tarjeta asoma en el borde derecho para indicar visualmente que el contenido continúa.
+Efecto Peek: La siguiente tarjeta asoma en el borde derecho para indicar scroll horizontal continuo.
 
-Indicadores inferiores: 3 puntos animados (dots) que reflejan el índice activo del carrusel.
+Detalle de la Tarjeta:
 
-Detalle de la Tarjeta (SolutionCard.tsx):
+Contenedor: relative h-[380px] w-[300px] md:w-[320px] rounded-3xl overflow-hidden shadow-card-catalog flex flex-col justify-end p-5 select-none transition-all duration-300 hover:-translate-y-1.
 
-Fondo blanco (bg-white), borde suave (border border-brand-border), sombra (shadow-soft hover:shadow-card-hover transition-all duration-300 rounded-3xl p-6 flex flex-col justify-between).
+Imagen de fondo inmersiva: absolute inset-0 w-full h-full object-cover.
 
-Cabecera de la card: Icono en caja redondeada suave + badge de color según estado (ej. Verde para "Emisión 48h", Naranja para "SUNAFIL Express").
+Capa de gradiente oscuro: absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/50 to-transparent.
 
-Título H3: font-bold text-xl text-brand-dark mb-2.
+Botón de Inspección Rápida (+):
 
-Descripción: text-brand-muted text-sm leading-relaxed mb-4.
+Esquina superior derecha: absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-brand-dark backdrop-blur-md flex items-center justify-center shadow-md transition-transform hover:scale-110 cursor-pointer.
 
-Bloque de aseguradoras: Píldoras con nombres de aseguradoras con las que se cotiza esa póliza específica.
+Icono Plus de lucide-react. Al hacer clic abre el modal ServiceDetailModal con los datos del servicio.
 
-Botón de acción: w-full py-2.5 bg-brand-surface hover:bg-brand-sky-light text-brand-dark hover:text-brand-sky border border-brand-border rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2. Texto: "Cotizar [Servicio] →". Al hacer clic, abre FastQuoteModal pasando el objeto del servicio.
+Información Inferior sobre la Tarjeta:
 
-7.4. Logowall de Aseguradoras (InsurersLogowall.tsx)
-Texto superior centrado: text-xs font-bold uppercase tracking-wider text-brand-muted. "COTIZAMOS EN SIMULTÁNEO CON TODAS LAS ENTIDADES REGULADAS POR LA SBS".
+Badge superior: bg-brand-green/90 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2 self-start backdrop-blur-sm.
+
+Título H3 en blanco: text-xl font-bold text-white mb-1.
+
+Resumen breve: text-slate-200 text-xs line-clamp-2 mb-3.
+
+Píldoras de aseguradoras asociadas: bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-md.
+
+Botón de acción: w-full py-2.5 bg-white/95 hover:bg-white text-brand-dark rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5. Texto: "Ver Ficha y Cotizar →".
+
+7.4. Matriz Multiaseguradora: Comparativa por Entidad (InsurersCoverageTable.tsx)
+Reemplaza las píldoras aisladas por una tabla estructurada de disponibilidad:
+
+Cabecera:
+
+Título: "Matriz Multiaseguradora: Cobertura por Entidad".
+
+Subtítulo: "Melanie cotiza en simultáneo para encontrar la tasa más competitiva del mercado según el tipo de riesgo."
 
 Badge de neutralidad: text-xs text-brand-dark bg-brand-surface border border-brand-border rounded-full px-4 py-1.5 inline-flex items-center gap-2 mb-6. Texto: "🛡️ 100% independiente: asesoría personalizada y gratuita para el asegurado".
 
-Grilla de píldoras en gris neutro con texto en negrita:
-[ RÍMAC ] [ PACÍFICO ] [ MAPFRE ] [ LA POSITIVA ] [ SANITAS ] [ PROTECTA ] [ CHUBB ] [ AVLA ] [ INSUR ] [ SOLUNION ]
+Tabla Responsiva:
+
+Columnas: [ Servicio / Póliza ] | [ Rímac ] | [ Pacífico ] | [ Mapfre ] | [ La Positiva ] | [ AVLA / Insur ] | [ Chubb ].
+
+Filas: Recorre insurersMatrixData mostrando un icono CheckCircle2 verde para cobertura disponible, un guión gris para cobertura no aplicable y un chip "Consultar" para coberturas sujetas a evaluación especial.
 
 7.5. Sección "¿Por qué asesorarte con Melanie Silva?" (WhyMelanieSection.tsx)
 Disposición en 2 columnas:
@@ -420,29 +487,39 @@ Emisión express de constancias y cartas fianza: Entrega en menos de 2 horas par
 
 Respaldo colegiado regulado ante la SBS: Asesoría técnica sin costo para el cliente; las aseguradoras reconocen la comisión según ley, garantizando imparcialidad.
 
-7.6. Modal de Cotización Rápida (FastQuoteModal.tsx)
-Desplegable mediante @radix-ui/react-dialog activado al presionar cualquier botón de cotizar en el carrusel:
+7.6. Modal Split-View: Ficha Técnica y Cotización (ServiceDetailModal.tsx)
+Implementado con @radix-ui/react-dialog. Despliega una ventana dividida en dos columnas:
 
-Cabecera: Icono + Título del servicio seleccionado + Tag de contexto + Botón de cierre (X).
+Contenedor Principal: w-[94%] max-w-4xl bg-white rounded-3xl overflow-hidden shadow-modal-split grid grid-cols-1 md:grid-cols-12 max-h-[90vh] overflow-y-auto.
 
-Caja de tip Meipo: Miniatura de Meipo con recuadro bg-brand-sky-light border border-sky-200 rounded-2xl p-4 flex gap-3. Texto dinámico tomado de modalConfig.tipText.
+Columna Izquierda (45% - Visual e Identidad): md:col-span-5 relative bg-brand-dark p-6 flex flex-col justify-between text-white.
 
-Input de RUC:
+Foto contextual temática del servicio con opacidad suave.
 
-Label: "RUC de la Empresa * (11 dígitos)".
+Tag de categoría + tiempo de emisión en píldora brillante.
 
-Input numérico con límite estricto de 11 caracteres.
+Tip de Meipo: Tarjeta inferior con borde translúcido (bg-brand-dark/80 backdrop-blur-md border border-white/20 p-4 rounded-2xl). Contiene avatar de Meipo y recomendación técnica del servicio.
 
-Botón embebido "Validar SUNAT" (simula validación de RUC y autocompleta la razón social).
+Columna Derecha (55% - Ficha Técnica y Acción): md:col-span-7 p-6 md:p-8 flex flex-col justify-between bg-white.
 
-Leyenda de ayuda: "ⓘ Consulta referencial en centrales sin afectar tu score de riesgo."
+Botón de cierre (X) en la esquina superior.
 
-Chips de Requerimiento: Botones tipo toggle para elegir la opción específica (ej. Fiel Cumplimiento, Adelanto Directo, etc.).
+Título H2 del servicio + detalle regulatorio.
 
-Botón de Envío: bg-brand-green hover:bg-brand-green-dark text-white font-semibold py-3.5 rounded-2xl flex items-center justify-center gap-2. Texto: "Solicitar Evaluación Inmediata por WhatsApp". Dispara la función utilitaria generateQuoteWhatsAppUrl.
+Bloque 1 (Coberturas): Lista con viñetas de icono verde CheckCircle2.
+
+Bloque 2 (Requisitos de Emisión): Documentos mínimos con icono Clock o FileText.
+
+Bloque 3 (Aseguradoras Aliadas): Píldoras con nombres de las aseguradoras asociadas.
+
+Botón de Acción Directa: Botón verde grande w-full py-3.5 bg-brand-green hover:bg-brand-green-dark text-white rounded-2xl font-bold flex items-center justify-center gap-2.
+
+Texto: "Cotizar [Nombre del Servicio] por WhatsApp".
+
+Genera la URL codificada con el nombre exacto de la póliza para iniciar la conversación directa con Melanie.
 
 7.7. Agendador de Cita de 15 Minutos (AppointmentScheduler.tsx)
-Bloque contenedor centrado con diseño de panel dual:
+Panel dual centrado:
 
 Panel Izquierdo:
 
@@ -485,22 +562,30 @@ Acordeón compacto con 3 preguntas clave desplegables:
 
 ¿Cómo funciona el reemplazo del seguro de desgravamen con una póliza de vida?
 
+7.9. Footer Institucional Oscuro (Footer.tsx)
+Estilo: Fondo azul noche institucional (bg-brand-footer text-white pt-14 pb-8).
+
+Columna 1: Logotipo formal de Melanie Silva + credencial SBS + botón de "Soporte urgente para garitas".
+
+Columna 2 (Navegación): Enlaces directos a Coberturas, Asesoría, FAQs, Cotizador y Agendar Cita.
+
+Columna 3 (Contacto): Teléfono corporativo, correo electrónico, horario de atención y ubicación.
+
+Columna 4 (Aseguradoras y Transparencia): Logos en escala de grises / blancos, Canal de denuncias SBS, Política de Privacidad y Términos y Condiciones.
+
+Línea de cierre: © 2026 Melanie Silva. Corredora de Seguros Colegiada SBS — Matrícula J-0941. Todos los derechos reservados.
 
 8. UTILIDADES DE INTEGRACIÓN EXTERNA (src/utils/whatsapp.ts)
-const MELANIE_PHONE_NUMBER = '51987654321'; // Reemplazar con el número oficial de Melanie
+TypeScript
+const MELANIE_PHONE_NUMBER = '51987654321'; // Configurar número corporativo oficial
 
-export function generateQuoteWhatsAppUrl(
-  serviceTitle: string,
-  ruc: string,
-  selectedOption: string
-): string {
+export function generateServiceWhatsAppUrl(serviceTitle: string, tag: string): string {
   const message = [
-    `¡Hola Melanie! 👋 Deseo cotizar el servicio de *${serviceTitle}*.`,
+    `¡Hola Melanie! 👋 Vengo desde tu web y deseo cotizar *${serviceTitle}* (${tag}).`,
     '',
-    `• *RUC / Empresa:* ${ruc ? ruc : 'A coordinar'}`,
-    `• *Tipo / Requerimiento:* ${selectedOption || 'Evaluación inicial'}`,
+    '¿Podrías indicarme qué documentos o datos de mi empresa/caso necesitas para presentarme una propuesta comparativa con las aseguradoras?',
     '',
-    '¿Podrías indicarme qué documentos necesitas para cotizar con las aseguradoras? ¡Gracias!'
+    '¡Muchas gracias!'
   ].join('\n');
 
   return `[https://wa.me/$](https://wa.me/$){MELANIE_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -528,21 +613,30 @@ export function generateAppointmentWhatsAppUrl(data: {
   return `[https://wa.me/$](https://wa.me/$){MELANIE_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+export function generateUrgentCheckpointWhatsAppUrl(): string {
+  const message = [
+    '🚨 *URGENCIA DE EMISIÓN / GARITA:*',
+    'Hola Melanie, requiero emisión o constancia urgente para ingreso inmediato de personal a obra/mina.',
+    'Por favor tu atención prioritaria.'
+  ].join('\n');
+
+  return `[https://wa.me/$](https://wa.me/$){MELANIE_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+}
 9. CHECKLIST DE CONTROL DE CALIDAD PRE-ENTREGA
 Antes de dar por finalizada la implementación en OpenCode, verificar el cumplimiento de cada punto:
 
 [ ] Cumplimiento Regulatorio SBS: En ningún lugar de la interfaz se hace mención a "Empresa Corredora" ni nombres de personas jurídicas. Figura como Melanie Silva Alarcón · Persona Natural Colegiada SBS Nº J-0941.
 
-[ ] Predominio del Espacio en Blanco: No existen fondos azul marino oscuros pesados. El fondo principal es blanco puro (#FFFFFF) y gris hielo (#F8FAFC).
+[ ] Navbar Flotante Tipo Cápsula: La barra superior flota con bordes redondeados completos (rounded-full), efecto backdrop-blur y centrado responsivo sin bordes rígidos.
 
-[ ] Mascota Meipo Presente: El koala Meipo aparece en el Hero (con diálogo), en el modal de cotización rápida y en la tarjeta del agendador.
+[ ] Cards con Fondo Fotográfico y Botón (+): Las tarjetas del carrusel tienen fondo visual inmersivo, degradado oscuro legible y el botón circular flotante (+) en la esquina superior derecha.
 
-[ ] Carrusel Horizontal Operativo: Las tarjetas de seguros se desplazan suavemente con mouse drag y touch swipe mediante embla-carousel-react, con indicadores (dots) sincronizados.
+[ ] Modal Split-View Funcional: Al presionar (+) o "Ver Ficha y Cotizar", se abre la ventana dividida con imagen y tip de Meipo a la izquierda, y ficha técnica detallada a la derecha.
 
-[ ] Conmutación Instantánea de Pestañas: Al alternar entre [Empresas] y [Personas], el carrusel actualiza dinámicamente sus tarjetas sin recargar la página.
+[ ] Tabla Comparativa Multiaseguradora: Se visualiza la matriz de disponibilidad por aseguradora con checks claros en vez de simples píldoras aisladas.
 
-[ ] Validación Numérica de RUC: El campo RUC en el modal restringe la entrada a exactamente 11 dígitos numéricos antes de habilitar el botón de WhatsApp.
+[ ] Mascota Meipo Presente: El koala Meipo aparece en el Hero (con diálogo interactivo), en el modal Split-View y en la tarjeta del agendador de 15 minutos.
 
 [ ] Agendador de Citas Funcional: La selección de días y bloques de horario es mutuamente excluyente y genera el mensaje de WhatsApp pre-llenado con fecha y hora.
 
-[ ] Diseño 100% Responsivo: La interfaz no presenta desbordamientos horizontales no deseados (overflow-x: hidden en el layout raíz) y el menú móvil colapsa adecuadamente.
+[ ] Footer Institucional Oscuro: Se mantiene el pie de página formal en #0B132B con todos los datos de contacto y acreditación legal.

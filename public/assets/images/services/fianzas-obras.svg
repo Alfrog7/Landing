@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#134E4A"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <!-- Grúa -->
+  <rect x="120" y="110" width="26" height="230" rx="4" fill="#F59E0B"/>
+  <path d="M133 110 L60 60 L133 60 Z" fill="#F59E0B"/>
+  <path d="M133 78 L90 50 M133 96 L110 60 M133 60 L133 78" stroke="#134E4A" stroke-width="4"/>
+  <rect x="52" y="52" width="86" height="14" rx="4" fill="#FBBF24"/>
+  <path d="M100 66 L100 90" stroke="#E2E8F0" stroke-width="3"/>
+  <rect x="86" y="90" width="28" height="22" rx="4" fill="#ECFDF5"/>
+  <!-- Documento con check -->
+  <g transform="translate(360 120)">
+    <rect width="150" height="190" rx="12" fill="#ECFDF5"/>
+    <rect x="24" y="30" width="102" height="12" rx="6" fill="#94A3B8"/>
+    <rect x="24" y="56" width="102" height="12" rx="6" fill="#94A3B8"/>
+    <rect x="24" y="82" width="70" height="12" rx="6" fill="#94A3B8"/>
+    <circle cx="75" cy="140" r="30" fill="#10B981"/>
+    <path d="M62 140 l9 9 18-20" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Sello -->
+  <g transform="translate(300 330)">
+    <rect width="90" height="34" rx="8" fill="#0F172A"/>
+    <text x="45" y="22" text-anchor="middle" fill="#10B981" font-family="Arial" font-weight="bold" font-size="14">OSCE</text>
+  </g>
+</svg>

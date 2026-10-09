@@ -23,18 +23,13 @@ export class WhatsAppService {
     return this.buildUrl(message);
   }
 
-  buildServiceQuoteUrl(
-    serviceTitle: string,
-    ruc: string,
-    selectedOption: string
-  ): string {
+  buildServiceUrl(serviceTitle: string, tag: string): string {
     const message = [
-      `¡Hola ${BRAND_CONFIG.brandName}! 👋 Deseo cotizar el servicio de *${serviceTitle}*.`,
+      `¡Hola ${BRAND_CONFIG.brandName}! 👋 Vengo desde tu web y deseo cotizar *${serviceTitle}* (${tag}).`,
       '',
-      `• *RUC / Empresa:* ${ruc ? ruc : 'A coordinar'}`,
-      `• *Tipo / Requerimiento:* ${selectedOption || 'Evaluación inicial'}`,
+      '¿Podrías indicarme qué documentos o datos de mi empresa/caso necesitas para presentarme una propuesta comparativa con las aseguradoras?',
       '',
-      '¿Podrías indicarme qué documentos necesitas para cotizar con las aseguradoras? ¡Gracias!',
+      '¡Muchas gracias!',
     ].join('\n');
 
     return this.buildUrl(message);
@@ -63,8 +58,12 @@ export class WhatsAppService {
   }
 
   buildUrgentCheckpointUrl(ruc = ''): string {
-    const text = `🚨 *URGENCIA GARITA:* Hola ${BRAND_CONFIG.brandName}, requiero soporte inmediato para emisión/constancia de pase de garita${ruc ? ` para el RUC ${ruc}` : ''}.`;
-    return this.buildUrl(text);
+    const message = [
+      '🚨 *URGENCIA DE EMISIÓN / GARITA:*',
+      `Hola ${BRAND_CONFIG.brandName}, requiero emisión o constancia urgente para ingreso inmediato de personal a obra/mina.`,
+      'Por favor tu atención prioritaria.',
+    ].join('\n');
+    return this.buildUrl(message);
   }
 
   buildGenericUrl(message: string): string {

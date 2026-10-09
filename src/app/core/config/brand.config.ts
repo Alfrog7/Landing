@@ -5,6 +5,7 @@ export const BRAND_CONFIG = {
   roleTitle: 'Corredora de Seguros Colegiada SBS',
   licenseId: 'Matrícula J-0941',
   sbsChip: 'SBS: Persona Natural Colegiada',
+  sbsChipShort: 'SBS: Matrícula J-0941',
   supervisionBadge: 'Matrícula SBS J-0941 · Asesora Persona Natural Colegiada',
   quote: 'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {

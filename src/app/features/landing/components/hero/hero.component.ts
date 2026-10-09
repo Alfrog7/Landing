@@ -1,1 +1,306 @@
-import { Component, input, output } from '@angular/core';import { RouterLink } from '@angular/router';import { LucideArrowDown, LucideArrowRight, LucideBuilding2, LucideCheckCircle2, LucideUsers } from '@lucide/angular';import { BRAND_CONFIG } from '../../../../core/config/brand.config';import { WhatsAppService } from '../../../../core/services/whatsapp.service';import { AudienceCategory } from '../../../../core/models/insurance-service.model';import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';@Component({  selector: 'app-hero',  imports: [    RouterLink,    LucideArrowDown,    LucideArrowRight,    LucideBuilding2,    LucideCheckCircle2,    LucideUsers,    MeipoIllustrationComponent,  ],  template: `    <section class="hero">      <div class="container hero__grid">        <div class="hero__copy">          <span class="hero__badge">{{ brand.supervisionBadge }}</span>          <h1 class="hero__title">Cuidar de tu empresa y de los tuyos puede ser así de simple.</h1>          <p class="hero__lead">            Compara y gestiona tus coberturas con más de 15 años de experiencia técnica            colegiada, sin burocracia y con trato directo.          </p>          <div class="hero__tabs" role="tablist" aria-label="Tipo de cliente">            <button              type="button"              role="tab"              class="hero__tab"              [class.hero__tab--active]="activeTab() === 'empresas'"              [attr.aria-selected]="activeTab() === 'empresas'"              (click)="changeTab('empresas')"            >              <svg lucideBuilding2 [size]="18" />              Seguros para Empresas            </button>            <button              type="button"              role="tab"              class="hero__tab"              [class.hero__tab--active]="activeTab() === 'personas'"              [attr.aria-selected]="activeTab() === 'personas'"              (click)="changeTab('personas')"            >              <svg lucideUsers [size]="18" />              Seguros para Personas &amp; Familias            </button>          </div>          <div class="hero__ctas">            <button type="button" class="hero__cta-primary" (click)="quotePressed.emit()">              Cotizar con Melanie              <svg lucideArrowRight [size]="18" />            </button>            <a routerLink="/" fragment="soluciones" class="hero__cta-secondary">              Ver cómo funciona              <svg lucideArrowDown [size]="18" />            </a>          </div>          <ul class="hero__trust">            <li>              <svg lucideCheckCircle2 [size]="18" />              Sin costos ocultos            </li>            <li>              <svg lucideCheckCircle2 [size]="18" />              Emisión express            </li>            <li>              <svg lucideCheckCircle2 [size]="18" />              Respaldo SBS Oficial            </li>          </ul>        </div>        <div class="hero__media">          <div class="hero__bubble">            ¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨          </div>          <app-meipo [size]="220" class="hero__meipo" />          <div class="hero__float hero__float--1">            <strong>Respuesta inmediata</strong>            <span>&lt; 24h garantizada</span>          </div>          <div class="hero__float hero__float--2">            <strong>Ahorro hasta el 25%</strong>            <span>en comparativa neutral</span>          </div>        </div>      </div>    </section>  `,  styles: [    `      .hero {        padding: clamp(8.5rem, 16vw, 9rem) 0 clamp(2.5rem, 6vw, 4rem);      }      .hero__grid {        display: grid;        grid-template-columns: 1.1fr 0.9fr;        gap: 3rem;        align-items: center;      }      .hero__badge {        display: inline-block;        background: var(--color-primary-light);        color: var(--color-primary-dark);        font-size: 0.78rem;        font-weight: 600;        padding: 0.45rem 1rem;        border-radius: 999px;        margin-bottom: 1.1rem;      }      .hero__title {        font-size: clamp(2rem, 4.6vw, 3.1rem);        font-weight: 800;        letter-spacing: -0.02em;        margin-bottom: 1rem;      }      .hero__lead {        font-size: 1.08rem;        max-width: 52ch;        margin-bottom: 1.6rem;      }      .hero__tabs {        display: inline-flex;        background: var(--color-bg);        border: 1px solid var(--color-border);        border-radius: 999px;        padding: 0.35rem;        gap: 0.3rem;        margin-bottom: 1.6rem;        flex-wrap: wrap;      }      .hero__tab {        display: inline-flex;        align-items: center;        gap: 0.45rem;        border: 0;        background: transparent;        padding: 0.6rem 1.2rem;        border-radius: 999px;        font-family: var(--font-body);        font-size: 0.9rem;        font-weight: 600;        color: var(--color-muted);        cursor: pointer;        transition: all 0.25s ease;      }      .hero__tab:hover {        color: var(--color-heading);      }      .hero__tab--active {        background: var(--color-surface);        color: var(--color-heading);        box-shadow: var(--shadow-md);      }      .hero__ctas {        display: flex;        gap: 1rem;        flex-wrap: wrap;        margin-bottom: 1.4rem;      }      .hero__cta-primary,      .hero__cta-secondary {        display: inline-flex;        align-items: center;        gap: 0.5rem;        padding: 0.85rem 1.6rem;        border-radius: 999px;        font-weight: 600;        font-size: 0.98rem;        cursor: pointer;        border: 0;        transition: all 0.25s ease;      }      .hero__cta-primary {        background: var(--color-primary);        color: #fff;        font-family: var(--font-body);      }      .hero__cta-primary:hover {        background: var(--color-primary-dark);        box-shadow: var(--shadow-card-hover);      }      .hero__cta-secondary {        background: var(--color-surface);        color: var(--color-heading);        border: 1px solid var(--color-border);      }      .hero__cta-secondary:hover {        border-color: var(--color-border-strong);      }      .hero__trust {        list-style: none;        margin: 0;        padding: 0;        display: flex;        gap: 1.4rem;        flex-wrap: wrap;        font-size: 0.9rem;        font-weight: 500;      }      .hero__trust li {        display: inline-flex;        align-items: center;        gap: 0.4rem;      }      .hero__trust svg {        color: var(--color-primary);      }      .hero__media {        position: relative;        display: flex;        flex-direction: column;        align-items: center;        gap: 1.2rem;        min-height: 340px;        justify-content: center;      }      .hero__bubble {        position: relative;        max-width: 270px;        background: var(--color-surface);        border: 1px solid var(--color-border);        border-radius: 1.2rem;        border-bottom-left-radius: 0.3rem;        padding: 0.9rem 1.2rem;        font-size: 0.92rem;        font-weight: 500;        color: var(--color-heading);        box-shadow: var(--shadow-md);      }      .hero__meipo {        animation: meipo-float 5s ease-in-out infinite;      }      @keyframes meipo-float {        0%,        100% {          transform: translateY(0);        }        50% {          transform: translateY(-10px);        }      }      .hero__float {        position: absolute;        background: var(--color-surface);        border: 1px solid var(--color-border);        border-radius: var(--radius-lg);        box-shadow: var(--shadow-card-hover);        padding: 0.7rem 1rem;        display: flex;        flex-direction: column;        animation: meipo-float 6s ease-in-out infinite;      }      .hero__float strong {        font-size: 0.88rem;        color: var(--color-heading);      }      .hero__float span {        font-size: 0.76rem;        color: var(--color-muted);      }      .hero__float--1 {        left: 0;        top: 10%;      }      .hero__float--2 {        right: 0;        bottom: 8%;        animation-delay: 1.4s;      }      @media (max-width: 900px) {        .hero__grid {          grid-template-columns: 1fr;        }        .hero__media {          min-height: 300px;        }      }    `,  ],})export class HeroComponent {  readonly brand = BRAND_CONFIG;  readonly activeTab = input.required<AudienceCategory>();  readonly tabChange = output<AudienceCategory>();  readonly quotePressed = output<void>();  changeTab(tab: AudienceCategory): void {    this.tabChange.emit(tab);  }}
+import { Component, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import {
+  LucideArrowDown,
+  LucideArrowRight,
+  LucideBuilding2,
+  LucideCheckCircle2,
+  LucideUsers,
+} from '@lucide/angular';
+import { BRAND_CONFIG } from '../../../../core/config/brand.config';
+import { AudienceCategory } from '../../../../core/models/insurance-service.model';
+import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';
+
+@Component({
+  selector: 'app-hero',
+  imports: [
+    RouterLink,
+    LucideArrowDown,
+    LucideArrowRight,
+    LucideBuilding2,
+    LucideCheckCircle2,
+    LucideUsers,
+    MeipoIllustrationComponent,
+  ],
+  template: `
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="hero__badge">{{ brand.supervisionBadge }}</span>
+          <h1 class="hero__title">Cuidar de tu empresa y de los tuyos puede ser así de simple.</h1>
+          <p class="hero__lead">
+            Compara y gestiona tus coberturas con más de 15 años de experiencia técnica
+            colegiada, sin burocracia y con trato directo.
+          </p>
+
+          <div class="hero__tabs" role="tablist" aria-label="Tipo de cliente">
+            <button
+              type="button"
+              role="tab"
+              class="hero__tab"
+              [class.hero__tab--active]="activeTab() === 'empresas'"
+              [attr.aria-selected]="activeTab() === 'empresas'"
+              (click)="changeTab('empresas')"
+            >
+              <svg lucideBuilding2 [size]="18" />
+              Seguros para Empresas
+            </button>
+            <button
+              type="button"
+              role="tab"
+              class="hero__tab"
+              [class.hero__tab--active]="activeTab() === 'personas'"
+              [attr.aria-selected]="activeTab() === 'personas'"
+              (click)="changeTab('personas')"
+            >
+              <svg lucideUsers [size]="18" />
+              Seguros para Personas &amp; Familias
+            </button>
+          </div>
+
+          <div class="hero__ctas">
+            <button type="button" class="hero__cta-primary" (click)="quotePressed.emit()">
+              Cotizar con Melanie
+              <svg lucideArrowRight [size]="18" />
+            </button>
+            <a routerLink="/" fragment="soluciones" class="hero__cta-secondary">
+              Ver cómo funciona
+              <svg lucideArrowDown [size]="18" />
+            </a>
+          </div>
+
+          <ul class="hero__trust">
+            <li>
+              <svg lucideCheckCircle2 [size]="18" />
+              Sin costos ocultos
+            </li>
+            <li>
+              <svg lucideCheckCircle2 [size]="18" />
+              Emisión express
+            </li>
+            <li>
+              <svg lucideCheckCircle2 [size]="18" />
+              Respaldo SBS Oficial
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__bubble">
+            ¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨
+          </div>
+          <app-meipo [size]="220" class="hero__meipo" />
+          <div class="hero__float hero__float--1">
+            <strong>Respuesta inmediata</strong>
+            <span>&lt; 24h garantizada</span>
+          </div>
+          <div class="hero__float hero__float--2">
+            <strong>Ahorro hasta el 25%</strong>
+            <span>en comparativa neutral</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  `,
+  styles: [
+    `
+      .hero {
+        padding: clamp(8.5rem, 16vw, 9rem) 0 clamp(2.5rem, 6vw, 4rem);
+      }
+      .hero__grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      .hero__badge {
+        display: inline-block;
+        background: var(--color-primary-light);
+        color: var(--color-primary-dark);
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.45rem 1rem;
+        border-radius: 999px;
+        margin-bottom: 1.1rem;
+      }
+      .hero__title {
+        font-size: clamp(2rem, 4.6vw, 3.1rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
+      .hero__lead {
+        font-size: 1.08rem;
+        max-width: 52ch;
+        margin-bottom: 1.6rem;
+      }
+      .hero__tabs {
+        display: inline-flex;
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        padding: 0.35rem;
+        gap: 0.3rem;
+        margin-bottom: 1.6rem;
+        flex-wrap: wrap;
+      }
+      .hero__tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border: 0;
+        background: transparent;
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-muted);
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      .hero__tab:hover {
+        color: var(--color-heading);
+      }
+      .hero__tab--active {
+        background: var(--color-surface);
+        color: var(--color-heading);
+        box-shadow: var(--shadow-md);
+      }
+      .hero__ctas {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.4rem;
+      }
+      .hero__cta-primary,
+      .hero__cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.98rem;
+        cursor: pointer;
+        border: 0;
+        transition: all 0.25s ease;
+      }
+      .hero__cta-primary {
+        background: var(--color-primary);
+        color: #fff;
+        font-family: var(--font-body);
+      }
+      .hero__cta-primary:hover {
+        background: var(--color-primary-dark);
+        box-shadow: var(--shadow-card-hover);
+      }
+      .hero__cta-secondary {
+        background: var(--color-surface);
+        color: var(--color-heading);
+        border: 1px solid var(--color-border);
+      }
+      .hero__cta-secondary:hover {
+        border-color: var(--color-border-strong);
+      }
+      .hero__trust {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .hero__trust li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .hero__trust svg {
+        color: var(--color-primary);
+      }
+      .hero__media {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        min-height: 340px;
+        justify-content: center;
+      }
+      .hero__bubble {
+        position: relative;
+        max-width: 270px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 1.2rem;
+        border-bottom-left-radius: 0.3rem;
+        padding: 0.9rem 1.2rem;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--color-heading);
+        box-shadow: var(--shadow-md);
+      }
+      .hero__meipo {
+        animation: meipo-float 5s ease-in-out infinite;
+      }
+      @keyframes meipo-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .hero__float {
+        position: absolute;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card-hover);
+        padding: 0.7rem 1rem;
+        display: flex;
+        flex-direction: column;
+        animation: meipo-float 6s ease-in-out infinite;
+      }
+      .hero__float strong {
+        font-size: 0.88rem;
+        color: var(--color-heading);
+      }
+      .hero__float span {
+        font-size: 0.76rem;
+        color: var(--color-muted);
+      }
+      .hero__float--1 {
+        left: 0;
+        top: 10%;
+      }
+      .hero__float--2 {
+        right: 0;
+        bottom: 8%;
+        animation-delay: 1.4s;
+      }
+      @media (max-width: 900px) {
+        .hero__grid {
+          grid-template-columns: 1fr;
+        }
+        .hero__media {
+          min-height: 300px;
+        }
+      }
+    `,
+  ],
+})
+export class HeroComponent {
+  readonly brand = BRAND_CONFIG;
+  readonly activeTab = input.required<AudienceCategory>();
+  readonly tabChange = output<AudienceCategory>();
+  readonly quotePressed = output<void>();
+
+  changeTab(tab: AudienceCategory): void {
+    this.tabChange.emit(tab);
+  }
+}

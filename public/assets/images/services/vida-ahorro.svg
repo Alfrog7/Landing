@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#065F46"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <!-- Alcancía -->
+  <g transform="translate(150 120)">
+    <ellipse cx="110" cy="90" rx="110" ry="80" fill="#10B981"/>
+    <circle cx="30" cy="70" r="26" fill="#059669"/>
+    <circle cx="30" cy="70" r="12" fill="#ECFDF5"/>
+    <rect x="200" y="66" width="34" height="26" rx="13" fill="#059669"/>
+    <rect x="96" y="6" width="36" height="22" rx="6" fill="#ECFDF5"/>
+    <path d="M60 150 q10 26 36 22 M140 156 q6 22 30 20" stroke="#059669" stroke-width="10" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Moneda cayendo -->
+  <circle cx="256" cy="60" r="24" fill="#FBBF24"/>
+  <text x="256" y="69" text-anchor="middle" fill="#78350F" font-family="Arial" font-weight="bold" font-size="22">S/</text>
+  <!-- Crecimiento -->
+  <g transform="translate(400 140)" stroke="#ECFDF5" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M0 180 L60 120 L110 150 L180 60"/>
+    <path d="M180 60 h-34 M180 60 v34"/>
+  </g>
+  <!-- Casa -->
+  <g transform="translate(420 300)">
+    <path d="M0 40 L60 0 L120 40 Z" fill="#F97316"/>
+    <rect x="14" y="40" width="92" height="56" fill="#ECFDF5"/>
+    <rect x="48" y="58" width="24" height="38" fill="#059669"/>
+  </g>
+</svg>

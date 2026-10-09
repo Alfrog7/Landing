@@ -1,30 +1,32 @@
 export type AudienceCategory = 'empresas' | 'personas';
+export type CoverageAvailability = boolean | 'consultar';
 
-export interface InsuranceServiceBadge {
-  text: string;
-  variant: 'green' | 'sky' | 'orange';
+export interface ServiceSpecs {
+  coberturas: string[];
+  requisitos: string[];
+  tiempoEmision: string;
+  entidadesNormativas?: string;
 }
 
-export interface InsuranceServiceModalConfig {
-  serviceType: string;
-  tag: string;
-  tipText: string;
-  options: string[];
-}
-
-export interface InsuranceService {
+export interface ServiceDetail {
   id: string;
   category: AudienceCategory;
-  icon: string;
   title: string;
-  badge: InsuranceServiceBadge;
-  description: string;
+  tag: string;
+  badgeTime: string;
+  summary: string;
+  image: string;
   insurers: string[];
-  ctaLabel: string;
-  modalConfig: InsuranceServiceModalConfig;
+  specs: ServiceSpecs;
+  meipoTip: string;
 }
 
-export interface InsurerPill {
-  id: string;
-  name: string;
+export interface InsurerCoverageRow {
+  serviceName: string;
+  rimac: CoverageAvailability;
+  pacifico: CoverageAvailability;
+  mapfre: CoverageAvailability;
+  positiva: CoverageAvailability;
+  insurAvla: CoverageAvailability;
+  chubb: CoverageAvailability;
 }

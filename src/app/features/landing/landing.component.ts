@@ -2,12 +2,12 @@ import { Component, signal } from '@angular/core';
 import { AccordionComponent } from '../../shared/components/accordion/accordion.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SolutionsCarouselComponent } from './components/solutions-carousel/solutions-carousel.component';
-import { InsurersLogowallComponent } from './components/insurers-logowall/insurers-logowall.component';
+import { InsurersCoverageTableComponent } from './components/insurers-coverage-table/insurers-coverage-table.component';
 import { WhyMelanieComponent } from './components/why-melanie/why-melanie.component';
 import { AppointmentSchedulerComponent } from './components/appointment-scheduler/appointment-scheduler.component';
-import { FastQuoteService } from './fast-quote.service';
+import { ServiceDetailService } from './service-detail.service';
 import { LANDING_FAQS_DATA } from '../../core/data/landing.data';
-import { AudienceCategory, InsuranceService } from '../../core/models/insurance-service.model';
+import { AudienceCategory, ServiceDetail } from '../../core/models/insurance-service.model';
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +15,7 @@ import { AudienceCategory, InsuranceService } from '../../core/models/insurance-
     AccordionComponent,
     HeroComponent,
     SolutionsCarouselComponent,
-    InsurersLogowallComponent,
+    InsurersCoverageTableComponent,
     WhyMelanieComponent,
     AppointmentSchedulerComponent,
   ],
@@ -23,15 +23,15 @@ import { AudienceCategory, InsuranceService } from '../../core/models/insurance-
     <app-hero
       [activeTab]="activeTab()"
       (tabChange)="onTabChange($event)"
-      (quotePressed)="openQuote(null)"
+      (quotePressed)="quotePressed()"
     />
 
     <app-solutions-carousel
       [activeTab]="activeTab()"
-      (quotePressed)="openQuote($event)"
+      (detailPressed)="openDetail($event)"
     />
 
-    <app-insurers-logowall />
+    <app-insurers-coverage-table />
 
     <app-why-melanie />
 
@@ -65,13 +65,17 @@ export class LandingComponent {
   readonly activeTab = signal<AudienceCategory>('empresas');
   readonly faqs = LANDING_FAQS_DATA;
 
-  constructor(private readonly fastQuoteService: FastQuoteService) {}
+  constructor(private readonly serviceDetailService: ServiceDetailService) {}
 
   onTabChange(tab: AudienceCategory): void {
     this.activeTab.set(tab);
   }
 
-  openQuote(service: InsuranceService | null): void {
-    this.fastQuoteService.open(service);
+  openDetail(service: ServiceDetail): void {
+    this.serviceDetailService.open(service);
+  }
+
+  quotePressed(): void {
+    document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' });
   }
 }
