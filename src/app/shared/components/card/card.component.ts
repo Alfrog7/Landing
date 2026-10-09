@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-card',
+  template: `<div class="app-card"><ng-content /></div>`,
+  styles: [
+    `
+      .app-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        padding: 1.75rem;
+        height: 100%;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+      }
+      .app-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+    `,
+  ],
+})
+export class CardComponent {}

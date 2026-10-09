@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" role="img" aria-label="Fotografía profesional de Melanie Silva, corredora de seguros">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1952BE"/>
+      <stop offset="1" stop-color="#0A1D37"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="380" rx="24" fill="url(#bg)"/>
+  <!-- Silueta retrato -->
+  <circle cx="160" cy="128" r="58" fill="#FBFAF8"/>
+  <path d="M160 196 c-62 0 -98 40 -98 96 v88 h196 v-88 c0 -56 -36 -96 -98 -96 Z" fill="#FBFAF8"/>
+  <path d="M160 196 c-62 0 -98 40 -98 96 v88 h196 v-88 c0 -56 -36 -96 -98 -96 Z" fill="#5B8DEF" opacity="0.18"/>
+  <!-- Cliente y moño -->
+  <path d="M104 300 h112" stroke="#1952BE" stroke-width="10" stroke-linecap="round"/>
+  <!-- Placa -->
+  <rect x="72" y="330" width="176" height="34" rx="17" fill="#1952BE"/>
+  <text x="160" y="352" font-family="Arial" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">SBS · J-0941</text>
+</svg>

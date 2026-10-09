@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="36" viewBox="0 0 88 36" role="img" aria-label="Rímac Seguros">
+  <rect x="1" y="1" width="86" height="34" rx="6" fill="#FFFFFF" stroke="#1952BE" stroke-width="1.6"/>
+  <circle cx="17" cy="18" r="11" fill="#1952BE"/>
+  <text x="17" y="23.5" font-family="Arial" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">R</text>
+  <text x="33" y="16.5" font-family="Arial" font-size="11" font-weight="700" fill="#1952BE">Rímac</text>
+  <text x="33" y="27" font-family="Arial" font-size="7" font-weight="600" letter-spacing="1" fill="#64748B">SEGUROS</text>
+</svg>

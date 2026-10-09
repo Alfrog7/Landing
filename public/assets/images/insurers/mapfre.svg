@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="36" viewBox="0 0 88 36" role="img" aria-label="Mapfre">
+  <rect x="1" y="1" width="86" height="34" rx="6" fill="#FFFFFF" stroke="#D4372C" stroke-width="1.6"/>
+  <circle cx="17" cy="18" r="11" fill="#D4372C"/>
+  <text x="17" y="23" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">M</text>
+  <text x="33" y="22.5" font-family="Arial" font-size="12.5" font-weight="700" fill="#D4372C">Mapfre</text>
+</svg>
