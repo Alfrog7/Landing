@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <!-- Auto -->
+  <g transform="translate(130 150)">
+    <path d="M30 60 Q70 20 130 18 Q195 18 235 58 L268 66 Q296 74 296 98 L296 112 Q296 122 284 122 L34 122 Q20 122 20 108 L20 74 Q20 64 30 60 Z" fill="#ECFDF5"/>
+    <path d="M64 60 Q94 32 130 30 L130 60 Z" fill="#0EA5E9"/>
+    <path d="M140 30 Q182 32 208 58 L140 58 Z" fill="#0EA5E9"/>
+    <rect x="20" y="96" width="276" height="14" fill="#10B981"/>
+    <circle cx="76" cy="122" r="30" fill="#0F172A"/>
+    <circle cx="76" cy="122" r="13" fill="#94A3B8"/>
+    <circle cx="240" cy="122" r="30" fill="#0F172A"/>
+    <circle cx="240" cy="122" r="13" fill="#94A3B8"/>
+  </g>
+  <!-- Escudo de protección -->
+  <g transform="translate(470 90)">
+    <path d="M60 0 L120 22 L120 66 Q120 108 60 130 Q0 108 0 66 L0 22 Z" fill="#10B981"/>
+    <path d="M32 64 L54 86 L90 46" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Señal de carretera -->
+  <g transform="translate(60 300)">
+    <rect x="24" y="40" width="10" height="60" fill="#64748B"/>
+    <path d="M29 0 L58 40 L0 40 Z" fill="#F59E0B"/>
+  </g>
+</svg>

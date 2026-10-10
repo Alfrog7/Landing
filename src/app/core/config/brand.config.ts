@@ -18,6 +18,8 @@ export const BRAND_CONFIG = {
   assets: {
     logoLight: 'assets/images/brand/logo.svg',
     logoDark: 'assets/images/brand/logo-dark.svg',
+    logoStacked: 'assets/images/brand/logo-apilado.svg',
+    logoIcon: 'assets/images/brand/icono.svg',
     advisorPhoto: 'assets/images/advisor/profile.svg',
   },
   insurers: [

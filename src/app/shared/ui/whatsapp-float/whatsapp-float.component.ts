@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { LucideMessageCircle } from '@lucide/angular';
 import { WhatsAppService } from '../../../core/services/whatsapp.service';
+import { TranslationService } from '../../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-whatsapp-float',
@@ -11,10 +12,10 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
       [href]="url"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Conversar con Melanie por WhatsApp"
+      [attr.aria-label]="tr.t('navbar.waFloatAria')"
     >
       <svg lucideMessageCircle [size]="26" />
-      <span class="wafloat__tooltip">Conversar por WhatsApp</span>
+      <span class="wafloat__tooltip">{{ tr.t('navbar.waChat') }}</span>
     </a>
   `,
   styles: [
@@ -63,6 +64,7 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
 })
 export class WhatsAppFloatComponent {
   private readonly whatsapp = inject(WhatsAppService);
+  readonly tr = inject(TranslationService);
   readonly url: string;
 
   constructor() {

@@ -42,3 +42,10 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Notas de trabajo locales (no subir al repo)
+/idiomas.md
+/Instruccion-Landing.md
+/redise*o-Landing.md
+/tecnologias-carrusel.md
+/Melanie_Asesoria_en_Seguros_Branding/

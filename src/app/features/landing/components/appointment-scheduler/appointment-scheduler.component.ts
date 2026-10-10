@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { LucideMessageCircle } from '@lucide/angular';
 import { BRAND_CONFIG } from '../../../../core/config/brand.config';
 import { WhatsAppService } from '../../../../core/services/whatsapp.service';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';
 
 interface SchedulerDay {
@@ -12,14 +13,6 @@ interface SchedulerDay {
 }
 
 const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
-const TOPICS = [
-  'Cartas Fianza / Garantías',
-  'SCTR y Planilla',
-  'Vida con Devolución',
-  'Salud / EPS',
-  'Vehicular / SOAT',
-  'Otro tema',
-];
 
 @Component({
   selector: 'app-appointment-scheduler',
@@ -28,8 +21,8 @@ const TOPICS = [
     <section class="section scheduler" id="agendar">
       <div class="container">
         <div class="text-center scheduler__head">
-          <span class="eyebrow">Agenda tu cita</span>
-          <h2 class="section-title">Sesión de 15 minutos, gratuita y sin tecnicismos</h2>
+          <span class="eyebrow">{{ tr.t('schedule.eyebrow') }}</span>
+          <h2 class="section-title">{{ tr.t('schedule.title') }}</h2>
         </div>
 
         <div class="scheduler__panel">
@@ -40,30 +33,29 @@ const TOPICS = [
               class="scheduler__avatar"
             />
             <strong class="scheduler__owner">{{ brand.ownerName }}</strong>
-            <span class="scheduler__license">{{ brand.licenseId }}</span>
+            <span class="scheduler__license">{{ tr.t('why.role') }} · {{ brand.licenseId }}</span>
 
             <ul class="scheduler__tags">
-              <li>Duración: 15 minutos (GRATIS)</li>
-              <li>Modalidad: Google Meet o Llamada</li>
-              <li>Enfoque: Evaluación técnica sin tecnicismos</li>
+              <li>{{ tr.t('schedule.tag1') }}</li>
+              <li>{{ tr.t('schedule.tag2') }}</li>
+              <li>{{ tr.t('schedule.tag3') }}</li>
             </ul>
 
             <div class="scheduler__tip">
               <app-meipo [size]="46" />
               <p>
-                Te llegará una confirmación instantánea a tu WhatsApp y Google Calendar
-                con el enlace directo.
+                {{ tr.t('schedule.meipoTip') }}
               </p>
             </div>
 
             <p class="scheduler__privacy">
-              Tus datos están protegidos bajo secreto profesional (Ley Nº 29733).
+              {{ tr.t('schedule.privacy') }}
             </p>
           </aside>
 
           <form class="scheduler__form" (submit)="onSubmit($event)">
             <fieldset>
-              <legend>Paso 1: Selecciona Día y Hora</legend>
+              <legend>{{ tr.t('schedule.step1') }}</legend>
               <div class="scheduler__days">
                 @for (day of days(); track day.date.toISOString()) {
                   <button
@@ -92,11 +84,11 @@ const TOPICS = [
             </fieldset>
 
             <fieldset>
-              <legend>Paso 2: Datos del Responsable</legend>
+              <legend>{{ tr.t('schedule.step2') }}</legend>
               <div class="scheduler__fields">
                 <input
                   type="text"
-                  placeholder="Nombre Completo *"
+                  [placeholder]="tr.t('schedule.phName')"
                   autocomplete="name"
                   [ngModel]="fullName()"
                   (ngModelChange)="fullName.set($event)"
@@ -105,7 +97,7 @@ const TOPICS = [
                 />
                 <input
                   type="text"
-                  placeholder="Empresa o RUC (opcional)"
+                  [placeholder]="tr.t('schedule.phCompany')"
                   autocomplete="organization"
                   [ngModel]="companyOrRuc()"
                   (ngModelChange)="companyOrRuc.set($event)"
@@ -113,7 +105,7 @@ const TOPICS = [
                 />
                 <input
                   type="tel"
-                  placeholder="WhatsApp (+51) *"
+                  [placeholder]="tr.t('schedule.phWhats')"
                   autocomplete="tel"
                   [ngModel]="whatsapp()"
                   (ngModelChange)="whatsapp.set($event)"
@@ -126,7 +118,7 @@ const TOPICS = [
                   name="serviceTopic"
                   required
                 >
-                  @for (topic of topics; track topic) {
+                  @for (topic of tr.list('schedule.topics'); track $index) {
                     <option [value]="topic">{{ topic }}</option>
                   }
                 </select>
@@ -138,19 +130,19 @@ const TOPICS = [
               class="scheduler__confirm"
               [disabled]="!canSubmit()"
             >
-              Confirmar mi Cita Gratuita
+              {{ tr.t('schedule.confirm') }}
             </button>
           </form>
         </div>
 
         <div class="scheduler__urgent">
           <div>
-            <strong>¿Necesitas tu constancia o cotización urgente para hoy mismo?</strong>
-            <p>Escríbele directo a {{ brand.ownerName.split(' ')[0] }} para emisión prioritaria.</p>
+            <strong>{{ tr.t('schedule.urgentTitle') }}</strong>
+            <p>{{ tr.t('schedule.urgentText') }}</p>
           </div>
           <a class="scheduler__urgent-btn" [href]="urgentUrl" target="_blank" rel="noopener noreferrer">
             <svg lucideMessageCircle [size]="18" />
-            Contactar por WhatsApp Ahora ({{ brand.contact.phone }})
+            {{ tr.t('schedule.urgentBtn') }} ({{ brand.contact.phone }})
           </a>
         </div>
       </div>
@@ -406,8 +398,8 @@ const TOPICS = [
 })
 export class AppointmentSchedulerComponent {
   readonly brand = BRAND_CONFIG;
+  readonly tr = inject(TranslationService);
   readonly timeSlots = TIME_SLOTS;
-  readonly topics = TOPICS;
   private readonly whatsappApi = inject(WhatsAppService);
 
   readonly selectedDay = signal<SchedulerDay | null>(null);
@@ -415,9 +407,10 @@ export class AppointmentSchedulerComponent {
   readonly fullName = signal('');
   readonly companyOrRuc = signal('');
   readonly whatsapp = signal('');
-  readonly serviceTopic = signal(TOPICS[0]);
+  readonly serviceTopic = signal('');
 
   readonly days = computed<SchedulerDay[]>(() => {
+    const locale = this.tr.current.locale;
     const result: SchedulerDay[] = [];
     const cursor = new Date();
     cursor.setDate(cursor.getDate() + 1);
@@ -426,7 +419,7 @@ export class AppointmentSchedulerComponent {
       if (day !== 0 && day !== 6) {
         result.push({
           date: new Date(cursor),
-          weekday: cursor.toLocaleDateString('es-PE', { weekday: 'short' }),
+          weekday: cursor.toLocaleDateString(locale, { weekday: 'short' }),
           dayNumber: cursor.getDate(),
         });
       }
@@ -447,6 +440,7 @@ export class AppointmentSchedulerComponent {
 
   constructor(whatsapp: WhatsAppService) {
     this.selectedDay.set(this.days()[0]);
+    this.serviceTopic.set(this.tr.list('schedule.topics')[0] ?? '');
     this.urgentUrl = whatsapp.buildUrgentCheckpointUrl();
   }
 
@@ -463,7 +457,7 @@ export class AppointmentSchedulerComponent {
       return;
     }
     const day = this.selectedDay()!;
-    const dateLabel = day.date.toLocaleDateString('es-PE', {
+    const dateLabel = day.date.toLocaleDateString(this.tr.current.locale, {
       weekday: 'long',
       day: 'numeric',
       month: 'long',

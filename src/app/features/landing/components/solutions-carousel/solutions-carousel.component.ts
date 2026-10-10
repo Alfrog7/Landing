@@ -2,6 +2,7 @@ import {
   Component,
   DestroyRef,
   afterNextRender,
+  computed,
   effect,
   inject,
   input,
@@ -13,6 +14,7 @@ import {
 import { EmblaCarouselDirective } from 'embla-carousel-angular';
 import { EmblaEventType } from 'embla-carousel';
 import { LucideChevronLeft, LucideChevronRight, LucidePlus } from '@lucide/angular';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 import {
   AudienceCategory,
   ServiceDetail,
@@ -31,15 +33,15 @@ import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
         type="button"
         class="card__inspect"
         (click)="$event.stopPropagation(); detailPressed.emit(service())"
-        [attr.aria-label]="'Ver ficha de ' + service().title"
+        [attr.aria-label]="tr.t('carousel.ariaFicha') + ' ' + tr.t('services.' + service().id + '.title')"
       >
         <svg lucidePlus [size]="20" />
       </button>
 
       <div class="card__info">
-        <span class="card__badge">{{ service().badgeTime }}</span>
-        <h3 class="card__title">{{ service().title }}</h3>
-        <p class="card__summary">{{ service().summary }}</p>
+        <span class="card__badge">{{ tr.t('services.' + service().id + '.badge') }}</span>
+        <h3 class="card__title">{{ tr.t('services.' + service().id + '.title') }}</h3>
+        <p class="card__summary">{{ tr.t('services.' + service().id + '.summary') }}</p>
         <div class="card__insurers">
           @for (insurer of service().insurers; track insurer) {
             <span class="card__pill">{{ insurer }}</span>
@@ -50,7 +52,7 @@ import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
           class="card__cta"
           (click)="$event.stopPropagation(); detailPressed.emit(service())"
         >
-          Ver Ficha y Cotizar →
+          {{ tr.t('carousel.cardCta') }}
         </button>
       </div>
     </article>
@@ -184,6 +186,7 @@ import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
   ],
 })
 export class SolutionCardComponent {
+  readonly tr = inject(TranslationService);
   readonly service = input.required<ServiceDetail>();
   readonly detailPressed = output<ServiceDetail>();
 }
@@ -195,11 +198,11 @@ export class SolutionCardComponent {
     <section class="section solutions" id="soluciones">
       <div class="container">
         <div class="solutions__head text-center">
-          <span class="eyebrow">Soluciones a tu ritmo</span>
+          <span class="eyebrow">{{ tr.t('carousel.eyebrow') }}</span>
           <h2 class="section-title">
-            {{ activeTab() === 'empresas' ? 'Seguros para Empresas' : 'Seguros para Personas & Familias' }}
+            {{ activeTab() === 'empresas' ? tr.t('carousel.titleEmpresas') : tr.t('carousel.titlePersonas') }}
           </h2>
-          <p class="solutions__hint">Desliza las tarjetas y pulsa (+) para ver la ficha completa</p>
+          <p class="solutions__hint">{{ tr.t('carousel.hint') }}</p>
         </div>
       </div>
       <div class="solutions__viewport-wrap">
@@ -207,7 +210,7 @@ export class SolutionCardComponent {
           type="button"
           class="solutions__nav solutions__nav--prev"
           (click)="scrollPrev()"
-          aria-label="Anterior"
+          [attr.aria-label]="tr.t('carousel.prev')"
         >
           <svg lucideChevronLeft [size]="20" />
         </button>
@@ -221,7 +224,7 @@ export class SolutionCardComponent {
           (mouseleave)="startAutoplay()"
         >
           <div class="solutions__track">
-            @for (service of filteredServices(); track service.id) {
+            @for (service of displayServices(); track $index) {
               <div class="solutions__slide">
                 <app-solution-card
                   [service]="service"
@@ -235,18 +238,18 @@ export class SolutionCardComponent {
           type="button"
           class="solutions__nav solutions__nav--next"
           (click)="scrollNext()"
-          aria-label="Siguiente"
+          [attr.aria-label]="tr.t('carousel.next')"
         >
           <svg lucideChevronRight [size]="20" />
         </button>
       </div>
-      <div class="container solutions__dots" aria-label="Paginación del carrusel">
+      <div class="container solutions__dots" [attr.aria-label]="tr.t('carousel.dotsAria')">
         @for (dot of dots(); track $index) {
           <button
             type="button"
             class="solutions__dot"
             [class.solutions__dot--active]="selectedIndex() === $index"
-            [attr.aria-label]="'Ir a la página ' + ($index + 1)"
+            [attr.aria-label]="tr.t('carousel.pageAria') + ' ' + ($index + 1)"
             (click)="scrollTo($index)"
           ></button>
         }
@@ -347,6 +350,7 @@ export class SolutionCardComponent {
 export class SolutionsCarouselComponent {
   readonly activeTab = input.required<AudienceCategory>();
   readonly detailPressed = output<ServiceDetail>();
+  readonly tr = inject(TranslationService);
 
   readonly carousel = viewChild.required(EmblaCarouselDirective);
   readonly selectedIndex = signal(0);
@@ -355,29 +359,62 @@ export class SolutionsCarouselComponent {
   readonly options = { loop: true, align: 'start' as const, dragFree: false };
   readonly emblaEvents: EmblaEventType[] = ['init', 'reInit', 'select'];
   private autoplayTimer: number | null = null;
+  private resizeTimer: number | null = null;
+
+  // Embla solo puede desplazar/loopear si el contenido ancho total supera el
+  // viewport: repetimos la lista hasta garantizarlo sin importar cuántas
+  // tarjetas haya en el catálogo.
+  readonly viewportWidth = signal(0);
+  readonly repeat = computed(() => this.computeRepeat(this.activeTab(), this.viewportWidth()));
+  readonly displayServices = computed<ServiceDetail[]>(() => {
+    const base = SERVICES_CATALOG_DATA.filter((s) => s.category === this.activeTab());
+    const times = this.repeat();
+    return Array.from({ length: base.length * times }, (_, i) => base[i % base.length]);
+  });
 
   constructor() {
     afterNextRender(() => {
       setTimeout(() => {
-        this.syncFromApi();
+        try {
+          this.syncFromApi();
+        } catch {
+          // El carrusel aún no estaba listo; el autoplay arranca igual.
+        }
+        this.viewportWidth.set(window.innerWidth);
         this.startAutoplay();
       });
     });
 
     effect(() => {
       this.activeTab();
+      this.repeat();
       untracked(() => {
         setTimeout(() => this.reInit());
       });
     });
 
-    inject(DestroyRef).onDestroy(() => this.stopAutoplay());
+    inject(DestroyRef).onDestroy(() => {
+      this.stopAutoplay();
+      window.removeEventListener('resize', this.onResizeDebounced);
+      if (this.resizeTimer !== null) {
+        window.clearTimeout(this.resizeTimer);
+      }
+    });
+
+    window.addEventListener('resize', this.onResizeDebounced);
   }
 
   startAutoplay(): void {
     this.stopAutoplay();
     this.autoplayTimer = window.setInterval(() => {
-      this.carousel().scrollNext();
+      try {
+        const dir = this.carousel();
+        if (dir.emblaApi) {
+          dir.scrollNext();
+        }
+      } catch {
+        this.stopAutoplay();
+      }
     }, 3200);
   }
 
@@ -388,16 +425,44 @@ export class SolutionsCarouselComponent {
     }
   }
 
-  readonly filteredServices = (): ServiceDetail[] =>
-    SERVICES_CATALOG_DATA.filter((s) => s.category === this.activeTab());
+  onResizeDebounced = (): void => {
+    if (this.resizeTimer !== null) {
+      window.clearTimeout(this.resizeTimer);
+    }
+    this.resizeTimer = window.setTimeout(() => this.viewportWidth.set(window.innerWidth), 200);
+  };
+
+  private computeRepeat(tab: AudienceCategory, viewportWidth: number): number {
+    if (!viewportWidth) {
+      return 1;
+    }
+    const programs = SERVICES_CATALOG_DATA.filter((s) => s.category === tab);
+    const baseCount = programs.length;
+    if (!baseCount) {
+      return 1;
+    }
+    // Ancho mínimo estimado por slide (290px + gap de 24px).
+    const stride = 314;
+    const target = viewportWidth + stride;
+    const needed = Math.ceil(target / stride);
+    return Math.max(1, Math.min(6, Math.ceil(needed / baseCount)));
+  }
+
+  private baseCount(): number {
+    return SERVICES_CATALOG_DATA.filter((s) => s.category === untracked(() => this.activeTab())).length;
+  }
+
+  private dotsForTab(): number[] {
+    return Array.from({ length: this.baseCount() }, (_, i) => i);
+  }
 
   private syncFromApi(): void {
     const api = this.carousel().emblaApi;
     if (!api) {
       return;
     }
-    this.dots.set(api.scrollSnapList().map((_, i) => i));
-    this.selectedIndex.set(api.selectedScrollSnap());
+    this.dots.set(this.dotsForTab());
+    this.selectedIndex.set(api.selectedScrollSnap() % this.baseCount());
   }
 
   scrollPrev(): void {
@@ -416,10 +481,10 @@ export class SolutionsCarouselComponent {
       return;
     }
     if (event === 'init' || event === 'reInit') {
-      this.dots.set(api.scrollSnapList().map((_, i) => i));
-      this.selectedIndex.set(api.selectedScrollSnap());
+      this.dots.set(this.dotsForTab());
+      this.selectedIndex.set(api.selectedScrollSnap() % this.baseCount());
     } else if (event === 'select') {
-      this.selectedIndex.set(api.selectedScrollSnap());
+      this.selectedIndex.set(api.selectedScrollSnap() % this.baseCount());
     }
   }
 

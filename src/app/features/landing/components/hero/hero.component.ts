@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, inject, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   LucideArrowDown,
@@ -7,7 +7,7 @@ import {
   LucideCheckCircle2,
   LucideUsers,
 } from '@lucide/angular';
-import { BRAND_CONFIG } from '../../../../core/config/brand.config';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 import { AudienceCategory } from '../../../../core/models/insurance-service.model';
 import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';
 
@@ -26,14 +26,13 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <span class="hero__badge">{{ brand.supervisionBadge }}</span>
-          <h1 class="hero__title">Cuidar de tu empresa y de los tuyos puede ser así de simple.</h1>
+          <span class="hero__badge">{{ tr.t('hero.badge') }}</span>
+          <h1 class="hero__title">{{ tr.t('hero.title') }}</h1>
           <p class="hero__lead">
-            Compara y gestiona tus coberturas con más de 15 años de experiencia técnica
-            colegiada, sin burocracia y con trato directo.
+            {{ tr.t('hero.lead') }}
           </p>
 
-          <div class="hero__tabs" role="tablist" aria-label="Tipo de cliente">
+          <div class="hero__tabs" role="tablist" [attr.aria-label]="tr.t('hero.tabsAria')">
             <button
               type="button"
               role="tab"
@@ -43,7 +42,7 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
               (click)="changeTab('empresas')"
             >
               <svg lucideBuilding2 [size]="18" />
-              Seguros para Empresas
+              {{ tr.t('hero.tabEmpresas') }}
             </button>
             <button
               type="button"
@@ -54,17 +53,17 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
               (click)="changeTab('personas')"
             >
               <svg lucideUsers [size]="18" />
-              Seguros para Personas &amp; Familias
+              {{ tr.t('hero.tabPersonas') }}
             </button>
           </div>
 
           <div class="hero__ctas">
             <button type="button" class="hero__cta-primary" (click)="quotePressed.emit()">
-              Cotizar con Melanie
+              {{ tr.t('hero.ctaPrimary') }}
               <svg lucideArrowRight [size]="18" />
             </button>
             <a routerLink="/" fragment="soluciones" class="hero__cta-secondary">
-              Ver cómo funciona
+              {{ tr.t('hero.ctaSecondary') }}
               <svg lucideArrowDown [size]="18" />
             </a>
           </div>
@@ -72,31 +71,31 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
           <ul class="hero__trust">
             <li>
               <svg lucideCheckCircle2 [size]="18" />
-              Sin costos ocultos
+              {{ tr.t('hero.trust1') }}
             </li>
             <li>
               <svg lucideCheckCircle2 [size]="18" />
-              Emisión express
+              {{ tr.t('hero.trust2') }}
             </li>
             <li>
               <svg lucideCheckCircle2 [size]="18" />
-              Respaldo SBS Oficial
+              {{ tr.t('hero.trust3') }}
             </li>
           </ul>
         </div>
 
         <div class="hero__media">
-          <div class="hero__bubble">
-            ¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨
-          </div>
           <app-meipo [size]="220" class="hero__meipo" />
+          <div class="hero__bubble">
+            {{ tr.t('hero.bubble') }}
+          </div>
           <div class="hero__float hero__float--1">
-            <strong>Respuesta inmediata</strong>
-            <span>&lt; 24h garantizada</span>
+            <strong>{{ tr.t('hero.float1Title') }}</strong>
+            <span>{{ tr.t('hero.float1Sub') }}</span>
           </div>
           <div class="hero__float hero__float--2">
-            <strong>Ahorro hasta el 25%</strong>
-            <span>en comparativa neutral</span>
+            <strong>{{ tr.t('hero.float2Title') }}</strong>
+            <span>{{ tr.t('hero.float2Sub') }}</span>
           </div>
         </div>
       </div>
@@ -229,6 +228,9 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         gap: 1.2rem;
         min-height: 340px;
         justify-content: center;
+        // Desplaza el personaje a la derecha para dejar paso libre a la
+        // tarjeta flotante izquierda sin tapar la oreja del koala
+        padding-left: 3rem;
       }
       .hero__bubble {
         position: relative;
@@ -236,12 +238,13 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: 1.2rem;
-        border-bottom-left-radius: 0.3rem;
+        border-top-left-radius: 0.3rem;
         padding: 0.9rem 1.2rem;
         font-size: 0.92rem;
         font-weight: 500;
         color: var(--color-heading);
         box-shadow: var(--shadow-md);
+        text-align: center;
       }
       .hero__meipo {
         animation: meipo-float 5s ease-in-out infinite;
@@ -275,12 +278,12 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         color: var(--color-muted);
       }
       .hero__float--1 {
-        left: 0;
-        top: 10%;
+        left: -2rem;
+        top: 12%;
       }
       .hero__float--2 {
         right: 0;
-        bottom: 8%;
+        top: 46%;
         animation-delay: 1.4s;
       }
       @media (max-width: 900px) {
@@ -289,13 +292,14 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         }
         .hero__media {
           min-height: 300px;
+          padding-left: 0;
         }
       }
     `,
   ],
 })
 export class HeroComponent {
-  readonly brand = BRAND_CONFIG;
+  readonly tr = inject(TranslationService);
   readonly activeTab = input.required<AudienceCategory>();
   readonly tabChange = output<AudienceCategory>();
   readonly quotePressed = output<void>();

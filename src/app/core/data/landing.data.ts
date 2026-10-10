@@ -155,11 +155,89 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     meipoTip:
       'Te ayudamos a comparar copagos y deducibles entre Sanitas, Pacífico y Rímac para elegir la red de clínicas más conveniente.',
   },
+  {
+    id: 'vehicular-todo-riesgo',
+    category: 'personas',
+    title: 'Vehicular (Soat + Todo Riesgo)',
+    tag: 'Protección Vehicular',
+    badgeTime: 'Auxilio 24/7',
+    summary:
+      'Cobertura completa ante choques, robo, volcadura y daños a terceros, más ayuda en carretera las 24 horas.',
+    image: 'assets/images/services/seguro-vehicular.svg',
+    insurers: ['Rímac', 'Pacífico', 'Mapfre', 'La Positiva'],
+    specs: {
+      coberturas: [
+        'Daños materiales y pérdida total del vehículo',
+        'Robo total del automotor (con y sin localización)',
+        'Responsabilidad Civil frente a terceros y ocupantes',
+        'Auxilio mecánico, grúa y auto reemplazo según plan',
+      ],
+      requisitos: [
+        'SOAT y revisión técnica vigentes',
+        'DNI del asegurado y tarjeta de propiedad',
+        'Inspección física del vehículo según caso y antigüedad',
+      ],
+      tiempoEmision: 'Cotización y emisión en 24 a 48 horas',
+    },
+    meipoTip:
+      'Comparamos la prima Todo Riesgo entre Rímac, Pacífico y Mapfre según tu modelo y distrito de pernocte, para que no pagues de más.',
+  },
+  {
+    id: 'hogar-multirriesgo',
+    category: 'personas',
+    title: 'Hogar & Multirriesgo',
+    tag: 'Patrimonio Familiar',
+    badgeTime: 'Incendio + Sismo',
+    summary:
+      'Protege tu vivienda y su contenido contra incendios, sismos, robo y responsabilidad civil familiar.',
+    image: 'assets/images/services/seguro-hogar.svg',
+    insurers: ['Pacífico', 'Rímac', 'Mapfre'],
+    specs: {
+      coberturas: [
+        'Incendio y terremoto sobre la edificación (edificio y contenido)',
+        'Robo con violencia o intimidación de enseres y joyas',
+        'Daños por agua, rotura de tuberías y fenómenos naturales',
+        'Responsabilidad Civil familiar frente a terceros',
+      ],
+      requisitos: [
+        'Dirección y características de la vivienda (materiales, m², pisos)',
+        'DNI del asegurado y declaración del valor del contenido',
+      ],
+      tiempoEmision: 'Emisión en 24 horas sin inspección para sumas estándar',
+    },
+    meipoTip:
+      'Suma suficiente: te ayudamos a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
+  },
+  {
+    id: 'asistencia-viaje',
+    category: 'personas',
+    title: 'Asistencia en Viaje',
+    tag: 'Viaja Tranquilo',
+    badgeTime: 'Cobertura Global',
+    summary:
+      'Asistencia médica internacional, demoras de equipaje y cancelación de viaje para tus vacaciones o trámites al extranjero.',
+    image: 'assets/images/services/asistencia-viaje.svg',
+    insurers: ['Mapfre', 'Pacífico', 'Rímac'],
+    specs: {
+      coberturas: [
+        'Gastos médicos y hospitalarios por accidente o enfermedad en el extranjero',
+        'Traslado sanitario y repatriación nacional e internacional',
+        'Demora, extravío o pérdida de equipaje',
+      ],
+      requisitos: [
+        'Pasaporte o DNI del viajero titular y acompañantes',
+        'Fechas de salida y retorno del viaje',
+      ],
+      tiempoEmision: 'Certificado digital en menos de 1 hora',
+    },
+    meipoTip:
+      'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la emitimos el mismo día.',
+  },
 ];
 
 export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
   {
-    serviceName: 'Cartas Fianza (Licitaciones OSCE)',
+    serviceName: 'matrix.row.cartasFianza',
     rimac: 'consultar',
     pacifico: false,
     mapfre: true,
@@ -168,7 +246,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: false,
   },
   {
-    serviceName: 'Seguro de Crédito (Facturas B2B)',
+    serviceName: 'matrix.row.seguroCredito',
     rimac: false,
     pacifico: false,
     mapfre: false,
@@ -177,7 +255,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: false,
   },
   {
-    serviceName: 'SCTR Salud y Pensión',
+    serviceName: 'matrix.row.sctr',
     rimac: true,
     pacifico: true,
     mapfre: true,
@@ -186,7 +264,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: false,
   },
   {
-    serviceName: 'Seguro Vida Ley',
+    serviceName: 'matrix.row.vidaLey',
     rimac: true,
     pacifico: true,
     mapfre: true,
@@ -195,7 +273,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: false,
   },
   {
-    serviceName: 'Pólizas de Ingeniería (CAR / EAR)',
+    serviceName: 'matrix.row.car',
     rimac: true,
     pacifico: true,
     mapfre: true,
@@ -204,7 +282,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: true,
   },
   {
-    serviceName: 'Responsabilidad Civil D&O',
+    serviceName: 'matrix.row.do',
     rimac: true,
     pacifico: true,
     mapfre: true,
@@ -213,7 +291,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: true,
   },
   {
-    serviceName: 'Vida con Devolución (Desgravamen)',
+    serviceName: 'matrix.row.desgravamen',
     rimac: true,
     pacifico: true,
     mapfre: true,
@@ -222,7 +300,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
     chubb: false,
   },
   {
-    serviceName: 'Salud Individual y EPS',
+    serviceName: 'matrix.row.salud',
     rimac: true,
     pacifico: true,
     mapfre: true,

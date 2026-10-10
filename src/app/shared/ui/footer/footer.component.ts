@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BRAND_CONFIG } from '../../../core/config/brand.config';
 import { WhatsAppService } from '../../../core/services/whatsapp.service';
+import { TranslationService } from '../../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,9 +13,9 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
         <div class="footer__brand">
           <img [src]="brand.assets.logoDark" [alt]="brand.brandName" class="footer__logo" />
           <p class="footer__credential">
-            <strong>{{ brand.brandName }} · {{ brand.brandSubtitle }}</strong><br />
+            <strong>{{ brand.brandName }} · {{ tr.t('navbar.subtitle') }}</strong><br />
             {{ brand.ownerName }} — {{ brand.licenseId }}.<br />
-            Corredora de Seguros Colegiada SBS.
+            {{ tr.t('footer.credentialLine') }}
           </p>
           <a
             class="footer__emergency"
@@ -22,43 +23,43 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
             target="_blank"
             rel="noopener noreferrer"
           >
-            🚨 Soporte urgente para garitas
+            {{ tr.t('footer.emergency') }}
           </a>
         </div>
 
         <div class="footer__col">
-          <h3>Navegación</h3>
-          <a routerLink="/coberturas-sctr">Coberturas & SCTR</a>
-          <a routerLink="/asesoria">Asesoría</a>
-          <a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a>
-          <a routerLink="/cotizador">Cotizador</a>
-          <a routerLink="/agendar-cita">Agendar Cita</a>
+          <h3>{{ tr.t('footer.nav') }}</h3>
+          <a routerLink="/coberturas-sctr">{{ tr.t('footer.linkCoberturas') }}</a>
+          <a routerLink="/asesoria">{{ tr.t('footer.linkAsesoria') }}</a>
+          <a routerLink="/preguntas-frecuentes">{{ tr.t('footer.linkFaq') }}</a>
+          <a routerLink="/cotizador">{{ tr.t('footer.linkCotizador') }}</a>
+          <a routerLink="/agendar-cita">{{ tr.t('footer.linkAgendar') }}</a>
         </div>
 
         <div class="footer__col">
-          <h3>¡Contáctanos!</h3>
-          <p class="footer__contact-item"><strong>Teléfono:</strong> {{ brand.contact.phone }}</p>
-          <p class="footer__contact-item"><strong>Correo:</strong> {{ brand.contact.email }}</p>
-          <p class="footer__contact-item"><strong>Horario:</strong> {{ brand.contact.schedule }}</p>
-          <p class="footer__contact-item"><strong>Ubicación:</strong> {{ brand.contact.location }}</p>
+          <h3>{{ tr.t('footer.contactTitle') }}</h3>
+          <p class="footer__contact-item"><strong>{{ tr.t('footer.phoneLabel') }}</strong> {{ brand.contact.phone }}</p>
+          <p class="footer__contact-item"><strong>{{ tr.t('footer.emailLabel') }}</strong> {{ brand.contact.email }}</p>
+          <p class="footer__contact-item"><strong>{{ tr.t('footer.scheduleLabel') }}</strong> {{ tr.t('footer.scheduleValue') }}</p>
+          <p class="footer__contact-item"><strong>{{ tr.t('footer.locationLabel') }}</strong> {{ brand.contact.location }}</p>
         </div>
 
         <div class="footer__col">
-          <h3>Aseguradoras aliadas</h3>
+          <h3>{{ tr.t('footer.insurersTitle') }}</h3>
           <div class="footer__insurers">
             @for (insurer of brand.insurers; track insurer.id) {
               <img [src]="insurer.logo" [alt]="insurer.name" class="footer__insurer-logo" />
             }
           </div>
           <div class="footer__legal">
-            <a href="#" disabled aria-disabled="true" title="Disponible próximamente">Canal de denuncias SBS</a>
-            <a href="#" disabled aria-disabled="true" title="Disponible próximamente">Política de Privacidad</a>
-            <a href="#" disabled aria-disabled="true" title="Disponible próximamente">Términos y Condiciones</a>
+            <a href="#" disabled aria-disabled="true" [title]="tr.t('footer.comingSoon')">{{ tr.t('footer.sbsChannel') }}</a>
+            <a href="#" disabled aria-disabled="true" [title]="tr.t('footer.comingSoon')">{{ tr.t('footer.privacy') }}</a>
+            <a href="#" disabled aria-disabled="true" [title]="tr.t('footer.comingSoon')">{{ tr.t('footer.terms') }}</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <p>© {{ year }} {{ brand.ownerName }}. {{ brand.roleTitle }} — {{ brand.licenseId }}. Todos los derechos reservados.</p>
+        <p>© {{ year }} {{ brand.ownerName }}. {{ tr.t('why.role') }} — {{ brand.licenseId }}. {{ tr.t('footer.rights') }}</p>
       </div>
     </footer>
   `,
@@ -182,6 +183,7 @@ import { WhatsAppService } from '../../../core/services/whatsapp.service';
 })
 export class FooterComponent {
   private readonly whatsapp = inject(WhatsAppService);
+  readonly tr = inject(TranslationService);
 
   readonly brand = BRAND_CONFIG;
   readonly year = new Date().getFullYear();

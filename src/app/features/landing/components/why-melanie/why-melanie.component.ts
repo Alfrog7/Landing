@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LucideClock, LucideMessageCircle, LucideShieldCheck } from '@lucide/angular';
 import { BRAND_CONFIG } from '../../../../core/config/brand.config';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-why-melanie',
@@ -15,24 +16,23 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
             class="why__photo"
           />
           <h3 class="why__name">{{ brand.ownerName }}</h3>
-          <p class="why__role">{{ brand.roleTitle }} · {{ brand.licenseId }}</p>
-          <p class="why__track">15+ Años de Experiencia Colegiada</p>
+          <p class="why__role">{{ tr.t('why.role') }} · {{ brand.licenseId }}</p>
+          <p class="why__track">{{ tr.t('why.track') }}</p>
           <blockquote class="why__quote">
             “{{ brand.quote }}”
           </blockquote>
         </article>
 
         <div class="why__blocks">
-          <h2 class="section-title why__title">¿Por qué asesorarte con {{ brand.ownerName.split(' ')[0] }} Silva?</h2>
+          <h2 class="section-title why__title">{{ tr.t('why.title') }}</h2>
           <div class="why__block">
             <span class="why__icon why__icon--green">
               <svg lucideMessageCircle [size]="24" />
             </span>
             <div>
-              <h3>Trato 100% directo y humano</h3>
+              <h3>{{ tr.t('why.block1Title') }}</h3>
               <p>
-                Hablas directamente con {{ brand.ownerName.split(' ')[0] }} por WhatsApp o llamada,
-                sin bots impersonales ni conmutadores telefónicos ante urgencias.
+                {{ tr.t('why.block1Text') }}
               </p>
             </div>
           </div>
@@ -41,10 +41,9 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
               <svg lucideClock [size]="24" />
             </span>
             <div>
-              <h3>Emisión express de constancias y cartas fianza</h3>
+              <h3>{{ tr.t('why.block2Title') }}</h3>
               <p>
-                Entrega en menos de 2 horas para garitas mineras, pases de contratistas y
-                firmas con el Estado.
+                {{ tr.t('why.block2Text') }}
               </p>
             </div>
           </div>
@@ -53,10 +52,9 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
               <svg lucideShieldCheck [size]="24" />
             </span>
             <div>
-              <h3>Respaldo colegiado regulado ante la SBS</h3>
+              <h3>{{ tr.t('why.block3Title') }}</h3>
               <p>
-                Asesoría técnica sin costo para el cliente; las aseguradoras reconocen la
-                comisión según ley, garantizando imparcialidad.
+                {{ tr.t('why.block3Text') }}
               </p>
             </div>
           </div>
@@ -133,6 +131,7 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
       }
       .why__block {
         display: flex;
+        align-items: flex-start;
         gap: 1.1rem;
         background: var(--color-surface);
         border: 1px solid var(--color-border);
@@ -152,6 +151,9 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
         height: 52px;
         border-radius: 16px;
         flex-shrink: 0;
+        // Compensa el alto de línea del título para que el ícono arranque
+        // a la misma altura visual que la primera línea de texto
+        margin-top: -0.15rem;
       }
       .why__icon--green {
         background: var(--color-primary-light);
@@ -169,13 +171,18 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
         font-size: 1.05rem;
         font-weight: 800;
         color: var(--color-heading);
-        margin: 0.15rem 0 0.4rem;
+        margin: 0 0 0.4rem;
       }
       .why__block p {
         margin: 0;
         font-size: 0.92rem;
         color: var(--color-muted);
         line-height: 1.6;
+      }
+      .why__block h3,
+      .why__block p {
+        // Alinea el borde izquierdo del texto en las 3 tarjetas
+        text-align: left;
       }
       @media (max-width: 900px) {
         .why__grid {
@@ -191,5 +198,6 @@ import { BRAND_CONFIG } from '../../../../core/config/brand.config';
   ],
 })
 export class WhyMelanieComponent {
+  readonly tr = inject(TranslationService);
   readonly brand = BRAND_CONFIG;
 }

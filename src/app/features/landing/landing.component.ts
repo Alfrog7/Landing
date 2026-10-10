@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { AccordionComponent } from '../../shared/components/accordion/accordion.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SolutionsCarouselComponent } from './components/solutions-carousel/solutions-carousel.component';
@@ -6,6 +6,7 @@ import { InsurersCoverageTableComponent } from './components/insurers-coverage-t
 import { WhyMelanieComponent } from './components/why-melanie/why-melanie.component';
 import { AppointmentSchedulerComponent } from './components/appointment-scheduler/appointment-scheduler.component';
 import { ServiceDetailService } from './service-detail.service';
+import { TranslationService } from '../../core/i18n/translation.service';
 import { LANDING_FAQS_DATA } from '../../core/data/landing.data';
 import { AudienceCategory, ServiceDetail } from '../../core/models/insurance-service.model';
 
@@ -40,10 +41,10 @@ import { AudienceCategory, ServiceDetail } from '../../core/models/insurance-ser
     <section class="section" id="faq">
       <div class="container landing-faq">
         <div class="text-center landing-faq__head">
-          <span class="eyebrow">Preguntas frecuentes</span>
-          <h2 class="section-title">Respuestas rápidas antes de cotizar</h2>
+          <span class="eyebrow">{{ tr.t('faq.eyebrow') }}</span>
+          <h2 class="section-title">{{ tr.t('faq.title') }}</h2>
         </div>
-        <app-accordion [items]="faqs" />
+        <app-accordion [items]="faqs()" />
       </div>
     </section>
   `,
@@ -62,8 +63,14 @@ import { AudienceCategory, ServiceDetail } from '../../core/models/insurance-ser
   ],
 })
 export class LandingComponent {
+  readonly tr = inject(TranslationService);
   readonly activeTab = signal<AudienceCategory>('empresas');
-  readonly faqs = LANDING_FAQS_DATA;
+  readonly faqs = computed(() =>
+    LANDING_FAQS_DATA.map((faq, index) => ({
+      question: this.tr.t('faq.q' + (index + 1)),
+      answer: this.tr.t('faq.a' + (index + 1)),
+    }))
+  );
 
   constructor(private readonly serviceDetailService: ServiceDetailService) {}
 

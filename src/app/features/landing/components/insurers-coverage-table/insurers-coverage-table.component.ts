@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { LucideShieldCheck } from '@lucide/angular';
 import { CoverageAvailability } from '../../../../core/models/insurance-service.model';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
 
 @Component({
@@ -11,23 +12,22 @@ import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
     <section class="section matrix" id="aseguradoras">
       <div class="container">
         <div class="text-center matrix__head">
-          <span class="eyebrow">Comparativa transparente</span>
-          <h2 class="section-title">Matriz Multiaseguradora: Cobertura por Entidad</h2>
+          <span class="eyebrow">{{ tr.t('matrix.eyebrow') }}</span>
+          <h2 class="section-title">{{ tr.t('matrix.title') }}</h2>
           <p class="matrix__subtitle">
-            Melanie cotiza en simultáneo para encontrar la tasa más competitiva del mercado
-            según el tipo de riesgo.
+            {{ tr.t('matrix.subtitle') }}
           </p>
           <span class="matrix__neutral">
             <svg lucideShieldCheck [size]="15" />
-            100% independiente: asesoría personalizada y gratuita para el asegurado
+            {{ tr.t('matrix.neutral') }}
           </span>
         </div>
 
-        <div class="matrix__scroll" role="region" aria-label="Tabla de disponibilidad por aseguradora" tabindex="0">
+        <div class="matrix__scroll" role="region" [attr.aria-label]="tr.t('matrix.tableAria')" tabindex="0">
           <table class="matrix__table">
             <thead>
               <tr>
-                <th scope="col" class="matrix__service-col">Servicio / Póliza</th>
+                <th scope="col" class="matrix__service-col">{{ tr.t('matrix.colService') }}</th>
                 <th scope="col">Rímac</th>
                 <th scope="col">Pacífico</th>
                 <th scope="col">Mapfre</th>
@@ -39,7 +39,7 @@ import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
             <tbody>
               @for (row of rows; track row.serviceName) {
                 <tr>
-                  <th scope="row">{{ row.serviceName }}</th>
+                  <th scope="row">{{ tr.t(row.serviceName) }}</th>
                   <td><ng-container [ngTemplateOutlet]="cell" [ngTemplateOutletContext]="{ value: row.rimac }" /></td>
                   <td><ng-container [ngTemplateOutlet]="cell" [ngTemplateOutletContext]="{ value: row.pacifico }" /></td>
                   <td><ng-container [ngTemplateOutlet]="cell" [ngTemplateOutletContext]="{ value: row.mapfre }" /></td>
@@ -57,15 +57,15 @@ import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
     <ng-template #cell let-value="value">
       @switch (value) {
         @case (true) {
-          <svg class="matrix__check" lucideShieldCheck [size]="20" aria-label="Disponible" />
+          <svg class="matrix__check" lucideShieldCheck [size]="20" [attr.aria-label]="tr.t('matrix.available')" />
         }
         @case ('consultar') {
-          <span class="matrix__consult" aria-label="Sujeto a evaluación">
-            Consultar
+          <span class="matrix__consult">
+            {{ tr.t('matrix.consult') }}
           </span>
         }
         @default {
-          <span class="matrix__dash" aria-label="No disponible">—</span>
+          <span class="matrix__dash" [attr.aria-label]="tr.t('matrix.notAvailable')">—</span>
         }
       }
     </ng-template>
@@ -166,5 +166,6 @@ import { INSURERS_MATRIX_DATA } from '../../../../core/data/landing.data';
   ],
 })
 export class InsurersCoverageTableComponent {
+  readonly tr = inject(TranslationService);
   readonly rows = INSURERS_MATRIX_DATA;
 }

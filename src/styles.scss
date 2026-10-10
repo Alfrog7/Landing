@@ -1,10 +1,14 @@
 // Design tokens — Melanie Silva | Corredora de Seguros
 // Filosofía: Anti-Estrés / Cero Fatiga Cognitiva (blanco dominante)
 :root {
-  // Brand palette
+  // Brand palette (kit: 04_Colores/tokens.css)
   --color-primary: #10b981;
   --color-primary-dark: #059669;
+  --color-primary-text: #047857;
   --color-primary-light: #ecfdf5;
+  --color-koala: #8fa6ad;
+  --color-koala-light: #a8bfc7;
+  --color-koala-pink: #f4b7b2;
   --color-sky: #0ea5e9;
   --color-sky-light: #f0f9ff;
   --color-orange: #f97316;
@@ -22,8 +26,8 @@
   --color-border: #e2e8f0;
   --color-border-strong: #cbd5e1;
 
-  // Typography
-  --font-heading: 'Inter', Roboto, system-ui, -apple-system, sans-serif;
+  // Typography (kit: Nunito para wordmark/títulos, Inter para cuerpo e interfaz)
+  --font-heading: 'Nunito', 'Inter', Roboto, system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', Roboto, system-ui, -apple-system, sans-serif;
 
   // Radii
@@ -105,4 +109,49 @@ img {
 
 .text-center {
   text-align: center;
+}
+
+// Scroll con navbar flotante + resaltado de llegada a la sección (glow)
+section[id],
+[id='faq'],
+[id='contacto'] {
+  scroll-margin-top: 6.5rem;
+}
+
+@keyframes section-arrive {
+  0% {
+    background-color: color-mix(in srgb, var(--color-primary-light) 70%, transparent);
+    box-shadow:
+      inset 0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent),
+      inset 0 0 22px 8px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+  55% {
+    background-color: color-mix(in srgb, var(--color-primary-light) 30%, transparent);
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 15%, transparent),
+      inset 0 0 34px 12px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow:
+      inset 0 0 0 0 transparent,
+      inset 0 0 0 0 transparent;
+  }
+}
+
+section[id]:target,
+[id='faq']:target,
+[id='contacto']:target,
+section[id].section-arriving {
+  animation: section-arrive 1.05s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  section[id]:target,
+  section[id].section-arriving {
+    animation: none;
+  }
 }

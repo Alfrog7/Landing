@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { LucideCheckCircle2, LucideFileText, LucideX } from '@lucide/angular';
+import { TranslationService } from '../../../../core/i18n/translation.service';
 import { ServiceDetail } from '../../../../core/models/insurance-service.model';
 import { WhatsAppService } from '../../../../core/services/whatsapp.service';
 import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';
@@ -10,32 +11,32 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
   imports: [LucideCheckCircle2, LucideFileText, LucideX, MeipoIllustrationComponent],
   template: `
     <div class="detail">
-      <button type="button" class="detail__close" (click)="close()" aria-label="Cerrar ficha">
+      <button type="button" class="detail__close" (click)="close()" [attr.aria-label]="tr.t('modal.close')">
         <svg lucideX [size]="18" />
       </button>
 
       <aside class="detail__visual">
-        <img [src]="service.image" [alt]="service.title" class="detail__photo" />
+        <img [src]="service.image" [alt]="tr.t('services.' + service.id + '.title')" class="detail__photo" />
         <div class="detail__visual-top">
-          <span class="detail__tag">{{ service.tag }}</span>
-          <span class="detail__time">{{ service.badgeTime }}</span>
+          <span class="detail__tag">{{ tr.t('services.' + service.id + '.tag') }}</span>
+          <span class="detail__time">{{ tr.t('services.' + service.id + '.badge') }}</span>
         </div>
         <div class="detail__tip">
           <app-meipo [size]="52" />
-          <p>{{ service.meipoTip }}</p>
+          <p>{{ tr.t('services.' + service.id + '.tip') }}</p>
         </div>
       </aside>
 
       <div class="detail__content">
-        <h2 class="detail__title">{{ service.title }}</h2>
-        @if (service.specs.entidadesNormativas) {
-          <p class="detail__regulatory">{{ service.specs.entidadesNormativas }}</p>
+        <h2 class="detail__title">{{ tr.t('services.' + service.id + '.title') }}</h2>
+        @if (entidades()) {
+          <p class="detail__regulatory">{{ entidades() }}</p>
         }
 
         <section class="detail__block">
-          <h3>Coberturas</h3>
+          <h3>{{ tr.t('modal.coberturas') }}</h3>
           <ul>
-            @for (item of service.specs.coberturas; track item) {
+            @for (item of coberturas(); track item) {
               <li>
                 <svg lucideCheckCircle2 [size]="18" />
                 {{ item }}
@@ -45,9 +46,9 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         </section>
 
         <section class="detail__block">
-          <h3>Requisitos de Emisión</h3>
+          <h3>{{ tr.t('modal.requisitos') }}</h3>
           <ul>
-            @for (item of service.specs.requisitos; track item) {
+            @for (item of requisitos(); track item) {
               <li>
                 <svg lucideFileText [size]="18" />
                 {{ item }}
@@ -55,12 +56,12 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
             }
           </ul>
           <p class="detail__emission">
-            <strong>Tiempo de emisión:</strong> {{ service.specs.tiempoEmision }}
+            <strong>{{ tr.t('modal.emissionLabel') }}</strong> {{ tr.t('services.' + service.id + '.emision') }}
           </p>
         </section>
 
         <section class="detail__block">
-          <h3>Aseguradoras Aliadas</h3>
+          <h3>{{ tr.t('modal.aliadas') }}</h3>
           <div class="detail__insurers">
             @for (insurer of service.insurers; track insurer) {
               <span class="detail__pill">{{ insurer }}</span>
@@ -69,7 +70,7 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         </section>
 
         <button type="button" class="detail__cta" (click)="quote()">
-          Cotizar {{ service.title }} por WhatsApp
+          {{ tr.t('modal.ctaPrefix') + tr.t('services.' + service.id + '.title') + tr.t('modal.ctaSuffix') }}
         </button>
       </div>
     </div>
@@ -284,10 +285,27 @@ export class ServiceDetailModalComponent {
   readonly dialogRef = inject(DialogRef);
   private readonly whatsapp = inject(WhatsAppService);
 
+  readonly tr = inject(TranslationService);
+
   readonly service: ServiceDetail = this.data!.service;
 
+  coberturas(): string[] {
+    return this.tr.list('services.' + this.service.id + '.coberturas');
+  }
+
+  requisitos(): string[] {
+    return this.tr.list('services.' + this.service.id + '.requisitos');
+  }
+
+  entidades(): string | undefined {
+    return this.tr.tOptional('services.' + this.service.id + '.entidades');
+  }
+
   quote(): void {
-    const url = this.whatsapp.buildServiceUrl(this.service.title, this.service.tag);
+    const url = this.whatsapp.buildServiceUrl(
+      this.tr.t('services.' + this.service.id + '.title'),
+      this.tr.t('services.' + this.service.id + '.tag')
+    );
     window.open(url, '_blank', 'noopener,noreferrer');
     this.close();
   }
