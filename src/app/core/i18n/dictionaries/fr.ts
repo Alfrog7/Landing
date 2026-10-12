@@ -104,7 +104,7 @@ export const FR = {
     confirm: 'Confirmer mon rendez-vous gratuit',
     urgentTitle: 'Besoin de votre certificat ou devis urgent aujourd\u2019hui même ?',
     urgentText: 'Écrivez directement à Melanie pour une émission prioritaire.',
-    urgentBtn: 'Contacter par WhatsApp maintenant',
+    urgentBtn: 'Contacter par WhatsApp',
   },
 
   faq: {

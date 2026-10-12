@@ -279,6 +279,7 @@ export class SolutionCardComponent {
       }
       .solutions__viewport {
         overflow: hidden;
+        min-width: 0;
       }
       .solutions__track {
         display: flex;
@@ -342,6 +343,15 @@ export class SolutionCardComponent {
       @media (max-width: 640px) {
         .solutions__nav {
           display: none;
+        }
+        // Slide táctil: la siguiente tarjeta asoma para invitar al swipe
+        .solutions__slide {
+          min-width: 82vw;
+          max-width: 310px;
+        }
+        .solutions__viewport-wrap {
+          padding-left: max(4vw, 0.75rem);
+          padding-right: max(4vw, 0.75rem);
         }
       }
     `,

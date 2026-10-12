@@ -289,10 +289,56 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
       @media (max-width: 900px) {
         .hero__grid {
           grid-template-columns: 1fr;
+          gap: 2rem;
         }
         .hero__media {
           min-height: 300px;
           padding-left: 0;
+          order: 2;
+        }
+        .hero__copy {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .hero__lead {
+          max-width: 100%;
+        }
+        .hero__tabs {
+          max-width: 100%;
+          justify-content: center;
+        }
+        .hero__tab {
+          padding: 0.55rem 0.85rem;
+          font-size: 0.82rem;
+        }
+        .hero__ctas {
+          width: 100%;
+          flex-direction: column;
+        }
+        .hero__cta-primary,
+        .hero__cta-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+        .hero__trust {
+          justify-content: center;
+        }
+        .hero__float--1 {
+          left: 0;
+        }
+        .hero__float--2 {
+          right: 0;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero__float {
+          position: static;
+          animation: none;
+        }
+        .hero__media {
+          min-height: 0;
         }
       }
     `,

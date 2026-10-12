@@ -142,7 +142,7 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
           </div>
           <a class="scheduler__urgent-btn" [href]="urgentUrl" target="_blank" rel="noopener noreferrer">
             <svg lucideMessageCircle [size]="18" />
-            {{ tr.t('schedule.urgentBtn') }} ({{ brand.contact.phone }})
+            {{ tr.t('schedule.urgentBtn') }}
           </a>
         </div>
       </div>
@@ -158,11 +158,18 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         display: grid;
         grid-template-columns: 300px 1fr;
         gap: 2rem;
+        width: 100%;
+        max-width: 100%;
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-3xl);
         box-shadow: var(--shadow-md);
         padding: 2rem;
+      }
+      // Los hijos de la grilla no deben impedir el encogimiento del track
+      .scheduler__panel > .scheduler__aside,
+      .scheduler__panel > .scheduler__form {
+        min-width: 0;
       }
       .scheduler__aside {
         display: flex;
@@ -212,6 +219,10 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         border-radius: var(--radius-lg);
         padding: 0.8rem;
         margin-top: 1rem;
+        min-width: 0;
+      }
+      .scheduler__tip app-meipo {
+        flex: 0 0 auto;
       }
       .scheduler__tip p {
         margin: 0;
@@ -301,9 +312,12 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
+        min-width: 0;
       }
       .scheduler__fields input,
       .scheduler__fields select {
+        width: 100%;
+        min-width: 0;
         padding: 0.75rem 1rem;
         border: 1px solid var(--color-border);
         border-radius: var(--radius-lg);
@@ -319,7 +333,11 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         border-color: var(--color-primary);
       }
       .scheduler__confirm {
+        display: block;
         width: 100%;
+        max-width: 100%;
+        margin-top: 0.3rem;
+        box-sizing: border-box;
         padding: 0.95rem 1.4rem;
         border: 0;
         border-radius: var(--radius-lg);
@@ -378,19 +396,43 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
       @media (max-width: 900px) {
         .scheduler__panel {
           grid-template-columns: 1fr;
+          gap: 1.25rem;
+          padding: 1.25rem;
         }
         .scheduler__aside {
           border-right: 0;
           border-bottom: 1px solid var(--color-border);
           padding-right: 0;
-          padding-bottom: 1.5rem;
+          padding-bottom: 1.25rem;
+        }
+        .scheduler__tip {
+          margin-top: 0.6rem;
+        }
+        fieldset {
+          margin-bottom: 1.1rem;
+        }
+        legend {
+          margin-bottom: 0.6rem;
+        }
+        .scheduler__days {
+          margin-bottom: 0.6rem;
         }
         .scheduler__fields {
           grid-template-columns: 1fr;
+          gap: 0.6rem;
         }
         .scheduler__urgent {
           flex-direction: column;
-          align-items: flex-start;
+          align-items: stretch;
+          gap: 0.75rem;
+          padding: 1.1rem 1.2rem;
+          margin-top: 1.1rem;
+          text-align: center;
+        }
+        .scheduler__urgent-btn {
+          justify-content: center;
+          width: 100%;
+          white-space: normal;
         }
       }
     `,

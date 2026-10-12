@@ -104,7 +104,7 @@ export const EN = {
     confirm: 'Confirm My Free Appointment',
     urgentTitle: 'Need your certificate or quote urgently today?',
     urgentText: 'Message Melanie directly for priority issuance.',
-    urgentBtn: 'Contact via WhatsApp Now',
+    urgentBtn: 'Contact via WhatsApp',
   },
 
   faq: {

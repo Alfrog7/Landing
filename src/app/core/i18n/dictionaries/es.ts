@@ -104,7 +104,7 @@ export const ES = {
     confirm: 'Confirmar mi Cita Gratuita',
     urgentTitle: '¿Necesitas tu constancia o cotización urgente para hoy mismo?',
     urgentText: 'Escríbele directo a Melanie para emisión prioritaria.',
-    urgentBtn: 'Contactar por WhatsApp Ahora',
+    urgentBtn: 'Contactar por WhatsApp',
   },
 
   faq: {

@@ -129,7 +129,11 @@ import { TranslationService } from '../../../core/i18n/translation.service';
           <a routerLink="/" fragment="sobre-melanie" (click)="menuOpen.set(false)">{{ tr.t('navbar.linksWhy') }}</a>
           <a routerLink="/" fragment="aseguradoras" (click)="menuOpen.set(false)">{{ tr.t('navbar.linksInsurers') }}</a>
           <a routerLink="/" fragment="faq" (click)="menuOpen.set(false)">{{ tr.t('navbar.linksFaq') }}</a>
-          <a routerLink="/" fragment="agendar" (click)="menuOpen.set(false)">{{ tr.t('navbar.schedule') }}</a>
+
+          <a class="navbar__mobile-wa" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+            <svg lucideMessageCircle [size]="17" />
+            {{ tr.t('navbar.waMobile') }} {{ brand.contact.phone }}
+          </a>
 
           <div class="navbar__lang navbar__lang--mobile" (click)="$event.stopPropagation()">
             <button
@@ -162,9 +166,8 @@ import { TranslationService } from '../../../core/i18n/translation.service';
             }
           </div>
 
-          <a class="navbar__mobile-wa" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
-            <svg lucideMessageCircle [size]="17" />
-            {{ tr.t('navbar.waMobile') }} {{ brand.contact.phone }}
+          <a routerLink="/" fragment="agendar" class="navbar__mobile-cta" (click)="menuOpen.set(false)">
+            {{ tr.t('navbar.schedule') }}
           </a>
         </nav>
       }
@@ -407,22 +410,54 @@ import { TranslationService } from '../../../core/i18n/translation.service';
       .navbar__mobile {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
-        padding: 1rem 1.5rem;
+        gap: 0.15rem;
+        padding: 0.85rem 1.25rem 1.1rem;
         margin-top: 0.5rem;
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-3xl);
         box-shadow: var(--shadow-modal-split);
+        animation: mobile-menu-in 0.28s cubic-bezier(0.35, 0.8, 0.3, 1);
+        transform-origin: top center;
+      }
+      @keyframes mobile-menu-in {
+        from {
+          opacity: 0;
+          transform: translateY(-12px) scaleY(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       .navbar__mobile a {
-        padding: 0.65rem 0.6rem;
+        padding: 0.7rem 0.6rem;
+        font-size: 0.95rem;
         font-weight: 600;
         color: var(--color-heading);
         border-radius: var(--radius-sm);
       }
       .navbar__mobile a:hover {
         background: var(--color-primary-light);
+      }
+      .navbar__mobile-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.45rem;
+        padding: 0.8rem 1rem;
+        background: var(--color-primary);
+        color: #fff !important;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: background 0.25s ease;
+      }
+      .navbar__mobile-cta:hover {
+        background: var(--color-primary-dark);
       }
       .navbar__mobile-wa {
         color: var(--color-primary-dark) !important;
@@ -507,9 +542,10 @@ export class TopNavbarComponent {
     }
   }
 
-  @HostListener('document:keydown.escape')
+      @HostListener('document:keydown.escape')
   onEscape(): void {
     this.langOpen.set(false);
+    this.menuOpen.set(false);
   }
 
   press(id: string): void {
