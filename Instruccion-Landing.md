@@ -404,3 +404,49 @@ export class WhatsAppService {
    - **Email:** Validación de formato estándar corporativo.
 2. **Accesibilidad (a11y):** Contraste mínimo WCAG AA en botones y fondos, etiquetas `<label>` vinculadas a todos los inputs y atributos `aria-expanded` para componentes desplegables.
 3. **Desacoplamiento Estricto:** Prohibido escribir nombres o credenciales quemadas ("hardcoded") en las plantillas HTML; deben inyectarse mediante `BRAND_CONFIG`.
+
+---
+
+## 11. Flujo de Ramas y Versionado (Git Workflow)
+
+El repositorio maneja dos ramas permanentes: `main` y `develop`. Nunca se trabaja directamente sobre `main`.
+
+| Rama | Rol | Estado |
+| --- | --- | --- |
+| `main` | Producción. Solo recibe código probado y estable vía merge desde `develop`. | Permanente |
+| `develop` | Integración continua. Aquí se envían todos los cambios nuevos. | Permanente |
+
+### 11.1 Reglas de trabajo
+
+1. **Toda nueva funcionalidad o corrección** se desarrolla en una rama de trabajo creada desde `develop`:
+   ```bash
+   git checkout develop && git pull origin develop
+   git checkout -b feature/nombre-del-cambio   # o fix/nombre-del-bug
+   ```
+2. **Los commits se envían a `develop`** (directamente para cambios pequeños, o vía Pull Request hacia `develop` para funcionalidades grandes):
+   ```bash
+   git push origin feature/nombre-del-cambio
+   git checkout develop && git merge feature/nombre-del-cambio && git push origin develop
+   ```
+3. **Determina a producción:** cuando `develop` esté estable y verificado, se hace merge hacia `main`:
+   ```bash
+   git checkout main && git merge develop && git push origin main
+   ```
+4. **Sincronización:** después de un merge hacia `main`, se recomienda mantener `develop` alineada (si se corrigió algo caliente directamente en `main`, hacer cherry-pick o merge inverso a `develop`).
+
+### 11.2 Convención de nombres de rama
+
+- `feature/…` — funcionalidades nuevas (ej. `feature/cotizador-pasos`).
+- `fix/…` — correcciones de bugs (ej. `fix/overflow-agendador-movil`).
+- `release/…` (opcional) — estabilización previa a fusionar `develop` → `main`.
+
+### 11.3 Convención de commits
+
+Mensajes breves en minúsculas, usando prefijo por tipo:
+- `feature: …` nueva funcionalidad · `fix: …` corrección · `refactor: …` · `docs: …` · `chore: …` · `responsive: …` ajustes de maquetado responsivo.
+
+Ejemplo de historial existente:
+
+```text
+2a54968 responsive mobile-first: drawer navbar animado, hero apilado, carrusel 82vw…  ← main
+```
