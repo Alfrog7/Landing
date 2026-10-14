@@ -1,5 +1,5 @@
 // Design tokens — Melanie Silva | Corredora de Seguros
-// Filosofía: Anti-Estrés / Cero Fatiga Cognitiva (blanco dominante)
+// Filosofía: Anti-Estrés / Cero Fatiga Cognitiva (marfil cálido dominante)
 :root {
   // Brand palette (kit: 04_Colores/tokens.css)
   --color-primary: #10b981;
@@ -15,7 +15,7 @@
   --color-orange-light: #fff7ed;
   --color-secondary: #0b132b;
   --color-footer: #0b132b;
-  --color-bg: #f8fafc;
+  --color-bg: #fbfaf8;
   --color-surface: #ffffff;
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #059669;
@@ -54,7 +54,8 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-body);
-  background: var(--color-surface);
+  // Lienzo cálido institucional (#FBFAF8): elimina la frialdad del blanco puro
+  background: var(--color-bg);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

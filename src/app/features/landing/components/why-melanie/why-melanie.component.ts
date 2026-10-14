@@ -1,20 +1,27 @@
-import { Component, inject } from '@angular/core';
-import { LucideClock, LucideMessageCircle, LucideShieldCheck } from '@lucide/angular';
+import { Component, inject, signal } from '@angular/core';
+import { LucideClock, LucideMessageCircle, LucideShieldCheck, LucideBadgeCheck } from '@lucide/angular';
 import { BRAND_CONFIG } from '../../../../core/config/brand.config';
 import { TranslationService } from '../../../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-why-melanie',
-  imports: [LucideClock, LucideMessageCircle, LucideShieldCheck],
+  imports: [LucideClock, LucideMessageCircle, LucideShieldCheck, LucideBadgeCheck],
   template: `
     <section class="section why" id="sobre-melanie">
       <div class="container why__grid">
         <article class="why__profile">
-          <img
-            [src]="brand.assets.advisorPhoto"
-            [alt]="brand.ownerName + ', ' + brand.roleTitle"
-            class="why__photo"
-          />
+          <div class="why__photo-card">
+            <img
+              [src]="photoSrc()"
+              (error)="onPhotoError()"
+              [alt]="brand.ownerName + ', ' + brand.roleTitle"
+              class="why__photo"
+            />
+            <span class="why__sbs-badge">
+              <svg lucideBadgeCheck [size]="16" />
+              {{ brand.sbsChipShort }} · Persona Natural Colegiada
+            </span>
+          </div>
           <h3 class="why__name">{{ brand.ownerName }}</h3>
           <p class="why__role">{{ tr.t('why.role') }} · {{ brand.licenseId }}</p>
           <p class="why__track">{{ tr.t('why.track') }}</p>
@@ -69,11 +76,12 @@ import { TranslationService } from '../../../../core/i18n/translation.service';
         grid-template-columns: 0.85fr 1.15fr;
         gap: 3rem;
         align-items: start;
+        position: relative;
+        z-index: 1;
       }
       .why {
+        position: relative;
         background: var(--color-bg);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
       }
       .why__profile {
         background: var(--color-surface);
@@ -85,13 +93,40 @@ import { TranslationService } from '../../../../core/i18n/translation.service';
         position: sticky;
         top: 6rem;
       }
+      .why__photo-card {
+        position: relative;
+        margin: 0 auto 1.4rem;
+        max-width: 280px;
+      }
       .why__photo {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: var(--radius-3xl);
         object-fit: cover;
-        margin: 0 auto 1.2rem;
-        border: 4px solid var(--color-primary-light);
+        // Sombra profunda suave (shadow-xl)
+        box-shadow: var(--shadow-lg);
+      }
+      .why__sbs-badge {
+        position: absolute;
+        bottom: 0.9rem;
+        left: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        box-shadow: var(--shadow-md);
+        white-space: nowrap;
+      }
+      .why__sbs-badge svg {
+        color: var(--color-primary);
+        flex-shrink: 0;
       }
       .why__name {
         font-size: 1.35rem;
@@ -113,12 +148,13 @@ import { TranslationService } from '../../../../core/i18n/translation.service';
       }
       .why__quote {
         margin: 0;
-        font-size: 0.92rem;
+        font-size: 0.98rem;
         font-style: italic;
+        font-weight: 500;
         line-height: 1.65;
-        color: var(--color-body);
-        border-top: 1px dashed var(--color-border);
-        padding-top: 1.2rem;
+        color: var(--color-heading);
+        border-left: 3px solid var(--color-primary);
+        padding: 0.2rem 0 0.2rem 1.1rem;
         text-align: left;
       }
       .why__title {
@@ -127,21 +163,24 @@ import { TranslationService } from '../../../../core/i18n/translation.service';
       .why__blocks {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
       }
       .why__block {
         display: flex;
         align-items: flex-start;
         gap: 1.1rem;
         background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-3xl);
-        box-shadow: var(--shadow-md);
-        padding: 1.5rem;
-        transition: box-shadow 0.3s ease;
+        border: 1px solid #f1f5f9;
+        border-radius: var(--radius-xl);
+        padding: 1.25rem 1.4rem;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
       }
+      // Reactividad amable: trazo esmeralda + sombra flotante al pasar el cursor
       .why__block:hover {
-        box-shadow: var(--shadow-card-hover);
+        border-color: #6ee7b7;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
       }
       .why__icon {
         display: inline-flex;
@@ -200,4 +239,10 @@ import { TranslationService } from '../../../../core/i18n/translation.service';
 export class WhyMelanieComponent {
   readonly tr = inject(TranslationService);
   readonly brand = BRAND_CONFIG;
+
+  // Fotografía real con fallback automático al placeholder mientras no exista el archivo
+  readonly photoSrc = signal<string>(BRAND_CONFIG.assets.advisorPhotoReal);
+  onPhotoError(): void {
+    this.photoSrc.set(BRAND_CONFIG.assets.advisorPhoto);
+  }
 }

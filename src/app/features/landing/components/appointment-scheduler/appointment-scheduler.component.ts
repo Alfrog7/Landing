@@ -1,24 +1,21 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LucideMessageCircle } from '@lucide/angular';
+import { LucideBadgeCheck } from '@lucide/angular';
+import { CalendarSelectorComponent } from '../../../agendar-cita/components/calendar-selector/calendar-selector.component';
 import { BRAND_CONFIG } from '../../../../core/config/brand.config';
 import { WhatsAppService } from '../../../../core/services/whatsapp.service';
 import { TranslationService } from '../../../../core/i18n/translation.service';
 import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.component';
 
-interface SchedulerDay {
-  date: Date;
-  weekday: string;
-  dayNumber: number;
-}
-
 const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
 
 @Component({
   selector: 'app-appointment-scheduler',
-  imports: [FormsModule, LucideMessageCircle, MeipoIllustrationComponent],
+  imports: [FormsModule, LucideBadgeCheck, CalendarSelectorComponent, MeipoIllustrationComponent],
   template: `
     <section class="section scheduler" id="agendar">
+      <span class="scheduler__orb scheduler__orb--emerald" aria-hidden="true"></span>
+      <span class="scheduler__orb scheduler__orb--sky" aria-hidden="true"></span>
       <div class="container">
         <div class="text-center scheduler__head">
           <span class="eyebrow">{{ tr.t('schedule.eyebrow') }}</span>
@@ -27,11 +24,18 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
 
         <div class="scheduler__panel">
           <aside class="scheduler__aside">
-            <img
-              [src]="brand.assets.advisorPhoto"
-              [alt]="brand.ownerName"
-              class="scheduler__avatar"
-            />
+            <div class="scheduler__photo-card">
+              <img
+                [src]="photoSrc()"
+                (error)="onPhotoError()"
+                [alt]="brand.ownerName"
+                class="scheduler__avatar"
+              />
+              <span class="scheduler__sbs-badge">
+                <svg lucideBadgeCheck [size]="14" />
+                {{ brand.sbsChipShort }}
+              </span>
+            </div>
             <strong class="scheduler__owner">{{ brand.ownerName }}</strong>
             <span class="scheduler__license">{{ tr.t('why.role') }} · {{ brand.licenseId }}</span>
 
@@ -56,30 +60,26 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
           <form class="scheduler__form" (submit)="onSubmit($event)">
             <fieldset>
               <legend>{{ tr.t('schedule.step1') }}</legend>
-              <div class="scheduler__days">
-                @for (day of days(); track day.date.toISOString()) {
-                  <button
-                    type="button"
-                    class="scheduler__day"
-                    [class.scheduler__day--active]="selectedDay() === day"
-                    (click)="selectDay(day)"
-                  >
-                    <span>{{ day.weekday }}</span>
-                    <strong>{{ day.dayNumber }}</strong>
-                  </button>
-                }
-              </div>
-              <div class="scheduler__slots">
-                @for (slot of timeSlots; track slot) {
-                  <button
-                    type="button"
-                    class="scheduler__slot"
-                    [class.scheduler__slot--active]="selectedSlot() === slot"
-                    (click)="selectSlot(slot)"
-                  >
-                    {{ slot }}
-                  </button>
-                }
+              <div class="scheduler__step1">
+                <app-calendar-selector
+                  [selectedDate]="selectedDate()"
+                  (dateChange)="selectedDate.set($event)"
+                />
+                <div class="scheduler__slots-column">
+                  <p class="scheduler__slots-title">{{ tr.t('schedule.slotsTitle') }}</p>
+                  <div class="scheduler__slots-grid">
+                    @for (slot of timeSlots; track slot) {
+                      <button
+                        type="button"
+                        class="scheduler__slot"
+                        [class.scheduler__slot--active]="selectedSlot() === slot"
+                        (click)="selectSlot(slot)"
+                      >
+                        {{ slot }}
+                      </button>
+                    }
+                  </div>
+                </div>
               </div>
             </fieldset>
 
@@ -134,37 +134,64 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
             </button>
           </form>
         </div>
-
-        <div class="scheduler__urgent">
-          <div>
-            <strong>{{ tr.t('schedule.urgentTitle') }}</strong>
-            <p>{{ tr.t('schedule.urgentText') }}</p>
-          </div>
-          <a class="scheduler__urgent-btn" [href]="urgentUrl" target="_blank" rel="noopener noreferrer">
-            <svg lucideMessageCircle [size]="18" />
-            {{ tr.t('schedule.urgentBtn') }}
-          </a>
-        </div>
       </div>
     </section>
   `,
   styles: [
     `
+      // Sección compactada (py-10/py-12): menos espacio muerto vertical
+      .scheduler {
+        position: relative;
+        padding: clamp(2.5rem, 5vw, 3rem) 0;
+      }
+      // Orbes de gradiente ambiental detrás del panel del agendador
+      .scheduler__orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .scheduler__orb--emerald {
+        width: min(480px, 60vw);
+        height: 400px;
+        left: -5%;
+        top: 4%;
+        background: rgba(16, 185, 129, 0.07);
+        filter: blur(80px);
+      }
+      .scheduler__orb--sky {
+        width: min(430px, 52vw);
+        height: 360px;
+        right: -6%;
+        bottom: 6%;
+        background: rgba(14, 165, 233, 0.05);
+        filter: blur(90px);
+      }
+      .scheduler > .container {
+        position: relative;
+        z-index: 1;
+      }
       .scheduler__head {
         max-width: 620px;
-        margin: 0 auto 2.2rem;
+        margin: 0 auto 1.6rem;
       }
       .scheduler__panel {
         display: grid;
         grid-template-columns: 300px 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
         width: 100%;
         max-width: 100%;
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-3xl);
         box-shadow: var(--shadow-md);
-        padding: 2rem;
+        // p-6 md:p-8
+        padding: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .scheduler__panel {
+          padding: 2rem;
+        }
       }
       // Los hijos de la grilla no deben impedir el encogimiento del track
       .scheduler__panel > .scheduler__aside,
@@ -176,13 +203,41 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         flex-direction: column;
         gap: 0.6rem;
         border-right: 1px solid var(--color-border);
-        padding-right: 2rem;
+        padding-right: 1.5rem;
+      }
+      .scheduler__photo-card {
+        position: relative;
+        margin-bottom: 0.4rem;
       }
       .scheduler__avatar {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: var(--radius-xl);
         object-fit: cover;
+        // Sombra profunda suave (shadow-xl)
+        box-shadow: var(--shadow-lg);
+      }
+      .scheduler__sbs-badge {
+        position: absolute;
+        bottom: 0.7rem;
+        left: 0.7rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        padding: 0.3rem 0.65rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        box-shadow: var(--shadow-md);
+        white-space: nowrap;
+      }
+      .scheduler__sbs-badge svg {
+        color: var(--color-primary);
+        flex-shrink: 0;
       }
       .scheduler__owner {
         font-size: 1.05rem;
@@ -245,51 +300,35 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         color: var(--color-heading);
         margin-bottom: 0.9rem;
       }
-      .scheduler__days {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding-bottom: 0.3rem;
-        margin-bottom: 0.9rem;
+      // Paso 1: calendario y horarios en paralelo (apilados en móvil)
+      .scheduler__step1 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        align-items: start;
+        margin-top: 0.75rem;
       }
-      .scheduler__day {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.15rem;
-        min-width: 72px;
-        padding: 0.6rem 0.4rem;
-        background: var(--color-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-lg);
-        font-family: var(--font-body);
-        cursor: pointer;
-        transition: all 0.2s ease;
+      @media (min-width: 768px) {
+        .scheduler__step1 {
+          grid-template-columns: 1fr 1fr;
+        }
       }
-      .scheduler__day span {
-        font-size: 0.74rem;
-        font-weight: 600;
+      app-calendar-selector {
+        display: block;
+      }
+      .scheduler__slots-title {
+        margin: 0 0 0.7rem;
+        font-size: 0.8rem;
+        font-weight: 700;
         color: var(--color-muted);
-        text-transform: capitalize;
       }
-      .scheduler__day strong {
-        font-size: 1.05rem;
-        color: var(--color-heading);
-      }
-      .scheduler__day--active {
-        background: var(--color-primary-light);
-        border-color: var(--color-primary);
-      }
-      .scheduler__day--active strong {
-        color: var(--color-primary-dark);
-      }
-      .scheduler__slots {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+      .scheduler__slots-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.625rem;
       }
       .scheduler__slot {
-        padding: 0.55rem 1rem;
+        padding: 0.6rem 0.75rem;
         background: var(--color-bg);
         border: 1px solid var(--color-border);
         border-radius: 999px;
@@ -303,10 +342,13 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
       .scheduler__slot:hover:not(:disabled) {
         border-color: var(--color-border-strong);
       }
+      // Horario seleccionado: esmeralda vibrante con texto blanco y negrita
       .scheduler__slot--active {
         background: var(--color-primary);
         border-color: var(--color-primary);
         color: #fff;
+        font-weight: 800;
+        box-shadow: 0 8px 18px -8px rgba(16, 185, 129, 0.55);
       }
       .scheduler__fields {
         display: grid;
@@ -344,54 +386,20 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         background: var(--color-primary);
         color: #fff;
         font-family: var(--font-body);
-        font-size: 0.98rem;
-        font-weight: 700;
+        font-size: 1rem;
+        font-weight: 800;
+        box-shadow: 0 12px 26px -12px rgba(16, 185, 129, 0.55);
         cursor: pointer;
-        transition: background 0.25s ease;
+        transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
       }
       .scheduler__confirm:hover:not(:disabled) {
         background: var(--color-primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 14px 30px -12px rgba(5, 150, 105, 0.6);
       }
       .scheduler__confirm:disabled {
         opacity: 0.5;
         cursor: not-allowed;
-      }
-      .scheduler__urgent {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.2rem;
-        background: var(--color-primary-light);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-3xl);
-        padding: 1.4rem 1.6rem;
-        margin-top: 1.6rem;
-      }
-      .scheduler__urgent strong {
-        color: var(--color-heading);
-        font-size: 1rem;
-      }
-      .scheduler__urgent p {
-        margin: 0.2rem 0 0;
-        font-size: 0.88rem;
-        color: var(--color-body);
-      }
-      .scheduler__urgent-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.3rem;
-        background: var(--color-primary);
-        color: #fff;
-        border-radius: 999px;
-        font-size: 0.88rem;
-        font-weight: 700;
-        white-space: nowrap;
-        transition: background 0.25s ease;
-      }
-      .scheduler__urgent-btn:hover {
-        background: var(--color-primary-dark);
       }
       @media (max-width: 900px) {
         .scheduler__panel {
@@ -414,25 +422,9 @@ const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
         legend {
           margin-bottom: 0.6rem;
         }
-        .scheduler__days {
-          margin-bottom: 0.6rem;
-        }
         .scheduler__fields {
           grid-template-columns: 1fr;
           gap: 0.6rem;
-        }
-        .scheduler__urgent {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 0.75rem;
-          padding: 1.1rem 1.2rem;
-          margin-top: 1.1rem;
-          text-align: center;
-        }
-        .scheduler__urgent-btn {
-          justify-content: center;
-          width: 100%;
-          white-space: normal;
         }
       }
     `,
@@ -444,51 +436,31 @@ export class AppointmentSchedulerComponent {
   readonly timeSlots = TIME_SLOTS;
   private readonly whatsappApi = inject(WhatsAppService);
 
-  readonly selectedDay = signal<SchedulerDay | null>(null);
+  // Fotografía real con fallback automático al placeholder mientras no exista el archivo
+  readonly photoSrc = signal<string>(BRAND_CONFIG.assets.advisorPhotoReal);
+  onPhotoError(): void {
+    this.photoSrc.set(BRAND_CONFIG.assets.advisorPhoto);
+  }
+
+  readonly selectedDate = signal('');
   readonly selectedSlot = signal('');
   readonly fullName = signal('');
   readonly companyOrRuc = signal('');
   readonly whatsapp = signal('');
   readonly serviceTopic = signal('');
 
-  readonly days = computed<SchedulerDay[]>(() => {
-    const locale = this.tr.current.locale;
-    const result: SchedulerDay[] = [];
-    const cursor = new Date();
-    cursor.setDate(cursor.getDate() + 1);
-    while (result.length < 5) {
-      const day = cursor.getDay();
-      if (day !== 0 && day !== 6) {
-        result.push({
-          date: new Date(cursor),
-          weekday: cursor.toLocaleDateString(locale, { weekday: 'short' }),
-          dayNumber: cursor.getDate(),
-        });
-      }
-      cursor.setDate(cursor.getDate() + 1);
-    }
-    return result;
-  });
-
   readonly canSubmit = computed(
     () =>
-      this.selectedDay() !== null &&
+      this.selectedDate().length > 0 &&
       this.selectedSlot().length > 0 &&
       this.fullName().trim().length > 0 &&
       this.whatsapp().trim().length > 0
   );
 
-  readonly urgentUrl: string;
-
   constructor(whatsapp: WhatsAppService) {
-    this.selectedDay.set(this.days()[0]);
     this.serviceTopic.set(this.tr.list('schedule.topics')[0] ?? '');
-    this.urgentUrl = whatsapp.buildUrgentCheckpointUrl();
   }
 
-  selectDay(day: SchedulerDay): void {
-    this.selectedDay.set(day);
-  }
   selectSlot(slot: string): void {
     this.selectedSlot.set(slot);
   }
@@ -498,8 +470,9 @@ export class AppointmentSchedulerComponent {
     if (!this.canSubmit()) {
       return;
     }
-    const day = this.selectedDay()!;
-    const dateLabel = day.date.toLocaleDateString(this.tr.current.locale, {
+    const [year, month, day] = this.selectedDate().split('-').map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    const dateLabel = dateObj.toLocaleDateString(this.tr.current.locale, {
       weekday: 'long',
       day: 'numeric',
       month: 'long',

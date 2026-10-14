@@ -95,7 +95,7 @@ interface CalendarDay {
         cursor: pointer;
       }
       .calendar__day:hover:not(:disabled) {
-        background: rgba(25, 82, 190, 0.08);
+        background: var(--color-primary-light);
       }
       .calendar__day--empty {
         cursor: default;

@@ -1,13 +1,13 @@
 import { Component, DestroyRef, ElementRef, HostListener, effect, inject, signal, untracked, viewChildren } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { LucideMenu, LucideMessageCircle, LucideX, LucideGlobe, LucideChevronDown } from '@lucide/angular';
+import { LucideMenu, LucideMessageCircle, LucideX, LucideGlobe, LucideChevronDown, LucideCalendar, LucideShieldCheck } from '@lucide/angular';
 import { BRAND_CONFIG } from '../../../core/config/brand.config';
 import { WhatsAppService } from '../../../core/services/whatsapp.service';
 import { TranslationService } from '../../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-top-navbar',
-  imports: [RouterLink, LucideMenu, LucideMessageCircle, LucideX, LucideGlobe, LucideChevronDown],
+  imports: [RouterLink, LucideMenu, LucideMessageCircle, LucideX, LucideGlobe, LucideChevronDown, LucideCalendar, LucideShieldCheck],
   template: `
     <header class="navbar-wrap">
       <div class="navbar">
@@ -27,6 +27,11 @@ import { TranslationService } from '../../../core/i18n/translation.service';
         >
           <img [src]="brand.assets.logoLight" [alt]="brand.brandName + ' · ' + brand.brandSubtitle" class="navbar__brand-logo" />
         </a>
+
+        <span class="navbar__sbs-chip" title="Corredora de Seguros Colegiada ante la SBS del Perú">
+          <svg lucideShieldCheck [size]="13" />
+          {{ brand.sbsChipShort }}
+        </span>
 
         <nav class="navbar__links" aria-label="Navegación principal">
           <a
@@ -68,7 +73,8 @@ import { TranslationService } from '../../../core/i18n/translation.service';
         </nav>
 
         <div class="navbar__actions">
-          <a routerLink="/" fragment="agendar" class="navbar__link-quiet">
+          <a routerLink="/" fragment="agendar" class="navbar__cta">
+            <svg lucideCalendar [size]="14" />
             {{ tr.t('navbar.schedule') }}
           </a>
 
@@ -190,12 +196,38 @@ import { TranslationService } from '../../../core/i18n/translation.service';
         align-items: center;
         justify-content: space-between;
         gap: 1.5rem;
-        background: color-mix(in srgb, white 90%, transparent);
+        // Glassmorphism: superficie translúcida con desenfoque de fondo
+        background: color-mix(in srgb, white 85%, transparent);
         backdrop-filter: blur(12px);
-        border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+        border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
         box-shadow: var(--shadow-floating-nav);
         border-radius: 999px;
         padding: 0.75rem 1.5rem;
+      }
+
+      // Chip oficial de cumplimiento SBS siempre visible
+      .navbar__sbs-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: var(--color-primary-light);
+        border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+        color: var(--color-primary-text);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .navbar__sbs-chip svg {
+        color: var(--color-primary-dark);
+      }
+      @media (max-width: 1080px) {
+        .navbar__sbs-chip {
+          display: none;
+        }
       }
 
       // Píldora deslizante de la sección marcada (equivalente a layoutId)
@@ -235,8 +267,13 @@ import { TranslationService } from '../../../core/i18n/translation.service';
       }
       .navbar__links {
         display: flex;
-        gap: 1.5rem;
+        gap: 2rem;
         margin-inline: auto;
+      }
+      @media (min-width: 1280px) {
+        .navbar__links {
+          gap: 2.5rem;
+        }
       }
       .navbar__links a {
         position: relative;
@@ -284,6 +321,25 @@ import { TranslationService } from '../../../core/i18n/translation.service';
       }
       .navbar__link-quiet:hover {
         color: var(--color-primary-dark);
+      }
+      .navbar__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--color-primary-light);
+        color: var(--color-primary-text);
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        white-space: nowrap;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      .navbar__cta:hover {
+        background: color-mix(in srgb, var(--color-primary-light) 75%, var(--color-primary) 25%);
+      }
+      .navbar__cta svg {
+        flex-shrink: 0;
       }
 
       // Selector de idioma
@@ -467,7 +523,8 @@ import { TranslationService } from '../../../core/i18n/translation.service';
           padding: 0.6rem 1rem;
         }
         .navbar__links,
-        .navbar__link-quiet {
+        .navbar__link-quiet,
+        .navbar__cta {
           display: none;
         }
         .navbar__brand-logo {

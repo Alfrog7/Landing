@@ -20,6 +20,9 @@ export const BRAND_CONFIG = {
     logoDark: 'assets/images/brand/logo-dark.svg',
     logoStacked: 'assets/images/brand/logo-apilado.svg',
     logoIcon: 'assets/images/brand/icono.svg',
+    // Fotografía real de Melanie (colocar el archivo en public/assets/images/advisor/melanie.webp).
+    // Mientras no exista, los componentes hacen fallback automático al placeholder.
+    advisorPhotoReal: 'assets/images/advisor/melanie.webp',
     advisorPhoto: 'assets/images/advisor/profile.svg',
   },
   insurers: [

@@ -89,6 +89,7 @@ export const ES = {
     meipoTip: 'Te llegará una confirmación instantánea a tu WhatsApp y Google Calendar con el enlace directo.',
     privacy: 'Tus datos están protegidos bajo secreto profesional (Ley Nº 29733).',
     step1: 'Paso 1: Selecciona Día y Hora',
+    slotsTitle: 'Horarios para el día seleccionado:',
     step2: 'Paso 2: Datos del Responsable',
     phName: 'Nombre Completo *',
     phCompany: 'Empresa o RUC (opcional)',

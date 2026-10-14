@@ -24,6 +24,8 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
   ],
   template: `
     <section class="hero">
+      <span class="hero__orb hero__orb--emerald" aria-hidden="true"></span>
+      <span class="hero__orb hero__orb--sky" aria-hidden="true"></span>
       <div class="container hero__grid">
         <div class="hero__copy">
           <span class="hero__badge">{{ tr.t('hero.badge') }}</span>
@@ -85,7 +87,10 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
         </div>
 
         <div class="hero__media">
-          <app-meipo [size]="220" class="hero__meipo" />
+          <div class="hero__meipo-capsule">
+            <app-meipo [size]="220" class="hero__meipo" />
+          </div>
+          <div class="hero__meipo-shadow" aria-hidden="true"></div>
           <div class="hero__bubble">
             {{ tr.t('hero.bubble') }}
           </div>
@@ -104,7 +109,49 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
   styles: [
     `
       .hero {
+        position: relative;
         padding: clamp(8.5rem, 16vw, 9rem) 0 clamp(2.5rem, 6vw, 4rem);
+      }
+      // Cuadrícula milimétrica sutil con máscara radial que se desvanece hacia los extremos
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+        background-size: 22px 22px;
+        -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 30%, #000 0%, transparent 72%);
+        mask-image: radial-gradient(ellipse 80% 85% at 50% 30%, #000 0%, transparent 72%);
+        opacity: 0.25;
+        pointer-events: none;
+      }
+      // Orbes de gradiente ambiental: profundidad cálida en lugar de pared blanca
+      .hero__orb {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero__orb--emerald {
+        width: min(520px, 62vw);
+        height: 420px;
+        right: -4%;
+        top: 6%;
+        background: rgba(16, 185, 129, 0.07);
+        filter: blur(80px);
+      }
+      .hero__orb--sky {
+        width: min(460px, 55vw);
+        height: 380px;
+        left: -6%;
+        bottom: -8%;
+        background: rgba(14, 165, 233, 0.05);
+        filter: blur(90px);
+      }
+      .hero > .container {
+        position: relative;
+        z-index: 1;
       }
       .hero__grid {
         display: grid;
@@ -235,19 +282,57 @@ import { MeipoIllustrationComponent } from '../meipo/meipo-illustration.componen
       .hero__bubble {
         position: relative;
         max-width: 270px;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: 1.2rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(16, 185, 129, 0.22);
+        border-radius: 1rem;
         border-top-left-radius: 0.3rem;
-        padding: 0.9rem 1.2rem;
+        padding: 1rem 1.2rem;
         font-size: 0.92rem;
         font-weight: 500;
         color: var(--color-heading);
         box-shadow: var(--shadow-md);
         text-align: center;
       }
-      .hero__meipo {
+      // Cápsula orgánica de degradado suave que aloja a Meipo
+      .hero__meipo-capsule {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
+        border-radius: 2.5rem;
+        background: linear-gradient(
+          to top right,
+          rgba(209, 250, 229, 0.7),
+          rgba(240, 253, 250, 0.4) 48%,
+          rgba(224, 242, 254, 0.5)
+        );
+        box-shadow: var(--shadow-sm);
         animation: meipo-float 5s ease-in-out infinite;
+      }
+      // Sombra de contacto difusa a los pies de la ilustración
+      .hero__meipo-shadow {
+        width: 160px;
+        height: 24px;
+        margin-top: 0.65rem;
+        border-radius: 50%;
+        background: rgba(15, 23, 42, 0.16);
+        filter: blur(9px);
+        animation: meipo-shadow 5s ease-in-out infinite;
+      }
+      @keyframes meipo-shadow {
+        0%,
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scaleX(0.9);
+          opacity: 0.72;
+        }
+      }
+      .hero__meipo {
+        display: block;
       }
       @keyframes meipo-float {
         0%,

@@ -26,27 +26,38 @@ import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
   imports: [LucidePlus],
   template: `
     <article class="card" (click)="detailPressed.emit(service())">
-      <img [src]="service().image" [alt]="service().title" class="card__image" loading="lazy" />
-      <div class="card__shade"></div>
+      <img
+        class="card__bg"
+        [src]="service().image"
+        [alt]="tr.t('services.' + service().id + '.title')"
+        loading="lazy"
+      />
+      <div class="card__shade" aria-hidden="true"></div>
 
       <button
         type="button"
-        class="card__inspect"
+        class="card__plus"
+        [attr.aria-label]="tr.t('carousel.cardCta')"
         (click)="$event.stopPropagation(); detailPressed.emit(service())"
-        [attr.aria-label]="tr.t('carousel.ariaFicha') + ' ' + tr.t('services.' + service().id + '.title')"
       >
-        <svg lucidePlus [size]="20" />
+        <svg lucidePlus [size]="18" />
       </button>
 
-      <div class="card__info">
-        <span class="card__badge">{{ tr.t('services.' + service().id + '.badge') }}</span>
-        <h3 class="card__title">{{ tr.t('services.' + service().id + '.title') }}</h3>
-        <p class="card__summary">{{ tr.t('services.' + service().id + '.summary') }}</p>
-        <div class="card__insurers">
-          @for (insurer of service().insurers; track insurer) {
-            <span class="card__pill">{{ insurer }}</span>
-          }
+      <div class="card__content">
+        <div class="card__top">
+          <span class="card__badge">{{ tr.t('services.' + service().id + '.badge') }}</span>
+          <div class="card__insurers">
+            @for (insurer of service().insurers; track insurer) {
+              <span class="card__pill">{{ insurer }}</span>
+            }
+          </div>
         </div>
+
+        <div class="card__body">
+          <h3 class="card__title">{{ tr.t('services.' + service().id + '.title') }}</h3>
+          <p class="card__summary">{{ tr.t('services.' + service().id + '.summary') }}</p>
+        </div>
+
         <button
           type="button"
           class="card__cta"
@@ -63,124 +74,160 @@ import { SERVICES_CATALOG_DATA } from '../../../../core/data/landing.data';
         display: flex;
         width: 100%;
       }
+      // Catálogo Visual Inmersivo: imagen temática a sangre con degradado oscuro
       .card {
         position: relative;
+        display: flex;
+        flex-direction: column;
         height: 380px;
         width: 100%;
         border-radius: var(--radius-3xl);
         overflow: hidden;
-        box-shadow: var(--shadow-card-catalog);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 1.25rem;
         cursor: pointer;
         user-select: none;
+        box-shadow: var(--shadow-card-catalog);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .card:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow-card-hover);
       }
-      .card__image {
+      .card__bg {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.55s ease;
+      }
+      .card:hover .card__bg {
+        transform: scale(1.05);
       }
       .card__shade {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
-          rgba(15, 23, 42, 0.95) 0%,
-          rgba(15, 23, 42, 0.5) 55%,
+          rgba(2, 6, 23, 0.95),
+          rgba(15, 23, 42, 0.4) 55%,
           transparent 100%
         );
       }
-      .card__inspect {
+      .card__plus {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(6px);
-        color: var(--color-heading);
-        border: 0;
+        top: 0.9rem;
+        right: 0.9rem;
+        z-index: 2;
+        width: 2.5rem;
+        height: 2.5rem;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        box-shadow: var(--shadow-sm);
+        border: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        color: var(--color-heading);
+        box-shadow: var(--shadow-md);
         cursor: pointer;
         transition: transform 0.2s ease, background 0.2s ease;
       }
-      .card__inspect:hover {
+      .card__plus:hover {
         background: #fff;
         transform: scale(1.1);
       }
-      .card__info {
+      .card__content {
         position: relative;
         z-index: 1;
         display: flex;
+        flex: 1;
+        min-height: 0;
         flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.25rem;
+        gap: 0.75rem;
+      }
+      .card__top {
+        position: absolute;
+        top: 0.9rem;
+        left: 1.25rem;
+        right: 4rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.4rem;
       }
       .card__badge {
-        align-self: flex-start;
-        background: rgba(16, 185, 129, 0.9);
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.32);
         color: #fff;
-        font-size: 0.72rem;
+        font-size: 11px;
         font-weight: 600;
-        padding: 0.25rem 0.75rem;
+        padding: 4px 10px;
         border-radius: 999px;
-        margin-bottom: 0.5rem;
-        backdrop-filter: blur(4px);
-      }
-      .card__title {
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 800;
-        margin: 0 0 0.25rem;
-      }
-      .card__summary {
-        color: #e2e8f0;
-        font-size: 0.78rem;
-        margin: 0 0 0.75rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        white-space: nowrap;
       }
       .card__insurers {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.3rem;
-        margin-bottom: 0.8rem;
+        gap: 0.35rem;
+        min-width: 0;
       }
       .card__pill {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(8px);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 11px;
+        font-weight: 500;
+        padding: 2px 8px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .card__body {
+        min-height: 0;
+        margin-top: 2rem;
+      }
+      .card__title {
         color: #fff;
-        font-size: 0.62rem;
-        padding: 0.1rem 0.5rem;
-        border-radius: 6px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 0 0 0.4rem;
+        text-wrap: balance;
+      }
+      .card__summary {
+        color: #e2e8f0;
+        font-size: 0.85rem;
+        line-height: 1.55;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       .card__cta {
-        width: 100%;
-        padding: 0.65rem 1rem;
-        background: rgba(255, 255, 255, 0.95);
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.62rem 1.1rem;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
         color: var(--color-heading);
         border: 0;
-        border-radius: var(--radius-lg);
+        border-radius: 999px;
         font-family: var(--font-body);
-        font-size: 0.78rem;
-        font-weight: 800;
+        font-size: 0.8rem;
+        font-weight: 700;
+        box-shadow: var(--shadow-sm);
         cursor: pointer;
-        transition: background 0.2s ease;
+        transition: background 0.2s ease, transform 0.2s ease;
       }
       .card__cta:hover {
         background: #fff;
+        transform: translateY(-1px);
       }
     `,
   ],
@@ -260,8 +307,6 @@ export class SolutionCardComponent {
     `
       .solutions {
         background: var(--color-bg);
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
       }
       .solutions__head {
         max-width: 640px;
