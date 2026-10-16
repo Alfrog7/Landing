@@ -31,6 +31,14 @@ export const ES = {
     float1Sub: '< 24h garantizada',
     float2Title: 'Ahorro hasta el 25%',
     float2Sub: 'en comparativa neutral',
+    docTitle: 'Constancia SCTR',
+    docStatus: 'Vigente',
+    docCompany: 'Empresa',
+    docRuc: 'RUC',
+    docCover: 'Cobertura',
+    docValidity: 'Vigencia',
+    docIssued: 'Emitida en',
+    docExample: 'Ejemplo ilustrativo',
   },
 
   carousel: {

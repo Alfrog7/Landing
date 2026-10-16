@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Building2, CircleCheck, Users } from 'lucide-preact';
+import { ArrowDown, Building2, Check, ShieldCheck, Users } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { AudienceCategory } from '../../core/models/insurance-service.model';
 import { Meipo } from './Meipo';
@@ -15,11 +15,12 @@ export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
   return (
     <app-hero>
       <section class="hero">
-        <span class="hero__orb hero__orb--emerald" aria-hidden="true"></span>
-        <span class="hero__orb hero__orb--sky" aria-hidden="true"></span>
         <div class="container hero__grid">
           <div class="hero__copy">
-            <span class="hero__badge">{tr.t('hero.badge')}</span>
+            <p class="hero__badge">
+              <ShieldCheck size={16} />
+              {tr.t('hero.badge')}
+            </p>
             <h1 class="hero__title">{tr.t('hero.title')}</h1>
             <p class="hero__lead">{tr.t('hero.lead')}</p>
 
@@ -49,7 +50,6 @@ export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
             <div class="hero__ctas">
               <button type="button" class="hero__cta-primary" onClick={onQuotePressed}>
                 {tr.t('hero.ctaPrimary')}
-                <ArrowRight size={18} />
               </button>
               <a href="/#soluciones" class="hero__cta-secondary">
                 {tr.t('hero.ctaSecondary')}
@@ -58,36 +58,55 @@ export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
             </div>
 
             <ul class="hero__trust">
-              <li>
-                <CircleCheck size={18} />
-                {tr.t('hero.trust1')}
-              </li>
-              <li>
-                <CircleCheck size={18} />
-                {tr.t('hero.trust2')}
-              </li>
-              <li>
-                <CircleCheck size={18} />
-                {tr.t('hero.trust3')}
-              </li>
+              <li>{tr.t('hero.trust1')}</li>
+              <li>{tr.t('hero.trust2')}</li>
+              <li>{tr.t('hero.trust3')}</li>
             </ul>
           </div>
 
-          <div class="hero__media">
-            <div class="hero__meipo-capsule">
-              <Meipo size={220} class="hero__meipo" />
+          <figure class="hero__doc-wrap">
+            <div class="hero__doc" role="img" aria-label={tr.t('hero.docTitle')}>
+              <div class="hero__doc-head">
+                <span class="hero__doc-title">{tr.t('hero.docTitle')}</span>
+                <span class="hero__doc-status">
+                  <i aria-hidden="true"></i>
+                  {tr.t('hero.docStatus')}
+                </span>
+              </div>
+              <dl class="hero__doc-fields">
+                <div>
+                  <dt>{tr.t('hero.docCompany')}</dt>
+                  <dd>Constructora Andina S.A.C.</dd>
+                </div>
+                <div>
+                  <dt>{tr.t('hero.docRuc')}</dt>
+                  <dd>20 ••••••• 89</dd>
+                </div>
+                <div>
+                  <dt>{tr.t('hero.docCover')}</dt>
+                  <dd>SCTR Salud + Pensión</dd>
+                </div>
+                <div>
+                  <dt>{tr.t('hero.docValidity')}</dt>
+                  <dd>16/10/2026 – 15/11/2026</dd>
+                </div>
+                <div>
+                  <dt>{tr.t('hero.docIssued')}</dt>
+                  <dd>1 h 38 min</dd>
+                </div>
+              </dl>
+              <div class="hero__doc-foot">
+                <span class="hero__doc-bars" aria-hidden="true"></span>
+                <span class="hero__doc-stamp" aria-hidden="true">
+                  <Check size={18} />
+                  <b>SBS</b>
+                  <em>J-0941</em>
+                </span>
+              </div>
             </div>
-            <div class="hero__meipo-shadow" aria-hidden="true"></div>
-            <div class="hero__bubble">{tr.t('hero.bubble')}</div>
-            <div class="hero__float hero__float--1">
-              <strong>{tr.t('hero.float1Title')}</strong>
-              <span>{tr.t('hero.float1Sub')}</span>
-            </div>
-            <div class="hero__float hero__float--2">
-              <strong>{tr.t('hero.float2Title')}</strong>
-              <span>{tr.t('hero.float2Sub')}</span>
-            </div>
-          </div>
+            <Meipo size={150} class="hero__meipo" />
+            <figcaption class="hero__doc-note">{tr.t('hero.docExample')}</figcaption>
+          </figure>
         </div>
       </section>
     </app-hero>

@@ -31,6 +31,14 @@ export const EN = {
     float1Sub: 'guaranteed within 24h',
     float2Title: 'Save up to 25%',
     float2Sub: 'with a neutral comparison',
+    docTitle: 'SCTR certificate',
+    docStatus: 'Valid',
+    docCompany: 'Company',
+    docRuc: 'Tax ID (RUC)',
+    docCover: 'Coverage',
+    docValidity: 'Validity',
+    docIssued: 'Issued in',
+    docExample: 'Illustrative example',
   },
 
   carousel: {

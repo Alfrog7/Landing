@@ -31,6 +31,14 @@ export const IT = {
     float1Sub: 'garantita entro 24h',
     float2Title: 'Risparmia fino al 25%',
     float2Sub: 'con un confronto neutrale',
+    docTitle: 'Certificato SCTR',
+    docStatus: 'Valido',
+    docCompany: 'Azienda',
+    docRuc: 'RUC',
+    docCover: 'Copertura',
+    docValidity: 'Validità',
+    docIssued: 'Emesso in',
+    docExample: 'Esempio illustrativo',
   },
 
   carousel: {

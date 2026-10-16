@@ -31,6 +31,14 @@ export const FR = {
     float1Sub: 'garantie en moins de 24h',
     float2Title: 'Économisez jusqu\u2019à 25%',
     float2Sub: 'avec une comparaison neutre',
+    docTitle: 'Attestation SCTR',
+    docStatus: 'En vigueur',
+    docCompany: 'Entreprise',
+    docRuc: 'RUC',
+    docCover: 'Couverture',
+    docValidity: 'Validité',
+    docIssued: 'Émise en',
+    docExample: 'Exemple illustratif',
   },
 
   carousel: {
