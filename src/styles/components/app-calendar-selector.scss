@@ -54,6 +54,7 @@ app-calendar-selector {
     background: var(--color-primary-light);
   }
   .calendar__day--empty {
+    visibility: hidden;
     cursor: default;
   }
   .calendar__day:disabled {
