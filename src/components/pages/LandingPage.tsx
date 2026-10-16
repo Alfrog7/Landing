@@ -1,5 +1,4 @@
 import { useState } from 'preact/hooks';
-import { MessageCircle } from 'lucide-preact';
 import { Accordion } from '../ui/Accordion';
 import { Hero } from '../landing/Hero';
 import { SolutionsCarousel } from '../landing/SolutionsCarousel';
@@ -8,11 +7,8 @@ import { WhyMelanie } from '../landing/WhyMelanie';
 import { AppointmentScheduler } from '../landing/AppointmentScheduler';
 import { ServiceDetailModal } from '../landing/ServiceDetailModal';
 import { useTranslation } from '../../core/i18n/i18n';
-import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { LANDING_FAQS_DATA } from '../../core/data/landing.data';
 import type { AudienceCategory, ServiceDetail } from '../../core/models/insurance-service.model';
-
-const urgentUrl = WhatsAppService.buildUrgentCheckpointUrl();
 
 export default function LandingPage() {
   const tr = useTranslation();
@@ -39,17 +35,6 @@ export default function LandingPage() {
       <WhyMelanie />
 
       <AppointmentScheduler />
-
-      <div class="landing-urgent" role="complementary">
-        <div class="landing-urgent__copy">
-          <strong>{tr.t('schedule.urgentTitle')}</strong>
-          <p>{tr.t('schedule.urgentText')}</p>
-        </div>
-        <a class="landing-urgent__btn" href={urgentUrl} target="_blank" rel="noopener noreferrer">
-          <MessageCircle size={18} />
-          {tr.t('schedule.urgentBtn')}
-        </a>
-      </div>
 
       <section class="section" id="faq">
         <div class="container landing-faq">

@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-preact';
+import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
 
@@ -10,7 +10,7 @@ export default function WhatsAppFloat() {
   return (
     <app-whatsapp-float>
       <a class="wafloat" href={url} target="_blank" rel="noopener noreferrer" aria-label={tr.t('navbar.waFloatAria')}>
-        <MessageCircle size={26} />
+        <WhatsAppIcon size={30} />
         <span class="wafloat__tooltip">{tr.t('navbar.waChat')}</span>
       </a>
     </app-whatsapp-float>

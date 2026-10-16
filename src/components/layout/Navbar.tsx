@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { Calendar, ChevronDown, Globe, Menu, MessageCircle, ShieldCheck, X } from 'lucide-preact';
+import { Calendar, ChevronDown, Globe, Menu, ShieldCheck, X } from 'lucide-preact';
+import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
@@ -203,7 +204,7 @@ export default function Navbar() {
             ))}
 
             <a class="navbar__mobile-wa" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <MessageCircle size={17} />
+              <WhatsAppIcon size={17} />
               {tr.t('navbar.waMobile')} {brand.contact.phone}
             </a>
 
