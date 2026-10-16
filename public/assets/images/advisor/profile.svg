@@ -1,35 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" role="img" aria-label="Espacio reservado para la fotografía de Melanie Silva">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#10B981"/>
-      <stop offset="0.55" stop-color="#0F766E"/>
-      <stop offset="1" stop-color="#0B132B"/>
-    </linearGradient>
-    <radialGradient id="halo" cx=".5" cy=".42" r=".55">
-      <stop offset="0" stop-color="#ECFDF5" stop-opacity=".5"/>
-      <stop offset="1" stop-color="#ECFDF5" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="figure" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".92"/>
-      <stop offset="1" stop-color="#D1FAE5" stop-opacity=".6"/>
-    </linearGradient>
-    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#fff" fill-opacity=".2"/></pattern>
-    <linearGradient id="fadeV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
-    <mask id="m"><rect width="320" height="380" fill="url(#fadeV)"/></mask>
-    <clipPath id="card"><rect width="320" height="380" rx="24"/></clipPath>
-  </defs>
-  <g clip-path="url(#card)">
-    <rect width="320" height="380" fill="url(#bg)"/>
-    <rect width="320" height="380" fill="url(#dots)" mask="url(#m)"/>
-    <circle cx="160" cy="170" r="180" fill="url(#halo)"/>
-    <circle cx="266" cy="64" r="46" fill="#FBBF24" fill-opacity=".16"/>
-    <circle cx="44" cy="310" r="70" fill="#34D399" fill-opacity=".16"/>
-    <g fill="none" stroke="#fff" stroke-opacity=".14"><circle cx="160" cy="170" r="104"/><circle cx="160" cy="170" r="146" stroke-dasharray="3 8"/></g>
-    <!-- silueta neutra -->
-    <circle cx="160" cy="146" r="52" fill="url(#figure)"/>
-    <path d="M52 380c0-64 48-106 108-106s108 42 108 106z" fill="url(#figure)"/>
-    <!-- etiqueta -->
-    <rect x="86" y="40" width="148" height="30" rx="15" fill="#0B132B" fill-opacity=".45" stroke="#fff" stroke-opacity=".3"/>
-    <text x="160" y="60" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Foto próximamente</text>
-  </g>
+  <rect width="320" height="380" rx="24" fill="#000000"/>
+  <text x="160" y="196" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#8A8A8A" text-anchor="middle">placeholder</text>
 </svg>
