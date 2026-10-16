@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { Calendar, ChevronDown, Globe, Menu, ShieldCheck, X } from 'lucide-preact';
 import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
@@ -21,30 +21,8 @@ export default function Navbar() {
   const brand = BRAND_CONFIG;
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [pressed, setPressed] = useState<string | null>(null);
-
-  // Píldora deslizante de la sección marcada
-  const [pill, setPill] = useState({ left: 0, width: 0, show: false });
-  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-  const pressedRef = useRef<string | null>(null);
-  const pressTimer = useRef<number | null>(null);
-  const pillTimer = useRef<number | null>(null);
-
-  const updatePill = () => {
-    const key = pressedRef.current;
-    const link = key ? linkRefs.current[key] : null;
-    if (!link || !link.offsetWidth) {
-      setPill((p) => ({ ...p, show: false }));
-      return;
-    }
-    setPill({ left: link.offsetLeft, width: link.offsetWidth, show: true });
-  };
-
-  const updatePillRef = useRef(updatePill);
-  updatePillRef.current = updatePill;
 
   useEffect(() => {
-    const onResize = () => updatePillRef.current();
     const onDocClick = () => setLangOpen(false);
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -52,41 +30,16 @@ export default function Navbar() {
         setMenuOpen(false);
       }
     };
-    window.addEventListener('resize', onResize);
     document.addEventListener('click', onDocClick);
     document.addEventListener('keydown', onKey);
     return () => {
-      window.removeEventListener('resize', onResize);
       document.removeEventListener('click', onDocClick);
       document.removeEventListener('keydown', onKey);
-      if (pressTimer.current !== null) window.clearTimeout(pressTimer.current);
-      if (pillTimer.current !== null) window.clearTimeout(pillTimer.current);
     };
   }, []);
 
-  useEffect(() => {
-    pillTimer.current = window.setTimeout(() => updatePillRef.current(), 60);
-    return () => {
-      if (pillTimer.current !== null) window.clearTimeout(pillTimer.current);
-    };
-  }, [tr.lang]);
-
-  const press = (id: string) => {
-    pressedRef.current = id;
-    setPressed(id);
-    if (pressTimer.current !== null) {
-      window.clearTimeout(pressTimer.current);
-    }
-    pressTimer.current = window.setTimeout(() => {
-      pressedRef.current = null;
-      setPressed(null);
-    }, 650);
-    requestAnimationFrame(() => updatePillRef.current());
-  };
-
   // Logo: regreso suave al inicio + saludo de Meipo
   const goHome = (event: MouseEvent) => {
-    press('brand');
     window.dispatchEvent(new Event('meipo-wave'));
     if (window.location.pathname === '/') {
       event.preventDefault();
@@ -135,18 +88,8 @@ export default function Navbar() {
   return (
     <app-top-navbar>
       <header class="navbar-wrap">
-        <div class="navbar">
-          <div
-            class={`navbar__pill${pill.show ? ' navbar__pill--show' : ''}`}
-            style={{ left: `${pill.left}px`, width: `${pill.width}px` }}
-          />
-
-          <a
-            href="/"
-            class={`navbar__brand${pressed === 'brand' ? ' navbar__brand--press' : ''}`}
-            aria-label="Inicio"
-            onClick={goHome}
-          >
+        <div class="navbar container">
+          <a href="/" class="navbar__brand" aria-label="Inicio" onClick={goHome}>
             <img
               src={brand.assets.logoLight}
               alt={`${brand.brandName} · ${brand.brandSubtitle}`}
@@ -154,34 +97,25 @@ export default function Navbar() {
             />
           </a>
 
-          <span class="navbar__sbs-chip" title="Corredora de Seguros Colegiada ante la SBS del Perú">
-            <ShieldCheck size={13} />
+          <span class="navbar__sbs" title="Corredora de Seguros Colegiada ante la SBS del Perú">
+            <ShieldCheck size={15} />
             {brand.sbsChipShort}
           </span>
 
           <nav class="navbar__links" aria-label="Navegación principal">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.fragment}
-                ref={(el) => {
-                  linkRefs.current[link.fragment] = el;
-                }}
-                href={`/#${link.fragment}`}
-                onClick={() => press(link.fragment)}
-                class={pressed === link.fragment ? 'navbar__link--press' : undefined}
-              >
+              <a key={link.fragment} href={`/#${link.fragment}`}>
                 {tr.t(link.labelKey)}
               </a>
             ))}
           </nav>
 
           <div class="navbar__actions">
+            {langSelector(false)}
             <a href="/#agendar" class="navbar__cta">
-              <Calendar size={14} />
+              <Calendar size={15} />
               {tr.t('navbar.schedule')}
             </a>
-
-            {langSelector(false)}
           </div>
 
           <button
@@ -191,7 +125,7 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-label={menuOpen ? tr.t('navbar.closeMenu') : tr.t('navbar.openMenu')}
           >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
@@ -204,7 +138,7 @@ export default function Navbar() {
             ))}
 
             <a class="navbar__mobile-wa" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon size={17} />
+              <WhatsAppIcon size={18} />
               {tr.t('navbar.waMobile')} {brand.contact.phone}
             </a>
 
