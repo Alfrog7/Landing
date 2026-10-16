@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<!-- Cualquier ruta desconocida redirige al inicio, igual que la versión Angular (`**` → ''). -->
+<BaseLayout>
+  <meta http-equiv="refresh" content="0;url=/" />
+  <script is:inline>
+    window.location.replace('/');
+  </script>
+</BaseLayout>

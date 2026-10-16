@@ -1,0 +1,53 @@
+app-step-segment {
+  .segment-legend {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    padding: 0;
+    margin: 0.4rem 0 0.5rem;
+  }
+  .segment-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  .segment-product {
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .segment-product:hover {
+    border-color: var(--color-primary);
+  }
+  .segment-product--active {
+    border-color: var(--color-primary);
+    background: rgba(25, 82, 190, 0.05);
+    box-shadow: 0 0 0 3px rgba(25, 82, 190, 0.15);
+  }
+  .segment-product input {
+    position: absolute;
+    opacity: 0;
+  }
+  .segment-product__title {
+    font-weight: 700;
+    color: var(--color-heading);
+    font-size: 0.95rem;
+  }
+  .segment-product--active .segment-product__title {
+    color: var(--color-primary);
+  }
+  .segment-product__hint {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+  @media (max-width: 560px) {
+    .segment-products {
+      grid-template-columns: 1fr;
+    }
+  }
+}

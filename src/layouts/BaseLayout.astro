@@ -1,0 +1,72 @@
+---
+import '../styles/global.scss';
+import '../styles/components/_index.scss';
+
+interface Props {
+  title?: string;
+  bodyClass?: string;
+}
+
+const { title = 'Melanie · Asesoría en Seguros | Colegiada SBS J-0941' } = Astro.props;
+const description =
+  'Compara y gestiona tus coberturas con Melanie Silva Alarcón, Corredora de Seguros Colegiada SBS (Matrícula J-0941). Empresas y personas: cartas fianza, SCTR, salud, vida y más — sin burocracia y con trato directo.';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#10B981" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Resaltado de llegada (glow) sobre la sección del fragmento activo.
+      // Se dispara por JS porque :target no se re-evalúa al repetir el mismo fragmento.
+      function triggerGlow(): void {
+        const fragment = decodeURIComponent(window.location.hash.slice(1));
+        if (!fragment) {
+          return;
+        }
+        const target = document.getElementById(fragment);
+        if (!target) {
+          return;
+        }
+        // Reinicia la animación si la clase ya estaba aplicada.
+        target.classList.remove('section-arriving');
+        void target.offsetWidth;
+        target.classList.add('section-arriving');
+        window.setTimeout(() => target.classList.remove('section-arriving'), 1200);
+      }
+
+      window.addEventListener('hashchange', triggerGlow);
+      document.addEventListener('click', (event) => {
+        const anchor = (event.target as Element | null)?.closest?.('a[href*="#"]') as HTMLAnchorElement | null;
+        if (!anchor || anchor.pathname !== window.location.pathname || !anchor.hash) {
+          return;
+        }
+        // Clic sobre el fragmento ya activo: hashchange no se dispara, se reinicia el glow a mano.
+        if (anchor.hash === window.location.hash) {
+          window.setTimeout(triggerGlow, 0);
+        }
+      });
+      if (window.location.hash) {
+        window.addEventListener('load', triggerGlow, { once: true });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,290 @@
+app-appointment-scheduler {
+  // Sección compactada (py-10/py-12): menos espacio muerto vertical
+  .scheduler {
+    position: relative;
+    padding: clamp(2.5rem, 5vw, 3rem) 0;
+  }
+  // Orbes de gradiente ambiental detrás del panel del agendador
+  .scheduler__orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .scheduler__orb--emerald {
+    width: min(480px, 60vw);
+    height: 400px;
+    left: -5%;
+    top: 4%;
+    background: rgba(16, 185, 129, 0.07);
+    filter: blur(80px);
+  }
+  .scheduler__orb--sky {
+    width: min(430px, 52vw);
+    height: 360px;
+    right: -6%;
+    bottom: 6%;
+    background: rgba(14, 165, 233, 0.05);
+    filter: blur(90px);
+  }
+  .scheduler > .container {
+    position: relative;
+    z-index: 1;
+  }
+  .scheduler__head {
+    max-width: 620px;
+    margin: 0 auto 1.6rem;
+  }
+  .scheduler__panel {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-3xl);
+    box-shadow: var(--shadow-md);
+    // p-6 md:p-8
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .scheduler__panel {
+      padding: 2rem;
+    }
+  }
+  // Los hijos de la grilla no deben impedir el encogimiento del track
+  .scheduler__panel > .scheduler__aside,
+  .scheduler__panel > .scheduler__form {
+    min-width: 0;
+  }
+  .scheduler__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border-right: 1px solid var(--color-border);
+    padding-right: 1.5rem;
+  }
+  .scheduler__photo-card {
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  .scheduler__avatar {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-xl);
+    object-fit: cover;
+    // Sombra profunda suave (shadow-xl)
+    box-shadow: var(--shadow-lg);
+  }
+  .scheduler__sbs-badge {
+    position: absolute;
+    bottom: 0.7rem;
+    left: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+  }
+  .scheduler__sbs-badge svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  .scheduler__owner {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-heading);
+  }
+  .scheduler__license {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+  }
+  .scheduler__tags {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.84rem;
+    color: var(--color-body);
+  }
+  .scheduler__tags li::before {
+    content: '✓';
+    color: var(--color-primary);
+    font-weight: 800;
+    margin-right: 0.45rem;
+  }
+  .scheduler__tip {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    background: var(--color-sky-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 0.8rem;
+    margin-top: 1rem;
+    min-width: 0;
+  }
+  .scheduler__tip app-meipo {
+    flex: 0 0 auto;
+  }
+  .scheduler__tip p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--color-heading);
+  }
+  .scheduler__privacy {
+    margin: 0.6rem 0 0;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 1.4rem;
+  }
+  legend {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-heading);
+    margin-bottom: 0.9rem;
+  }
+  // Paso 1: calendario y horarios en paralelo (apilados en móvil)
+  .scheduler__step1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    .scheduler__step1 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  app-calendar-selector {
+    display: block;
+  }
+  .scheduler__slots-title {
+    margin: 0 0 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-muted);
+  }
+  .scheduler__slots-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem;
+  }
+  .scheduler__slot {
+    padding: 0.6rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .scheduler__slot:hover:not(:disabled) {
+    border-color: var(--color-border-strong);
+  }
+  // Horario seleccionado: esmeralda vibrante con texto blanco y negrita
+  .scheduler__slot--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 8px 18px -8px rgba(16, 185, 129, 0.55);
+  }
+  .scheduler__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    min-width: 0;
+  }
+  .scheduler__fields input,
+  .scheduler__fields select {
+    width: 100%;
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-heading);
+    outline: none;
+    background: var(--color-surface);
+    transition: border-color 0.2s ease;
+  }
+  .scheduler__fields input:focus,
+  .scheduler__fields select:focus {
+    border-color: var(--color-primary);
+  }
+  .scheduler__confirm {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0.3rem;
+    box-sizing: border-box;
+    padding: 0.95rem 1.4rem;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 0 12px 26px -12px rgba(16, 185, 129, 0.55);
+    cursor: pointer;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .scheduler__confirm:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px -12px rgba(5, 150, 105, 0.6);
+  }
+  .scheduler__confirm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  @media (max-width: 900px) {
+    .scheduler__panel {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem;
+    }
+    .scheduler__aside {
+      border-right: 0;
+      border-bottom: 1px solid var(--color-border);
+      padding-right: 0;
+      padding-bottom: 1.25rem;
+    }
+    .scheduler__tip {
+      margin-top: 0.6rem;
+    }
+    fieldset {
+      margin-bottom: 1.1rem;
+    }
+    legend {
+      margin-bottom: 0.6rem;
+    }
+    .scheduler__fields {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+app-stepper {
+  .stepper {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  .stepper__step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1 1 0;
+    min-width: 150px;
+    padding: 0.65rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .stepper__index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-border);
+    color: var(--color-heading);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .stepper__step--active {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .stepper__step--active .stepper__index {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .stepper__step--done {
+    color: var(--color-whatsapp);
+  }
+  .stepper__step--done .stepper__index {
+    background: var(--color-whatsapp);
+    color: #fff;
+  }
+}

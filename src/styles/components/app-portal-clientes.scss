@@ -1,0 +1,102 @@
+app-portal-clientes {
+  .portal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(25, 82, 190, 0.08), transparent 50%),
+      var(--color-bg);
+  }
+  .portal__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .portal__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+  .portal__shield {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+  }
+  .portal__name {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-heading);
+    line-height: 1.05;
+  }
+  .portal__name small {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .portal__badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    background: rgba(25, 82, 190, 0.08);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+  }
+  .portal__main {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 2.5rem 5%;
+  }
+  .portal__login {
+    width: min(440px, 100%);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: 2.2rem;
+  }
+  .portal__error,
+  .portal__loading {
+    margin: 0 0 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .portal__error {
+    color: #dc2626;
+  }
+  .portal__loading {
+    color: var(--color-muted);
+  }
+  .portal__main app-express-download {
+    width: min(980px, 100%);
+  }
+  .portal__footer {
+    padding: 1.1rem 5%;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+  .portal__footer p {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    text-align: center;
+  }
+  .portal form {
+    display: grid;
+    gap: 1.1rem;
+  }
+}

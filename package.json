@@ -1,33 +1,28 @@
 {
   "name": "landing",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
   },
   "private": true,
   "packageManager": "npm@11.6.2",
   "dependencies": {
-    "@angular/cdk": "^21.2.14",
-    "@angular/common": "^21.2.0",
-    "@angular/compiler": "^21.2.0",
-    "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
-    "@angular/platform-browser": "^21.2.0",
-    "@angular/router": "^21.2.0",
-    "@lucide/angular": "^1.54.0",
-    "embla-carousel-angular": "^19.0.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "@astrojs/preact": "^6.1.0",
+    "astro": "^7.4.0",
+    "embla-carousel": "^8.6.0",
+    "lucide-preact": "^1.58.0",
+    "preact": "^11.0.1"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.26",
-    "@angular/cli": "^21.2.26",
-    "@angular/compiler-cli": "^21.2.0",
+    "@astrojs/check": "latest",
     "prettier": "^3.8.1",
+    "sass-embedded": "^1.90.0",
     "typescript": "~5.9.2"
   }
 }

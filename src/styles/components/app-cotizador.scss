@@ -1,0 +1,60 @@
+app-cotizador {
+  .cotizador-hero {
+    background: var(--color-primary);
+    color: #fff;
+    padding: clamp(2.5rem, 6vw, 3.8rem) 0;
+  }
+  .eyebrow--light {
+    color: #a8c4f5;
+  }
+  .cotizador-hero h1 {
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 0.4rem;
+  }
+  .cotizador-hero p {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+  .cotizador-card {
+    max-width: 720px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2.2rem;
+  }
+  form {
+    display: grid;
+    gap: 1.3rem;
+  }
+  .wizard-error {
+    margin: 0;
+    color: #dc2626;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .wizard-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+  }
+  .wizard-confirm h2 {
+    margin: 0.8rem 0 0.4rem;
+  }
+  .wizard-confirm__summary {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 1.6rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    color: var(--color-body);
+  }
+  .wizard-confirm__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
