@@ -5,6 +5,8 @@ import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
 import { CalendarSelector } from './CalendarSelector';
 import { Meipo } from './Meipo';
+import { GoogleCalendarBooking } from './GoogleCalendarBooking';
+import { GOOGLE_CALENDAR_BOOKING } from '../../core/config/booking.config';
 import { useAdvisorPhoto } from './useAdvisorPhoto';
 
 const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
@@ -27,7 +29,10 @@ export function AppointmentScheduler() {
   const serviceTopic = topics[topicIndex] ?? topics[0] ?? '';
 
   const canSubmit =
-    selectedDate.length > 0 && selectedSlot.length > 0 && fullName.trim().length > 0 && whatsapp.trim().length > 0;
+    selectedDate.length > 0 &&
+    selectedSlot.length > 0 &&
+    fullName.trim().length > 0 &&
+    whatsapp.trim().length > 0;
 
   const onSubmit = (event: Event) => {
     event.preventDefault();
@@ -68,7 +73,7 @@ export function AppointmentScheduler() {
                 <img
                   src={photo.src}
                   ref={photo.ref}
-                onError={photo.onError}
+                  onError={photo.onError}
                   alt={brand.ownerName}
                   class="scheduler__avatar"
                 />
@@ -96,77 +101,83 @@ export function AppointmentScheduler() {
               <p class="scheduler__privacy">{tr.t('schedule.privacy')}</p>
             </aside>
 
-            <form class="scheduler__form" onSubmit={onSubmit} noValidate>
-              <fieldset>
-                <legend>{tr.t('schedule.step1')}</legend>
-                <div class="scheduler__step1">
-                  <CalendarSelector selectedDate={selectedDate} onDateChange={setSelectedDate} />
-                  <div class="scheduler__slots-column">
-                    <p class="scheduler__slots-title">{tr.t('schedule.slotsTitle')}</p>
-                    <div class="scheduler__slots-grid">
-                      {TIME_SLOTS.map((slot) => (
-                        <button
-                          key={slot}
-                          type="button"
-                          class={`scheduler__slot${selectedSlot === slot ? ' scheduler__slot--active' : ''}`}
-                          onClick={() => setSelectedSlot(slot)}
-                        >
-                          {slot}
-                        </button>
-                      ))}
+            {GOOGLE_CALENDAR_BOOKING ? (
+              <div class="scheduler__form">
+                <GoogleCalendarBooking booking={GOOGLE_CALENDAR_BOOKING} />
+              </div>
+            ) : (
+              <form class="scheduler__form" onSubmit={onSubmit} noValidate>
+                <fieldset>
+                  <legend>{tr.t('schedule.step1')}</legend>
+                  <div class="scheduler__step1">
+                    <CalendarSelector selectedDate={selectedDate} onDateChange={setSelectedDate} />
+                    <div class="scheduler__slots-column">
+                      <p class="scheduler__slots-title">{tr.t('schedule.slotsTitle')}</p>
+                      <div class="scheduler__slots-grid">
+                        {TIME_SLOTS.map((slot) => (
+                          <button
+                            key={slot}
+                            type="button"
+                            class={`scheduler__slot${selectedSlot === slot ? ' scheduler__slot--active' : ''}`}
+                            onClick={() => setSelectedSlot(slot)}
+                          >
+                            {slot}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </fieldset>
+                </fieldset>
 
-              <fieldset>
-                <legend>{tr.t('schedule.step2')}</legend>
-                <div class="scheduler__fields">
-                  <input
-                    type="text"
-                    placeholder={tr.t('schedule.phName')}
-                    autocomplete="name"
-                    value={fullName}
-                    onInput={(e) => setFullName(e.currentTarget.value)}
-                    name="fullName"
-                    required
-                  />
-                  <input
-                    type="text"
-                    placeholder={tr.t('schedule.phCompany')}
-                    autocomplete="organization"
-                    value={companyOrRuc}
-                    onInput={(e) => setCompanyOrRuc(e.currentTarget.value)}
-                    name="companyOrRuc"
-                  />
-                  <input
-                    type="tel"
-                    placeholder={tr.t('schedule.phWhats')}
-                    autocomplete="tel"
-                    value={whatsapp}
-                    onInput={(e) => setWhatsapp(e.currentTarget.value)}
-                    name="whatsapp"
-                    required
-                  />
-                  <select
-                    value={String(topicIndex)}
-                    onChange={(e) => setTopicIndex(Number(e.currentTarget.value))}
-                    name="serviceTopic"
-                    required
-                  >
-                    {topics.map((topic, index) => (
-                      <option key={index} value={String(index)}>
-                        {topic}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </fieldset>
+                <fieldset>
+                  <legend>{tr.t('schedule.step2')}</legend>
+                  <div class="scheduler__fields">
+                    <input
+                      type="text"
+                      placeholder={tr.t('schedule.phName')}
+                      autocomplete="name"
+                      value={fullName}
+                      onInput={(e) => setFullName(e.currentTarget.value)}
+                      name="fullName"
+                      required
+                    />
+                    <input
+                      type="text"
+                      placeholder={tr.t('schedule.phCompany')}
+                      autocomplete="organization"
+                      value={companyOrRuc}
+                      onInput={(e) => setCompanyOrRuc(e.currentTarget.value)}
+                      name="companyOrRuc"
+                    />
+                    <input
+                      type="tel"
+                      placeholder={tr.t('schedule.phWhats')}
+                      autocomplete="tel"
+                      value={whatsapp}
+                      onInput={(e) => setWhatsapp(e.currentTarget.value)}
+                      name="whatsapp"
+                      required
+                    />
+                    <select
+                      value={String(topicIndex)}
+                      onChange={(e) => setTopicIndex(Number(e.currentTarget.value))}
+                      name="serviceTopic"
+                      required
+                    >
+                      {topics.map((topic, index) => (
+                        <option key={index} value={String(index)}>
+                          {topic}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </fieldset>
 
-              <button type="submit" class="scheduler__confirm" disabled={!canSubmit}>
-                {tr.t('schedule.confirm')}
-              </button>
-            </form>
+                <button type="submit" class="scheduler__confirm" disabled={!canSubmit}>
+                  {tr.t('schedule.confirm')}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>

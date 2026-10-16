@@ -39,6 +39,18 @@ src/
 public/           # Logos, imágenes, favicon y manifest
 ```
 
+## Agendar citas con Google Calendar
+
+Las citas se pueden reservar directo en el Google Calendar de Melanie, con disponibilidad en tiempo real, sin dobles reservas e invitación por correo:
+
+1. En [Google Calendar](https://calendar.google.com) (desde una computadora): **Crear → Programación de citas**. Define duración de **15 minutos**, horarios disponibles y que se cree un enlace de Google Meet.
+2. Abre la programación creada → **Compartir** → **Añadir a tu sitio web** (o "Insertar") y copia el valor de `src` del iframe: `https://calendar.google.com/calendar/appointments/schedules/XXXX`.
+3. Copia `.env.example` a `.env` y pega esa URL en `PUBLIC_GOOGLE_CALENDAR_URL`. Reinicia `npm start` o vuelve a construir.
+
+Con la variable definida, la sección "Agendar" de la Home y la página `/agendar-cita` muestran la página de reservas de Google dentro del sitio. Si queda vacía, se usa el agendador propio y la confirmación sale por WhatsApp. Un enlace corto (`calendar.app.google/…`) no admite iframe: en ese caso se muestra un botón que lo abre en una pestaña nueva.
+
+La variable se integra al compilar: si cambia, hay que volver a ejecutar `npm run build`.
+
 ## Idiomas
 
 El sitio está en español, inglés, francés e italiano. El idioma se elige desde la barra de navegación y se guarda en `localStorage`; los textos viven en `src/core/i18n/dictionaries/`.

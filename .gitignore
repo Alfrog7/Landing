@@ -52,3 +52,8 @@ Thumbs.db
 
 # Astro
 .astro/
+
+# Variables de entorno locales
+.env
+.env.*
+!.env.example

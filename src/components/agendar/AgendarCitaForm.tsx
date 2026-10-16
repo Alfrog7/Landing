@@ -3,6 +3,8 @@ import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { FormField } from '../ui/FormField';
 import { CalendarSelector } from '../landing/CalendarSelector';
+import { GoogleCalendarBooking } from '../landing/GoogleCalendarBooking';
+import { GOOGLE_CALENDAR_BOOKING } from '../../core/config/booking.config';
 import { BookingService } from '../../core/services/booking.service';
 import type { BookingRequest } from '../../core/models/booking.model';
 
@@ -93,6 +95,14 @@ export default function AgendarCitaForm() {
     setBooking(request);
     setSubmitted(true);
   };
+
+  if (GOOGLE_CALENDAR_BOOKING) {
+    return (
+      <div class="booking-embed">
+        <GoogleCalendarBooking booking={GOOGLE_CALENDAR_BOOKING} />
+      </div>
+    );
+  }
 
   if (submitted) {
     return (
