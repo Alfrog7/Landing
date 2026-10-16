@@ -1,0 +1,22 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import CotizadorWizard from '../components/cotizador/CotizadorWizard';
+---
+
+<MainLayout>
+  <app-cotizador>
+    <header class="cotizador-hero">
+      <div class="container">
+        <span class="eyebrow eyebrow--light">Cotización express</span>
+        <h1>Cotiza tus seguros laborales en 3 pasos</h1>
+        <p>Datos confidenciales: los usamos solo para enviarte la prima comparada entre aseguradoras.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container cotizador-card">
+        <CotizadorWizard client:load />
+      </div>
+    </section>
+  </app-cotizador>
+</MainLayout>

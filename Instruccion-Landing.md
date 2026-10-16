@@ -73,79 +73,40 @@ export const BRAND_CONFIG = {
 
 ## 4. Arquitectura Técnica de Software y Estructura de Directorios
 
-Implementación modular basada en **Angular Standalone Components**, gestión de estado reactivo mediante **Signals** y arquitectura orientada a características (**Feature-Driven**):
+Sitio estático generado con **Astro** (islas interactivas con **Preact**), estado reactivo con hooks, estilos en **SCSS** y arquitectura orientada a características. Las páginas son archivos `.astro`; solo las partes interactivas se hidratan en el navegador (`client:load`).
 
 ```text
-src/app/
-├── core/                           # Servicios singleton, modelos globales y configuraciones
-│   ├── config/
-│   │   ├── brand.config.ts         # Datos de marca, contacto y aseguradoras
-│   │   └── navigation.config.ts    # Enlaces de navegación y rutas globales
-│   ├── models/                     # Contratos de interfaz e interfaces de datos
-│   │   ├── quote.model.ts
-│   │   ├── booking.model.ts
-│   │   └── insurer.model.ts
-│   └── services/                   # Lógica externa y llamadas HTTP
-│       ├── quote.service.ts
-│       ├── booking.service.ts
-│       └── whatsapp.service.ts
-├── shared/                         # Componentes agnósticos y reutilizables
-│   ├── components/
-│   │   ├── button/                 # Botón base (primary, outline, whatsapp)
-│   │   ├── card/                   # Contenedor estándar con sombras y padding
-│   │   ├── accordion/              # Acordeón accesible con aria-expanded
-│   │   ├── stepper/                # Indicador visual de pasos para wizards
-│   │   ├── badge/                  # Chips de estado y matrículas SBS
-│   │   └── form-field/             # Wrapper para inputs con feedback de error
-│   └── ui/                         # Layouts y contenedores estructurales
-│       ├── top-navbar/             # Menú de cabecera con navegación pública
-│       ├── footer/                 # Pie de página institucional y normativo
-│       └── blank-layout/           # Layout minimalista sin menú para login/portal
-├── features/                       # Módulos y pantallas de la aplicación
-│   ├── landing/                    # Pantalla 1: Home Principal
-│   │   ├── components/
-│   │   │   ├── hero/
-│   │   │   ├── solutions-grid/
-│   │   │   ├── broker-comparison/
-│   │   │   └── checkpoint-cta/
-│   │   └── landing.component.ts
-│   ├── coberturas/                 # Pantalla 2: Detalle Coberturas & SCTR
-│   │   ├── components/
-│   │   │   ├── sctr-breakdown/
-│   │   │   ├── insurers-matrix/
-│   │   │   └── vida-ley-card/
-│   │   └── coberturas.component.ts
-│   ├── asesoria/                   # Pantalla 3: Perfil Asesor & Metodología
-│   │   ├── components/
-│   │   │   ├── advisor-hero/
-│   │   │   ├── methodology-steps/
-│   │   │   └── testimonials/
-│   │   └── asesoria.component.ts
-│   ├── faqs/                       # Pantalla 4: Centro de Ayuda & FAQs
-│   │   ├── components/
-│   │   │   ├── search-filter/
-│   │   │   ├── questions-accordion/
-│   │   │   └── resources-sidebar/
-│   │   └── faqs.component.ts
-│   ├── cotizador/                  # Pantalla 5: Wizard de Cotización Interactivo
-│   │   ├── components/
-│   │   │   ├── step-segment/
-│   │   │   ├── step-company/
-│   │   │   └── step-contact/
-│   │   └── cotizador.component.ts
-│   ├── agendar-cita/               # Pantalla 6: Agendador de Citas 15 Min
-│   │   ├── components/
-│   │   │   ├── calendar-selector/
-│   │   │   └── booking-form/
-│   │   └── agendar-cita.component.ts
-│   └── portal-clientes/            # Pantalla 7: Login & Autogestión Garita
-│       ├── components/
-│       │   ├── login-card/
-│       │   └── express-download/
-│       └── portal-clientes.component.ts
-├── app.routes.ts                   # Configuración central de rutas
-└── app.component.ts                # Componente raíz
+src/
+├── pages/                          # Rutas (una por archivo .astro)
+│   ├── index.astro                 # Pantalla 1: Home Principal
+│   ├── coberturas-sctr.astro       # Pantalla 2: Detalle Coberturas & SCTR
+│   ├── asesoria.astro              # Pantalla 3: Perfil Asesor & Metodología
+│   ├── preguntas-frecuentes.astro  # Pantalla 4: Centro de Ayuda & FAQs
+│   ├── cotizador.astro             # Pantalla 5: Wizard de Cotización Interactivo
+│   ├── agendar-cita.astro          # Pantalla 6: Agendador de Citas 15 Min
+│   ├── portal-clientes.astro       # Pantalla 7: Login & Autogestión Garita
+│   └── 404.astro                   # Cualquier ruta desconocida redirige al inicio
+├── layouts/
+│   ├── BaseLayout.astro            # <head>, fuentes, estilos globales y glow de secciones
+│   └── MainLayout.astro            # Navbar + contenido + footer + WhatsApp flotante
+├── components/
+│   ├── ui/                         # Button, Card, Badge, Accordion, Stepper, FormField
+│   ├── layout/                     # Navbar, Footer, WhatsAppFloat (islas)
+│   ├── pages/LandingPage.tsx       # Isla principal de la Home
+│   ├── landing/                    # Hero, SolutionsCarousel, ServiceDetailModal, AppointmentScheduler…
+│   ├── coberturas/ asesoria/ faqs/ cotizador/ agendar/ portal/
+├── core/                           # Lógica y datos sin dependencia de UI
+│   ├── config/                     # brand.config.ts, navigation.config.ts
+│   ├── data/                       # landing.data.ts, faqs.data.ts, insurers.data.ts
+│   ├── i18n/                       # i18n.ts (hook useTranslation) + diccionarios es/en/fr/it
+│   ├── models/                     # Contratos de interfaz
+│   └── services/                   # quote, booking y whatsapp
+└── styles/
+    ├── global.scss                 # Tokens de diseño y utilidades globales
+    └── components/                 # Un .scss por componente, anidado bajo su elemento `app-*`
 ```
+
+Cada componente envuelve su marcado en un elemento personalizado `app-*` (p. ej. `<app-hero>`) al que se adjuntan sus estilos, igual que el selector del componente en la versión Angular.
 
 ---
 
@@ -197,51 +158,20 @@ export interface InsurerInfo {
 
 ---
 
-## 6. Enrutamiento Modular (`app.routes.ts`)
+## 6. Enrutamiento (`src/pages/`)
 
-```typescript
-import { Routes } from '@angular/router';
+El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/` es una ruta.
 
-export const routes: Routes = [
-  {
-    path: '',
-    children: [
-      {
-        path: '',
-        loadComponent: () => import('./features/landing/landing.component').then(m => m.LandingComponent)
-      },
-      {
-        path: 'coberturas-sctr',
-        loadComponent: () => import('./features/coberturas/coberturas.component').then(m => m.CoberturasComponent)
-      },
-      {
-        path: 'asesoria',
-        loadComponent: () => import('./features/asesoria/asesoria.component').then(m => m.AsesoriaComponent)
-      },
-      {
-        path: 'preguntas-frecuentes',
-        loadComponent: () => import('./features/faqs/faqs.component').then(m => m.FaqsComponent)
-      },
-      {
-        path: 'cotizador',
-        loadComponent: () => import('./features/cotizador/cotizador.component').then(m => m.CotizadorComponent)
-      },
-      {
-        path: 'agendar-cita',
-        loadComponent: () => import('./features/agendar-cita/agendar-cita.component').then(m => m.AgendarCitaComponent)
-      }
-    ]
-  },
-  {
-    path: 'portal-clientes',
-    loadComponent: () => import('./features/portal-clientes/portal-clientes.component').then(m => m.PortalClientesComponent)
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  }
-];
-```
+| Ruta | Archivo | Layout |
+| --- | --- | --- |
+| `/` | `index.astro` | Principal (navbar + footer) |
+| `/coberturas-sctr` | `coberturas-sctr.astro` | Principal |
+| `/asesoria` | `asesoria.astro` | Principal |
+| `/preguntas-frecuentes` | `preguntas-frecuentes.astro` | Principal |
+| `/cotizador` | `cotizador.astro` | Principal |
+| `/agendar-cita` | `agendar-cita.astro` | Principal |
+| `/portal-clientes` | `portal-clientes.astro` | Sin navbar ni footer |
+| cualquier otra | `404.astro` | Redirige a `/` |
 
 ---
 
@@ -325,7 +255,7 @@ export const routes: Routes = [
 ---
 
 ### Pantalla 5: Cotizador Interactivo Wizard (`/cotizador`)
-- **Stepper Visual de 3 Pasos (Gestión con Signals):**
+- **Stepper Visual de 3 Pasos (estado con hooks):**
   - **Paso 1: Selección de Escala y Rubro:**
     - Segmentación por tamaño: Microempresa (1-10), PYME (11-50) o Corporativo (50+).
     - Selección de producto requerido (SCTR Salud, Pensión, Vida Ley o Combo Integral).
@@ -364,35 +294,13 @@ export const routes: Routes = [
 
 ## 9. Lógica de Integración Externa (`whatsapp.service.ts`)
 
-```typescript
-// src/app/core/services/whatsapp.service.ts
-import { Injectable } from '@angular/core';
-import { BRAND_CONFIG } from '../config/brand.config';
-import { QuoteDraft } from '../models/quote.model';
+`src/core/services/whatsapp.service.ts` expone `WhatsAppService`, un objeto con funciones puras que construyen los enlaces `https://wa.me/<número>?text=<mensaje codificado>` a partir de `BRAND_CONFIG.contact.whatsappNumber`:
 
-@Injectable({ providedIn: 'root' })
-export class WhatsAppService {
-  private readonly baseUrl = '[https://wa.me/](https://wa.me/)';
-
-  buildQuoteUrl(draft: QuoteDraft): string {
-    const message = [
-      `Hola ${BRAND_CONFIG.brandName}, solicito cotización express:`,
-      `• *RUC:* ${draft.ruc}`,
-      `• *Empresa:* ${draft.businessName}`,
-      `• *Póliza:* ${draft.productType}`,
-      `• *Trabajadores:* ${draft.workersCount}`,
-      `• *Contacto:* ${draft.contactName}`
-    ].join('\n');
-
-    return `${this.baseUrl}${BRAND_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
-  }
-
-  buildUrgentCheckpointUrl(ruc: string = ''): string {
-    const text = `🚨 *URGENCIA GARITA:* Hola ${BRAND_CONFIG.brandName}, requiero soporte inmediato para emisión/constancia de pase de garita${ruc ? ` para el RUC ${ruc}` : ''}.`;
-    return `${this.baseUrl}${BRAND_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
-  }
-}
-```
+- `buildQuoteUrl(draft)`: cotización express desde el cotizador (RUC, empresa, póliza, trabajadores y contacto).
+- `buildServiceUrl(titulo, tag)`: consulta sobre un servicio desde la ficha del carrusel.
+- `buildAppointmentUrl(datos)`: confirmación de la cita de 15 minutos desde el agendador.
+- `buildUrgentCheckpointUrl()`: urgencia de emisión o constancia de garita.
+- `buildGenericUrl(mensaje)`: mensaje libre con el saludo de la marca.
 
 ---
 

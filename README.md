@@ -1,59 +1,48 @@
-# Landing
+# Landing · Melanie Silva · Asesoría en Seguros
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.26.
+Sitio web de Melanie Silva Alarcón, Corredora de Seguros Colegiada SBS (Matrícula J-0941).
 
-## Development server
+Construido con [Astro](https://astro.build) y [Preact](https://preactjs.com) (islas interactivas), estilos en SCSS, carrusel con [Embla](https://www.embla-carousel.com) e iconos de [Lucide](https://lucide.dev). Los detalles de diseño y arquitectura están en [Instruccion-Landing.md](Instruccion-Landing.md).
 
-To start a local development server, run:
+## Requisitos
 
-```bash
-ng serve
-```
+- Node.js 20.19 o superior (se probó con Node 24)
+- npm 11
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Desarrollo
 
 ```bash
-ng generate component component-name
+npm install
+npm start        # o: npm run dev
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Abre http://localhost:4321/. La página se recarga sola al guardar cambios.
 
-```bash
-ng generate --help
+## Comandos
+
+| Comando | Acción |
+| --- | --- |
+| `npm start` / `npm run dev` | Servidor de desarrollo en `localhost:4321` |
+| `npm run build` | Genera el sitio estático en `dist/` |
+| `npm run preview` | Sirve `dist/` localmente para revisar la versión de producción |
+| `npm run check` | Verifica tipos de los archivos `.astro` y `.tsx` |
+
+## Estructura
+
+```text
+src/
+├── pages/        # Rutas (un archivo .astro por página)
+├── layouts/      # BaseLayout (head, estilos globales) y MainLayout (navbar + footer)
+├── components/   # Componentes Preact e islas interactivas
+├── core/         # Configuración de marca, datos, i18n, modelos y servicios
+└── styles/       # global.scss y un .scss por componente
+public/           # Logos, imágenes, favicon y manifest
 ```
 
-## Building
+## Idiomas
 
-To build the project run:
+El sitio está en español, inglés, francés e italiano. El idioma se elige desde la barra de navegación y se guarda en `localStorage`; los textos viven en `src/core/i18n/dictionaries/`.
 
-```bash
-ng build
-```
+## Flujo de ramas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Se trabaja desde `develop` y se integra a `main` cuando está estable. Ver la sección 11 de [Instruccion-Landing.md](Instruccion-Landing.md).

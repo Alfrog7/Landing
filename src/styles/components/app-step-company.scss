@@ -1,0 +1,16 @@
+app-step-company {
+  .urgency {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    font-size: 0.88rem;
+    color: var(--color-body);
+    cursor: pointer;
+  }
+  .urgency input {
+    margin-top: 0.15rem;
+  }
+}

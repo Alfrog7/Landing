@@ -1,0 +1,41 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Badge } from '../components/ui/Badge';
+import AgendarCitaForm from '../components/agendar/AgendarCitaForm';
+---
+
+<MainLayout>
+  <app-agendar-cita>
+    <header class="booking-hero">
+      <div class="container">
+        <span class="eyebrow eyebrow--light">Asesoría ejecutiva</span>
+        <h1>Agendar Cita: 15 minutos con la corredora</h1>
+        <p>Videollamada de diagnóstico (Google Meet / Microsoft Teams). Sin costo y sin compromiso.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container booking-grid">
+        <!-- Ficha de la sesión -->
+        <aside class="booking-summary">
+          <div class="session-card">
+            <span class="session-card__icon" aria-hidden="true">📹</span>
+            <h2>Asesoría Ejecutiva de 15 Minutos</h2>
+            <ul>
+              <li>Modalidad: videollamada (Google Meet / Teams)</li>
+              <li>Duración: 15 minutos, en punto</li>
+              <li>Horario: Lunes a Viernes, 8:30 AM - 6:30 PM</li>
+              <li>Recomendación: ten a mano tu planilla y RUC</li>
+            </ul>
+            <div class="session-card__badges">
+              <Badge variant="whatsapp">Asesoría gratuita</Badge>
+              <Badge variant="primary">Respuesta el mismo día</Badge>
+            </div>
+          </div>
+        </aside>
+
+        <AgendarCitaForm client:load />
+      </div>
+    </section>
+  </app-agendar-cita>
+</MainLayout>

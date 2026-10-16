@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import FaqExplorer from '../components/faqs/FaqExplorer';
+import { ResourcesSidebar } from '../components/faqs/ResourcesSidebar';
+---
+
+<MainLayout>
+  <app-faqs>
+    <header class="faqs-hero">
+      <div class="container">
+        <span class="eyebrow eyebrow--light">Centro de ayuda</span>
+        <h1>Preguntas frecuentes</h1>
+        <p>
+          Resuelve tus dudas sobre SCTR, Seguro Vida Ley, el rol de la corredora y la emisión de constancias para
+          garitas de ingreso.
+        </p>
+      </div>
+    </header>
+
+    <section class="section faqs-body">
+      <div class="container faqs-grid">
+        <div class="faqs-main">
+          <FaqExplorer client:load />
+        </div>
+        <aside class="faqs-aside">
+          <ResourcesSidebar />
+        </aside>
+      </div>
+    </section>
+  </app-faqs>
+</MainLayout>

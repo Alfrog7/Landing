@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import WhatsAppFloat from '../components/layout/WhatsAppFloat';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <app-main-layout>
+    <div class="main-layout">
+      <Navbar client:load />
+      <main class="main-layout__content">
+        <slot />
+      </main>
+      <Footer client:load />
+      <WhatsAppFloat client:load />
+    </div>
+  </app-main-layout>
+</BaseLayout>
