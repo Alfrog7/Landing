@@ -12,7 +12,7 @@ app-whatsapp-float {
     border-radius: 50%;
     background: var(--color-whatsapp);
     color: #fff;
-    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--color-ink);
     transition: transform 0.2s ease, background 0.2s ease;
   }
   .wafloat:hover {

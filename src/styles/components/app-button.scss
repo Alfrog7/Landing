@@ -9,50 +9,51 @@ app-button {
     gap: 0.5rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
-    font-weight: 600;
-    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.8rem 1.4rem;
     border-radius: var(--radius-sm);
-    border: 1px solid transparent;
+    border: 1.5px solid var(--color-ink);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
   .app-btn--block {
     width: 100%;
   }
+  // Acción principal: naranja de alta visibilidad con texto en tinta (contraste 7:1)
   .app-btn--primary {
-    background: var(--color-primary);
-    color: #fff;
+    background: var(--color-orange);
+    color: var(--color-ink);
   }
   .app-btn--primary:hover {
-    background: var(--color-primary-dark);
+    background: var(--color-orange-dark);
   }
   .app-btn--outline {
     background: transparent;
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: var(--color-ink);
   }
   .app-btn--outline:hover {
-    background: var(--color-primary);
+    background: var(--color-ink);
     color: #fff;
   }
   .app-btn--whatsapp {
     background: var(--color-whatsapp);
-    color: #fff;
+    color: var(--color-ink);
   }
   .app-btn--whatsapp:hover {
-    background: var(--color-whatsapp-dark);
+    background: #1fb858;
   }
   .app-btn--ghost {
     background: transparent;
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
   }
   .app-btn--ghost:hover {
     background: rgba(255, 255, 255, 0.12);
   }
   button:disabled {
-    opacity: 0.55;
+    opacity: 0.45;
     cursor: not-allowed;
   }
 }

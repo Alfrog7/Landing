@@ -1,49 +1,58 @@
 // Design tokens — Melanie Silva | Corredora de Seguros
-// Filosofía: Anti-Estrés / Cero Fatiga Cognitiva (marfil cálido dominante)
+// Dirección: documentación técnica y señalética de obra. Papel frío, tinta verde-bosque,
+// bordes de 1px en lugar de sombras y un solo color de acción (naranja de alta visibilidad,
+// el del chaleco de Meipo).
 :root {
-  // Brand palette (kit: 04_Colores/tokens.css)
-  --color-primary: #10b981;
-  --color-primary-dark: #059669;
-  --color-primary-text: #047857;
-  --color-primary-light: #ecfdf5;
+  // Marca (kit: 04_Colores/tokens.css)
+  --color-primary: #0b7a57;
+  --color-primary-dark: #086245;
+  --color-primary-text: #086245;
+  --color-primary-light: #e1eee7;
+  --color-brand-green: #10b981;
   --color-koala: #8fa6ad;
   --color-koala-light: #a8bfc7;
   --color-koala-pink: #f4b7b2;
   --color-sky: #0ea5e9;
   --color-sky-light: #f0f9ff;
-  --color-orange: #f97316;
-  --color-orange-light: #fff7ed;
-  --color-secondary: #0b132b;
-  --color-footer: #0b132b;
-  --color-bg: #fbfaf8;
+  --color-orange: #f26b21;
+  --color-orange-dark: #d9560f;
+  --color-orange-light: #fdeee3;
+  --color-yellow: #f5b50a;
+  --color-ink: #10201b;
+  --color-secondary: #10201b;
+  --color-footer: #10201b;
+  --color-bg: #f1f3ef;
   --color-surface: #ffffff;
   --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #059669;
-  --color-whatsapp-light: #10b981;
-  --color-heading: #0f172a;
-  --color-body: #334155;
-  --color-muted: #64748b;
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
+  --color-whatsapp-dark: #128c4a;
+  --color-whatsapp-light: #25d366;
+  --color-heading: #10201b;
+  --color-body: #2f3f39;
+  --color-muted: #5b6a63;
+  --color-border: #d5dad3;
+  --color-border-strong: #b3bdb3;
 
-  // Typography (kit: Nunito para wordmark/títulos, Inter para cuerpo e interfaz)
-  --font-heading: 'Nunito', 'Inter', Roboto, system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', Roboto, system-ui, -apple-system, sans-serif;
+  // Tipografía: Archivo (con eje de ancho, rótulo de obra) para titulares y Public Sans para el texto
+  --font-heading: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  // Radii
-  --radius-sm: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-3xl: 1.5rem;
+  // Radios: 4px en controles, 8px en paneles
+  --radius-sm: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-3xl: 8px;
 
-  // Shadows (suaves, aireadas)
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-  --shadow-floating-nav: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
-  --shadow-card-catalog: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
-  --shadow-card-hover: 0 18px 36px -8px rgba(15, 23, 42, 0.12);
-  --shadow-modal-split: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
-  --shadow-md: var(--shadow-card-catalog);
-  --shadow-lg: var(--shadow-modal-split);
+  // Sin sombras decorativas: la estructura la marcan los bordes
+  --shadow-sm: none;
+  --shadow-floating-nav: none;
+  --shadow-card-catalog: none;
+  --shadow-card-hover: none;
+  --shadow-modal-split: 0 24px 60px -20px rgba(16, 32, 27, 0.5);
+  --shadow-md: none;
+  --shadow-lg: none;
+
+  // Escala vertical: múltiplos de 24px
+  --space-section: clamp(4rem, 8vw, 6rem);
 }
 
 html {
@@ -54,7 +63,6 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-body);
-  // Lienzo cálido institucional (#FBFAF8): elimina la frialdad del blanco puro
   background: var(--color-bg);
   font-size: 16px;
   line-height: 1.6;
@@ -62,11 +70,27 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-heading);
   color: var(--color-heading);
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0 0 0.5em;
+}
+
+h1,
+h2 {
+  font-weight: 800;
+  font-stretch: 82%;
+  letter-spacing: -0.01em;
+}
+
+h3,
+h4 {
+  font-weight: 700;
+  font-stretch: 92%;
 }
 
 a {
@@ -83,6 +107,11 @@ img {
   box-sizing: border-box;
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
 // Shared layout helpers
 .container {
   width: min(1180px, 92%);
@@ -90,50 +119,15 @@ img {
 }
 
 .section {
-  padding: clamp(3rem, 7vw, 5.5rem) 0;
+  padding: var(--space-section) 0;
 }
 
 .section-title {
-  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+  line-height: 1;
   text-wrap: balance;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-primary-text);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  border-radius: 999px;
-  padding: 0.36rem 0.9rem;
-  margin-bottom: 0.9rem;
-}
-
-.eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-}
-
-.eyebrow--light {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.28);
-}
-
-.eyebrow--light::before {
-  background: #6ee7b7;
-  box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.25);
-}
 
 .text-center {
   text-align: center;
