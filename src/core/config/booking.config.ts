@@ -1,7 +1,10 @@
 // Página de reservas de Google Calendar ("Appointment schedule").
 // Se configura con PUBLIC_GOOGLE_CALENDAR_URL (ver .env.example). Si está vacía, el sitio usa el
-// agendador propio y confirma por WhatsApp.
-const raw = (import.meta.env.PUBLIC_GOOGLE_CALENDAR_URL ?? '').trim();
+// agendador propio y confirma por WhatsApp (se desactiva dejándola en blanco: PUBLIC_GOOGLE_CALENDAR_URL="").
+// Mientras no se defina la variable se usa la programación de prueba; reemplázala por la definitiva.
+const TEST_SCHEDULE =
+  'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2mZm-n8GO06-E6rpqpZ0OxmQ5Udg1UsjnxKPGj1HNPoerzU9vWqXfMekdXsYIngtVDNgadkHy5';
+const raw = (import.meta.env.PUBLIC_GOOGLE_CALENDAR_URL ?? TEST_SCHEDULE).trim();
 
 export type CalendarBooking = { mode: 'embed' | 'link'; url: string } | null;
 
