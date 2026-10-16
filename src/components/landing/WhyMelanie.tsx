@@ -1,13 +1,12 @@
-import { useState } from 'preact/hooks';
 import { BadgeCheck, Clock, MessageCircle, ShieldCheck } from 'lucide-preact';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { useTranslation } from '../../core/i18n/i18n';
+import { useAdvisorPhoto } from './useAdvisorPhoto';
 
 export function WhyMelanie() {
   const tr = useTranslation();
   const brand = BRAND_CONFIG;
-  // Fotografía real con fallback automático al placeholder mientras no exista el archivo
-  const [photoSrc, setPhotoSrc] = useState<string>(brand.assets.advisorPhotoReal);
+  const photo = useAdvisorPhoto();
 
   return (
     <app-why-melanie>
@@ -16,8 +15,9 @@ export function WhyMelanie() {
           <article class="why__profile">
             <div class="why__photo-card">
               <img
-                src={photoSrc}
-                onError={() => setPhotoSrc(brand.assets.advisorPhoto)}
+                src={photo.src}
+                ref={photo.ref}
+                onError={photo.onError}
                 alt={`${brand.ownerName}, ${brand.roleTitle}`}
                 class="why__photo"
               />
