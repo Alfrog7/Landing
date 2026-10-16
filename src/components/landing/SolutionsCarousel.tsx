@@ -71,7 +71,7 @@ function computeRepeat(baseCount: number, viewportWidth: number): number {
   if (!viewportWidth || !baseCount) {
     return 1;
   }
-  // Ancho mínimo estimado por slide (290px + gap de 24px).
+  // Ancho mínimo estimado por slide (tarjeta de 290px + 24px de separación).
   const stride = 314;
   const target = viewportWidth + stride;
   const needed = Math.ceil(target / stride);
@@ -128,7 +128,7 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
     const sync = () => setSelectedIndex(api.selectedScrollSnap() % (baseCountRef.current || 1));
     api.on('init', sync).on('reInit', sync).on('select', sync);
     sync();
-    setViewportWidth(window.innerWidth);
+    setViewportWidth(viewport.clientWidth);
     startAutoplay();
 
     let resizeTimer: number | null = null;
@@ -136,7 +136,7 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
       if (resizeTimer !== null) {
         window.clearTimeout(resizeTimer);
       }
-      resizeTimer = window.setTimeout(() => setViewportWidth(window.innerWidth), 200);
+      resizeTimer = window.setTimeout(() => setViewportWidth(viewport.clientWidth), 200);
     };
     window.addEventListener('resize', onResize);
 
