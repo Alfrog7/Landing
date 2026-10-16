@@ -1,11 +1,11 @@
+@use '../mixins' as m;
+
 app-faqs {
   .faqs-hero {
-    background: var(--color-secondary);
-    color: #fff;
-    padding: clamp(2.5rem, 6vw, 3.8rem) 0;
+    @include m.page-hero(3.8rem);
   }
   .eyebrow--light {
-    color: #7fa9f0;
+    color: #a7f3d0;
   }
   .faqs-hero h1 {
     color: #fff;

@@ -1,6 +1,6 @@
 app-advisor-hero {
   .advisor {
-    padding: clamp(3rem, 7vw, 5rem) 0;
+    padding: clamp(7rem, 12vw, 8rem) 0 clamp(3rem, 7vw, 5rem);
   }
   .advisor__grid {
     display: grid;

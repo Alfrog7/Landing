@@ -67,7 +67,7 @@ export function CalendarSelector({ selectedDate, onDateChange }: CalendarSelecto
   const monthLabel = currentMonth
     ? currentMonth
         .toLocaleDateString('es-PE', { month: 'long', year: 'numeric' })
-        .replace(/(^|\s)\S/g, (t) => t.toUpperCase())
+        .replace(/^\S/, (t) => t.toUpperCase())
     : '';
 
   const canGoBack = (): boolean => {
@@ -124,7 +124,7 @@ export function CalendarSelector({ selectedDate, onDateChange }: CalendarSelecto
             <button
               key={index}
               type="button"
-              class={`calendar__day${day.date === '' ? ' calendar__day--empty' : ''}${day.isWeekend ? ' calendar__day--weekend' : ''}${day.date === selectedDate ? ' calendar__day--active' : ''}`}
+              class={`calendar__day${day.date === '' ? ' calendar__day--empty' : ''}${day.isWeekend ? ' calendar__day--weekend' : ''}${day.date !== '' && day.date === selectedDate ? ' calendar__day--active' : ''}`}
               disabled={day.isDisabled}
               aria-label={day.date ? `Seleccionar ${day.monthLabel}` : undefined}
               onClick={() => onDateChange(day.date)}

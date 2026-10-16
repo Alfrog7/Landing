@@ -164,15 +164,31 @@ app-hero {
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
-    min-height: 340px;
+    min-height: 460px;
     justify-content: center;
     // Desplaza el personaje a la derecha para dejar paso libre a la
     // tarjeta flotante izquierda sin tapar la oreja del koala
     padding-left: 3rem;
   }
+  .hero__media::before {
+    content: '';
+    position: absolute;
+    top: 46%;
+    left: calc(50% + 1.5rem);
+    width: min(420px, 90%);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1.5px dashed rgba(16, 185, 129, 0.3);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 68%);
+    pointer-events: none;
+  }
   .hero__bubble {
-    position: relative;
-    max-width: 270px;
+    position: absolute;
+    left: 0;
+    bottom: 4.6rem;
+    z-index: 2;
+    max-width: 250px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(16, 185, 129, 0.22);
@@ -190,15 +206,18 @@ app-hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
-    border-radius: 2.5rem;
+    padding: 2.6rem clamp(1.5rem, 4vw, 3rem);
+    border-radius: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.75);
     background: linear-gradient(
       to top right,
       rgba(209, 250, 229, 0.7),
       rgba(240, 253, 250, 0.4) 48%,
       rgba(224, 242, 254, 0.5)
     );
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+      0 34px 60px -26px rgba(16, 185, 129, 0.45),
+      var(--shadow-sm);
     animation: meipo-float 5s ease-in-out infinite;
   }
   // Sombra de contacto difusa a los pies de la ilustración
@@ -309,6 +328,11 @@ app-hero {
     }
   }
   @media (max-width: 480px) {
+    .hero__bubble {
+      position: relative;
+      left: auto;
+      bottom: auto;
+    }
     .hero__float {
       position: static;
       animation: none;

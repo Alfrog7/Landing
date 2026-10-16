@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="36" viewBox="0 0 88 36" role="img" aria-label="Pacífico Seguros">
-  <rect x="1" y="1" width="86" height="34" rx="6" fill="#FFFFFF" stroke="#00A1E9" stroke-width="1.6"/>
-  <circle cx="17" cy="18" r="11" fill="#00A1E9"/>
-  <path d="M9 21 a10 10 0 0 1 16 0 Z" fill="#FFFFFF" opacity="0.85"/>
-  <circle cx="17" cy="11.5" r="2.4" fill="#FFFFFF"/>
-  <text x="33" y="16.5" font-family="Arial" font-size="10.5" font-weight="700" fill="#0077B6">Pacífico</text>
-  <text x="33" y="27" font-family="Arial" font-size="7" font-weight="600" letter-spacing="1" fill="#64748B">SEGUROS</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="48" viewBox="0 0 128 48" role="img" aria-label="Pacífico Seguros">
+  <rect x="1" y="1" width="126" height="46" rx="10" fill="#FFFFFF" stroke="#00A1E9" stroke-opacity=".28" stroke-width="1.5"/>
+  <circle cx="25" cy="24" r="15" fill="#00A1E9"/>
+  <path d="M12 28c4-5 8-5 13 0s9 5 13 0v3c-4 5-8 5-13 0s-9-5-13 0z" fill="#FFFFFF" fill-opacity=".95"/><circle cx="25" cy="17" r="3.4" fill="#FFFFFF"/>
+  <text x="46" y="25" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" fill="#0077B6" textLength="68" lengthAdjust="spacingAndGlyphs">Pacífico</text>
+  <text x="46" y="37" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing="2" fill="#64748B">SEGUROS</text>
 </svg>

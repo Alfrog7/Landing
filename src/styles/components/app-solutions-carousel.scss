@@ -1,6 +1,6 @@
 app-solutions-carousel {
   .solutions {
-    background: var(--color-bg);
+    background: linear-gradient(180deg, var(--color-bg) 0%, #f0f7f3 55%, var(--color-bg) 100%);
   }
   .solutions__head {
     max-width: 640px;

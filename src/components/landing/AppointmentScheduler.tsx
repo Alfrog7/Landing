@@ -5,6 +5,7 @@ import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
 import { CalendarSelector } from './CalendarSelector';
 import { Meipo } from './Meipo';
+import { useAdvisorPhoto } from './useAdvisorPhoto';
 
 const TIME_SLOTS = ['09:30 AM', '11:00 AM', '03:30 PM', '04:45 PM', '05:30 PM'];
 
@@ -12,8 +13,7 @@ export function AppointmentScheduler() {
   const tr = useTranslation();
   const brand = BRAND_CONFIG;
 
-  // Fotografía real con fallback automático al placeholder mientras no exista el archivo
-  const [photoSrc, setPhotoSrc] = useState<string>(brand.assets.advisorPhotoReal);
+  const photo = useAdvisorPhoto();
 
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedSlot, setSelectedSlot] = useState('');
@@ -66,8 +66,9 @@ export function AppointmentScheduler() {
             <aside class="scheduler__aside">
               <div class="scheduler__photo-card">
                 <img
-                  src={photoSrc}
-                  onError={() => setPhotoSrc(brand.assets.advisorPhoto)}
+                  src={photo.src}
+                  ref={photo.ref}
+                onError={photo.onError}
                   alt={brand.ownerName}
                   class="scheduler__avatar"
                 />

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="36" viewBox="0 0 88 36" role="img" aria-label="Mapfre">
-  <rect x="1" y="1" width="86" height="34" rx="6" fill="#FFFFFF" stroke="#D4372C" stroke-width="1.6"/>
-  <circle cx="17" cy="18" r="11" fill="#D4372C"/>
-  <text x="17" y="23" font-family="Arial" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">M</text>
-  <text x="33" y="22.5" font-family="Arial" font-size="12.5" font-weight="700" fill="#D4372C">Mapfre</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="48" viewBox="0 0 128 48" role="img" aria-label="Mapfre">
+  <rect x="1" y="1" width="126" height="46" rx="10" fill="#FFFFFF" stroke="#D4372C" stroke-opacity=".28" stroke-width="1.5"/>
+  <rect x="10" y="9" width="30" height="30" rx="9" fill="#D4372C"/>
+  <path d="M16 32V16h3.6l5.4 8.2L30.4 16H34v16h-3.2V21.4l-4.5 6.8h-2.6l-4.5-6.8V32z" fill="#FFFFFF"/>
+  <text x="48" y="30" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="800" fill="#D4372C" textLength="68" lengthAdjust="spacingAndGlyphs">MAPFRE</text>
 </svg>

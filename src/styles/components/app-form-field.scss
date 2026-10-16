@@ -9,11 +9,28 @@ app-form-field {
     font-weight: 600;
     color: var(--color-heading);
   }
-  // Nota de migración: en la versión Angular estas reglas (estilos de input/select/textarea
-  // y su estado de foco/error) no llegaban a los controles proyectados por la encapsulación de
-  // vistas, por lo que los campos se veían con el estilo nativo del navegador. Se conserva ese
-  // aspecto para que la migración sea visualmente idéntica. Para estilizar los campos, basta con
-  // reactivar aquí las reglas originales de ".form-field__control" (ver historial de git).
+  .form-field__control :is(input, select, textarea) {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-heading);
+    background: var(--color-surface);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .form-field__control :is(input, select, textarea)::placeholder {
+    color: #94a3b8;
+  }
+  .form-field__control :is(input, select, textarea):focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
+  }
+  .form-field--error .form-field__control :is(input, select, textarea) {
+    border-color: #dc2626;
+  }
   .form-field__error {
     margin: 0;
     font-size: 0.78rem;

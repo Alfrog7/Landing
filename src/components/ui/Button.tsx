@@ -27,15 +27,14 @@ export function Button({
   return (
     <app-button>
       {href ? (
-        // Paridad con la versión Angular: allí había dos <ng-content> dentro de @if/@else y el
-        // contenido solo se proyectaba en la rama <button>, por lo que los enlaces se veían
-        // vacíos. Se conserva ese aspecto; para mostrar el texto basta con renderizar {children}.
         <a
           href={href}
           target={target ?? undefined}
           rel={target ? '_blank noopener noreferrer' : undefined}
           class={className}
-        ></a>
+        >
+          {children}
+        </a>
       ) : (
         <button type={type} disabled={disabled === true} onClick={() => onPressed?.()} class={className}>
           {children}
