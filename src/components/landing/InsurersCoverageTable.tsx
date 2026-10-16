@@ -6,17 +6,14 @@ import { BRAND_CONFIG } from '../../core/config/brand.config';
 
 interface MatrixInsurer {
   name: string;
-  logo?: string;
-  abbr?: string;
-  pillBg?: string;
-  pillFg?: string;
+  logo: string;
 }
 
-// Logotipos vectoriales de aliadas + pastillas de marca cuidadas para AVLA y Chubb
+// Logotipos vectoriales de las aseguradoras aliadas
 const INSURERS: MatrixInsurer[] = [
-  ...(BRAND_CONFIG.insurers.map((i) => ({ name: i.name, logo: i.logo })) as MatrixInsurer[]),
-  { name: 'AVLA / Insur', abbr: 'AVLA', pillBg: '#0b132b', pillFg: '#ffffff' },
-  { name: 'Chubb', abbr: 'CHUBB', pillBg: '#eaf4ff', pillFg: '#084783' },
+  ...BRAND_CONFIG.insurers.map((i) => ({ name: i.name, logo: i.logo })),
+  { name: 'AVLA / Insur', logo: '/assets/images/insurers/avla.svg' },
+  { name: 'Chubb', logo: '/assets/images/insurers/chubb.svg' },
 ];
 
 function Cell({ value, tr }: { value: CoverageAvailability; tr: Translator }) {
@@ -60,13 +57,12 @@ export function InsurersCoverageTable() {
                     </th>
                     {INSURERS.map((insurer) => (
                       <th key={insurer.name} scope="col" title={insurer.name}>
-                        {insurer.logo ? (
-                          <img class="matrix__insurer-logo" src={insurer.logo} alt={insurer.name} loading="lazy" />
-                        ) : (
-                          <span class="matrix__brand-pill" style={{ background: insurer.pillBg, color: insurer.pillFg }}>
-                            {insurer.abbr}
-                          </span>
-                        )}
+                        <img
+                          class="matrix__insurer-logo"
+                          src={insurer.logo}
+                          alt={insurer.name}
+                          loading="lazy"
+                        />
                       </th>
                     ))}
                   </tr>
