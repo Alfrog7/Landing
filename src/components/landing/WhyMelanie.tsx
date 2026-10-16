@@ -1,4 +1,4 @@
-import { BadgeCheck, Clock, MessageCircle, ShieldCheck } from 'lucide-preact';
+import { BadgeCheck } from 'lucide-preact';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { useTranslation } from '../../core/i18n/i18n';
 import { useAdvisorPhoto } from './useAdvisorPhoto';
@@ -36,33 +36,12 @@ export function WhyMelanie() {
 
           <div class="why__blocks">
             <h2 class="section-title why__title">{tr.t('why.title')}</h2>
-            <div class="why__block">
-              <span class="why__icon why__icon--green">
-                <MessageCircle size={24} />
-              </span>
-              <div>
-                <h3>{tr.t('why.block1Title')}</h3>
-                <p>{tr.t('why.block1Text')}</p>
+            {[1, 2, 3].map((n) => (
+              <div key={n} class="why__block">
+                <h3>{tr.t(`why.block${n}Title`)}</h3>
+                <p>{tr.t(`why.block${n}Text`)}</p>
               </div>
-            </div>
-            <div class="why__block">
-              <span class="why__icon why__icon--sky">
-                <Clock size={24} />
-              </span>
-              <div>
-                <h3>{tr.t('why.block2Title')}</h3>
-                <p>{tr.t('why.block2Text')}</p>
-              </div>
-            </div>
-            <div class="why__block">
-              <span class="why__icon why__icon--orange">
-                <ShieldCheck size={24} />
-              </span>
-              <div>
-                <h3>{tr.t('why.block3Title')}</h3>
-                <p>{tr.t('why.block3Text')}</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

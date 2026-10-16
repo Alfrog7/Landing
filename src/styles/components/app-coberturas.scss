@@ -4,9 +4,6 @@ app-coberturas {
   .hero-mini {
     @include m.page-hero(4rem);
   }
-  .eyebrow--light {
-    color: #a7f3d0;
-  }
   .hero-mini h1 {
     color: #fff;
     font-size: clamp(1.9rem, 4.5vw, 3rem);

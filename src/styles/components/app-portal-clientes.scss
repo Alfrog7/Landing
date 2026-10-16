@@ -3,9 +3,7 @@ app-portal-clientes {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background:
-      radial-gradient(circle at 20% 0%, rgba(16, 185, 129, 0.08), transparent 50%),
-      var(--color-bg);
+    background: var(--color-bg);
   }
   .portal__bar {
     display: flex;
@@ -37,7 +35,7 @@ app-portal-clientes {
     font-weight: 700;
     color: var(--color-muted);
     background: rgba(16, 185, 129, 0.08);
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     padding: 0.35rem 0.8rem;
   }
   .portal__main {

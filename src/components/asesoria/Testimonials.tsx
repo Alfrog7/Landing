@@ -34,8 +34,7 @@ export function Testimonials() {
     <app-testimonials>
       <section class="section">
         <div class="container">
-          <div class="text-center testimonials__intro">
-            <span class="eyebrow">Casos de éxito</span>
+          <div class="testimonials__intro">
             <h2 class="section-title">Validados en obra, planta y mina</h2>
           </div>
           <div class="testimonials__grid">

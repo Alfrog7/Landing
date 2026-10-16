@@ -38,8 +38,7 @@ export default function LandingPage() {
 
       <section class="section" id="faq">
         <div class="container landing-faq">
-          <div class="text-center landing-faq__head">
-            <span class="eyebrow">{tr.t('faq.eyebrow')}</span>
+          <div class="landing-faq__head">
             <h2 class="section-title">{tr.t('faq.title')}</h2>
           </div>
           <Accordion items={faqs} />

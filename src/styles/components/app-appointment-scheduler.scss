@@ -2,38 +2,17 @@ app-appointment-scheduler {
   // Sección compactada (py-10/py-12): menos espacio muerto vertical
   .scheduler {
     position: relative;
-    padding: clamp(2.5rem, 5vw, 3rem) 0;
-  }
-  // Orbes de gradiente ambiental detrás del panel del agendador
-  .scheduler__orb {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .scheduler__orb--emerald {
-    width: min(480px, 60vw);
-    height: 400px;
-    left: -5%;
-    top: 4%;
-    background: rgba(16, 185, 129, 0.07);
-    filter: blur(80px);
-  }
-  .scheduler__orb--sky {
-    width: min(430px, 52vw);
-    height: 360px;
-    right: -6%;
-    bottom: 6%;
-    background: rgba(14, 165, 233, 0.05);
-    filter: blur(90px);
+    padding: var(--space-section) 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border-strong);
   }
   .scheduler > .container {
     position: relative;
     z-index: 1;
   }
   .scheduler__head {
-    max-width: 620px;
-    margin: 0 auto 1.6rem;
+    max-width: 40rem;
+    margin: 0 0 2.5rem;
   }
   .scheduler__panel {
     display: grid;
@@ -42,9 +21,8 @@ app-appointment-scheduler {
     width: 100%;
     max-width: 100%;
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-3xl);
-    box-shadow: var(--shadow-md);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-lg);
     // p-6 md:p-8
     padding: 1.5rem;
   }
@@ -85,9 +63,8 @@ app-appointment-scheduler {
     align-items: center;
     gap: 0.3rem;
     background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
     border: 1px solid var(--color-border);
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     padding: 0.3rem 0.65rem;
     font-size: 0.68rem;
     font-weight: 700;
@@ -189,9 +166,9 @@ app-appointment-scheduler {
   }
   .scheduler__slot {
     padding: 0.6rem 0.75rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
     font-family: var(--font-body);
     font-size: 0.84rem;
     font-weight: 600;
@@ -204,11 +181,10 @@ app-appointment-scheduler {
   }
   // Horario seleccionado: esmeralda vibrante con texto blanco y negrita
   .scheduler__slot--active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--color-ink);
+    border-color: var(--color-ink);
     color: #fff;
-    font-weight: 800;
-    box-shadow: 0 8px 18px -8px rgba(16, 185, 129, 0.55);
+    font-weight: 700;
   }
   .scheduler__fields {
     display: grid;
@@ -221,8 +197,8 @@ app-appointment-scheduler {
     width: 100%;
     min-width: 0;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
     font-family: var(--font-body);
     font-size: 0.9rem;
     color: var(--color-heading);
@@ -232,7 +208,8 @@ app-appointment-scheduler {
   }
   .scheduler__fields input:focus,
   .scheduler__fields select:focus {
-    border-color: var(--color-primary);
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 3px rgba(242, 107, 33, 0.4);
   }
   .scheduler__confirm {
     display: block;
@@ -241,21 +218,18 @@ app-appointment-scheduler {
     margin-top: 0.3rem;
     box-sizing: border-box;
     padding: 0.95rem 1.4rem;
-    border: 0;
-    border-radius: var(--radius-lg);
-    background: var(--color-primary);
-    color: #fff;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    background: var(--color-orange);
+    color: var(--color-ink);
     font-family: var(--font-body);
     font-size: 1rem;
-    font-weight: 800;
-    box-shadow: 0 12px 26px -12px rgba(16, 185, 129, 0.55);
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    transition: background 0.15s ease;
   }
   .scheduler__confirm:hover:not(:disabled) {
-    background: var(--color-primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 14px 30px -12px rgba(5, 150, 105, 0.6);
+    background: var(--color-orange-dark);
   }
   .scheduler__confirm:disabled {
     opacity: 0.5;

@@ -7,18 +7,20 @@ app-sctr-breakdown {
   .breakdown__tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     font-size: 0.78rem;
     font-weight: 700;
     margin-bottom: 1rem;
   }
   .breakdown__tag--salud {
-    background: rgba(16, 185, 129, 0.12);
-    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border: 1px solid rgba(11, 122, 87, 0.35);
+    color: var(--color-primary-text);
   }
   .breakdown__tag--pension {
-    background: rgba(11, 19, 43, 0.1);
-    color: var(--color-secondary);
+    background: var(--color-orange-light);
+    border: 1px solid rgba(242, 107, 33, 0.45);
+    color: #a8420a;
   }
   .breakdown h3 {
     font-size: 1.2rem;

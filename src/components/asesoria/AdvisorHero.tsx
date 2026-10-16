@@ -19,7 +19,6 @@ export function AdvisorHero() {
             <img src={brand.assets.advisorPhoto} alt={`${brand.brandName}, ${brand.roleTitle}`} />
           </div>
           <div class="advisor__copy">
-            <span class="eyebrow">Perfil de autoridad</span>
             <h1>{brand.brandName}</h1>
             <p class="advisor__role">
               {brand.roleTitle} · {brand.licenseId}

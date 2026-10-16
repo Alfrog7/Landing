@@ -37,8 +37,7 @@ export function InsurersCoverageTable() {
     <app-insurers-coverage-table>
       <section class="section matrix" id="aseguradoras">
         <div class="container">
-          <div class="text-center matrix__head">
-            <span class="eyebrow">{tr.t('matrix.eyebrow')}</span>
+          <div class="matrix__head">
             <h2 class="section-title">{tr.t('matrix.title')}</h2>
             <p class="matrix__subtitle">{tr.t('matrix.subtitle')}</p>
             <span class="matrix__neutral">

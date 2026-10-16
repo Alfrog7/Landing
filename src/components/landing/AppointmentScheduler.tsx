@@ -59,11 +59,8 @@ export function AppointmentScheduler() {
   return (
     <app-appointment-scheduler>
       <section class="section scheduler" id="agendar">
-        <span class="scheduler__orb scheduler__orb--emerald" aria-hidden="true"></span>
-        <span class="scheduler__orb scheduler__orb--sky" aria-hidden="true"></span>
         <div class="container">
-          <div class="text-center scheduler__head">
-            <span class="eyebrow">{tr.t('schedule.eyebrow')}</span>
+          <div class="scheduler__head">
             <h2 class="section-title">{tr.t('schedule.title')}</h2>
           </div>
 

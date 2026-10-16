@@ -4,9 +4,6 @@ app-agendar-cita {
   .booking-hero {
     @include m.page-hero(3.8rem);
   }
-  .eyebrow--light {
-    color: #a7f3d0;
-  }
   .booking-hero h1 {
     color: #fff;
     font-size: clamp(1.8rem, 4vw, 2.6rem);

@@ -4,9 +4,6 @@ app-faqs {
   .faqs-hero {
     @include m.page-hero(3.8rem);
   }
-  .eyebrow--light {
-    color: #a7f3d0;
-  }
   .faqs-hero h1 {
     color: #fff;
     font-size: clamp(1.9rem, 4.2vw, 2.8rem);

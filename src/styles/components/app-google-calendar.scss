@@ -35,7 +35,7 @@ app-google-calendar {
     align-items: center;
     justify-content: center;
     padding: 0.8rem 1.5rem;
-    border-radius: 999px;
+    border-radius: var(--radius-sm);
     background: var(--color-primary);
     color: #fff;
     font-weight: 700;

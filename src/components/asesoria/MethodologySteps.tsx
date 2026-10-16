@@ -38,8 +38,7 @@ export function MethodologySteps() {
     <app-methodology-steps>
       <section class="section methodology">
         <div class="container">
-          <div class="text-center methodology__intro">
-            <span class="eyebrow">Metodología de trabajo</span>
+          <div class="methodology__intro">
             <h2 class="section-title">Cuatro pasos hasta tu póliza gestionada</h2>
           </div>
           <ol class="methodology__steps">
