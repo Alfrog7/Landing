@@ -1,29 +1,36 @@
 app-solutions-carousel {
   .solutions {
-    background: linear-gradient(180deg, var(--color-bg) 0%, #f0f7f3 55%, var(--color-bg) 100%);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-strong);
   }
   .solutions__head {
-    max-width: 640px;
-    margin: 0 auto 2.2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: end;
+    gap: 1rem 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .solutions__head .section-title {
+    margin: 0;
   }
   .solutions__hint {
     color: var(--color-muted);
-    font-size: 0.95rem;
-    margin: 0.3rem 0 0;
+    font-size: 1rem;
+    max-width: 44ch;
+    margin: 0;
   }
-  // El ancho del carrusel se limita para que, con pocas tarjetas, nunca se vea la misma dos veces
-  // a la vez. La separación entre tarjetas va como padding de cada slide (no como gap) para que
-  // el salto del loop de Embla conserve el espacio.
-  .solutions__viewport-wrap {
-    position: relative;
-    max-width: 1240px;
-    margin-inline: auto;
+  @media (max-width: 800px) {
+    .solutions__head {
+      grid-template-columns: 1fr;
+    }
   }
+
+  // El ancho del carrusel sigue la grilla de la página: con pocas tarjetas nunca se ve la misma dos
+  // veces a la vez. La separación entre tarjetas va como padding de cada slide (no como gap) para
+  // que el salto del loop de Embla conserve el espacio.
   .solutions__viewport {
     overflow: hidden;
     min-width: 0;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
   }
   .solutions__track {
     display: flex;
@@ -34,82 +41,62 @@ app-solutions-carousel {
   .solutions__slide {
     flex: 0 0 auto;
     min-width: calc(290px + 1.5rem);
-    max-width: calc(320px + 1.5rem);
+    max-width: calc(330px + 1.5rem);
     padding-left: 1.5rem;
     display: flex;
   }
+
+  .solutions__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border-strong);
+  }
+  .solutions__dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .solutions__dot {
+    width: 1.5rem;
+    height: 0.4rem;
+    border: 0;
+    border-radius: 1px;
+    background: var(--color-border-strong);
+    cursor: pointer;
+  }
+  .solutions__dot--active {
+    background: var(--color-ink);
+  }
+  .solutions__arrows {
+    display: flex;
+    gap: 0.5rem;
+  }
   .solutions__nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
-    color: var(--color-heading);
+    color: var(--color-ink);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.15s ease;
   }
   .solutions__nav:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary-dark);
-  }
-  .solutions__nav--prev {
-    left: 1rem;
-  }
-  .solutions__nav--next {
-    right: 1rem;
-  }
-  // En pantallas amplias las flechas salen del borde del carrusel para no tapar las tarjetas
-  @media (min-width: 1360px) {
-    .solutions__nav--prev {
-      left: -1.4rem;
-    }
-    .solutions__nav--next {
-      right: -1.4rem;
-    }
-  }
-  .solutions__dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.6rem;
-  }
-  .solutions__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    border: 0;
-    background: var(--color-border-strong);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .solutions__dot--active {
-    width: 26px;
-    background: var(--color-primary);
+    background: var(--color-orange);
   }
   @media (max-width: 640px) {
-    .solutions__nav {
-      display: none;
-    }
     // Slide táctil: la siguiente tarjeta asoma para invitar al swipe
     .solutions__slide {
       min-width: calc(82vw + 1.5rem);
-      max-width: calc(310px + 1.5rem);
+      max-width: calc(330px + 1.5rem);
     }
-    .solutions__viewport-wrap {
-      padding-left: max(4vw, 0.75rem);
-      padding-right: max(4vw, 0.75rem);
-    }
-    .solutions__viewport {
-      -webkit-mask-image: none;
-      mask-image: none;
+    .solutions__nav {
+      display: none;
     }
   }
 }

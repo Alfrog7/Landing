@@ -1,50 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0" stop-color="#1D4ED8"/><stop offset="1" stop-color="#1E1B4B"/>
-    </linearGradient>
-    <radialGradient id="glowA"><stop offset="0" stop-color="#60A5FA" stop-opacity=".5"/><stop offset="1" stop-color="#60A5FA" stop-opacity="0"/></radialGradient>
-    <radialGradient id="glowB"><stop offset="0" stop-color="#FB923C" stop-opacity=".38"/><stop offset="1" stop-color="#FB923C" stop-opacity="0"/></radialGradient>
-    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#fff" fill-opacity=".18"/></pattern>
-    <radialGradient id="fade" cx=".5" cy=".4" r=".62"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
-    <mask id="dotmask"><rect width="640" height="640" fill="url(#fade)"/></mask>
-    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset="1" stop-color="#fff" stop-opacity=".09"/></linearGradient>
-    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DDE6EF"/></linearGradient>
-    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60A5FA"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
-    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDE68A"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
-    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
-    <filter id="sh" x="-30%" y="-30%" width="160%" height="175%"><feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000" flood-opacity=".42"/></filter>
-    <filter id="sh2" x="-30%" y="-30%" width="160%" height="175%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity=".35"/></filter>
-    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
-  </defs>
-  <rect width="640" height="640" fill="url(#bg)"/>
-  <circle cx="480" cy="140" r="250" fill="url(#glowA)"/>
-  <circle cx="120" cy="540" r="260" fill="url(#glowB)"/>
-  <rect width="640" height="640" fill="url(#dots)" mask="url(#dotmask)"/>
-  <g fill="none" stroke="#fff" stroke-opacity=".09">
-    <circle cx="320" cy="268" r="150"/><circle cx="320" cy="268" r="215" stroke-dasharray="3 9"/><circle cx="320" cy="268" r="290"/>
-  </g>
-  <g stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round">
-    <path d="M118 150h14M125 143v14"/><path d="M520 300h12M526 294v12"/><path d="M540 120h10M545 115v10"/><path d="M96 330h10M101 325v10"/>
-  </g>
-  <g fill="#fff" fill-opacity=".55"><circle cx="500" cy="210" r="2.4"/><circle cx="140" cy="250" r="2"/><circle cx="560" cy="380" r="2.2"/><circle cx="90" cy="430" r="1.8"/></g>
-  <g transform="translate(0 -30) translate(320 285) scale(.88) translate(-320 -285)">
-  <!-- sol -->
-  <circle cx="470" cy="190" r="70" fill="#FDBA74" fill-opacity=".22"/><circle cx="470" cy="190" r="40" fill="#FDBA74" fill-opacity=".4"/>
-  <!-- globo -->
-  <g filter="url(#sh)"><circle cx="320" cy="290" r="108" fill="url(#acc)"/>
-    <g fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.5"><ellipse cx="320" cy="290" rx="108" ry="40"/><ellipse cx="320" cy="290" rx="46" ry="108"/><path d="M212 290h216M226 240h188M226 340h188"/></g>
-    <path d="M262 244c14-18 38-22 46-8 6 10-10 18-8 30 2 14-18 22-26 40-12-8-26-30-12-62z" fill="#4ADE80" fill-opacity=".85"/>
-    <path d="M338 268c16-6 40-2 50 14 8 14-8 30-24 30-18-4-34-24-26-44z" fill="#4ADE80" fill-opacity=".85"/>
-    <circle cx="320" cy="290" r="108" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
-    <path d="M254 218a110 110 0 0 1 110-26" stroke="#fff" stroke-opacity=".5" stroke-width="6" stroke-linecap="round" fill="none"/></g>
-  <!-- avión -->
-  <path d="M170 236 C 240 130 400 120 470 176" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="3" stroke-dasharray="4 9" stroke-linecap="round"/>
-  <g transform="translate(470 176) rotate(38)" filter="url(#sh2)"><path d="M0-30c6 0 10 6 10 14v18l34 22v10l-34-10v20l12 10v8l-22-6-22 6v-8l12-10v-20l-34 10v-10l34-22v-18c0-8 4-14 10-14z" fill="#fff"/></g>
-  <!-- maleta -->
-  <g filter="url(#sh2)"><rect x="396" y="338" width="86" height="68" rx="12" fill="url(#warm)"/><rect x="424" y="324" width="30" height="20" rx="8" fill="none" stroke="#B45309" stroke-width="5"/><path d="M412 338v68M468 338v68" stroke="#B45309" stroke-opacity=".6" stroke-width="4"/></g>
-  <!-- pin médico -->
-  <g filter="url(#sh2)"><path d="M214 340c-22 0-36 16-36 34 0 24 36 52 36 52s36-28 36-52c0-18-14-34-36-34z" fill="#EF4444"/><path d="M206 360h16v10h10v16h-10v10h-16v-10h-10v-16h10z" fill="#fff"/></g>
-  <g filter="url(#sh2)"><rect x="150" y="190" width="78" height="34" rx="17" fill="url(#glass)" stroke="#fff" stroke-opacity=".38" /><text x="189" y="212" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="14.28" fill="#BFDBFE">24/7</text></g></g>
-  <rect y="400" width="640" height="240" fill="url(#ground)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#C9DFF0"/>
+  <path d="M32 0V480M64 0V480M96 0V480M128 0V480M160 0V480M192 0V480M224 0V480M256 0V480M288 0V480M320 0V480M352 0V480M384 0V480M416 0V480M448 0V480M480 0V480M512 0V480M544 0V480M576 0V480M608 0V480M0 32H640M0 64H640M0 96H640M0 128H640M0 160H640M0 192H640M0 224H640M0 256H640M0 288H640M0 320H640M0 352H640M0 384H640M0 416H640M0 448H640" stroke="#10201B" stroke-opacity=".08" stroke-width="1" fill="none"/>
+  <rect y="410" width="640" height="70" fill="#10201B" fill-opacity=".1"/>
+  <path d="M0 410H640" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+
+  <circle cx="480" cy="140" r="44" fill="#F5B50A" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="320" cy="270" r="118" fill="#2F6FB0" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <g fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="3"><ellipse cx="320" cy="270" rx="118" ry="44"/><ellipse cx="320" cy="270" rx="50" ry="118"/><path d="M202 270h236M214 220h212M214 320h212"/></g>
+  <path d="M262 222c14-18 40-22 48-8 6 10-10 18-8 30 2 14-18 22-26 40-12-8-28-30-14-62z" fill="#6FBF73" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M340 246c16-6 42-2 52 14 8 14-8 30-24 30-18-4-36-24-28-44z" fill="#6FBF73" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M140 250C200 130 380 110 468 168" fill="none" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 10"/>
+  <g transform="translate(470 170) rotate(36)"><path d="M0-34c7 0 11 7 11 15v20l38 24v12l-38-12v22l14 12v9l-25-7-25 7v-9l14-12v-22l-38 12v-12l38-24v-20c0-8 4-15 11-15z" fill="#FFFFFF" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></g>
+  <rect x="396" y="334" width="96" height="74" rx="10" fill="#F26B21" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="428" y="318" width="32" height="22" rx="8" fill="none" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M416 334v74M472 334v74" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+  <path d="M190 336c-24 0-40 18-40 38 0 26 40 56 40 56s40-30 40-56c0-20-16-38-40-38z" fill="#FFFFFF" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M182 358h16v12h12v16h-12v12h-16v-12h-12v-16h12z" fill="#D9372B" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="150" y="150" width="88" height="38" rx="4" fill="#FFFFFF" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><text x="194" y="176" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#10201B">24/7</text>
 </svg>

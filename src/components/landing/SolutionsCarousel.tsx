@@ -12,50 +12,29 @@ interface SolutionCardProps {
 
 function SolutionCard({ service, onDetailPressed }: SolutionCardProps) {
   const tr = useTranslation();
+  const open = (event?: Event) => {
+    event?.stopPropagation();
+    onDetailPressed(service);
+  };
 
   return (
     <app-solution-card>
       <article class="card" onClick={() => onDetailPressed(service)}>
-        <img class="card__bg" src={service.image} alt={tr.t(`services.${service.id}.title`)} loading="lazy" />
-        <div class="card__shade" aria-hidden="true"></div>
+        <div class="card__media">
+          <img class="card__bg" src={service.image} alt={tr.t(`services.${service.id}.title`)} loading="lazy" />
+          <span class="card__badge">{tr.t(`services.${service.id}.badge`)}</span>
+          <button type="button" class="card__plus" aria-label={tr.t('carousel.cardCta')} onClick={open}>
+            <Plus size={18} />
+          </button>
+        </div>
 
-        <button
-          type="button"
-          class="card__plus"
-          aria-label={tr.t('carousel.cardCta')}
-          onClick={(event) => {
-            event.stopPropagation();
-            onDetailPressed(service);
-          }}
-        >
-          <Plus size={18} />
-        </button>
-
-        <div class="card__content">
-          <div class="card__top">
-            <span class="card__badge">{tr.t(`services.${service.id}.badge`)}</span>
-            <div class="card__insurers">
-              {service.insurers.map((insurer) => (
-                <span key={insurer} class="card__pill">
-                  {insurer}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div class="card__body">
-            <h3 class="card__title">{tr.t(`services.${service.id}.title`)}</h3>
-            <p class="card__summary">{tr.t(`services.${service.id}.summary`)}</p>
-          </div>
-
-          <button
-            type="button"
-            class="card__cta"
-            onClick={(event) => {
-              event.stopPropagation();
-              onDetailPressed(service);
-            }}
-          >
+        <div class="card__body">
+          <h3 class="card__title">{tr.t(`services.${service.id}.title`)}</h3>
+          <p class="card__summary">{tr.t(`services.${service.id}.summary`)}</p>
+          <p class="card__insurers">
+            <span>{tr.t('modal.aliadas')}</span> {service.insurers.join(', ')}
+          </p>
+          <button type="button" class="card__cta" onClick={open}>
             {tr.t('carousel.cardCta')}
           </button>
         </div>
@@ -161,23 +140,14 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
     <app-solutions-carousel>
       <section class="section solutions" id="soluciones">
         <div class="container">
-          <div class="solutions__head text-center">
-            <span class="eyebrow">{tr.t('carousel.eyebrow')}</span>
+          <div class="solutions__head">
             <h2 class="section-title">
               {activeTab === 'empresas' ? tr.t('carousel.titleEmpresas') : tr.t('carousel.titlePersonas')}
             </h2>
             <p class="solutions__hint">{tr.t('carousel.hint')}</p>
           </div>
         </div>
-        <div class="solutions__viewport-wrap">
-          <button
-            type="button"
-            class="solutions__nav solutions__nav--prev"
-            onClick={() => emblaRef.current?.scrollPrev()}
-            aria-label={tr.t('carousel.prev')}
-          >
-            <ChevronLeft size={20} />
-          </button>
+        <div class="solutions__viewport-wrap container">
           <div class="solutions__viewport" ref={viewportRef} onMouseEnter={stopAutoplay} onMouseLeave={startAutoplay}>
             <div class="solutions__track">
               {displayServices.map((service, index) => (
@@ -187,25 +157,37 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
               ))}
             </div>
           </div>
-          <button
-            type="button"
-            class="solutions__nav solutions__nav--next"
-            onClick={() => emblaRef.current?.scrollNext()}
-            aria-label={tr.t('carousel.next')}
-          >
-            <ChevronRight size={20} />
-          </button>
         </div>
-        <div class="container solutions__dots" aria-label={tr.t('carousel.dotsAria')}>
-          {dots.map((index) => (
+        <div class="container solutions__controls">
+          <div class="solutions__dots" aria-label={tr.t('carousel.dotsAria')}>
+            {dots.map((index) => (
+              <button
+                key={index}
+                type="button"
+                class={`solutions__dot${selectedIndex === index ? ' solutions__dot--active' : ''}`}
+                aria-label={`${tr.t('carousel.pageAria')} ${index + 1}`}
+                onClick={() => emblaRef.current?.scrollTo(index)}
+              ></button>
+            ))}
+          </div>
+          <div class="solutions__arrows">
             <button
-              key={index}
               type="button"
-              class={`solutions__dot${selectedIndex === index ? ' solutions__dot--active' : ''}`}
-              aria-label={`${tr.t('carousel.pageAria')} ${index + 1}`}
-              onClick={() => emblaRef.current?.scrollTo(index)}
-            ></button>
-          ))}
+              class="solutions__nav"
+              onClick={() => emblaRef.current?.scrollPrev()}
+              aria-label={tr.t('carousel.prev')}
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              type="button"
+              class="solutions__nav"
+              onClick={() => emblaRef.current?.scrollNext()}
+              aria-label={tr.t('carousel.next')}
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </section>
     </app-solutions-carousel>
