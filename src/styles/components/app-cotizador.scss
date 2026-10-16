@@ -1,11 +1,11 @@
+@use '../mixins' as m;
+
 app-cotizador {
   .cotizador-hero {
-    background: var(--color-primary);
-    color: #fff;
-    padding: clamp(2.5rem, 6vw, 3.8rem) 0;
+    @include m.page-hero(3.8rem);
   }
   .eyebrow--light {
-    color: #a8c4f5;
+    color: #a7f3d0;
   }
   .cotizador-hero h1 {
     color: #fff;

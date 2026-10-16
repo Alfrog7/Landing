@@ -199,13 +199,12 @@ export default function PortalClientes() {
       <div class="portal">
         <header class="portal__bar">
           <a href="/" class="portal__brand" aria-label="Volver al inicio">
-            <span class="portal__shield" aria-hidden="true">
-              S
-            </span>
-            <span class="portal__name">
-              {brand.brandName}
-              <small>{brand.licenseId}</small>
-            </span>
+            <img
+              class="portal__logo"
+              src={brand.assets.logoLight}
+              alt={`${brand.brandName} · ${brand.brandSubtitle}`}
+            />
+            <span class="portal__license">{brand.licenseId}</span>
           </a>
           <span class="portal__badge">{brand.supervisionBadge}</span>
         </header>

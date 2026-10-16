@@ -14,16 +14,16 @@ app-badge {
     line-height: 1.2;
   }
   .app-badge--primary {
-    background: rgba(25, 82, 190, 0.12);
-    color: var(--color-primary);
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--color-primary-text);
   }
   .app-badge--secondary {
-    background: rgba(10, 29, 55, 0.1);
+    background: rgba(11, 19, 43, 0.1);
     color: var(--color-secondary);
   }
   .app-badge--whatsapp {
-    background: rgba(0, 135, 90, 0.12);
-    color: var(--color-whatsapp);
+    background: rgba(37, 211, 102, 0.14);
+    color: var(--color-primary-text);
   }
   .app-badge--warn {
     background: rgba(234, 88, 12, 0.12);
