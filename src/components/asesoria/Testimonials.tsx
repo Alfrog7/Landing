@@ -34,12 +34,13 @@ export function Testimonials() {
     <app-testimonials>
       <section class="section">
         <div class="container">
-          <div class="testimonials__intro">
-            <h2 class="section-title">Validados en obra, planta y mina</h2>
-          </div>
+          <h2 class="section-title testimonials__title">Validados en obra, planta y mina</h2>
           <div class="testimonials__grid">
-            {TESTIMONIALS.map((testimonial) => (
-              <figure key={testimonial.author} class="testimonials__card">
+            {TESTIMONIALS.map((testimonial, index) => (
+              <figure
+                key={testimonial.author}
+                class={`testimonials__card${index === 0 ? ' testimonials__card--lead' : ''}`}
+              >
                 <blockquote>“{testimonial.quote}”</blockquote>
                 <figcaption>
                   <strong>{testimonial.author}</strong>

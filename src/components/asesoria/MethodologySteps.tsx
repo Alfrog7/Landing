@@ -1,5 +1,3 @@
-import { Card } from '../ui/Card';
-
 interface MethodStep {
   number: number;
   title: string;
@@ -33,23 +31,20 @@ const STEPS: MethodStep[] = [
   },
 ];
 
+// Es una secuencia real, por eso va numerada: filas separadas por filetes, no cuatro tarjetas iguales
 export function MethodologySteps() {
   return (
     <app-methodology-steps>
       <section class="section methodology">
-        <div class="container">
-          <div class="methodology__intro">
-            <h2 class="section-title">Cuatro pasos hasta tu póliza gestionada</h2>
-          </div>
+        <div class="container methodology__layout">
+          <h2 class="section-title methodology__title">Cuatro pasos hasta tu póliza gestionada</h2>
           <ol class="methodology__steps">
             {STEPS.map((step) => (
-              <Card key={step.number} class="methodology__step">
-                <li>
-                  <span class="methodology__number">{step.number}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </li>
-              </Card>
+              <li key={step.number} class="methodology__step">
+                <span class="methodology__number">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
             ))}
           </ol>
         </div>

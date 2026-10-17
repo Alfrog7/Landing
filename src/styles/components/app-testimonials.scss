@@ -1,53 +1,69 @@
 app-testimonials {
-  .testimonials__intro {
-    max-width: 40rem;
-    margin: 0 0 2.5rem;
+  .testimonials__title {
+    max-width: 18ch;
+    margin-bottom: 2.5rem;
   }
+  // Un testimonio principal grande y dos de apoyo: el peso no se reparte por igual
   .testimonials__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.4rem;
+    grid-template-columns: 1.35fr 1fr;
+    column-gap: clamp(2rem, 5vw, 4rem);
   }
   .testimonials__card {
     margin: 0;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 1.6rem;
-    box-shadow: var(--shadow-sm);
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--color-border-strong);
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1rem;
+  }
+  .testimonials__card--lead {
+    grid-row: 1 / span 2;
+    border-top: 1.5px solid var(--color-ink);
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .testimonials__card:nth-child(2) {
+    border-top: 1.5px solid var(--color-ink);
   }
   blockquote {
     margin: 0;
-    font-size: 0.98rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--color-heading);
+  }
+  .testimonials__card--lead blockquote {
+    font-family: var(--font-heading);
+    font-stretch: 88%;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    line-height: 1.25;
   }
   figure figcaption {
     display: flex;
     flex-direction: column;
-    line-height: 1.35;
+    line-height: 1.4;
   }
   figcaption strong {
     color: var(--color-heading);
   }
   figcaption span {
-    font-size: 0.83rem;
+    font-size: 0.9rem;
     color: var(--color-muted);
   }
   .testimonials__sector {
-    margin-top: 0.2rem;
-    color: var(--color-primary) !important;
+    color: var(--color-primary-text) !important;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.72rem !important;
   }
   @media (max-width: 900px) {
     .testimonials__grid {
       grid-template-columns: 1fr;
+    }
+    .testimonials__card--lead {
+      grid-row: auto;
+    }
+    .testimonials__card:nth-child(2) {
+      border-top: 1px solid var(--color-border-strong);
     }
   }
 }

@@ -2,38 +2,30 @@ app-sctr-breakdown {
   .breakdown__cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    column-gap: clamp(2rem, 5vw, 4rem);
   }
-  .breakdown__tag {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.78rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+  .breakdown__col {
+    padding-top: 1.25rem;
+    border-top: 1.5px solid var(--color-ink);
   }
-  .breakdown__tag--salud {
-    background: var(--color-primary-light);
-    border: 1px solid rgba(11, 122, 87, 0.35);
-    color: var(--color-primary-text);
+  .breakdown__col h3 {
+    font-size: 1.4rem;
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
   }
-  .breakdown__tag--pension {
-    background: var(--color-orange-light);
-    border: 1px solid rgba(242, 107, 33, 0.45);
-    color: #a8420a;
-  }
-  .breakdown h3 {
-    font-size: 1.2rem;
+  .breakdown__col p {
+    max-width: 52ch;
   }
   .breakdown__item {
-    margin: 0.3rem 0 0;
+    margin: 0.4rem 0 0;
     font-weight: 600;
     color: var(--color-heading);
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
   @media (max-width: 800px) {
     .breakdown__cards {
       grid-template-columns: 1fr;
+      row-gap: 2.5rem;
     }
   }
 }
