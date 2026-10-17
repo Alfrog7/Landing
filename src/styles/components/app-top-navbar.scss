@@ -24,23 +24,6 @@ app-top-navbar {
     height: 2.5rem;
     width: auto;
   }
-  .navbar__sbs {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding-left: 1.25rem;
-    border-left: 1px solid var(--color-border-strong);
-    color: var(--color-primary-text);
-    font-size: 0.78rem;
-    font-weight: 700;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  @media (max-width: 1120px) {
-    .navbar__sbs {
-      display: none;
-    }
-  }
   .navbar__links {
     display: flex;
     gap: 1.75rem;

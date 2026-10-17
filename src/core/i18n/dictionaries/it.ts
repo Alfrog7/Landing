@@ -5,7 +5,7 @@ export const IT = {
     linksWhy: 'Perché Melanie?',
     linksInsurers: 'Assicuratori',
     linksFaq: 'Domande',
-    schedule: 'Prenota una chiamata (15 min)',
+    schedule: 'Prenota una chiamata',
     openMenu: 'Apri il menu',
     closeMenu: 'Chiudi il menu',
     ariaLang: 'Cambia lingua',

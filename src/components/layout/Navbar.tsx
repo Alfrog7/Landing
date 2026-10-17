@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Calendar, ChevronDown, Globe, Menu, ShieldCheck, X } from 'lucide-preact';
+import { Calendar, ChevronDown, Globe, Menu, X } from 'lucide-preact';
 import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
@@ -96,11 +96,6 @@ export default function Navbar() {
               class="navbar__brand-logo"
             />
           </a>
-
-          <span class="navbar__sbs" title="Corredora de Seguros Colegiada ante la SBS del Perú">
-            <ShieldCheck size={15} />
-            {brand.sbsChipShort}
-          </span>
 
           <nav class="navbar__links" aria-label="Navegación principal">
             {NAV_LINKS.map((link) => (

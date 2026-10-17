@@ -5,7 +5,7 @@ export const EN = {
     linksWhy: 'Why Melanie?',
     linksInsurers: 'Insurers',
     linksFaq: 'FAQ',
-    schedule: 'Book a Call (15 min)',
+    schedule: 'Book a Call',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     ariaLang: 'Change language',
