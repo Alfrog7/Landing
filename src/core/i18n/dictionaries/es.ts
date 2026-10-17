@@ -5,6 +5,7 @@ export const ES = {
     linksWhy: '¿Por qué Melanie?',
     linksInsurers: 'Aseguradoras',
     linksFaq: 'Preguntas',
+    linksHow: 'Cómo funciona',
     schedule: 'Agendar cita',
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
@@ -26,7 +27,6 @@ export const ES = {
     trust1: 'Sin costos ocultos',
     trust2: 'Emisión express',
     trust3: 'Respaldo SBS Oficial',
-    bubble: '¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨',
     docTitle: 'Constancia SCTR',
     docStatus: 'Vigente',
     docCompany: 'Empresa',
@@ -42,7 +42,7 @@ export const ES = {
     titleEmpresas: 'Seguros para Empresas',
     titlePersonas: 'Seguros para Personas & Familias',
     hint: 'Desliza las tarjetas y pulsa (+) para ver la ficha completa',
-    cardCta: 'Ver Ficha y Cotizar →',
+    cardCta: 'Ver Ficha y Cotizar',
     ariaFicha: 'Ver ficha de',
     prev: 'Anterior',
     next: 'Siguiente',
@@ -86,6 +86,18 @@ export const ES = {
     block3Text: 'Asesoría técnica sin costo para el cliente; las aseguradoras reconocen la comisión según ley, garantizando imparcialidad.',
   },
 
+  how: {
+    title: 'Cuatro pasos hasta tu póliza gestionada',
+    s1Title: 'Diagnóstico de riesgo y planilla',
+    s1Text: 'Mapeamos las actividades de alto riesgo, el censo de trabajadores en planilla (T-Registro) y las exigencias contractuales del principal.',
+    s2Title: 'Licitación multimarca',
+    s2Text: 'Pedimos cotizaciones a Rímac, Pacífico, Mapfre y La Positiva para comparar primas, endosos y condiciones.',
+    s3Title: 'Emisión y validación de la póliza',
+    s3Text: 'Revisamos pólizas y constancias, verificamos la cobertura exacta para garitas y coordinamos el pago de la prima.',
+    s4Title: 'Acompañamiento continuo',
+    s4Text: 'Movimientos mensuales de planilla, soporte en siniestros, renovación anual y mejoras de cobertura cuando el mercado lo permite.',
+  },
+
   schedule: {
     pickSlot: 'Elegir horario',
     pickHint: 'Elige día y hora en el calendario de Melanie.',
@@ -117,6 +129,7 @@ export const ES = {
   },
 
   faq: {
+    more: 'Ver todas las preguntas',
     eyebrow: 'Preguntas frecuentes',
     title: 'Respuestas rápidas antes de cotizar',
     q1: '¿Tiene algún costo adicional contratar mis seguros a través de una corredora colegiada?',
@@ -138,6 +151,7 @@ export const ES = {
   },
 
   footer: {
+    linkPortal: 'Portal de clientes',
     nav: 'Navegación',
     linkCoberturas: 'Coberturas & SCTR',
     linkAsesoria: 'Asesoría',
@@ -155,7 +169,7 @@ export const ES = {
     privacy: 'Política de Privacidad',
     terms: 'Términos y Condiciones',
     comingSoon: 'Disponible próximamente',
-    emergency: '🚨 Soporte urgente para garitas',
+    emergency: 'Soporte urgente para garitas',
     credentialLine: 'Corredora de Seguros Colegiada SBS.',
     rights: 'Todos los derechos reservados.',
   },

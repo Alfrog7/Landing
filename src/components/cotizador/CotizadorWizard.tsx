@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-preact';
 import { Stepper, type StepDefinition } from '../ui/Stepper';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
@@ -164,7 +165,10 @@ export default function CotizadorWizard() {
   if (submitted) {
     return (
       <div class="wizard-confirm" role="status">
-        <Badge variant="whatsapp">✓ Solicitud recibida</Badge>
+        <Badge variant="whatsapp">
+          <Check size={14} />
+          Solicitud recibida
+        </Badge>
         <h2>¡Gracias, {draft?.contactName}!</h2>
         <p>
           Registramos tu solicitud de cotización de <strong>{draft ? INSURANCE_TYPE_LABELS[draft.productType] : ''}</strong>{' '}
@@ -189,7 +193,7 @@ export default function CotizadorWizard() {
           <Button variant="whatsapp" href={draft ? WhatsAppService.buildQuoteUrl(draft) : ''} target="_blank">
             Continuar por WhatsApp
           </Button>
-          <Button variant="outline" href="/agendar-cita">
+          <Button variant="outline" href="/#agendar">
             Agendar asesoría de 15 min
           </Button>
         </div>
@@ -329,12 +333,14 @@ export default function CotizadorWizard() {
         <div class="wizard-nav">
           {currentStep > 0 && (
             <Button variant="outline" type="button" onPressed={back}>
-              ← Anterior
+              <ArrowLeft size={16} />
+              Anterior
             </Button>
           )}
           {currentStep < 2 ? (
             <Button variant="primary" type="button" onPressed={next}>
-              Continuar →
+              Continuar
+              <ArrowRight size={16} />
             </Button>
           ) : (
             <Button variant="primary" type="submit" block>

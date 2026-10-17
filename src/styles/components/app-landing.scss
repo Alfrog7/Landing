@@ -16,7 +16,19 @@ app-landing {
     top: 6rem;
   }
   .landing-faq__head .section-title {
-    margin: 0;
+    margin: 0 0 1.25rem;
+  }
+  .landing-faq__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-ink);
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-ink);
+    padding-bottom: 0.1rem;
+  }
+  .landing-faq__all:hover {
+    border-bottom-color: var(--color-orange);
   }
   .landing-faq app-accordion {
     display: block;

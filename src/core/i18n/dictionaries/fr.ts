@@ -5,6 +5,7 @@ export const FR = {
     linksWhy: 'Pourquoi Melanie ?',
     linksInsurers: 'Assureurs',
     linksFaq: 'Questions',
+    linksHow: 'Comment ça marche',
     schedule: 'Réserver un appel',
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
@@ -26,7 +27,6 @@ export const FR = {
     trust1: 'Sans coûts cachés',
     trust2: 'Émission express',
     trust3: 'Agrément officiel SBS',
-    bubble: 'Bonjour ! Je suis Meipo. Je t\u2019aide à trouver ta police parfaite en quelques minutes 🐨',
     docTitle: 'Attestation SCTR',
     docStatus: 'En vigueur',
     docCompany: 'Entreprise',
@@ -42,7 +42,7 @@ export const FR = {
     titleEmpresas: 'Assurances pour Entreprises',
     titlePersonas: 'Assurances pour Particuliers & Familles',
     hint: 'Faites défiler les cartes et appuyez sur (+) pour voir la fiche complète',
-    cardCta: 'Voir la fiche & obtenir un devis →',
+    cardCta: 'Voir la fiche & obtenir un devis',
     ariaFicha: 'Voir la fiche de',
     prev: 'Précédent',
     next: 'Suivant',
@@ -86,6 +86,18 @@ export const FR = {
     block3Text: 'Conseil technique sans frais pour le client ; les assureurs versent la commission selon la loi, garantissant l\u2019impartialité.',
   },
 
+  how: {
+    title: 'Quatre étapes jusqu’à une police gérée',
+    s1Title: 'Diagnostic des risques et de la masse salariale',
+    s1Text: 'Nous cartographions les activités à haut risque, le recensement des salariés (T-Registro) et les exigences contractuelles du donneur d’ordre.',
+    s2Title: 'Appel d’offres multimarque',
+    s2Text: 'Nous demandons des devis à Rímac, Pacífico, Mapfre et La Positiva pour comparer primes, avenants et conditions.',
+    s3Title: 'Émission et validation de la police',
+    s3Text: 'Nous vérifions polices et attestations, la couverture exacte pour les accès et coordonnons le paiement de la prime.',
+    s4Title: 'Accompagnement continu',
+    s4Text: 'Mouvements mensuels du personnel, soutien en cas de sinistre, renouvellement annuel et améliorations de garanties quand le marché le permet.',
+  },
+
   schedule: {
     pickSlot: 'Choisir un horaire',
     pickHint: "Choisissez un jour et une heure dans l'agenda de Melanie.",
@@ -117,6 +129,7 @@ export const FR = {
   },
 
   faq: {
+    more: 'Voir toutes les questions',
     eyebrow: 'Questions fréquentes',
     title: 'Réponses rapides avant de demander un devis',
     q1: 'Y a-t-il un coût supplémentaire pour souscrire mon assurance via un courtier agréé ?',
@@ -138,6 +151,7 @@ export const FR = {
   },
 
   footer: {
+    linkPortal: 'Espace client',
     nav: 'Navigation',
     linkCoberturas: 'Garanties & SCTR',
     linkAsesoria: 'Conseil personnalisé',
@@ -155,7 +169,7 @@ export const FR = {
     privacy: 'Politique de confidentialité',
     terms: 'Conditions générales',
     comingSoon: 'Bientôt disponible',
-    emergency: '🚨 Assistance urgente entrées de mine',
+    emergency: 'Assistance urgente entrées de mine',
     credentialLine: 'Courtière d\u2019assurance agréée SBS.',
     rights: 'Tous droits réservés.',
   },

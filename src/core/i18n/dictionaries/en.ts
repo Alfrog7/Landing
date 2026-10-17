@@ -5,6 +5,7 @@ export const EN = {
     linksWhy: 'Why Melanie?',
     linksInsurers: 'Insurers',
     linksFaq: 'FAQ',
+    linksHow: 'How it works',
     schedule: 'Book a Call',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
@@ -26,7 +27,6 @@ export const EN = {
     trust1: 'No hidden costs',
     trust2: 'Express issuance',
     trust3: 'Official SBS backing',
-    bubble: 'Hi! I am Meipo. I will help you find your perfect policy in minutes 🐨',
     docTitle: 'SCTR certificate',
     docStatus: 'Valid',
     docCompany: 'Company',
@@ -42,7 +42,7 @@ export const EN = {
     titleEmpresas: 'Insurance for Companies',
     titlePersonas: 'Insurance for People & Families',
     hint: 'Swipe through the cards and tap (+) to see the full details',
-    cardCta: 'View Details & Get a Quote →',
+    cardCta: 'View Details & Get a Quote',
     ariaFicha: 'View details of',
     prev: 'Previous',
     next: 'Next',
@@ -86,6 +86,18 @@ export const EN = {
     block3Text: 'Technical advice at no cost to the client; insurers recognize the commission by law, guaranteeing impartiality.',
   },
 
+  how: {
+    title: 'Four steps to a managed policy',
+    s1Title: 'Risk and payroll assessment',
+    s1Text: 'We map the high-risk activities, the payroll headcount (T-Registro) and the contractual requirements of the main contractor.',
+    s2Title: 'Multi-insurer tender',
+    s2Text: 'We request quotes from Rímac, Pacífico, Mapfre and La Positiva to compare premiums, endorsements and terms.',
+    s3Title: 'Policy issuance and validation',
+    s3Text: 'We review policies and certificates, verify the exact coverage for site gates and coordinate the premium payment.',
+    s4Title: 'Ongoing support',
+    s4Text: 'Monthly payroll changes, claims support, annual renewal and coverage upgrades when the market allows.',
+  },
+
   schedule: {
     pickSlot: 'Choose a time',
     pickHint: "Pick a day and time in Melanie's calendar.",
@@ -117,6 +129,7 @@ export const EN = {
   },
 
   faq: {
+    more: 'See all questions',
     eyebrow: 'Frequently asked questions',
     title: 'Quick answers before you get a quote',
     q1: 'Is there any extra cost for taking out my insurance through a licensed broker?',
@@ -138,6 +151,7 @@ export const EN = {
   },
 
   footer: {
+    linkPortal: 'Client portal',
     nav: 'Navigation',
     linkCoberturas: 'Coverage & SCTR',
     linkAsesoria: 'Advisory Services',
@@ -155,7 +169,7 @@ export const EN = {
     privacy: 'Privacy Policy',
     terms: 'Terms and Conditions',
     comingSoon: 'Coming soon',
-    emergency: '🚨 Urgent support for mine gate entries',
+    emergency: 'Urgent support for mine gate entries',
     credentialLine: 'SBS-Licensed Insurance Broker.',
     rights: 'All rights reserved.',
   },

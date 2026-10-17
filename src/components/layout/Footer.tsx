@@ -1,3 +1,4 @@
+import { TriangleAlert } from 'lucide-preact';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
@@ -25,17 +26,19 @@ export default function Footer() {
               {tr.t('footer.credentialLine')}
             </p>
             <a class="footer__emergency" href={urgentUrl} target="_blank" rel="noopener noreferrer">
+              <TriangleAlert size={16} />
               {tr.t('footer.emergency')}
             </a>
           </div>
 
           <div class="footer__col">
             <h3>{tr.t('footer.nav')}</h3>
-            <a href="/coberturas-sctr">{tr.t('footer.linkCoberturas')}</a>
-            <a href="/asesoria">{tr.t('footer.linkAsesoria')}</a>
-            <a href="/preguntas-frecuentes">{tr.t('footer.linkFaq')}</a>
+            <a href="/#soluciones">{tr.t('navbar.linksSolutions')}</a>
+            <a href="/#como-funciona">{tr.t('navbar.linksHow')}</a>
+            <a href="/#aseguradoras">{tr.t('navbar.linksInsurers')}</a>
             <a href="/cotizador">{tr.t('footer.linkCotizador')}</a>
-            <a href="/agendar-cita">{tr.t('footer.linkAgendar')}</a>
+            <a href="/preguntas-frecuentes">{tr.t('footer.linkFaq')}</a>
+            <a href="/portal-clientes">{tr.t('footer.linkPortal')}</a>
           </div>
 
           <div class="footer__col">

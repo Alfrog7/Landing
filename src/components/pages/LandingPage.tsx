@@ -1,7 +1,9 @@
 import { useState } from 'preact/hooks';
+import { ArrowRight } from 'lucide-preact';
 import { Accordion } from '../ui/Accordion';
 import { Hero } from '../landing/Hero';
 import { SolutionsCarousel } from '../landing/SolutionsCarousel';
+import { HowItWorks } from '../landing/HowItWorks';
 import { InsurersCoverageTable } from '../landing/InsurersCoverageTable';
 import { WhyMelanie } from '../landing/WhyMelanie';
 import { AppointmentScheduler } from '../landing/AppointmentScheduler';
@@ -26,6 +28,8 @@ export default function LandingPage() {
 
       <SolutionsCarousel activeTab={activeTab} onDetailPressed={setDetail} />
 
+      <HowItWorks />
+
       <InsurersCoverageTable />
 
       <WhyMelanie />
@@ -36,6 +40,10 @@ export default function LandingPage() {
         <div class="container landing-faq">
           <div class="landing-faq__head">
             <h2 class="section-title">{tr.t('faq.title')}</h2>
+            <a class="landing-faq__all" href="/preguntas-frecuentes">
+              {tr.t('faq.more')}
+              <ArrowRight size={16} />
+            </a>
           </div>
           <Accordion items={faqs} />
         </div>

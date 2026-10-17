@@ -5,6 +5,7 @@ export const IT = {
     linksWhy: 'Perché Melanie?',
     linksInsurers: 'Assicuratori',
     linksFaq: 'Domande',
+    linksHow: 'Come funziona',
     schedule: 'Prenota una chiamata',
     openMenu: 'Apri il menu',
     closeMenu: 'Chiudi il menu',
@@ -26,7 +27,6 @@ export const IT = {
     trust1: 'Nessun costo nascosto',
     trust2: 'Emissione express',
     trust3: 'Riconoscimento ufficiale SBS',
-    bubble: 'Ciao! Sono Meipo. Ti aiuto a trovare la polizza perfetta in pochi minuti 🐨',
     docTitle: 'Certificato SCTR',
     docStatus: 'Valido',
     docCompany: 'Azienda',
@@ -42,7 +42,7 @@ export const IT = {
     titleEmpresas: 'Assicurazioni per Aziende',
     titlePersonas: 'Assicurazioni per Persone & Famiglie',
     hint: 'Scorri le card e premi (+) per vedere la scheda completa',
-    cardCta: 'Vedi la scheda e richiedi un preventivo →',
+    cardCta: 'Vedi la scheda e richiedi un preventivo',
     ariaFicha: 'Vedi la scheda di',
     prev: 'Precedente',
     next: 'Successivo',
@@ -86,6 +86,18 @@ export const IT = {
     block3Text: 'Consulenza tecnica a costo zero per il cliente; le compagnie riconoscono la provvigione per legge, garantendo l\u2019imparzialità.',
   },
 
+  how: {
+    title: 'Quattro passi fino a una polizza gestita',
+    s1Title: 'Diagnosi di rischio e organico',
+    s1Text: 'Mappiamo le attività ad alto rischio, il censimento dei lavoratori (T-Registro) e i requisiti contrattuali del committente.',
+    s2Title: 'Gara multicompagnia',
+    s2Text: 'Chiediamo preventivi a Rímac, Pacífico, Mapfre e La Positiva per confrontare premi, appendici e condizioni.',
+    s3Title: 'Emissione e convalida della polizza',
+    s3Text: 'Verifichiamo polizze e certificati, la copertura esatta per gli accessi e coordiniamo il pagamento del premio.',
+    s4Title: 'Assistenza continua',
+    s4Text: 'Movimenti mensili dell’organico, supporto nei sinistri, rinnovo annuale e miglioramenti di copertura quando il mercato lo consente.',
+  },
+
   schedule: {
     pickSlot: 'Scegli un orario',
     pickHint: "Scegli giorno e ora nel calendario di Melanie.",
@@ -117,6 +129,7 @@ export const IT = {
   },
 
   faq: {
+    more: 'Vedi tutte le domande',
     eyebrow: 'Domande frequenti',
     title: 'Risposte rapide prima di chiedere un preventivo',
     q1: 'C\u2019è un costo aggiuntivo per assicurarmi tramite un broker abilitata?',
@@ -138,6 +151,7 @@ export const IT = {
   },
 
   footer: {
+    linkPortal: 'Portale clienti',
     nav: 'Navigazione',
     linkCoberturas: 'Coperture & SCTR',
     linkAsesoria: 'Consulenza',
@@ -155,7 +169,7 @@ export const IT = {
     privacy: 'Informativa sulla Privacy',
     terms: 'Termini e Condizioni',
     comingSoon: 'Disponibile in futuro',
-    emergency: '🚨 Assistenza urgente per accessi in miniera',
+    emergency: 'Assistenza urgente per accessi in miniera',
     credentialLine: 'Broker assicurativa abilitata SBS.',
     rights: 'Tutti i diritti riservati.',
   },

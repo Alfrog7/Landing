@@ -1,21 +1,20 @@
 import { BRAND_CONFIG } from './brand.config';
 
-export interface NavLink {
-  label: string;
-  path: string;
-}
+// Secciones de la Home, en el orden de la página
+export const HOME_SECTIONS = [
+  { id: 'soluciones', path: '/#soluciones' },
+  { id: 'como-funciona', path: '/#como-funciona' },
+  { id: 'aseguradoras', path: '/#aseguradoras' },
+  { id: 'sobre-melanie', path: '/#sobre-melanie' },
+  { id: 'agendar', path: '/#agendar' },
+  { id: 'faq', path: '/#faq' },
+] as const;
 
-export const MAIN_NAV_LINKS: NavLink[] = [
-  { label: 'Coberturas & SCTR', path: '/coberturas-sctr' },
-  { label: 'Asesoría', path: '/asesoria' },
-  { label: 'Preguntas Frecuentes', path: '/preguntas-frecuentes' },
-  { label: 'Contacto', path: '/#contacto' },
-];
-
-export const QUICK_ACTIONS = {
-  portal: '/portal-clientes',
+// Páginas que se mantienen aparte
+export const PAGES = {
   quote: '/cotizador',
-  booking: '/agendar-cita',
+  faq: '/preguntas-frecuentes',
+  portal: '/portal-clientes',
 } as const;
 
 export const BRAND = BRAND_CONFIG;

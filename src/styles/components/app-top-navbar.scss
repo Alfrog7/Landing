@@ -124,14 +124,16 @@ app-top-navbar {
     font-weight: 700;
     color: var(--color-ink);
   }
-  .navbar__lang-item--active::after {
-    content: '✓';
-    color: var(--color-primary);
-  }
   .navbar__lang-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--color-muted);
+  }
+  .navbar__lang-check {
+    color: var(--color-primary);
   }
   .navbar__lang--mobile {
     align-self: flex-start;

@@ -1,36 +1,33 @@
-app-methodology-steps {
-  .methodology {
+app-how-it-works {
+  .how {
     background: var(--color-surface);
-    border-top: 1px solid var(--color-border-strong);
     border-bottom: 1px solid var(--color-border-strong);
   }
-  .methodology__layout {
+  .how__layout {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: start;
+    align-items: center;
   }
-  .methodology__title {
-    grid-column: 1 / span 4;
-    position: sticky;
-    top: 6rem;
+  .how__title {
+    grid-column: 1 / span 5;
     margin: 0;
   }
-  .methodology__steps {
+  .how__steps {
     grid-column: 6 / span 7;
     list-style: none;
     margin: 0;
     padding: 0;
     border-top: 1.5px solid var(--color-ink);
   }
-  .methodology__step {
+  .how__step {
     display: grid;
     grid-template-columns: 3.5rem 1fr;
     column-gap: 1rem;
-    padding: 1.5rem 0;
+    padding: 1.25rem 0;
     border-bottom: 1px solid var(--color-border-strong);
   }
-  .methodology__number {
+  .how__number {
     grid-row: 1 / span 2;
     font-family: var(--font-heading);
     font-stretch: 78%;
@@ -39,21 +36,20 @@ app-methodology-steps {
     line-height: 1;
     color: var(--color-orange-dark);
   }
-  .methodology h3 {
+  .how__step h3 {
     font-size: 1.3rem;
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.35rem;
   }
-  .methodology p {
+  .how__step p {
     margin: 0;
     max-width: 52ch;
   }
   @media (max-width: 900px) {
-    .methodology__title,
-    .methodology__steps {
+    .how__title,
+    .how__steps {
       grid-column: 1 / -1;
-      position: static;
     }
-    .methodology__title {
+    .how__title {
       margin-bottom: 2rem;
     }
   }

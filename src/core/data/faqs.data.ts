@@ -76,27 +76,3 @@ export const FAQS: FaqItem[] = [
     category: 'Rol del Broker',
   },
 ];
-
-export interface ResourceLink {
-  label: string;
-  description: string;
-  href: string;
-}
-
-export const RESOURCES: ResourceLink[] = [
-  {
-    label: 'Formato modelo T-Registro',
-    description: 'Plantilla base para declarar altas y bajas mensuales ante la SUNAT.',
-    href: '#',
-  },
-  {
-    label: 'Declaración de planilla mensual (SCTR)',
-    description: 'Formato para consolidar la planilla de trabajadores en riesgo.',
-    href: '#',
-  },
-  {
-    label: 'Checklist de garita de ingreso',
-    description: 'Documentos previstos por la mayoría de contratantes en obras y minas.',
-    href: '#',
-  },
-];

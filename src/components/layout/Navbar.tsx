@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Calendar, ChevronDown, Globe, Menu, X } from 'lucide-preact';
+import { Calendar, Check, ChevronDown, Globe, Menu, X } from 'lucide-preact';
 import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
@@ -11,8 +11,9 @@ const whatsappUrl = WhatsAppService.buildGenericUrl(
 
 const NAV_LINKS = [
   { fragment: 'soluciones', labelKey: 'navbar.linksSolutions' },
-  { fragment: 'sobre-melanie', labelKey: 'navbar.linksWhy' },
+  { fragment: 'como-funciona', labelKey: 'navbar.linksHow' },
   { fragment: 'aseguradoras', labelKey: 'navbar.linksInsurers' },
+  { fragment: 'sobre-melanie', labelKey: 'navbar.linksWhy' },
   { fragment: 'faq', labelKey: 'navbar.linksFaq' },
 ] as const;
 
@@ -77,7 +78,10 @@ export default function Navbar() {
               onClick={() => selectLang(language.code)}
             >
               <span>{language.name}</span>
-              <span class="navbar__lang-code">{language.shortCode}</span>
+              <span class="navbar__lang-code">
+                {language.code === tr.lang && <Check size={14} class="navbar__lang-check" />}
+                {language.shortCode}
+              </span>
             </button>
           ))}
         </div>

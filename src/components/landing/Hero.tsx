@@ -46,7 +46,7 @@ export function Hero({ activeTab, onTabChange }: HeroProps) {
               <a href="/cotizador" class="hero__cta-primary">
                 {tr.t('hero.ctaPrimary')}
               </a>
-              <a href="/#soluciones" class="hero__cta-secondary">
+              <a href="/#como-funciona" class="hero__cta-secondary">
                 {tr.t('hero.ctaSecondary')}
                 <ArrowDown size={18} />
               </a>

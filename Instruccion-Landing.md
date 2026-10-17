@@ -1,3 +1,5 @@
+> Nota: la Home absorbió las pantallas de coberturas, asesoría y agendamiento; solo /cotizador, /preguntas-frecuentes y /portal-clientes siguen como páginas aparte. Las descripciones de pantalla de abajo son el brief original.
+
 # Especificación de Desarrollo: Melanie Silva — Corredora de Seguros
 
 ## 1. Resumen Ejecutivo y Alcance del Negocio
@@ -165,11 +167,9 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
 | Ruta | Archivo | Layout |
 | --- | --- | --- |
 | `/` | `index.astro` | Principal (navbar + footer) |
-| `/coberturas-sctr` | `coberturas-sctr.astro` | Principal |
-| `/asesoria` | `asesoria.astro` | Principal |
 | `/preguntas-frecuentes` | `preguntas-frecuentes.astro` | Principal |
 | `/cotizador` | `cotizador.astro` | Principal |
-| `/agendar-cita` | `agendar-cita.astro` | Principal |
+| `/agendar-cita`, `/asesoria`, `/coberturas-sctr` | (redirecciones) | Llevan a la sección equivalente de la Home (`astro.config.mjs`) |
 | `/portal-clientes` | `portal-clientes.astro` | Sin navbar ni footer |
 | cualquier otra | `404.astro` | Redirige a `/` |
 
@@ -180,14 +180,11 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
 ### 7.1 Top Navbar
 - **Izquierda:** Logotipo Melanie Silva + badge "Reg. SBS J-0941" (vinculados dinámicamente a `BRAND_CONFIG`).
 - **Centro (Navegación Desktop):**
-  - Coberturas & SCTR (`/coberturas-sctr`)
-  - Asesoría (`/asesoria`)
-  - Preguntas Frecuentes (`/preguntas-frecuentes`)
-  - Contacto (`#contacto`)
+  - Soluciones, Cómo funciona, Aseguradoras, ¿Por qué Melanie?, Preguntas (secciones de la Home, `/#…`)
 - **Derecha (Acciones Rápidas):**
   - Botón secundario: *Portal Clientes* (`/portal-clientes`)
   - Botón primario: *+ Cotizar* (`/cotizador`)
-  - Botón destacado: *Agendar Cita* (`/agendar-cita`)
+  - Botón destacado: *Agendar Cita* (`/#agendar`)
 - **Móvil:** Menú hamburguesa colapsable con accesos directos y llamada directa a WhatsApp.
 
 ### 7.2 Footer Institucional
@@ -265,7 +262,7 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
 
 ---
 
-### Pantalla 6: Agendamiento de Cita Rápida (`/agendar-cita`)
+### Pantalla 6: Agendamiento de Cita Rápida (`/#agendar`)
 - **Ficha de la Sesión:**
   - Título: *"Asesoría Ejecutiva de 15 Minutos"*.
   - Modalidad: Videollamada (Google Meet / Microsoft Teams).
