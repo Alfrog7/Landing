@@ -20,13 +20,9 @@ export default function LandingPage() {
     answer: tr.t(`faq.a${index + 1}`),
   }));
 
-  const quotePressed = () => {
-    document.getElementById('soluciones')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <app-landing>
-      <Hero activeTab={activeTab} onTabChange={setActiveTab} onQuotePressed={quotePressed} />
+      <Hero activeTab={activeTab} onTabChange={setActiveTab} />
 
       <SolutionsCarousel activeTab={activeTab} onDetailPressed={setDetail} />
 

@@ -6,10 +6,9 @@ import { Meipo } from './Meipo';
 interface HeroProps {
   activeTab: AudienceCategory;
   onTabChange: (tab: AudienceCategory) => void;
-  onQuotePressed: () => void;
 }
 
-export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
+export function Hero({ activeTab, onTabChange }: HeroProps) {
   const tr = useTranslation();
 
   return (
@@ -48,9 +47,9 @@ export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
             </div>
 
             <div class="hero__ctas">
-              <button type="button" class="hero__cta-primary" onClick={onQuotePressed}>
+              <a href="/cotizador" class="hero__cta-primary">
                 {tr.t('hero.ctaPrimary')}
-              </button>
+              </a>
               <a href="/#soluciones" class="hero__cta-secondary">
                 {tr.t('hero.ctaSecondary')}
                 <ArrowDown size={18} />

@@ -75,7 +75,7 @@ app-hero {
     gap: 0.5rem;
     border: 0;
     background: transparent;
-    padding: 0.7rem 1.1rem;
+    padding: 0.85rem 1.1rem;
     font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 600;
@@ -105,6 +105,9 @@ app-hero {
     margin-bottom: 2rem;
   }
   .hero__cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: var(--color-orange);
     color: var(--color-ink);
     border: 1.5px solid var(--color-ink);
@@ -327,13 +330,12 @@ app-hero {
       align-self: flex-start;
     }
     .hero__trust {
-      flex-direction: column;
-      gap: 0.4rem;
+      font-size: 0.88rem;
+      row-gap: 0.25rem;
     }
     .hero__trust li {
-      border-right: 0;
-      margin-right: 0;
-      padding-right: 0;
+      padding-right: 0.7rem;
+      margin-right: 0.7rem;
     }
     .hero__doc-fields > div {
       grid-template-columns: 6rem 1fr;

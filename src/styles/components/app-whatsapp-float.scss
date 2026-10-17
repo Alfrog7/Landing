@@ -15,6 +15,14 @@ app-whatsapp-float {
     border: 2px solid var(--color-ink);
     transition: transform 0.2s ease, background 0.2s ease;
   }
+  @media (max-width: 640px) {
+    .wafloat {
+      right: 1rem;
+      bottom: 1rem;
+      width: 52px;
+      height: 52px;
+    }
+  }
   .wafloat:hover {
     background: var(--color-whatsapp-dark);
     transform: scale(1.06);
