@@ -1,3 +1,5 @@
+import { Check } from 'lucide-preact';
+
 export interface StepDefinition {
   label: string;
 }
@@ -13,7 +15,7 @@ export function Stepper({ steps, current = 0 }: { steps: StepDefinition[]; curre
             aria-current={current === i ? 'step' : undefined}
           >
             <span class="stepper__index" aria-hidden="true">
-              {current > i ? '✓' : i + 1}
+              {current > i ? <Check size={14} strokeWidth={3} /> : i + 1}
             </span>
             <span class="stepper__label">{step.label}</span>
           </li>

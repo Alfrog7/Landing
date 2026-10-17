@@ -94,6 +94,9 @@ app-solution-card {
     color: var(--color-ink);
   }
   .card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin-top: auto;
     align-self: flex-start;
     padding: 0 0 0.1rem;

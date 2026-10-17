@@ -2,7 +2,7 @@ import { WhatsAppIcon } from '../ui/WhatsAppIcon';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
 
-const url = WhatsAppService.buildGenericUrl('quisiera cotizar un seguro con asesoría personalizada. 🐨');
+const url = WhatsAppService.buildGenericUrl('quisiera cotizar un seguro con asesoría personalizada.');
 
 export default function WhatsAppFloat() {
   const tr = useTranslation();

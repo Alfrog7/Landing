@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import { ChevronLeft, ChevronRight } from 'lucide-preact';
 
 interface CalendarDay {
   date: string;
@@ -107,11 +108,11 @@ export function CalendarSelector({ selectedDate, onDateChange }: CalendarSelecto
       <div class="calendar">
         <div class="calendar__nav">
           <button type="button" onClick={() => changeMonth(-1)} disabled={!canGoBack()} aria-label="Mes anterior">
-            ←
+            <ChevronLeft size={18} />
           </button>
           <strong>{monthLabel}</strong>
           <button type="button" onClick={() => changeMonth(1)} disabled={isNextMonthMax()} aria-label="Mes siguiente">
-            →
+            <ChevronRight size={18} />
           </button>
         </div>
         <div class="calendar__weekdays" aria-hidden="true">

@@ -28,7 +28,10 @@ app-express-download {
     align-content: start;
   }
   .access__icon {
-    font-size: 1.9rem;
+    color: var(--color-primary);
+  }
+  .access--urgent .access__icon {
+    color: var(--color-orange-dark);
   }
   .access h2 {
     font-size: 1.15rem;

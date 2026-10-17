@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import { BadgeCheck } from 'lucide-preact';
+import { BadgeCheck, Check } from 'lucide-preact';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
@@ -85,9 +85,12 @@ export function AppointmentScheduler() {
               </span>
 
               <ul class="scheduler__tags">
-                <li>{tr.t('schedule.tag1')}</li>
-                <li>{tr.t('schedule.tag2')}</li>
-                <li>{tr.t('schedule.tag3')}</li>
+                {[1, 2, 3].map((n) => (
+                  <li key={n}>
+                    <Check size={14} strokeWidth={3} />
+                    {tr.t(`schedule.tag${n}`)}
+                  </li>
+                ))}
               </ul>
 
               <div class="scheduler__tip">

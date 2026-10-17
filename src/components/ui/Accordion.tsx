@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { ChevronDown } from 'lucide-preact';
 
 export interface AccordionItem {
   question: string;
@@ -23,7 +24,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
             >
               <span class="accordion__question">{item.question}</span>
               <span class="accordion__icon" aria-hidden="true">
-                ▾
+                <ChevronDown size={20} />
               </span>
             </button>
             <div class="accordion__panel" id={`accordion-panel-${i}`} aria-hidden={openIndex !== i}>

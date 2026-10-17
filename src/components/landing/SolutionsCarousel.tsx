@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import EmblaCarousel, { type EmblaCarouselType } from 'embla-carousel';
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-preact';
+import { ArrowRight, ChevronLeft, ChevronRight, Plus } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { AudienceCategory, ServiceDetail } from '../../core/models/insurance-service.model';
 import { SERVICES_CATALOG_DATA } from '../../core/data/landing.data';
@@ -46,6 +46,7 @@ function SolutionCard({ service, onDetailPressed }: SolutionCardProps) {
           </p>
           <button type="button" class="card__cta" onClick={open}>
             {tr.t('carousel.cardCta')}
+            <ArrowRight size={16} />
           </button>
         </div>
       </article>

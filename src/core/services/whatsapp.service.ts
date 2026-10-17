@@ -23,7 +23,7 @@ export const WhatsAppService = {
 
   buildServiceUrl(serviceTitle: string, tag: string): string {
     const message = [
-      `¡Hola ${BRAND_CONFIG.brandName}! 👋 Vengo desde tu web y deseo cotizar *${serviceTitle}* (${tag}).`,
+      `¡Hola ${BRAND_CONFIG.brandName}! Vengo desde tu web y deseo cotizar *${serviceTitle}* (${tag}).`,
       '',
       '¿Podrías indicarme qué documentos o datos de mi empresa/caso necesitas para presentarme una propuesta comparativa con las aseguradoras?',
       '',
@@ -41,7 +41,7 @@ export const WhatsAppService = {
     serviceTopic: string;
   }): string {
     const message = [
-      `¡Hola ${BRAND_CONFIG.brandName}! 👋 Acabo de agendar una sesión de 15 minutos.`,
+      `¡Hola ${BRAND_CONFIG.brandName}! Acabo de agendar una sesión de 15 minutos.`,
       '',
       `• *Fecha:* ${data.date}`,
       `• *Hora:* ${data.time}`,
@@ -57,7 +57,7 @@ export const WhatsAppService = {
 
   buildUrgentCheckpointUrl(): string {
     const message = [
-      '🚨 *URGENCIA DE EMISIÓN / GARITA:*',
+      '*URGENCIA DE EMISIÓN / GARITA:*',
       `Hola ${BRAND_CONFIG.brandName}, requiero emisión o constancia urgente para ingreso inmediato de personal a obra/mina.`,
       'Por favor tu atención prioritaria.',
     ].join('\n');

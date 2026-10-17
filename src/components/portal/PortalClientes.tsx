@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { FileCheck, TriangleAlert, UserPlus } from 'lucide-preact';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { FormField } from '../ui/FormField';
@@ -104,7 +105,7 @@ function ExpressDownload({ ruc, onLogout }: { ruc: string; onLogout: () => void 
           <Card>
             <article class="access">
               <span class="access__icon" aria-hidden="true">
-                🎫
+                <FileCheck size={30} />
               </span>
               <h2>Constancia SCTR vigente</h2>
               <p>Descarga la última constancia emitida para presentación en garitas de ingreso.</p>
@@ -116,7 +117,7 @@ function ExpressDownload({ ruc, onLogout }: { ruc: string; onLogout: () => void 
           <Card>
             <article class="access">
               <span class="access__icon" aria-hidden="true">
-                📥
+                <UserPlus size={30} />
               </span>
               <h2>Movimientos de planilla</h2>
               <p>Solicitud de inclusión o exclusión de trabajadores en la nómina mensual del seguro.</p>
@@ -128,7 +129,7 @@ function ExpressDownload({ ruc, onLogout }: { ruc: string; onLogout: () => void 
           <Card>
             <article class="access access--urgent">
               <span class="access__icon" aria-hidden="true">
-                🚨
+                <TriangleAlert size={30} />
               </span>
               <h2>Incidencias en garita</h2>
               <p>Canal prioritario cuando hay un problema con el pase de ingreso de tu personal en obra.</p>

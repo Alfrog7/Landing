@@ -95,11 +95,14 @@ app-appointment-scheduler {
     font-size: 0.84rem;
     color: var(--color-body);
   }
-  .scheduler__tags li::before {
-    content: '✓';
+  .scheduler__tags li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .scheduler__tags svg {
     color: var(--color-primary);
-    font-weight: 800;
-    margin-right: 0.45rem;
+    flex-shrink: 0;
   }
   .scheduler__tip {
     display: flex;
