@@ -73,10 +73,12 @@ export const FR = {
     },
     available: 'Disponible',
     consult: 'Nous consulter',
+    ctaBtn: 'Savoir quelle couverture convient à mon entreprise',
     notAvailable: 'Non disponible',
   },
 
   why: {
+    cta: 'Prendre rendez-vous',
     role: 'Courtière d\u2019assurance agréée SBS',
     track: '15+ ans d\u2019expérience agréée',
     title: 'Pourquoi se faire conseiller par Melanie Silva ?',
@@ -89,6 +91,8 @@ export const FR = {
   },
 
   schedule: {
+    pickSlot: 'Choisir un horaire',
+    pickHint: "Choisissez un jour et une heure dans l'agenda de Melanie.",
     eyebrow: 'Réservez votre rendez-vous',
     title: 'Une session gratuite de 15 minutes, sans jargon technique',
     tag1: 'Durée : 15 minutes (GRATUIT)',

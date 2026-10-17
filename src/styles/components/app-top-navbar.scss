@@ -147,7 +147,11 @@ app-top-navbar {
     background: none;
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
-    padding: 0.45rem 0.55rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     color: var(--color-ink);
   }
@@ -189,7 +193,7 @@ app-top-navbar {
       display: none;
     }
     .navbar__burger {
-      display: block;
+      display: inline-flex;
       margin-left: auto;
     }
     .navbar__brand-logo {

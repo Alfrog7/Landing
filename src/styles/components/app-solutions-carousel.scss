@@ -72,18 +72,21 @@ app-solutions-carousel {
   }
   .solutions__dots {
     display: flex;
-    gap: 0.5rem;
+    gap: 0;
   }
+  // La barra visible mide 0.4rem; el área táctil es de 2.75rem
   .solutions__dot {
-    width: 1.5rem;
-    height: 0.4rem;
+    width: 2rem;
+    height: 2.75rem;
+    padding: 1.175rem 0.25rem;
     border: 0;
-    border-radius: 1px;
     background: var(--color-border-strong);
+    background-clip: content-box;
     cursor: pointer;
   }
   .solutions__dot--active {
     background: var(--color-ink);
+    background-clip: content-box;
   }
   .solutions__arrows {
     display: flex;

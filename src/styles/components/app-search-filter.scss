@@ -16,7 +16,8 @@ app-search-filter {
     font-family: var(--font-body);
     font-size: 0.82rem;
     font-weight: 600;
-    padding: 0.45rem 1rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease;

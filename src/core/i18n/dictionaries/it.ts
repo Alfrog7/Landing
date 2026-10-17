@@ -73,10 +73,12 @@ export const IT = {
     },
     available: 'Disponibile',
     consult: 'Consultereci',
+    ctaBtn: 'Scopri quale copertura è adatta alla mia azienda',
     notAvailable: 'Non disponibile',
   },
 
   why: {
+    cta: 'Prenota una consulenza',
     role: 'Broker assicurativa abilitata SBS',
     track: '15+ anni di esperienza abilitata',
     title: 'Perché farti consigliare da Melanie Silva?',
@@ -89,6 +91,8 @@ export const IT = {
   },
 
   schedule: {
+    pickSlot: 'Scegli un orario',
+    pickHint: "Scegli giorno e ora nel calendario di Melanie.",
     eyebrow: 'Prenota il tuo appuntamento',
     title: 'Una sessione gratuita di 15 minuti, senza tecnicismi',
     tag1: 'Durata: 15 minuti (GRATIS)',

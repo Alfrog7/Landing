@@ -32,6 +32,9 @@ export function WhyMelanie() {
             </p>
             <p class="why__track">{tr.t('why.track')}</p>
             <blockquote class="why__quote">“{brand.quote}”</blockquote>
+            <a class="why__cta" href="/#agendar">
+              {tr.t('why.cta')}
+            </a>
           </article>
 
           <div class="why__blocks">

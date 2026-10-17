@@ -73,10 +73,12 @@ export const ES = {
     },
     available: 'Disponible',
     consult: 'Consultar',
+    ctaBtn: 'Consultar qué cobertura se adapta a mi empresa',
     notAvailable: 'No disponible',
   },
 
   why: {
+    cta: 'Agendar una asesoría',
     role: 'Corredora de Seguros Colegiada SBS',
     track: '15+ Años de Experiencia Colegiada',
     title: '¿Por qué asesorarte con Melanie Silva?',
@@ -89,6 +91,8 @@ export const ES = {
   },
 
   schedule: {
+    pickSlot: 'Elegir horario',
+    pickHint: 'Elige día y hora en el calendario de Melanie.',
     eyebrow: 'Agenda tu cita',
     title: 'Sesión de 15 minutos, gratuita y sin tecnicismos',
     tag1: 'Duración: 15 minutos (GRATIS)',

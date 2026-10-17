@@ -64,6 +64,23 @@ app-why-melanie {
     max-width: 46ch;
   }
 
+  .why__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.4rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    color: var(--color-ink);
+    font-weight: 700;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .why__cta:hover {
+    background: var(--color-ink);
+    color: #fff;
+  }
+
   .why__title {
     margin-bottom: 2rem;
   }

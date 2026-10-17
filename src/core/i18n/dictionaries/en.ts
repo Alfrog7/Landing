@@ -73,10 +73,12 @@ export const EN = {
     },
     available: 'Available',
     consult: 'Ask us',
+    ctaBtn: 'Find out which coverage fits my company',
     notAvailable: 'Not available',
   },
 
   why: {
+    cta: 'Book a consultation',
     role: 'SBS-Licensed Insurance Broker',
     track: '15+ Years of Licensed Experience',
     title: 'Why get advice from Melanie Silva?',
@@ -89,6 +91,8 @@ export const EN = {
   },
 
   schedule: {
+    pickSlot: 'Choose a time',
+    pickHint: "Pick a day and time in Melanie's calendar.",
     eyebrow: 'Book your appointment',
     title: 'A free 15-minute session with zero technical jargon',
     tag1: 'Duration: 15 minutes (FREE)',
