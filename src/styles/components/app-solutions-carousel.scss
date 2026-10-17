@@ -38,6 +38,22 @@ app-solutions-carousel {
     user-select: none;
     touch-action: pan-y;
   }
+  .solutions__track--swap {
+    animation: solutions-swap 0.35s ease both;
+  }
+  @keyframes solutions-swap {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .solutions__track--swap {
+      animation: none;
+    }
+  }
   .solutions__slide {
     flex: 0 0 auto;
     min-width: calc(290px + 1.5rem);

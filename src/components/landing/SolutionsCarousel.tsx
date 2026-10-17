@@ -73,6 +73,8 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
   const dots = Array.from({ length: base.length }, (_, i) => i);
 
   const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const firstTab = useRef(true);
   const emblaRef = useRef<EmblaCarouselType | null>(null);
   const baseCountRef = useRef(base.length);
   baseCountRef.current = base.length;
@@ -130,6 +132,21 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
     };
   }, []);
 
+  // Al cambiar de pestaña las tarjetas nuevas entran con un fundido corto (no en la primera carga)
+  useEffect(() => {
+    if (firstTab.current) {
+      firstTab.current = false;
+      return;
+    }
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+    track.classList.remove('solutions__track--swap');
+    void track.offsetWidth;
+    track.classList.add('solutions__track--swap');
+  }, [activeTab]);
+
   // Al cambiar de pestaña o de repetición se recalcula el carrusel con el DOM ya actualizado
   useEffect(() => {
     const timer = window.setTimeout(() => emblaRef.current?.reInit());
@@ -149,7 +166,7 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
         </div>
         <div class="solutions__viewport-wrap container">
           <div class="solutions__viewport" ref={viewportRef} onMouseEnter={stopAutoplay} onMouseLeave={startAutoplay}>
-            <div class="solutions__track">
+            <div class="solutions__track" ref={trackRef}>
               {displayServices.map((service, index) => (
                 <div key={index} class="solutions__slide">
                   <SolutionCard service={service} onDetailPressed={onDetailPressed} />

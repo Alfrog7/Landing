@@ -24,7 +24,7 @@ export function Hero({ activeTab, onTabChange, onQuotePressed }: HeroProps) {
             <h1 class="hero__title">{tr.t('hero.title')}</h1>
             <p class="hero__lead">{tr.t('hero.lead')}</p>
 
-            <div class="hero__tabs" role="tablist" aria-label={tr.t('hero.tabsAria')}>
+            <div class={`hero__tabs${activeTab === 'personas' ? ' hero__tabs--personas' : ''}`} role="tablist" aria-label={tr.t('hero.tabsAria')}>
               <button
                 type="button"
                 role="tab"

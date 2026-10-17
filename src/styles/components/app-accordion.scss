@@ -36,13 +36,54 @@ app-accordion {
   .accordion__item--open .accordion__icon {
     transform: rotate(180deg);
   }
+  // El panel se abre animando la altura (de 0fr a 1fr) y el texto aparece con un fundido
   .accordion__panel {
-    padding: 0 3rem 1.5rem 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
     color: var(--color-body);
-    margin: 0;
-    max-width: 68ch;
+    transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.32s;
+  }
+  .accordion__item--open .accordion__panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  }
+  .accordion__panel-inner {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .accordion__item--open .accordion__panel-inner {
+    opacity: 1;
+    transition: opacity 0.3s ease 0.08s;
   }
   .accordion__panel p {
     margin: 0;
+    padding: 0 3rem 1.5rem 0;
+    max-width: 68ch;
+  }
+  // Al cambiar el filtro de FAQ la lista entra con un fundido corto
+  .accordion {
+    animation: accordion-in 0.28s ease both;
+  }
+  @keyframes accordion-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .accordion,
+    .accordion__panel,
+    .accordion__panel-inner {
+      animation: none;
+      transition: none;
+    }
   }
 }

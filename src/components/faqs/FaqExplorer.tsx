@@ -51,7 +51,7 @@ export default function FaqExplorer() {
             <span>Prueba con otra palabra o cambia la categoría.</span>
           </div>
         ) : (
-          <Accordion items={filteredFaqs} />
+          <Accordion key={category} items={filteredFaqs} />
         )}
       </app-questions-accordion>
     </>

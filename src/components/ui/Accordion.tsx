@@ -26,8 +26,10 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
                 ▾
               </span>
             </button>
-            <div class="accordion__panel" id={`accordion-panel-${i}`} hidden={openIndex !== i}>
-              <p>{item.answer}</p>
+            <div class="accordion__panel" id={`accordion-panel-${i}`} aria-hidden={openIndex !== i}>
+              <div class="accordion__panel-inner">
+                <p>{item.answer}</p>
+              </div>
             </div>
           </div>
         ))}
