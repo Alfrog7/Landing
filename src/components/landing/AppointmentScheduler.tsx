@@ -58,7 +58,7 @@ export function AppointmentScheduler() {
 
   return (
     <app-appointment-scheduler>
-      <section class="section scheduler" id="agendar">
+      <section class="section screen scheduler" id="agendar">
         <div class="container">
           <div class="scheduler__head">
             <h2 class="section-title">{tr.t('schedule.title')}</h2>

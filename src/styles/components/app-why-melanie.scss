@@ -1,6 +1,5 @@
 app-why-melanie {
   .why {
-    padding-block: clamp(4.5rem, 10vw, 7.5rem);
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border-strong);
   }
@@ -24,7 +23,7 @@ app-why-melanie {
   }
   .why__photo {
     width: 100%;
-    aspect-ratio: 4 / 4.4;
+    aspect-ratio: 4 / 3.2;
     object-fit: cover;
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-lg);
@@ -120,6 +119,20 @@ app-why-melanie {
   @media (max-width: 560px) {
     .why__block {
       grid-template-columns: 1fr;
+    }
+  }
+  @media (min-width: 960px) and (max-height: 820px) {
+    .why__photo {
+      aspect-ratio: 4 / 2.4;
+    }
+    .why__name {
+      font-size: 1.6rem;
+    }
+    .why__block {
+      padding-block: 0.9rem;
+    }
+    .why__title {
+      margin-bottom: 1rem;
     }
   }
 }

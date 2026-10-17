@@ -13,7 +13,7 @@ export function Hero({ activeTab, onTabChange }: HeroProps) {
 
   return (
     <app-hero>
-      <section class="hero">
+      <section class="hero screen">
         <div class="container hero__grid">
           <div class="hero__copy">
             <h1 class="hero__title">{tr.t('hero.title')}</h1>

@@ -37,7 +37,7 @@ export function InsurersCoverageTable() {
 
   return (
     <app-insurers-coverage-table>
-      <section class="section matrix" id="aseguradoras">
+      <section class="section screen matrix" id="aseguradoras">
         <div class="container">
           <div class="matrix__head">
             <h2 class="section-title">{tr.t('matrix.title')}</h2>

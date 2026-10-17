@@ -32,7 +32,7 @@ export default function LandingPage() {
 
       <AppointmentScheduler />
 
-      <section class="section" id="faq">
+      <section class="section screen" id="faq">
         <div class="container landing-faq">
           <div class="landing-faq__head">
             <h2 class="section-title">{tr.t('faq.title')}</h2>

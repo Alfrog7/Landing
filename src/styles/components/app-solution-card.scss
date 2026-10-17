@@ -109,4 +109,15 @@ app-solution-card {
   .card:hover .card__cta {
     border-bottom-color: var(--color-orange);
   }
+  @media (min-width: 960px) and (max-height: 820px) {
+    .card__media {
+      aspect-ratio: 16 / 9;
+    }
+    .card__body {
+      padding: 1rem 1.25rem;
+    }
+    .card__summary {
+      -webkit-line-clamp: 2;
+    }
+  }
 }

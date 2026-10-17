@@ -10,7 +10,7 @@ export function WhyMelanie() {
 
   return (
     <app-why-melanie>
-      <section class="section why" id="sobre-melanie">
+      <section class="section screen why" id="sobre-melanie">
         <div class="container why__grid">
           <article class="why__profile">
             <div class="why__photo-card">

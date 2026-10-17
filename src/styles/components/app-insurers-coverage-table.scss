@@ -1,6 +1,5 @@
 app-insurers-coverage-table {
   .matrix {
-    padding-block: clamp(3rem, 6vw, 4.5rem);
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border-strong);
   }
@@ -9,7 +8,7 @@ app-insurers-coverage-table {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     align-items: end;
     gap: 1rem 3rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
   .matrix__head .section-title {
     grid-column: 1;
@@ -71,12 +70,12 @@ app-insurers-coverage-table {
     text-align: left;
     font-weight: 600;
     color: var(--color-ink);
-    padding: 0.85rem 1rem;
+    padding: 0.55rem 1rem;
     border-bottom: 1px solid var(--color-border);
   }
   .matrix__table tbody td {
     text-align: center;
-    padding: 0.85rem 1rem;
+    padding: 0.55rem 1rem;
     border-bottom: 1px solid var(--color-border);
   }
   .matrix__table tbody tr:last-child th,
@@ -93,9 +92,9 @@ app-insurers-coverage-table {
   .matrix__insurer-logo {
     display: block;
     margin: 0 auto;
-    height: 34px;
+    height: 28px;
     width: auto;
-    max-width: 128px;
+    max-width: 110px;
     object-fit: contain;
   }
   .matrix__check {
@@ -120,7 +119,7 @@ app-insurers-coverage-table {
     flex-wrap: wrap;
     gap: 0.5rem 1.5rem;
     list-style: none;
-    margin: 1rem 0 0;
+    margin: 0.75rem 0 0;
     padding: 0;
     font-size: 0.9rem;
     color: var(--color-body);
@@ -131,7 +130,7 @@ app-insurers-coverage-table {
     gap: 0.4rem;
   }
   .matrix__cta {
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
   .matrix__cta-btn {
     display: inline-flex;
@@ -194,6 +193,21 @@ app-insurers-coverage-table {
     .matrix__card,
     .matrix__legend {
       display: none;
+    }
+  }
+  @media (min-width: 960px) and (max-height: 820px) {
+    .matrix__table tbody th,
+    .matrix__table tbody td {
+      padding-block: 0.3rem;
+    }
+    .matrix__head {
+      margin-bottom: 0.75rem;
+    }
+    .matrix__subtitle {
+      font-size: 0.92rem;
+    }
+    .matrix__cta {
+      margin-top: 0.75rem;
     }
   }
 }

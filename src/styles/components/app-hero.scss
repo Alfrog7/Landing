@@ -1,6 +1,11 @@
 app-hero {
   .hero {
     padding: clamp(7.5rem, 14vw, 9rem) 0 var(--space-section);
+    @media (min-width: 960px) and (min-height: 640px) {
+      min-height: 100svh;
+      padding-top: 4.25rem;
+      padding-bottom: 1.5rem;
+    }
     border-bottom: 1px solid var(--color-border-strong);
   }
   .hero__grid {

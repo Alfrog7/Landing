@@ -146,7 +146,7 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
 
   return (
     <app-solutions-carousel>
-      <section class="section solutions" id="soluciones">
+      <section class="section screen solutions" id="soluciones">
         <div class="container">
           <div class="solutions__head">
             <h2 class="section-title">
