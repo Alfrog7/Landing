@@ -211,8 +211,7 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
   - Responsabilidad Civil y Accidentes Personales para contratistas.
 - **Bloque Comparativo: Broker Colegiada vs. Canal Telefónico Tradicional:**
   - Tabla de valor agregado: Asignación personalizada, respuesta ante siniestros, emisión en minutos para garitas.
-- **Social Proof & Métricas:**
-  - Contadores: +10 años de experiencia, +150 empresas protegidas, 99.8% de emisiones a tiempo.
+- **Prueba social y métricas:** no se muestran hasta contar con cifras y testimonios reales y verificables (se retiraron los datos de ejemplo).
 - **FAQ Sintético:** 4 preguntas clave con botón a la sección extendida.
 - **Banner de Conversión Dual:** Fondo `#0F3C8A` con llamado urgente para pases de garita del día.
 
@@ -223,7 +222,7 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
   - Diferenciación clara entre SCTR Salud (atención médica/rehabilitación) y SCTR Pensión (invalidez/sobrevivencia).
   - Clasificación de actividades de alto riesgo según el Decreto Supremo correspondiente.
 - **Matriz Comparativa de Aseguradoras:**
-  - Tabla con logos de aseguradoras, tiempos promedio de emisión para pases de garita y canales de asistencia.
+  - Tabla con logos de aseguradoras, canales de asistencia y teléfono de soporte de emergencia (sin tiempos promedio hasta tener datos reales).
 - **Bloque Seguro Vida Ley:**
   - Resumen de coberturas obligatorias (Muerte natural, muerte accidental, invalidez total y permanente).
 - **Formulario Inline:** Formulario rápido para solicitar comparativo de tasas según planilla.
@@ -232,14 +231,13 @@ El enrutamiento es el de Astro, basado en archivos: cada archivo de `src/pages/`
 
 ### Pantalla 3: Asesoría Melanie Silva (`/asesoria`)
 - **Perfil de Autoridad:**
-  - Trayectoria, certificaciones SBS y enfoque consultivo sin sobrecosto para la empresa contratante.
+  - Certificaciones SBS y enfoque consultivo sin sobrecosto para la empresa contratante.
 - **Metodología en 4 Pasos:**
   1. *Diagnóstico de Riesgo y Planilla*.
   2. *Licitación Multimarca (comparativa de primas)*.
   3. *Emisión y Validación de Póliza*.
   4. *Acompañamiento Continuo en Siniestros y Renovaciones*.
-- **Testimonios Sectoriales:**
-  - Casos de éxito y validaciones de clientes en sectores de construcción, ingeniería y minería.
+- **Testimonios Sectoriales:** pendiente. La sección se retiró hasta contar con testimonios reales y autorizados.
 
 ---
 

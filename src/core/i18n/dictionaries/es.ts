@@ -17,7 +17,7 @@ export const ES = {
   hero: {
     badge: 'Matrícula SBS J-0941 · Asesora Persona Natural Colegiada',
     title: 'Cuidar de tu empresa y de los tuyos puede ser así de simple.',
-    lead: 'Compara y gestiona tus coberturas con más de 15 años de experiencia técnica colegiada, sin burocracia y con trato directo.',
+    lead: 'Compara y gestiona tus coberturas con asesoría técnica colegiada, sin burocracia y con trato directo.',
     tabsAria: 'Tipo de cliente',
     tabEmpresas: 'Seguros para Empresas',
     tabPersonas: 'Seguros para Personas & Familias',
@@ -27,10 +27,6 @@ export const ES = {
     trust2: 'Emisión express',
     trust3: 'Respaldo SBS Oficial',
     bubble: '¡Hola! Soy Meipo. Te ayudo a encontrar tu póliza perfecta en minutos 🐨',
-    float1Title: 'Respuesta inmediata',
-    float1Sub: '< 24h garantizada',
-    float2Title: 'Ahorro hasta el 25%',
-    float2Sub: 'en comparativa neutral',
     docTitle: 'Constancia SCTR',
     docStatus: 'Vigente',
     docCompany: 'Empresa',
@@ -80,7 +76,7 @@ export const ES = {
   why: {
     cta: 'Agendar una asesoría',
     role: 'Corredora de Seguros Colegiada SBS',
-    track: '15+ Años de Experiencia Colegiada',
+    track: 'Persona natural colegiada ante la SBS',
     title: '¿Por qué asesorarte con Melanie Silva?',
     block1Title: 'Trato 100% directo y humano',
     block1Text: 'Hablas directamente con Melanie por WhatsApp o llamada, sin bots impersonales ni conmutadores telefónicos ante urgencias.',

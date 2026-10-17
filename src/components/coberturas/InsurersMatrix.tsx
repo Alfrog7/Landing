@@ -13,13 +13,10 @@ export function InsurersMatrix() {
     <app-insurers-matrix>
       <div class="matrix">
         <table>
-          <caption>
-            Tiempos promedio de emisión de constancias para pases de garita y canales de asistencia según aseguradora.
-          </caption>
+          <caption>Canales de asistencia y soporte de emergencia según aseguradora.</caption>
           <thead>
             <tr>
               <th scope="col">Aseguradora</th>
-              <th scope="col">Emisión pases de garita</th>
               <th scope="col">Canal de asistencia</th>
               <th scope="col">Soporte urgente</th>
             </tr>
@@ -30,16 +27,13 @@ export function InsurersMatrix() {
                 <td>
                   <img src={insurer.logo} alt={insurer.name} />
                 </td>
-                <td>
-                  <strong>~{insurer.averageEmissionTimeMinutes} min</strong>
-                </td>
                 <td>{CHANNEL}</td>
                 <td>
                   <a href={urgentUrl(insurer.name)}>WhatsApp urgente</a>
                 </td>
               </tr>,
               <tr key={`${insurer.id}-support`} class="matrix__support-row">
-                <td colSpan={4}>
+                <td colSpan={3}>
                   Soporte de emergencia: <strong>{insurer.supportPhone}</strong>
                 </td>
               </tr>,
@@ -48,7 +42,6 @@ export function InsurersMatrix() {
         </table>
       </div>
       <ul class="matrix__notes">
-        <li>Los tiempos dependen de la validación de planilla y pago de prima.</li>
         <li>Con la corredora, licitamos tu cartera entre las 4 aseguradoras para el mejor precio.</li>
       </ul>
     </app-insurers-matrix>

@@ -17,7 +17,7 @@ export const EN = {
   hero: {
     badge: 'SBS License J-0941 · Licensed Individual Advisor',
     title: 'Taking care of your company and your loved ones can be this simple.',
-    lead: 'Compare and manage your coverage with over 15 years of licensed technical experience, with no red tape and direct, personal attention.',
+    lead: 'Compare and manage your coverage with licensed technical advice, with no red tape and direct, personal attention.',
     tabsAria: 'Client type',
     tabEmpresas: 'Insurance for Companies',
     tabPersonas: 'Insurance for People & Families',
@@ -27,10 +27,6 @@ export const EN = {
     trust2: 'Express issuance',
     trust3: 'Official SBS backing',
     bubble: 'Hi! I am Meipo. I will help you find your perfect policy in minutes 🐨',
-    float1Title: 'Instant response',
-    float1Sub: 'guaranteed within 24h',
-    float2Title: 'Save up to 25%',
-    float2Sub: 'with a neutral comparison',
     docTitle: 'SCTR certificate',
     docStatus: 'Valid',
     docCompany: 'Company',
@@ -80,7 +76,7 @@ export const EN = {
   why: {
     cta: 'Book a consultation',
     role: 'SBS-Licensed Insurance Broker',
-    track: '15+ Years of Licensed Experience',
+    track: 'Individual broker licensed by the SBS',
     title: 'Why get advice from Melanie Silva?',
     block1Title: '100% direct and human treatment',
     block1Text: 'You talk directly with Melanie via WhatsApp or a call, with no impersonal bots or phone switchboards in emergencies.',

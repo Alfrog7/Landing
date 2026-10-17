@@ -22,16 +22,12 @@ export function AdvisorHero() {
               {brand.roleTitle} · {brand.licenseId}
             </p>
             <p class="advisor__bio">
-              Con más de una década asesorando a empresas en construcción, ingeniería y minería, he
-              consolidado un enfoque netamente consultivo: licito tu póliza entre las principales
+              Asesoro a empresas de construcción, ingeniería y minería con un enfoque netamente
+              consultivo: licito tu póliza entre las principales
               aseguradoras del mercado, negocio la prima y respondo por tu equipo en cada siniestro,
               todo sin costo adicional para tu empresa.
             </p>
             <dl class="advisor__facts">
-              <div>
-                <dt>+150 empresas</dt>
-                <dd>patrocinadas en portafolio gestionado</dd>
-              </div>
               <div>
                 <dt>Sectores regulados</dt>
                 <dd>minero, construcción y energía</dd>
@@ -39,10 +35,6 @@ export function AdvisorHero() {
               <div>
                 <dt>Costo cero</dt>
                 <dd>la comisión la paga la aseguradora</dd>
-              </div>
-              <div>
-                <dt>Respuesta en menos de 24 h</dt>
-                <dd>por WhatsApp o por llamada</dd>
               </div>
             </dl>
             <div class="advisor__ctas">

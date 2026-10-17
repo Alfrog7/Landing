@@ -17,7 +17,7 @@ export const IT = {
   hero: {
     badge: 'Albo SBS J-0941 · Consulente autorizzata a titolo individuale',
     title: 'Prenderti cura della tua azienda e dei tuoi cari può essere così semplice.',
-    lead: 'Confronta e gestisci le tue coperture con oltre 15 anni di esperienza tecnica abilitata, senza burocrazia e con un contatto diretto.',
+    lead: 'Confronta e gestisci le tue coperture con una consulenza tecnica abilitata, senza burocrazia e con un contatto diretto.',
     tabsAria: 'Tipo di cliente',
     tabEmpresas: 'Assicurazioni per Aziende',
     tabPersonas: 'Assicurazioni per Persone & Famiglie',
@@ -27,10 +27,6 @@ export const IT = {
     trust2: 'Emissione express',
     trust3: 'Riconoscimento ufficiale SBS',
     bubble: 'Ciao! Sono Meipo. Ti aiuto a trovare la polizza perfetta in pochi minuti 🐨',
-    float1Title: 'Risposta immediata',
-    float1Sub: 'garantita entro 24h',
-    float2Title: 'Risparmia fino al 25%',
-    float2Sub: 'con un confronto neutrale',
     docTitle: 'Certificato SCTR',
     docStatus: 'Valido',
     docCompany: 'Azienda',
@@ -80,7 +76,7 @@ export const IT = {
   why: {
     cta: 'Prenota una consulenza',
     role: 'Broker assicurativa abilitata SBS',
-    track: '15+ anni di esperienza abilitata',
+    track: 'Broker individuale abilitata dalla SBS',
     title: 'Perché farti consigliare da Melanie Silva?',
     block1Title: 'Rapporto 100% diretto e umano',
     block1Text: 'Parli direttamente con Melanie via WhatsApp o telefono, senza bot impersonali né centralini telefonici in caso di urgenze.',

@@ -17,7 +17,7 @@ export const FR = {
   hero: {
     badge: 'Licence SBS J-0941 · Conseillère agréée à titre individuel',
     title: 'Prendre soin de votre entreprise et de vos proches peut être aussi simple.',
-    lead: 'Comparez et gérez vos garanties avec plus de 15 ans d\u2019expérience technique agréée, sans bureaucratie et avec un contact direct.',
+    lead: 'Comparez et gérez vos garanties avec un conseil technique agréé, sans bureaucratie et avec un contact direct.',
     tabsAria: 'Type de client',
     tabEmpresas: 'Assurances pour Entreprises',
     tabPersonas: 'Assurances pour Particuliers & Familles',
@@ -27,10 +27,6 @@ export const FR = {
     trust2: 'Émission express',
     trust3: 'Agrément officiel SBS',
     bubble: 'Bonjour ! Je suis Meipo. Je t\u2019aide à trouver ta police parfaite en quelques minutes 🐨',
-    float1Title: 'Réponse immédiate',
-    float1Sub: 'garantie en moins de 24h',
-    float2Title: 'Économisez jusqu\u2019à 25%',
-    float2Sub: 'avec une comparaison neutre',
     docTitle: 'Attestation SCTR',
     docStatus: 'En vigueur',
     docCompany: 'Entreprise',
@@ -80,7 +76,7 @@ export const FR = {
   why: {
     cta: 'Prendre rendez-vous',
     role: 'Courtière d\u2019assurance agréée SBS',
-    track: '15+ ans d\u2019expérience agréée',
+    track: 'Courtière indépendante agréée par la SBS',
     title: 'Pourquoi se faire conseiller par Melanie Silva ?',
     block1Title: 'Un contact 100% direct et humain',
     block1Text: 'Vous parlez directement avec Melanie par WhatsApp ou par téléphone, sans robots ni standard téléphonique en cas d\u2019urgence.',
