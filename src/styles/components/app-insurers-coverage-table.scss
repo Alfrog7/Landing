@@ -113,4 +113,86 @@ app-insurers-coverage-table {
     color: #a8420a;
     background: var(--color-orange-light);
   }
+
+  .matrix__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--color-body);
+  }
+  .matrix__legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .matrix__cta {
+    margin-top: 2rem;
+  }
+  .matrix__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--color-orange);
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    transition: background 0.15s ease;
+  }
+  .matrix__cta-btn:hover {
+    background: var(--color-orange-dark);
+  }
+
+  // Móvil: en lugar de la tabla ancha, una ficha por producto con las aseguradoras que lo cubren
+  .matrix__list {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1.5px solid var(--color-ink);
+  }
+  .matrix__item {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--color-border-strong);
+  }
+  .matrix__item h3 {
+    margin: 0 0 0.7rem;
+    font-size: 1.15rem;
+  }
+  .matrix__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .matrix__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .matrix__chip img {
+    height: 30px;
+    width: auto;
+  }
+  .matrix__chip--consult span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #a8420a;
+  }
+  @media (max-width: 760px) {
+    .matrix__list {
+      display: block;
+    }
+    .matrix__card,
+    .matrix__legend {
+      display: none;
+    }
+  }
 }

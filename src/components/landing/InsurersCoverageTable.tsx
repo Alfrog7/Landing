@@ -16,6 +16,8 @@ const INSURERS: MatrixInsurer[] = [
   { name: 'Chubb', logo: '/assets/images/insurers/chubb.svg' },
 ];
 
+const KEYS = ['rimac', 'pacifico', 'mapfre', 'positiva', 'insurAvla', 'chubb'] as const;
+
 function Cell({ value, tr }: { value: CoverageAvailability; tr: Translator }) {
   if (value === true) {
     return <ShieldCheck class="matrix__check" size={20} aria-label={tr.t('matrix.available')} />;
@@ -45,6 +47,25 @@ export function InsurersCoverageTable() {
               {tr.t('matrix.neutral')}
             </span>
           </div>
+
+          {/* Móvil: una ficha por producto con las aseguradoras que lo cubren */}
+          <ul class="matrix__list">
+            {INSURERS_MATRIX_DATA.map((row) => (
+              <li key={row.serviceName} class="matrix__item">
+                <h3>{tr.t(row.serviceName)}</h3>
+                <ul class="matrix__chips">
+                  {KEYS.map((key, i) => ({ insurer: INSURERS[i], value: row[key] }))
+                    .filter((entry) => entry.value !== false)
+                    .map(({ insurer, value }) => (
+                      <li key={insurer.name} class={`matrix__chip${value === 'consultar' ? ' matrix__chip--consult' : ''}`}>
+                        <img src={insurer.logo} alt={insurer.name} loading="lazy" />
+                        {value === 'consultar' && <span>{tr.t('matrix.consult')}</span>}
+                      </li>
+                    ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
 
           <div class="matrix__card">
             <div class="matrix__scroll" role="region" aria-label={tr.t('matrix.tableAria')} tabIndex={0}>
@@ -93,6 +114,25 @@ export function InsurersCoverageTable() {
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <ul class="matrix__legend">
+            <li>
+              <ShieldCheck class="matrix__check" size={18} />
+              {tr.t('matrix.available')}
+            </li>
+            <li>
+              <span class="matrix__consult">{tr.t('matrix.consult')}</span>
+            </li>
+            <li>
+              <span class="matrix__dash">—</span> {tr.t('matrix.notAvailable')}
+            </li>
+          </ul>
+
+          <div class="matrix__cta">
+            <a class="matrix__cta-btn" href="/cotizador">
+              {tr.t('matrix.ctaBtn')}
+            </a>
           </div>
         </div>
       </section>
