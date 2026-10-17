@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
   <rect width="640" height="480" fill="#C9DFF0"/>
-  <path d="M32 0V480M64 0V480M96 0V480M128 0V480M160 0V480M192 0V480M224 0V480M256 0V480M288 0V480M320 0V480M352 0V480M384 0V480M416 0V480M448 0V480M480 0V480M512 0V480M544 0V480M576 0V480M608 0V480M0 32H640M0 64H640M0 96H640M0 128H640M0 160H640M0 192H640M0 224H640M0 256H640M0 288H640M0 320H640M0 352H640M0 384H640M0 416H640M0 448H640" stroke="#10201B" stroke-opacity=".08" stroke-width="1" fill="none"/>
   <rect y="410" width="640" height="70" fill="#10201B" fill-opacity=".1"/>
   <path d="M0 410H640" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
 
