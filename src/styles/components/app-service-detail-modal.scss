@@ -7,7 +7,6 @@ app-service-detail-modal {
     background: var(--color-surface);
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-modal-split);
     display: grid;
     grid-template-columns: 42% 58%;
     animation: detail-in 0.2s ease;
@@ -154,8 +153,8 @@ app-service-detail-modal {
   .detail__emission {
     margin: 0.9rem 0 0;
     padding: 0.7rem 0.9rem;
-    border-left: 4px solid var(--color-orange);
     background: var(--color-bg);
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
   }
   .detail__insurers {

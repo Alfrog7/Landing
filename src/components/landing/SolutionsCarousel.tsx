@@ -21,9 +21,19 @@ function SolutionCard({ service, onDetailPressed }: SolutionCardProps) {
     <app-solution-card>
       <article class="card" onClick={() => onDetailPressed(service)}>
         <div class="card__media">
-          <img class="card__bg" src={service.image} alt={tr.t(`services.${service.id}.title`)} loading="lazy" />
+          <img
+            class="card__bg"
+            src={service.image}
+            alt={tr.t(`services.${service.id}.title`)}
+            loading="lazy"
+          />
           <span class="card__badge">{tr.t(`services.${service.id}.badge`)}</span>
-          <button type="button" class="card__plus" aria-label={tr.t('carousel.cardCta')} onClick={open}>
+          <button
+            type="button"
+            class="card__plus"
+            aria-label={tr.t('carousel.cardCta')}
+            onClick={open}
+          >
             <Plus size={18} />
           </button>
         </div>
@@ -69,7 +79,10 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
 
   const base = SERVICES_CATALOG_DATA.filter((s) => s.category === activeTab);
   const repeat = computeRepeat(base.length, viewportWidth);
-  const displayServices: ServiceDetail[] = Array.from({ length: base.length * repeat }, (_, i) => base[i % base.length]);
+  const displayServices: ServiceDetail[] = Array.from(
+    { length: base.length * repeat },
+    (_, i) => base[i % base.length],
+  );
   const dots = Array.from({ length: base.length }, (_, i) => i);
 
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -78,27 +91,7 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
   const emblaRef = useRef<EmblaCarouselType | null>(null);
   const baseCountRef = useRef(base.length);
   baseCountRef.current = base.length;
-  const autoplayTimer = useRef<number | null>(null);
-
-  const stopAutoplay = () => {
-    if (autoplayTimer.current !== null) {
-      window.clearInterval(autoplayTimer.current);
-      autoplayTimer.current = null;
-    }
-  };
-
-  const startAutoplay = () => {
-    stopAutoplay();
-    autoplayTimer.current = window.setInterval(() => {
-      try {
-        emblaRef.current?.scrollNext();
-      } catch {
-        stopAutoplay();
-      }
-    }, 3200);
-  };
-
-  // Inicialización de Embla + autoplay
+  // Inicialización de Embla
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
@@ -110,7 +103,6 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
     api.on('init', sync).on('reInit', sync).on('select', sync);
     sync();
     setViewportWidth(viewport.clientWidth);
-    startAutoplay();
 
     let resizeTimer: number | null = null;
     const onResize = () => {
@@ -122,7 +114,6 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
     window.addEventListener('resize', onResize);
 
     return () => {
-      stopAutoplay();
       window.removeEventListener('resize', onResize);
       if (resizeTimer !== null) {
         window.clearTimeout(resizeTimer);
@@ -159,13 +150,15 @@ export function SolutionsCarousel({ activeTab, onDetailPressed }: SolutionsCarou
         <div class="container">
           <div class="solutions__head">
             <h2 class="section-title">
-              {activeTab === 'empresas' ? tr.t('carousel.titleEmpresas') : tr.t('carousel.titlePersonas')}
+              {activeTab === 'empresas'
+                ? tr.t('carousel.titleEmpresas')
+                : tr.t('carousel.titlePersonas')}
             </h2>
             <p class="solutions__hint">{tr.t('carousel.hint')}</p>
           </div>
         </div>
         <div class="solutions__viewport-wrap container">
-          <div class="solutions__viewport" ref={viewportRef} onMouseEnter={stopAutoplay} onMouseLeave={startAutoplay}>
+          <div class="solutions__viewport" ref={viewportRef}>
             <div class="solutions__track" ref={trackRef}>
               {displayServices.map((service, index) => (
                 <div key={index} class="solutions__slide">

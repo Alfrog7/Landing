@@ -1,4 +1,4 @@
-import { ArrowDown, Building2, Check, ShieldCheck, Users } from 'lucide-preact';
+import { ArrowDown, Building2, Check, Users } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { AudienceCategory } from '../../core/models/insurance-service.model';
 import { Meipo } from './Meipo';
@@ -16,10 +16,6 @@ export function Hero({ activeTab, onTabChange }: HeroProps) {
       <section class="hero">
         <div class="container hero__grid">
           <div class="hero__copy">
-            <p class="hero__badge">
-              <ShieldCheck size={16} />
-              {tr.t('hero.badge')}
-            </p>
             <h1 class="hero__title">{tr.t('hero.title')}</h1>
             <p class="hero__lead">{tr.t('hero.lead')}</p>
 

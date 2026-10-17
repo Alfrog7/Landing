@@ -1,5 +1,6 @@
 app-why-melanie {
   .why {
+    padding-block: clamp(4.5rem, 10vw, 7.5rem);
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border-strong);
   }
@@ -56,8 +57,8 @@ app-why-melanie {
   }
   .why__quote {
     margin: 0;
-    padding-left: 1.1rem;
-    border-left: 4px solid var(--color-orange);
+    padding-top: 1rem;
+    border-top: 1.5px solid var(--color-ink);
     font-size: 1.05rem;
     line-height: 1.55;
     color: var(--color-ink);

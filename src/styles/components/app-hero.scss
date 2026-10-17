@@ -27,7 +27,7 @@ app-hero {
     color: var(--color-primary-text);
   }
   .hero__title {
-    font-size: clamp(2.8rem, 6.2vw, 5.2rem);
+    font-size: clamp(2.5rem, 5.2vw, 4.3rem);
     line-height: 0.98;
     font-stretch: 78%;
     letter-spacing: 0;
@@ -255,7 +255,7 @@ app-hero {
     color: var(--color-primary);
     transform: rotate(-9deg);
     line-height: 1;
-    animation: hero-stamp 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.5s both;
+    animation: hero-stamp 0.45s ease-out 0.5s both;
   }
   .hero__doc-stamp b {
     font-family: var(--font-heading);
