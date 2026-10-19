@@ -1,4 +1,4 @@
-import type { InsurerCoverageRow, ServiceDetail } from '../models/insurance-service.model';
+import type { ServiceDetail } from '../models/insurance-service.model';
 
 export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
   // SEGUROS PARA EMPRESAS
@@ -232,81 +232,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     meipoTip:
       'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
-  },
-];
-
-export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
-  {
-    serviceName: 'matrix.row.cartasFianza',
-    rimac: 'consultar',
-    pacifico: false,
-    mapfre: true,
-    positiva: false,
-    insurAvla: true,
-    chubb: false,
-  },
-  {
-    serviceName: 'matrix.row.seguroCredito',
-    rimac: false,
-    pacifico: false,
-    mapfre: false,
-    positiva: false,
-    insurAvla: true,
-    chubb: false,
-  },
-  {
-    serviceName: 'matrix.row.sctr',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: true,
-    insurAvla: false,
-    chubb: false,
-  },
-  {
-    serviceName: 'matrix.row.vidaLey',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: true,
-    insurAvla: false,
-    chubb: false,
-  },
-  {
-    serviceName: 'matrix.row.car',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: 'consultar',
-    insurAvla: true,
-    chubb: true,
-  },
-  {
-    serviceName: 'matrix.row.do',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: false,
-    insurAvla: false,
-    chubb: true,
-  },
-  {
-    serviceName: 'matrix.row.desgravamen',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: true,
-    insurAvla: false,
-    chubb: false,
-  },
-  {
-    serviceName: 'matrix.row.salud',
-    rimac: true,
-    pacifico: true,
-    mapfre: true,
-    positiva: true,
-    insurAvla: false,
-    chubb: false,
   },
 ];
 

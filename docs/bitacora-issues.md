@@ -116,10 +116,28 @@ Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
 - "S.A.C." solo aparece como **empresa cliente ficticia** (certificado de ejemplo del Hero y placeholder del cotizador) — uso legítimo, no describe la estructura de Melanie.
 - `npm run check`: 0 errores · `npm run build`: 5 páginas OK · sin mojibake (verificado por bytes).
 
+---
+
+## Issue #7 — Franja de logos reemplaza la Matriz Multiaseguradora (COMPLETADA — PR #23)
+
+### Qué se hizo
+
+1. **Nuevo** `src/components/landing/InsurerLogoStrip.tsx`: franja con título i18n "Trabajo con las principales aseguradoras del Perú" y las **13 aseguradoras** del feedback (Mapfre, Pacífico, Rimac, La Positiva, Chubb, Crecer, Protecta Security, Secrex Cesce, InSur, Avla, AuguStar, Sanitas, Quálitas). Mantiene `id="aseguradoras"` para que sigan funcionando el link del navbar y el redirect `/coberturas-sctr`.
+2. **Nuevo** `src/styles/components/app-insurer-logo-strip.scss` (registrado en `_index.scss`): logos a 40px de alto, `grayscale(100%) + opacity .55` que se **colorean al hover** (y `:focus-within`), responsive con flex-wrap.
+3. **7 wordmarks provisionales** creados en `public/assets/images/insurers/` (`crecer`, `protecta`, `secrex`, `insur`, `augustar`, `sanitas`, `qualitas` .svg) con comentario "Logotipo provisional" → reemplazar por archivos oficiales cuando lleguen (**issue #19**).
+4. **Eliminado**: `InsurersCoverageTable.tsx`, `app-insurers-coverage-table.scss`, `INSURERS_MATRIX_DATA` (de `landing.data.ts`) y `CoverageAvailability` + `InsurerCoverageRow` (del modelo).
+5. **i18n (4 idiomas)**: bloque `matrix.*` completo retirado; añadido `strip.title`.
+
+### Técnica / trampas
+
+- `landing.data.ts` y los diccionarios usan **CRLF**: en Node, comparar con `.trim() === '];'` y usar `.split('\n')` seguido de `join('\n')` conserva los `\r` finales — los `replace()` con `\r?\n` evitan sorpresas.
+- Verificación con script: LandingPage usa la franja y ya no la matriz; `_index.scss` registra el nuevo SCSS; diccionarios sin `matrix:` y con `strip:`; modelo sin tipos de la matriz.
+
 | # | Issue | Milestone |
 |---|---|---|
 | #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | ✅ M1 |
 | #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | ✅ M1 |
+| #7 | Franja de logos reemplaza Matriz Multiaseguradora | ✅ M2 |
 | #7 | Franja de logos reemplaza Matriz Multiaseguradora | M2 |
 | #8 | Tarjetas simplificadas + tarjetas de Personas | M2 |
 | #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | M2 |

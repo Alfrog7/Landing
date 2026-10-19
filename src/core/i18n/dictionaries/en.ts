@@ -50,27 +50,8 @@ export const EN = {
     pageAria: 'Go to page',
   },
 
-  matrix: {
-    eyebrow: 'Transparent comparison',
-    title: 'Multi-Insurer Matrix: Coverage by Provider',
-    subtitle: 'Melanie quotes in parallel to find the most competitive rate on the market for each type of risk.',
-    neutral: '100% independent: personalized and free advice for the insured',
-    tableAria: 'Insurer availability table',
-    colService: 'Service / Policy',
-    row: {
-      cartasFianza: 'Bond Letters (OSCE Tenders)',
-      seguroCredito: 'Credit Insurance (B2B Invoices)',
-      sctr: 'SCTR Health & Pension',
-      vidaLey: 'Vida Ley Insurance',
-      car: 'Engineering Policies (CAR / EAR)',
-      do: 'Directors & Officers Liability (D&O)',
-      desgravamen: 'Life with Return (LoanProtection)',
-      salud: 'Individual Health & EPS',
-    },
-    available: 'Available',
-    consult: 'Ask me',
-    ctaBtn: 'Find out which coverage fits my company',
-    notAvailable: 'Not available',
+  strip: {
+    title: 'I work with the leading insurers in Peru',
   },
 
   why: {
