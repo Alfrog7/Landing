@@ -60,7 +60,7 @@
 
 ---
 
-## Issue #5 — [SBS] Eliminar promesas exactas (COMPLETADA — rama `feat/issue-5-promesas-exactas`)
+## Issue #5 — [SBS] Eliminar promesas exactas (COMPLETADA — PR #21)
 
 ### Qué se hizo
 
