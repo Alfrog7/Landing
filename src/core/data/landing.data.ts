@@ -313,7 +313,7 @@ export const INSURERS_MATRIX_DATA: InsurerCoverageRow[] = [
 export const LANDING_FAQS_DATA = [
   {
     question:
-      '¿Tiene algún costo adicional contratar mis seguros a través de una corredora colegiada?',
+      '¿Tiene algún costo adicional contratar mis seguros a través de una corredora de seguros persona natural?',
     answer:
       'No. La asesoría, comparativa y gestión son 100% gratuitas para el asegurado: la aseguradora reconoce la comisión según ley, sin afectar tu prima. Además, al ser independiente, cotizamos en simultáneo con todas las entidades reguladas por la SBS para darte la mejor alternativa.',
   },

@@ -23,7 +23,7 @@ export function WhyMelanie() {
               />
               <span class="why__sbs-badge">
                 <BadgeCheck size={16} />
-                {brand.sbsChipShort} · Persona Natural Colegiada
+                {brand.legalLine}
               </span>
             </div>
             <h3 class="why__name">{brand.ownerName}</h3>

@@ -1,17 +1,28 @@
+// TODO-CONTACTO: teléfono/WhatsApp real de trabajo pendiente de entrega por Melanie (issue #19).
+// TODO-LOGO-MEL: archivo del logo oficial MEL pendiente; mientras se usa el wordmark "Mel".
 export const BRAND_CONFIG = {
-  brandName: 'Melanie',
-  brandSubtitle: 'Asesoría en Seguros',
-  ownerName: 'Melanie Silva Alarcón',
-  roleTitle: 'Corredora de Seguros Colegiada SBS',
-  licenseId: 'Matrícula J-0941',
-  sbsChip: 'SBS: Persona Natural Colegiada',
-  sbsChipShort: 'SBS: Matrícula J-0941',
-  supervisionBadge: 'Matrícula SBS J-0941 · Asesora Persona Natural Colegiada',
-  quote: 'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
+  // Nombre de la página según lineamientos SBS: "Mel – Corredora de Seguros"
+  brandName: 'Mel',
+  brandTitle: 'Mel – Corredora de Seguros',
+  brandSubtitle: 'Corredora de Seguros',
+  // Nombre de pila para mensajes conversacionales de WhatsApp
+  firstName: 'Melanie',
+  ownerName: 'Melanie O. Calderón Vega',
+  roleTitle: 'Corredora de seguros persona natural – seguros generales y de vida',
+  licenseId: 'Registro SBS N-4050',
+  // Lineamiento SBS (Oficio Múltiple N° 61029-2026-SBS): denominación persistente de persona natural
+  legalLine: 'Melanie O. Calderón Vega · Corredora de Seguros persona natural · Registro SBS N-4050',
+  sbsChip: 'Corredora de Seguros persona natural',
+  sbsChipShort: 'Registro SBS N-4050',
+  supervisionBadge: 'Corredora de Seguros persona natural · Registro SBS N-4050',
+  experience: 'Más de 15 años de experiencia · Registrada en la SBS desde el 7 de julio de 2011',
+  quote:
+    'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {
-    phone: '+51 987 654 321',
-    whatsappNumber: '51987654321', // Placeholder editable: reemplazar con el número oficial de Melanie
-    email: 'contacto@melaniesilva.pe',
+    // TODO-CONTACTO: reemplazar por el número de trabajo oficial de Melanie
+    phone: 'Por confirmar (escribir por WhatsApp)',
+    whatsappNumber: '51987654321',
+    email: 'vivefelizviveseguro@gmail.com',
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
     location: 'Perú',
   },
@@ -20,9 +31,8 @@ export const BRAND_CONFIG = {
     logoDark: '/assets/images/brand/logo-dark.svg',
     logoStacked: '/assets/images/brand/logo-apilado.svg',
     logoIcon: '/assets/images/brand/icono.svg',
-    // Fotografía real de Melanie (colocar el archivo en public/assets/images/advisor/melanie.webp).
-    // Mientras no exista, los componentes hacen fallback automático al placeholder.
-    advisorPhotoReal: '/assets/images/advisor/melanie.webp',
+    // Fotografía real de Melanie (entregada en mepo/ICON.png) con fallback al placeholder.
+    advisorPhotoReal: '/assets/images/mepo/ICON.png',
     advisorPhoto: '/assets/images/advisor/profile.svg',
   },
   insurers: [

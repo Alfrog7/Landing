@@ -1,6 +1,6 @@
 export const FR = {
   navbar: {
-    subtitle: 'Conseil en Assurance',
+    subtitle: 'Courtière en Assurance',
     linksSolutions: 'Solutions',
     linksWhy: 'Pourquoi Melanie ?',
     linksInsurers: 'Assureurs',
@@ -16,7 +16,7 @@ export const FR = {
   },
 
   hero: {
-    badge: 'Licence SBS J-0941 · Conseillère agréée à titre individuel',
+    badge: 'Melanie O. Calderón Vega · Courtière d’assurance à titre individuel · Registre SBS N-4050',
     title: 'Prendre soin de votre entreprise et de vos proches peut être aussi simple.',
     lead: 'Comparez et gérez vos garanties avec un conseil technique agréé, sans bureaucratie et avec un contact direct.',
     tabsAria: 'Type de client',
@@ -75,9 +75,9 @@ export const FR = {
 
   why: {
     cta: 'Prendre rendez-vous',
-    role: 'Courtière d\u2019assurance agréée SBS',
-    track: 'Courtière indépendante agréée par la SBS',
-    title: 'Pourquoi se faire conseiller par Melanie Silva ?',
+    role: 'Courtière d\u2019assurance à titre individuel',
+    track: 'Plus de 15 ans d\u2019expérience · Inscrite à la SBS depuis le 7 juillet 2011',
+    title: 'Pourquoi se faire conseiller par Melanie ?',
     block1Title: 'Un contact 100% direct et humain',
     block1Text: 'Vous parlez directement avec Melanie par WhatsApp ou par téléphone, sans robots ni standard téléphonique en cas d\u2019urgence.',
     block2Title: 'Émission express des certificats et cautions',
@@ -158,19 +158,19 @@ export const FR = {
     linkFaq: 'Questions fréquentes',
     linkCotizador: 'Devis en ligne',
     linkAgendar: 'Réserver un appel',
-    contactTitle: 'Contactez-nous !',
+    contactTitle: 'Contactez-moi !',
     phoneLabel: 'Téléphone :',
-    emailLabel: 'E-mail :',
+    emailLabel: 'Courriel de courtière d\u2019assurance à titre individuel :',
     scheduleLabel: 'Horaires :',
     scheduleValue: 'Lundi à vendredi : 8:30 - 18:30',
     locationLabel: 'Localisation :',
-    insurersTitle: 'Assureurs partenaires',
+    insurersTitle: 'Assureurs avec lesquels je travaille',
     sbsChannel: 'Canal de dénonciation SBS',
     privacy: 'Politique de confidentialité',
     terms: 'Conditions générales',
     comingSoon: 'Bientôt disponible',
     emergency: 'Assistance urgente entrées de mine',
-    credentialLine: 'Courtière d\u2019assurance agréée SBS.',
+    credentialLine: 'Courtière d\u2019assurance à titre individuel · Registre SBS N-4050.',
     rights: 'Tous droits réservés.',
   },
 

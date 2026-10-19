@@ -1,6 +1,6 @@
 export const IT = {
   navbar: {
-    subtitle: 'Consulenza Assicurativa',
+    subtitle: 'Broker Assicurativa',
     linksSolutions: 'Soluzioni',
     linksWhy: 'Perché Melanie?',
     linksInsurers: 'Assicuratori',
@@ -16,7 +16,7 @@ export const IT = {
   },
 
   hero: {
-    badge: 'Albo SBS J-0941 · Consulente autorizzata a titolo individuale',
+    badge: 'Melanie O. Calderón Vega · Broker assicurativa persona fisica · Iscrizione SBS N-4050',
     title: 'Prenderti cura della tua azienda e dei tuoi cari può essere così semplice.',
     lead: 'Confronta e gestisci le tue coperture con una consulenza tecnica abilitata, senza burocrazia e con un contatto diretto.',
     tabsAria: 'Tipo di cliente',
@@ -75,9 +75,9 @@ export const IT = {
 
   why: {
     cta: 'Prenota una consulenza',
-    role: 'Broker assicurativa abilitata SBS',
-    track: 'Broker individuale abilitata dalla SBS',
-    title: 'Perché farti consigliare da Melanie Silva?',
+    role: 'Broker assicurativa persona fisica',
+    track: 'Oltre 15 anni di esperienza · Iscritta alla SBS dal 7 luglio 2011',
+    title: 'Perché farti consigliare da Melanie?',
     block1Title: 'Rapporto 100% diretto e umano',
     block1Text: 'Parli direttamente con Melanie via WhatsApp o telefono, senza bot impersonali né centralini telefonici in caso di urgenze.',
     block2Title: 'Emissione express di certificati e fideiussioni',
@@ -158,19 +158,19 @@ export const IT = {
     linkFaq: 'Domande Frequenti',
     linkCotizador: 'Preventivo Online',
     linkAgendar: 'Prenota una chiamata',
-    contactTitle: 'Contattaci!',
+    contactTitle: 'Contattami!',
     phoneLabel: 'Telefono:',
-    emailLabel: 'E-mail:',
+    emailLabel: 'E-mail di broker assicurativa persona fisica:',
     scheduleLabel: 'Orario:',
     scheduleValue: 'Lunedì a Venerdì: 8:30 - 18:30',
     locationLabel: 'Ubicazione:',
-    insurersTitle: 'Compagnie partner',
+    insurersTitle: 'Compagnie con cui lavoro',
     sbsChannel: 'Canale di segnalazione SBS',
     privacy: 'Informativa sulla Privacy',
     terms: 'Termini e Condizioni',
     comingSoon: 'Disponibile in futuro',
     emergency: 'Assistenza urgente per accessi in miniera',
-    credentialLine: 'Broker assicurativa abilitata SBS.',
+    credentialLine: 'Broker assicurativa persona fisica · Iscrizione SBS N-4050.',
     rights: 'Tutti i diritti riservati.',
   },
 
