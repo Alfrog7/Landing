@@ -125,7 +125,6 @@ export const ES = {
     close: 'Cerrar ficha',
     coberturas: 'Coberturas',
     requisitos: 'Requisitos de Emisión',
-    aliadas: 'Aseguradoras Aliadas',
     emissionLabel: 'Tiempo de emisión:',
     ctaPrefix: 'Cotizar ',
     ctaSuffix: ' por WhatsApp',
@@ -157,7 +156,7 @@ export const ES = {
 
   services: {
     'cartas-fianza': {
-      title: 'Cartas Fianza Express',
+      title: 'Cartas fianza',
       tag: 'Garantías Contractuales',
       badge: 'Emisión ágil',
       summary: 'Fiel Cumplimiento, Adelanto Directo y Materiales para licitaciones públicas y obras privadas.',
@@ -177,7 +176,7 @@ export const ES = {
       tip: 'Evalúo tu línea de fianza con varias afianzadoras en simultáneo para conseguirte una tasa conveniente sin costo de gestión.',
     },
     'seguro-credito': {
-      title: 'Seguro de Crédito',
+      title: 'Seguro de crédito',
       tag: 'Protección Financiera',
       badge: 'Atención prioritaria',
       summary: 'Asegura tus cuentas por cobrar comerciales contra morosidad prolongada o quiebra de clientes.',
@@ -194,7 +193,7 @@ export const ES = {
       tip: 'Vende al crédito a 30, 60 o 90 días con total tranquilidad: si tu comprador quiebra o no paga, recuperas tu capital asegurado.',
     },
     'sctr-vida-ley': {
-      title: 'Planilla Obligatoria (SCTR & Vida Ley)',
+      title: 'SCTR y Vida Ley',
       tag: 'Cumplimiento SUNAFIL',
       badge: 'Constancia ágil',
       summary: 'SCTR Salud, SCTR Pensión y Seguro Vida Ley con constancias inmediatas para acceso a garita.',
@@ -211,7 +210,7 @@ export const ES = {
       tip: '¿Tienes una emergencia de ingreso a mina u obra? Emito la constancia provisional validada para que tu personal entre a tiempo.',
     },
     'polizas-ingenieria': {
-      title: 'Pólizas de Ingeniería & RC',
+      title: 'Obras y construcción',
       tag: 'Obras & Infraestructura',
       badge: 'Todo Riesgo',
       summary: 'Seguros CAR, EAR, TREC y Responsabilidad Civil para directores (D&O) y obras civiles.',
@@ -226,7 +225,7 @@ export const ES = {
       tip: 'Reviso las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
     },
     'vehicular-todo-riesgo': {
-      title: 'Vehicular (Soat + Todo Riesgo)',
+      title: 'Vehicular y SOAT',
       tag: 'Protección Vehicular',
       badge: 'Auxilio 24/7',
       summary: 'Cobertura completa ante choques, robo, volcadura y daños a terceros, más ayuda en carretera las 24 horas.',
@@ -245,7 +244,7 @@ export const ES = {
       tip: 'Comparo la prima Todo Riesgo entre aseguradoras según tu modelo y distrito de pernocte, para que no pagues de más.',
     },
     'hogar-multirriesgo': {
-      title: 'Hogar & Multirriesgo',
+      title: 'Hogar',
       tag: 'Patrimonio Familiar',
       badge: 'Incendio + Sismo',
       summary: 'Protege tu vivienda y su contenido contra incendios, sismos, robo y responsabilidad civil familiar.',
@@ -263,7 +262,7 @@ export const ES = {
       tip: 'Suma suficiente: te ayudo a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
     },
     'asistencia-viaje': {
-      title: 'Asistencia en Viaje',
+      title: 'Viajes',
       tag: 'Viaja Tranquilo',
       badge: 'Cobertura Global',
       summary: 'Asistencia médica internacional, demoras de equipaje y cancelación de viaje para tus vacaciones o trámites al extranjero.',
@@ -280,7 +279,7 @@ export const ES = {
       tip: 'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
     },
     'vida-devolucion': {
-      title: 'Vida con Devolución',
+      title: 'Vida',
       tag: 'Ahorro Inteligente',
       badge: 'Ahorro con respaldo',
       summary: 'Reemplaza el seguro de desgravamen bancario por una póliza que te devuelve el dinero con rentabilidad.',
@@ -297,7 +296,7 @@ export const ES = {
       tip: 'No regales el desgravamen al banco. Al endosar esta póliza, todo el monto mensual se acumula a tu favor y lo cobras al vencer el plazo.',
     },
     'salud-eps': {
-      title: 'Salud Integral & EPS',
+      title: 'Salud',
       tag: 'Medicina Privada',
       badge: 'Clínicas Top',
       summary: 'Atención ambulatoria, cirugías y hospitalización en clínicas privadas de primer nivel nacional.',

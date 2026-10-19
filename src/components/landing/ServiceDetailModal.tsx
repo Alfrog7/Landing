@@ -122,17 +122,6 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                   </p>
                 </section>
 
-                <section class="detail__block">
-                  <h3>{tr.t('modal.aliadas')}</h3>
-                  <div class="detail__insurers">
-                    {service.insurers.map((insurer) => (
-                      <span key={insurer} class="detail__pill">
-                        {insurer}
-                      </span>
-                    ))}
-                  </div>
-                </section>
-
                 <button type="button" class="detail__cta" onClick={quote}>
                   {tr.t('modal.ctaPrefix') + tr.t(`${key}.title`) + tr.t('modal.ctaSuffix')}
                 </button>

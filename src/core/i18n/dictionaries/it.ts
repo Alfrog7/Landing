@@ -125,7 +125,6 @@ export const IT = {
     close: 'Chiudi la scheda',
     coberturas: 'Coperture',
     requisitos: 'Documenti Richiesti',
-    aliadas: 'Compagnie Partner',
     emissionLabel: 'Tempo di emissione:',
     ctaPrefix: 'Preventiva per ',
     ctaSuffix: ' via WhatsApp',
@@ -157,7 +156,7 @@ export const IT = {
 
   services: {
     'cartas-fianza': {
-      title: 'Fideiussioni Express',
+      title: 'Fideiussioni',
       tag: 'Garanzie Contrattuali',
       badge: 'Emissione agile',
       summary: 'Fedele Esecuzione, Anticipo Diretto e Materiali per gare pubbliche e lavori privati.',
@@ -177,7 +176,7 @@ export const IT = {
       tip: 'Valutiamo la tua linea fideiussoria con AVLA, Insur e Secrex in parallelo per ottenere la tariffa più bassa senza costi di gestione.',
     },
     'seguro-credito': {
-      title: 'Assicurazione Credito',
+      title: 'Assicurazione credito',
       tag: 'Protezione Finanziaria',
       badge: 'Attenzione prioritaria',
       summary: 'Metti al sicuro i tuoi crediti commerciali da morosità prolungate o fallimento dei clienti.',
@@ -194,7 +193,7 @@ export const IT = {
       tip: 'Vendi a 30, 60 o 90 giorni in totale serenità: se il tuo acquirente fallisce o non paga, il tuo capitale è assicurato.',
     },
     'sctr-vida-ley': {
-      title: 'Nominativa Obbligatoria (SCTR & Vida Ley)',
+      title: 'SCTR & Vita Ley',
       tag: 'Conformità SUNAFIL',
       badge: 'Certificato rapido',
       summary: 'SCTR Salute, SCTR Pensione e Vida Ley con certificati immediati per l\u2019accesso ai cantieri.',
@@ -211,7 +210,7 @@ export const IT = {
       tip: 'Ingresso d\u2019emergenza in miniera o cantiere? Emettiamo il certificato provvisorio validato perché il tuo personale entri in orario.',
     },
     'polizas-ingenieria': {
-      title: 'Polize Ingegneria & RC',
+      title: 'Opere e costruzioni',
       tag: 'Cantieri & Infrastrutture',
       badge: 'Tutti i Rischi',
       summary: 'Assicurazioni CAR, EAR, TREC e Responsabilità Civile dirigenti (D&O) per lavori civili.',
@@ -226,7 +225,7 @@ export const IT = {
       tip: 'Verifichiamo le clausole richieste nel contratto del tuo committente per coprire esattamente ciò che chiedono, senza sovracosti inutili.',
     },
     'vehicular-todo-riesgo': {
-      title: 'Auto (SOAT + Tutti i Rischi)',
+      title: 'Auto & SOAT',
       tag: 'Protezione Veicolo',
       badge: 'Soccorso 24/7',
       summary: 'Copertura completa per tamponamenti, furti, ribaltamenti e danni a terzi, con assistenza stradale 24 ore.',
@@ -245,7 +244,7 @@ export const IT = {
       tip: 'Compar Ravens la premio Tutti i Rischi tra Rímac, Pacífico e Mapfre in base al modello e al distretto di parcheggio, per non pagare di più.',
     },
     'hogar-multirriesgo': {
-      title: 'Casa & Multi-Rischi',
+      title: 'Casa',
       tag: 'Patrimonio Familiare',
       badge: 'Incendio + Sisma',
       summary: 'Proteggi la tua abitazione e il suo contenuto da incendi, terremoti, furti e responsabilità civile familiare.',
@@ -263,7 +262,7 @@ export const IT = {
       tip: 'Copertura adeguata: definiamo la somma assicurata in base al valore di ricostruzione della tua casa, non al prezzo d\u2019acquisto.',
     },
     'asistencia-viaje': {
-      title: 'Assistenza Viaggio',
+      title: 'Viaggi',
       tag: 'Viaggi Tranquillo',
       badge: 'Copertura globale',
       summary: 'Assistenza medica internazionale, ritardi bagaglio e annullamento del viaggio per vacanze o pratiche all\u2019estero.',
@@ -280,7 +279,7 @@ export const IT = {
       tip: 'Se viaggi in Europa verifica che la polizza rispetti il requisito Schengen (minimo 30.000 EUR di copertura medica); la emettiamo in giornata.',
     },
     'vida-devolucion': {
-      title: 'Vita con Rimborso',
+      title: 'Vita',
       tag: 'Risparmio Intelligente',
       badge: 'Risparmio protetto',
       summary: 'Sostituisce l\u2019assicurazione prestito bancaria con una polizza che ti restituisce il denaro con rendimento.',
@@ -297,7 +296,7 @@ export const IT = {
       tip: 'Non regalare l\u2019assicurazione prestito alla banca. Collegando questa polizza, tutta la rata mensile si accumula a tuo favore e la ritiri alla scadenza.',
     },
     'salud-eps': {
-      title: 'Salute Integrale & EPS',
+      title: 'Salute',
       tag: 'Medicina Privata',
       badge: 'Cliniche di primo livello',
       summary: 'Visite ambulatoriali, chirurgie e ricoveri in cliniche private di prim\u2019ordine in tutto il Paese.',

@@ -11,7 +11,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Fiel Cumplimiento, Adelanto Directo y Materiales para licitaciones públicas y obras privadas.',
     image: '/assets/images/services/fianzas-obras.svg',
-    insurers: ['AVLA', 'Insur', 'Secrex', 'Mapfre'],
     specs: {
       coberturas: [
         'Fiel Cumplimiento de Contrato (10% del monto adjudicado)',
@@ -39,7 +38,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Asegura tus cuentas por cobrar comerciales contra morosidad prolongada o quiebra de clientes.',
     image: '/assets/images/services/seguro-credito.svg',
-    insurers: ['Insur', 'Solunion / Allianz'],
     specs: {
       coberturas: [
         'Indemnización de hasta el 90% del valor de la factura impaga',
@@ -64,7 +62,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'SCTR Salud, SCTR Pensión y Seguro Vida Ley con constancias inmediatas para acceso a garita.',
     image: '/assets/images/services/sctr-mineria.svg',
-    insurers: ['Rímac', 'Pacífico', 'Mapfre', 'Protecta', 'La Positiva'],
     specs: {
       coberturas: [
         'SCTR Salud: Cobertura médica y hospitalaria integral al 100%',
@@ -89,7 +86,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Seguros CAR, EAR, TREC y Responsabilidad Civil para directores (D&O) y obras civiles.',
     image: '/assets/images/services/ingenieria-car.svg',
-    insurers: ['Chubb', 'AVLA', 'Pacífico', 'Mapfre'],
     specs: {
       coberturas: [
         'Póliza CAR: Daños materiales a la obra civil durante la construcción',
@@ -114,7 +110,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Reemplaza el seguro de desgravamen bancario por una póliza que te devuelve el dinero con rentabilidad.',
     image: '/assets/images/services/vida-ahorro.svg',
-    insurers: ['Allwest / Ohio National', 'Mapfre', 'Pacífico', 'Rímac'],
     specs: {
       coberturas: [
         'Fondo de ahorro acumulado con rentabilidad garantizada',
@@ -139,7 +134,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Atención ambulatoria, cirugías y hospitalización en clínicas privadas de primer nivel nacional.',
     image: '/assets/images/services/salud-clinica.svg',
-    insurers: ['Sanitas', 'Pacífico', 'Rímac', 'Mapfre'],
     specs: {
       coberturas: [
         'Atención médica ambulatoria al 85% - 100% en red clínica',
@@ -164,7 +158,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Cobertura completa ante choques, robo, volcadura y daños a terceros, más ayuda en carretera las 24 horas.',
     image: '/assets/images/services/seguro-vehicular.svg',
-    insurers: ['Rímac', 'Pacífico', 'Mapfre', 'La Positiva'],
     specs: {
       coberturas: [
         'Daños materiales y pérdida total del vehículo',
@@ -191,7 +184,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Protege tu vivienda y su contenido contra incendios, sismos, robo y responsabilidad civil familiar.',
     image: '/assets/images/services/seguro-hogar.svg',
-    insurers: ['Pacífico', 'Rímac', 'Mapfre'],
     specs: {
       coberturas: [
         'Incendio y terremoto sobre la edificación (edificio y contenido)',
@@ -217,7 +209,6 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     summary:
       'Asistencia médica internacional, demoras de equipaje y cancelación de viaje para tus vacaciones o trámites al extranjero.',
     image: '/assets/images/services/asistencia-viaje.svg',
-    insurers: ['Mapfre', 'Pacífico', 'Rímac'],
     specs: {
       coberturas: [
         'Gastos médicos y hospitalarios por accidente o enfermedad en el extranjero',

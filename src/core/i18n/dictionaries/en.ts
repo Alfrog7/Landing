@@ -125,7 +125,6 @@ export const EN = {
     close: 'Close details',
     coberturas: 'Coverage',
     requisitos: 'Issuance Requirements',
-    aliadas: 'Partner Insurers',
     emissionLabel: 'Issuance time:',
     ctaPrefix: 'Get a quote for ',
     ctaSuffix: ' via WhatsApp',
@@ -157,7 +156,7 @@ export const EN = {
 
   services: {
     'cartas-fianza': {
-      title: 'Bond Letters Express',
+      title: 'Bond letters',
       tag: 'Contractual Guarantees',
       badge: 'Agile issuance',
       summary: 'Faithful Performance, Direct Advance and Materials for public tenders and private works.',
@@ -177,7 +176,7 @@ export const EN = {
       tip: 'I evaluate your bonding line with several bonding companies in parallel to get you a competitive premium rate at no management cost.',
     },
     'seguro-credito': {
-      title: 'Credit Insurance',
+      title: 'Credit insurance',
       tag: 'Financial Protection',
       badge: 'Priority attention',
       summary: 'Protect your trade receivables against prolonged delinquency or buyer bankruptcy.',
@@ -194,7 +193,7 @@ export const EN = {
       tip: 'Sell on 30, 60 or 90-day terms with total peace of mind: if your buyer goes bankrupt or fails to pay, your capital is insured.',
     },
     'sctr-vida-ley': {
-      title: 'Mandatory Payroll (SCTR & Vida Ley)',
+      title: 'SCTR & Life Act',
       tag: 'SUNAFIL Compliance',
       badge: 'Fast certificate',
       summary: 'SCTR Health, SCTR Pension and Vida Ley insurance with instant certificates for site access.',
@@ -211,7 +210,7 @@ export const EN = {
       tip: 'Emergency staffing entry to a mine or site? I issue the validated provisional certificate so your staff gets in on time.',
     },
     'polizas-ingenieria': {
-      title: 'Engineering & Liability Policies',
+      title: 'Construction & works',
       tag: 'Works & Infrastructure',
       badge: 'All Risk',
       summary: 'CAR, EAR, TREC and Directors & Officers (D&O) Liability insurance for civil works.',
@@ -226,7 +225,7 @@ export const EN = {
       tip: 'I review the clauses required by your client\u2019s contract to cover exactly what they ask for, with no unnecessary extra costs.',
     },
     'vehicular-todo-riesgo': {
-      title: 'Auto (SOAT + All Risk)',
+      title: 'Auto & SOAT',
       tag: 'Vehicle Protection',
       badge: '24/7 roadside help',
       summary: 'Full coverage against crashes, theft, rollover and third-party damage, plus 24-hour roadside assistance.',
@@ -245,7 +244,7 @@ export const EN = {
       tip: 'I compare the All Risk premium between insurers based on your model and parking district so you never overpay.',
     },
     'hogar-multirriesgo': {
-      title: 'Home & Multi-Risk',
+      title: 'Home',
       tag: 'Family Assets',
       badge: 'Fire + Earthquake',
       summary: 'Protect your home and belongings against fire, earthquakes, theft and family civil liability.',
@@ -263,7 +262,7 @@ export const EN = {
       tip: 'Sum insured: I help you set the coverage amount based on your home\u2019s rebuilding value, not its purchase price.',
     },
     'asistencia-viaje': {
-      title: 'Travel Assistance',
+      title: 'Travel',
       tag: 'Travel with Peace of Mind',
       badge: 'Global coverage',
       summary: 'International medical assistance, baggage delays and trip cancellation for holidays or paperwork abroad.',
@@ -280,7 +279,7 @@ export const EN = {
       tip: 'Traveling to Europe? Make sure your policy meets the Schengen requirement (minimum EUR 30,000 medical coverage); I handle it with priority attention.',
     },
     'vida-devolucion': {
-      title: 'Life with Return',
+      title: 'Life',
       tag: 'Smart Savings',
       badge: 'Savings with backing',
       summary: 'Replaces your bank loan protection insurance with a policy that returns your money with yield.',
@@ -297,7 +296,7 @@ export const EN = {
       tip: 'Don\u2019t gift loan protection to the bank. By endorsing this policy, the entire monthly amount accumulates in your favor and you collect it when the term ends.',
     },
     'salud-eps': {
-      title: 'Comprehensive Health & EPS',
+      title: 'Health',
       tag: 'Private Medicine',
       badge: 'Top clinics',
       summary: 'Outpatient care, surgery and hospitalization in top-tier private clinics nationwide.',
