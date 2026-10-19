@@ -76,16 +76,18 @@ app-service-detail-modal {
   }
   .detail__tag,
   .detail__time {
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-ink);
+    background: var(--svc-accent);
+    border: 1.5px solid var(--svc-accent-dark);
     border-radius: var(--radius-sm);
-    color: var(--color-ink);
+    color: var(--svc-accent-contrast);
     font-size: 0.78rem;
     font-weight: 700;
     padding: 0.25rem 0.6rem;
   }
   .detail__time {
-    background: var(--color-yellow);
+    background: var(--svc-secondary);
+    color: var(--svc-secondary-contrast);
+    border-color: var(--color-ink);
   }
   .detail__tip {
     position: relative;
@@ -118,7 +120,7 @@ app-service-detail-modal {
     margin: 0 0 1.25rem;
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-primary-text);
+    color: var(--svc-accent-dark);
   }
   .detail__block {
     padding: 1.1rem 0;
@@ -148,12 +150,12 @@ app-service-detail-modal {
   .detail__block li svg {
     flex-shrink: 0;
     margin-top: 0.1rem;
-    color: var(--color-primary);
+    color: var(--svc-accent);
   }
   .detail__emission {
     margin: 0.9rem 0 0;
     padding: 0.7rem 0.9rem;
-    background: var(--color-bg);
+    background: var(--svc-tint);
     border-radius: var(--radius-sm);
     font-size: 0.9rem;
   }
@@ -161,8 +163,8 @@ app-service-detail-modal {
     width: 100%;
     margin-top: 0.5rem;
     padding: 0.95rem 1.2rem;
-    background: var(--color-orange);
-    color: var(--color-ink);
+    background: var(--svc-accent);
+    color: var(--svc-accent-contrast);
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
     font-family: var(--font-body);
@@ -172,7 +174,7 @@ app-service-detail-modal {
     transition: background 0.15s ease;
   }
   .detail__cta:hover {
-    background: var(--color-orange-dark);
+    background: var(--svc-accent-dark);
   }
 
   @media (max-width: 860px) {

@@ -15,8 +15,9 @@ export interface ServiceDetail {
   badgeTime: string;
   summary: string;
   image: string;
-
   specs: ServiceSpecs;
   mepoTip: string;
+  // Presencia de Mepo en la ficha: solo ambientes personales/cálidos (feedback §3/§4)
+  mepo: boolean;
 }
 

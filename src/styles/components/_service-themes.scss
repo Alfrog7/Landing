@@ -1,0 +1,103 @@
+// Ambiente por seguro (feedback §4): cada ficha y tarjeta define su paleta
+// mediante data-svc="<id>", manteniendo logo, estructura y orden idénticos.
+:root {
+  // Fallback: identidad del sitio (verde-bosque)
+  --svc-accent: var(--color-primary);
+  --svc-accent-dark: var(--color-primary-dark);
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: var(--color-yellow);
+  --svc-secondary-contrast: var(--color-ink);
+  --svc-tint: var(--color-bg);
+}
+
+// Cartas fianza: azul marino + dorado (elegante, sofisticado)
+[data-svc='cartas-fianza'] {
+  --svc-accent: #1b2a5e;
+  --svc-accent-dark: #131e44;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #f5b50a;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #eef1f9;
+}
+
+// Seguro de crédito: azul acero + gris (corporativo, estratégico)
+[data-svc='seguro-credito'] {
+  --svc-accent: #28619b;
+  --svc-accent-dark: #1f4e7c;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #9aa3ae;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #edf2f8;
+}
+
+// Obras y construcción: grafito + amarillo obra (sólido, técnico)
+[data-svc='polizas-ingenieria'] {
+  --svc-accent: #333b41;
+  --svc-accent-dark: #24292e;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #f5b50a;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #f1f2f3;
+}
+
+// SCTR y Vida Ley: azul + naranja (práctico, rápido)
+[data-svc='sctr-vida-ley'] {
+  --svc-accent: #175e9d;
+  --svc-accent-dark: #104a7e;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #f26b21;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #eaf1f8;
+}
+
+// Salud (& EPS): verde salvia + crema + rosa suave (acogedor, tranquilo).
+// Nota: si en la ficha nueva (#11) se separa EPS de Salud, reservar entonces
+// verde menta (#237f56) para la ficha EPS independiente.
+[data-svc='salud-eps'] {
+  --svc-accent: #64755b;
+  --svc-accent-dark: #4f5d48;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #f7f3e8;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #f3f6f0;
+}
+
+// Hogar: terracota + beige + madera (cálido, de casa)
+[data-svc='hogar-multirriesgo'] {
+  --svc-accent: #a85430;
+  --svc-accent-dark: #8a4225;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #e8dcc8;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #f7f0e8;
+}
+
+// Vida: lavanda + dorado suave (emotivo, de familia)
+[data-svc='vida-devolucion'] {
+  --svc-accent: #6c5aa7;
+  --svc-accent-dark: #564889;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #efd9a7;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #f1eff8;
+}
+
+// Vehicular y SOAT: rojo vino (dinámico)
+[data-svc='vehicular-todo-riesgo'] {
+  --svc-accent: #7a2e2e;
+  --svc-accent-dark: #5f2323;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #333b41;
+  --svc-secondary-contrast: #ffffff;
+  --svc-tint: #f5efef;
+}
+
+// Viajes: turquesa + arena (alegre, aventurero)
+[data-svc='asistencia-viaje'] {
+  --svc-accent: #0b7280;
+  --svc-accent-dark: #08565f;
+  --svc-accent-contrast: #ffffff;
+  --svc-secondary: #ead9b0;
+  --svc-secondary-contrast: #10201b;
+  --svc-tint: #eaf5f6;
+}

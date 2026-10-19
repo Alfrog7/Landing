@@ -74,7 +74,7 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
       <div class="dialog-overlay__pane">
         <div class="dialog-overlay__container" role="dialog" ref={containerRef} tabIndex={-1}>
           <app-service-detail-modal>
-            <div class="detail">
+            <div class="detail" data-svc={service.id}>
               <button type="button" class="detail__close" onClick={onClose} aria-label={tr.t('modal.close')} ref={closeRef}>
                 <X size={18} />
               </button>
@@ -85,10 +85,12 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                   <span class="detail__tag">{tr.t(`${key}.tag`)}</span>
                   <span class="detail__time">{tr.t(`${key}.badge`)}</span>
                 </div>
-                <div class="detail__tip">
-                  <Mepo size={52} />
-                  <p>{tr.t(`${key}.tip`)}</p>
-                </div>
+                {service.mepo && (
+                  <div class="detail__tip">
+                    <Mepo size={52} />
+                    <p>{tr.t(`${key}.tip`)}</p>
+                  </div>
+                )}
               </aside>
 
               <div class="detail__content">
