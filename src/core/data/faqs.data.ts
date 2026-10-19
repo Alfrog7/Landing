@@ -30,7 +30,7 @@ export const FAQS: FaqItem[] = [
   {
     question: '¿En cuánto tiempo puedo acceder a un pase de garita?',
     answer:
-      'Trabajamos emisiones express: una vez validada la planilla y el pago de prima, la constancia para garitas puede emitirse el mismo día con las aseguradoras aliadas. Utiliza el botón de urgencia WhatsApp si tu ingreso es hoy.',
+      'Trabajo emisiones con gestión ágil: una vez validada la planilla y el pago de prima, la constancia para garitas puede emitirse con las aseguradoras. Utiliza el botón de urgencia WhatsApp si tu ingreso es hoy.',
     category: 'Pases y Garitas',
   },
   {

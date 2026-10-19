@@ -28,7 +28,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       entidadesNormativas: 'Válidas para OSCE, SEACE y Contratos Privados',
     },
     meipoTip:
-      'Evaluamos tu línea de fianza con AVLA, Insur y Secrex en simultáneo para conseguirte la tasa de prima más baja sin costo de gestión.',
+      'Evalúo tu línea de fianza con varias afianzadoras en simultáneo para conseguirte una tasa conveniente sin costo de gestión.',
   },
   {
     id: 'seguro-credito',
@@ -78,7 +78,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Emisión ágil con código digital',
     },
     meipoTip:
-      '¿Tienes una emergencia de ingreso a mina u obra? Emitimos la constancia provisional validada para que tu personal entre a tiempo.',
+      '¿Tienes una emergencia de ingreso a mina u obra? Emito la constancia provisional validada para que tu personal entre a tiempo.',
   },
   {
     id: 'polizas-ingenieria',
@@ -101,7 +101,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Estructuración técnica con atención prioritaria',
     },
     meipoTip:
-      'Revisamos las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
+      'Reviso las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
   },
 
   // SEGUROS PARA PERSONAS & FAMILIAS
@@ -153,7 +153,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Activación ágil',
     },
     meipoTip:
-      'Te ayudamos a comparar copagos y deducibles entre Sanitas, Pacífico y Rímac para elegir la red de clínicas más conveniente.',
+      'Te ayudo a comparar copagos y deducibles entre aseguradoras para elegir la red de clínicas más conveniente.',
   },
   {
     id: 'vehicular-todo-riesgo',
@@ -180,7 +180,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Cotización y emisión ágiles',
     },
     meipoTip:
-      'Comparamos la prima Todo Riesgo entre Rímac, Pacífico y Mapfre según tu modelo y distrito de pernocte, para que no pagues de más.',
+      'Comparo la prima Todo Riesgo entre aseguradoras según tu modelo y distrito de pernocte, para que no pagues de más.',
   },
   {
     id: 'hogar-multirriesgo',
@@ -206,7 +206,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Emisión sin inspección para sumas estándar',
     },
     meipoTip:
-      'Suma suficiente: te ayudamos a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
+      'Suma suficiente: te ayudo a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
   },
   {
     id: 'asistencia-viaje',
@@ -231,7 +231,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Certificado digital con atención prioritaria',
     },
     meipoTip:
-      'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la emitimos el mismo día.',
+      'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
   },
 ];
 
@@ -315,7 +315,7 @@ export const LANDING_FAQS_DATA = [
     question:
       '¿Tiene algún costo adicional contratar mis seguros a través de una corredora de seguros persona natural?',
     answer:
-      'No. La asesoría, comparativa y gestión son 100% gratuitas para el asegurado: la aseguradora reconoce la comisión según ley, sin afectar tu prima. Además, al ser independiente, cotizamos en simultáneo con todas las entidades reguladas por la SBS para darte la mejor alternativa.',
+      'No. La asesoría, comparativa y gestión son 100% gratuitas para el asegurado: la aseguradora reconoce la comisión según ley, sin afectar tu prima. Además, al ser independiente, cotizo en simultáneo con todas las entidades reguladas por la SBS para darte la mejor alternativa.',
   },
   {
     question:

@@ -133,7 +133,7 @@ export const IT = {
     eyebrow: 'Domande frequenti',
     title: 'Risposte rapide prima di chiedere un preventivo',
     q1: 'C\u2019è un costo aggiuntivo per assicurarmi tramite un broker abilitata?',
-    a1: 'No. Consulenza, confronto e gestione sono 100% gratuiti per l\u2019assicurato: la compagnia riconosce la provvigione per legge, senza incidere sulla tua rata. In più, essendo indipendente, prevetiamo in parallelo con tutte le compagnie regolate dalla SBS per offrirti la migliore alternativa.',
+    a1: 'No. Consulenza, confronto e gestione sono 100% gratuiti per l\u2019assicurato: la compagnia riconosce la provvigione per legge, senza incidere sulla tua rata. In più, essendo indipendente, preparo preventivi in parallelo con tutte le compagnie regolate dalla SBS per offrirti la migliore alternativa.',
     q2: 'In quanto tempo ottengo una fideiussione o un certificato SCTR urgente?',
     a2: 'Fideiussioni con gestione rapida e certificati SCTR con codice a barre digitale e attenzione prioritaria, pronti per accessi in miniera, passi per appaltatori e firme con lo Stato.',
     q3: 'Come funziona la sostituzione dell\u2019assicurazione prestito con una polizza vita?',
@@ -330,7 +330,7 @@ export const IT = {
         'Dichiarazione di salute senza patologie preesistenti non dichiarate',
       ],
       emision: 'Attivazione agile',
-      tip: 'Ti aiutiamo a confrontare ticket e franchigie tra Sanitas, Pacífico e Rímac per scegliere la rete di cliniche più conveniente.',
+      tip: 'Ti aiuto a confrontare ticket e franchigie tra assicurazioni per scegliere la rete di cliniche più conveniente.',
     },
   },
 };

@@ -94,10 +94,32 @@
 
 - Reemplazos por número de línea vía Node con escapes `\uXXXX` (los números de línea no se desplazan porque cada reemplazo es 1 línea → 1 línea). OJO: los números de línea corresponden al estado del archivo en esta rama; recalcular si se edita antes.
 
+---
+
+## Issue #6 — [SBS] Primera persona singular (COMPLETADA — PR #22)
+
+### Qué se hizo
+
+Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
+
+1. **`how.s1Text/s2Text/s3Text`** (4 idiomas): "Mapeamos/Pedimos/Revisamos/coordinamos…" → "Mapeo/Pido/Reviso/coordin…" (fr: "Je cartographie/demande/vérifie/coordonne").
+2. **`faq.a1`**: "cotizamos en simultáneo" → "cotizo en simultáneo" ("we quote" / "je chiffre" / "preparo preventivi" en it).
+3. **`faq.a3`**: "trasladamos/we move/nous transférons" → primera persona.
+4. **`services.*.tip`** (meipoTip de las 9 fichas, 4 idiomas): "Evaluamos/Emitimos/Revisamos/Comparamos/te ayudamos/la emitimos" → singular; y se **retiraron nombres de aseguradoras** de los tips de fianza, vehicular y salud (quedan "varias afianzadoras/aseguradoras"); "la tasa de prima más baja" → "una tasa conveniente/avantageuse" (anti-superlativo).
+5. **`matrix.consult`** (en: "Ask us" → "Ask me"; fr: "Nous consulter" → "Me consulter").
+6. **`landing.data.ts`**: los 8 `meipoTip` + FAQ a1 espejan los nuevos textos.
+7. **`faqs.data.ts`**: "Trabajamos emisiones express… el mismo día" → "Trabajo emisiones con gestión ágil…" (sin promesa de día fijo).
+
+### Criterios verificados
+
+- Regex de barrida (nosotros/nuestro/somos/-amos plurales/we/our/nous/notre/noi/siamo/…) sobre `src/`: **0 coincidencias** en líneas de contenido.
+- "S.A.C." solo aparece como **empresa cliente ficticia** (certificado de ejemplo del Hero y placeholder del cotizador) — uso legítimo, no describe la estructura de Melanie.
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK · sin mojibake (verificado por bytes).
+
 | # | Issue | Milestone |
 |---|---|---|
 | #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | ✅ M1 |
-| #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | M1 |
+| #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | ✅ M1 |
 | #7 | Franja de logos reemplaza Matriz Multiaseguradora | M2 |
 | #8 | Tarjetas simplificadas + tarjetas de Personas | M2 |
 | #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | M2 |

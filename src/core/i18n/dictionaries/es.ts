@@ -89,11 +89,11 @@ export const ES = {
   how: {
     title: 'Cuatro pasos hasta tu póliza gestionada',
     s1Title: 'Diagnóstico de riesgo y planilla',
-    s1Text: 'Mapeamos las actividades de alto riesgo, el censo de trabajadores en planilla (T-Registro) y las exigencias contractuales del principal.',
+    s1Text: 'Mapeo las actividades de alto riesgo, el censo de trabajadores en planilla (T-Registro) y las exigencias contractuales del principal.',
     s2Title: 'Licitación multimarca',
-    s2Text: 'Pedimos cotizaciones a Rímac, Pacífico, Mapfre y La Positiva para comparar primas, endosos y condiciones.',
+    s2Text: 'Pido cotizaciones a Rímac, Pacífico, Mapfre y La Positiva para comparar primas, endosos y condiciones.',
     s3Title: 'Emisión y validación de la póliza',
-    s3Text: 'Revisamos pólizas y constancias, verificamos la cobertura exacta para garitas y coordinamos el pago de la prima.',
+    s3Text: 'Reviso pólizas y constancias, verifico la cobertura exacta para garitas y coordino el pago de la prima.',
     s4Title: 'Acompañamiento continuo',
     s4Text: 'Movimientos mensuales de planilla, soporte en siniestros, renovación anual y mejoras de cobertura cuando el mercado lo permite.',
   },
@@ -133,7 +133,7 @@ export const ES = {
     eyebrow: 'Preguntas frecuentes',
     title: 'Respuestas rápidas antes de cotizar',
     q1: '¿Tiene algún costo adicional contratar mis seguros a través de una corredora de seguros persona natural?',
-    a1: 'No. La asesoría, comparativa y gestión son 100% gratuitas para el asegurado: la aseguradora reconoce la comisión según ley, sin afectar tu prima. Además, al ser independiente, cotizamos en simultáneo con todas las entidades reguladas por la SBS para darte la mejor alternativa.',
+    a1: 'No. La asesoría, comparativa y gestión son 100% gratuitas para el asegurado: la aseguradora reconoce la comisión según ley, sin afectar tu prima. Además, al ser independiente, cotizo en simultáneo con todas las entidades reguladas por la SBS para darte la mejor alternativa.',
     q2: '¿En cuánto tiempo obtengo una Carta Fianza o una constancia SCTR urgente?',
     a2: 'Cartas Fianza con gestión ágil y constancias SCTR con código de barras digital y atención prioritaria, listas para pases de garita mineros, de obra y firmas con el Estado.',
     q3: '¿Cómo funciona el reemplazo del seguro de desgravamen con una póliza de vida?',
@@ -193,7 +193,7 @@ export const ES = {
       ],
       emision: 'Gestión ágil tras aprobación de línea afianzadora',
       entidades: 'Válidas para OSCE, SEACE y Contratos Privados',
-      tip: 'Evaluamos tu línea de fianza con AVLA, Insur y Secrex en simultáneo para conseguirte la tasa de prima más baja sin costo de gestión.',
+      tip: 'Evalúo tu línea de fianza con varias afianzadoras en simultáneo para conseguirte una tasa conveniente sin costo de gestión.',
     },
     'seguro-credito': {
       title: 'Seguro de Crédito',
@@ -227,7 +227,7 @@ export const ES = {
         'Planilla mensual en formato Excel con actividades declaradas',
       ],
       emision: 'Emisión ágil con código digital',
-      tip: '¿Tienes una emergencia de ingreso a mina u obra? Emitimos la constancia provisional validada para que tu personal entre a tiempo.',
+      tip: '¿Tienes una emergencia de ingreso a mina u obra? Emito la constancia provisional validada para que tu personal entre a tiempo.',
     },
     'polizas-ingenieria': {
       title: 'Pólizas de Ingeniería & RC',
@@ -242,7 +242,7 @@ export const ES = {
       ],
       requisitos: ['Memoria descriptiva y presupuesto de obra', 'Cronograma de ejecución valorizado'],
       emision: 'Estructuración técnica con atención prioritaria',
-      tip: 'Revisamos las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
+      tip: 'Reviso las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
     },
     'vehicular-todo-riesgo': {
       title: 'Vehicular (Soat + Todo Riesgo)',
@@ -261,7 +261,7 @@ export const ES = {
         'Inspección física del vehículo según caso y antigüedad',
       ],
       emision: 'Cotización y emisión ágiles',
-      tip: 'Comparamos la prima Todo Riesgo entre Rímac, Pacífico y Mapfre según tu modelo y distrito de pernocte, para que no pagues de más.',
+      tip: 'Comparo la prima Todo Riesgo entre aseguradoras según tu modelo y distrito de pernocte, para que no pagues de más.',
     },
     'hogar-multirriesgo': {
       title: 'Hogar & Multirriesgo',
@@ -279,7 +279,7 @@ export const ES = {
         'DNI del asegurado y declaración del valor del contenido',
       ],
       emision: 'Emisión sin inspección para sumas estándar',
-      tip: 'Suma suficiente: te ayudamos a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
+      tip: 'Suma suficiente: te ayudo a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
     },
     'asistencia-viaje': {
       title: 'Asistencia en Viaje',
@@ -296,7 +296,7 @@ export const ES = {
         'Fechas de salida y retorno del viaje',
       ],
       emision: 'Certificado digital con atención prioritaria',
-      tip: 'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la emitimos el mismo día.',
+      tip: 'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
     },
     'vida-devolucion': {
       title: 'Vida con Devolución',
@@ -330,7 +330,7 @@ export const ES = {
         'Declaración jurada de salud sin preexistencias no declaradas',
       ],
       emision: 'Activación ágil',
-      tip: 'Te ayudamos a comparar copagos y deducibles entre Sanitas, Pacífico y Rímac para elegir la red de clínicas más conveniente.',
+      tip: 'Te ayudo a comparar copagos y deducibles entre aseguradoras para elegir la red de clínicas más conveniente.',
     },
   },
 };
