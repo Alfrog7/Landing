@@ -58,9 +58,45 @@
 
 ## Estado de las demás issues (pendientes)
 
+---
+
+## Issue #5 — [SBS] Eliminar promesas exactas (COMPLETADA — PR #21)
+
+### Qué se hizo
+
+1. **Diccionarios i18n (es/en/fr/it)** — 15 líneas por idioma:
+   - `services.cartas-fianza.badge`: "Emisión 48h" → **"Emisión ágil"**; `emision` "Máximo 48 horas…" → "Gestión ágil tras aprobación de línea afianzadora".
+   - `services.seguro-credito.badge`: "Recupero 90%" → **"Atención prioritaria"**; `emision` "3 a 5 días hábiles" → "Evaluación de cartera con atención prioritaria".
+   - `services.sctr-vida-ley.badge`: "Pase < 2h" → **"Constancia ágil"**; `emision` "menos de 2 horas" → "Emisión ágil con código digital".
+   - `services.polizas-ingenieria.emision`: "48 a 72 horas" → "Estructuración técnica con atención prioritaria".
+   - `services.vida-devolucion.badge`: "Retorno 100%+" → **"Ahorro con respaldo"**; `emision` "en 5 días" → "con seguimiento directo".
+   - `services.vehicular.emision`: "24 a 48 horas" → "Cotización y emisión ágiles".
+   - `services.hogar.emision`: "en 24 horas sin inspección" → "Emisión sin inspección para sumas estándar".
+   - `services.asistencia-viaje.emision`: "menos de 1 hora" → "Certificado digital con atención prioritaria".
+   - `services.salud-eps.emision`: "24 a 48 horas" → "Activación ágil".
+   - `why.block2Text`: "Entrega en menos de 2 horas…" → "Gestión ágil y prioritaria de constancias…".
+   - `faq.a2`: "en menos de 48 horas / 2 horas" → gestión ágil + atención prioritaria.
+   - Conservados (no son promesas de resultado): coberturas con porcentajes legales (10%, 90% indemnity), "100% gratuito", "100% directo", "Auxilio 24/7", "24 horas de asistencia" (feature de producto).
+2. **`src/core/data/landing.data.ts`**: `badgeTime` y `specs.tiempoEmision` de los 9 servicios espejan los nuevos textos; FAQ a2 estática corregida.
+3. **SVGs en `public/assets/images/services/`** (badges de texto dentro de la ilustración):
+   - `seguro-credito.svg`: "S/ 9,900" → "Cuentas B2B" · "90 %" → "Morosidad"
+   - `sctr-mineria.svg`: "< 2 h" → "Express"
+   - `fianzas-obras.svg`: "48 h" → "Express"
+   - `seguro-hogar.svg`: "100 %" → "Familiar"
+   - `vida-ahorro.svg`: "+ 100 %" → "Ahorro"
+
+### Verificación ejecutada
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script anti-promesas sobre diccionarios + data + SVGs: 0 restantes (24/7 y "CAR" se conservan como atributos de producto).
+
+### Técnica usada
+
+- Reemplazos por número de línea vía Node con escapes `\uXXXX` (los números de línea no se desplazan porque cada reemplazo es 1 línea → 1 línea). OJO: los números de línea corresponden al estado del archivo en esta rama; recalcular si se edita antes.
+
 | # | Issue | Milestone |
 |---|---|---|
-| #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | M1 |
+| #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | ✅ M1 |
 | #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | M1 |
 | #7 | Franja de logos reemplaza Matriz Multiaseguradora | M2 |
 | #8 | Tarjetas simplificadas + tarjetas de Personas | M2 |
