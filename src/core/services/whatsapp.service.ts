@@ -38,6 +38,18 @@ export const WhatsAppService = {
     return buildUrl(message);
   },
 
+  // Cotización desde la ficha del seguro, con los datos del formulario corto (feedback §4)
+  buildFichaQuoteUrl(serviceTitle: string, fields: Array<{ label: string; value: string }>): string {
+    let message = [
+      `Hola ${BRAND_CONFIG.firstName}, quiero cotizar *${serviceTitle}*.`,
+      '',
+      ...fields.map((f) => `• *${f.label}:* ${f.value}`),
+    ].join('\n');
+    message += `\n\n${SIGNATURE}`;
+
+    return buildUrl(message);
+  },
+
   buildAppointmentUrl(data: {
     date: string;
     time: string;

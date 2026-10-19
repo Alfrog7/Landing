@@ -182,7 +182,31 @@ Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
 |---|---|---|
 | #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | ✅ M2 |
 | #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
-| #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | M3 |
+| #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | ✅ M3 |
+
+---
+
+## Issue #11 — Nueva estructura de ficha (COMPLETADA — PR #27)
+
+### Qué se hizo
+
+1. **Modelo** (`insurance-service.model.ts`): nuevo tipo `QuoteFormField { key, type?: 'text'|'select' }`.
+2. **Datos** (`landing.data.ts`): nuevo `QUOTE_FORM_FIELDS: Record<serviceId, QuoteFormField[]>` con los campos exactos de la tabla del feedback (fianza: RUC/tipo/monto/plazo/entidad; crédito: RUC/ventas/clientes/canal; obras: RUC/tipo/monto/plazo; SCTR: RUC/actividad/trabajadores/planilla; salud: edades/distrito; vida: edad/ocupación/monto; vehicular: marca/modelo/año/valor; hogar: condición/distrito/valor casa/valor contenido; viajes: destino/fechas/edades).
+3. **`ServiceDetailModal.tsx`** reescrito con el orden literal del feedback: 1) slot de **video 16:9** con portada de la ilustración + "Muy pronto: Melanie te lo explica en 1 minuto"; 2) **Qué es** (2 líneas, usa `summary`); 3) **Qué te protege** (3 puntos, `coberturas.slice(0,3)`); 4) **formulario corto** (nombre/correo/celular + campos del seguro + checkbox de consentimiento con `accent-color` del tema); 5) **CTA "Cotizar por WhatsApp"** con mensaje prellenado. Se retiraron los bloques de requisitos y la caja de "tiempo de emisión" (la ficha queda en solo 4 cosas + botón).
+4. **`whatsapp.service.ts`**: nuevo `buildFichaQuoteUrl(serviceTitle, fields[])` — "Hola Melanie, quiero cotizar *X*." + bullets con los datos del formulario + firma persona natural.
+5. **i18n (4 idiomas)**: bloques nuevos `video.placeholder`, `modal.about`, `modal.protection`, `form.{title,name,email,phone,consent,submit}` y `fields.*` (29 etiquetas + 3 listas de opciones: 5 tipos de fianza, local/exportación, propietario/inquilino).
+6. **SCSS**: `.detail__video` (16:9, portada con overlay `color-mix` del accent del tema), `.detail__form-grid` (2 columnas → 1 en <860px), `.detail__consent`.
+
+### Técnica / trampas
+
+- ⚠️ Bug de inserción: al insertar el bloque con `indexOf` sobre una versión desactualizada del string (el replace del import cambió la longitud +20 chars), el corte cayó a mitad de "true" → archivo roto. **Regla: recalcular índices DESPUÉS de cada replace del mismo contenido.** Reparado reordenando los cierres `},\n];`.
+- `let message` (no `const`) en los builders que anexan firma — ya lo exigía la firma de la issue #4; los nuevos builders también.
+- Verificación: 9 servicios en QUOTE_FORM_FIELDS, `buildFichaQuoteUrl`, video/about/protection/consent/CTA en el modal, requisitos fuera de la ficha, diccionarios con los 3 selects y sin mojibake (check: 0 errores; build: 5 páginas OK).
+
+| # | Issue | Milestone |
+|---|---|---|
+| #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
+| #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | ✅ M3 |
 | #12 | Carrusel de tipos en fichas formales | M3 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 |
 | #14 | "Dos perfiles, una sola profesional" (usa ICON.png) | M4 |
