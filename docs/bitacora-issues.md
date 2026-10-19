@@ -139,7 +139,24 @@ Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
 | #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | ✅ M1 |
 | #7 | Franja de logos reemplaza Matriz Multiaseguradora | ✅ M2 |
 | #8 | Tarjetas simplificadas + tarjetas de Personas | ✅ M2 |
-| #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | M2 |
+| #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | ✅ M2 |
+
+---
+
+## Issue #9 — Mepo: bienvenida con letreros y saludo "¡Kuyaymi!" (COMPLETADA — PR #25)
+
+### Qué se hizo
+
+1. **Renombrado global Meipo → Mepo** (16 archivos): `Meipo.tsx` → `Mepo.tsx`, `app-meipo.scss` → `app-mepo.scss`, evento `meipo-wave` → `mepo-wave`, clases `meipo-*`/`hero__meipo` → `mepo-*`/`hero__mepo`, clave i18n `meipoTip` → `mepoTip`, campo `meipoTip` → `mepoTip` en modelo/data, `aria-label` "Mepo, el koala…".
+2. **i18n**: bloque nuevo `mepo { salute, sign1..sign3 }` en 4 idiomas con el saludo literal aprobado ("¡Kuyaymi!, que en quechua significa 'es cariño'…").
+3. **Nuevo** `MepoWelcome.tsx` + `app-mepo-welcome.scss`: bloque superior de la Home (antes del Hero) con la imagen `mepo-bienvenida.jpeg` y **3 letreros de madera como botones reales** (enlaces con `aria-label`, `:focus-visible`): "Bienvenido" → inicio · "Sigue el camino" → `/#soluciones` · "¿En qué te puedo servir?" → WhatsApp prellenado. Responsive <900px apilado.
+4. **⚠️ Los suricatos siguen en la imagen entregada** (el feedback los prohíbe por derechos de Compare the Market). Mitigación implementada: la imagen se recorta por CSS (`width: 148%; margin-left: -48%`) para mostrar solo el ~68% derecho (Mepo + letreros) y **nunca mostrar los suricatos**. Pendiente en **issue #19**: pedir a Melanie una imagen corregida sin suricatos (idealmente con los letreros ya limpios).
+5. Nota menor: el letrero 3 de la imagen dice "En que te puedo servir?" (sin tilde ni apertura) — los botones reales usan el texto correcto de i18n, independiente de la imagen.
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK
+- Script: `app-mepo-welcome` y la imagen presentes en el build prerenderizado; 0 "Meipo" en build; bloque `mepo` con saludo y 3 letreros en los 4 idiomas; `MepoWelcome` antes de `Hero` en LandingPage.
 | #10 | Ambiente de color por seguro + Mepo condicional | M3 |
 | #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | M3 |
 | #12 | Carrusel de tipos en fichas formales | M3 |

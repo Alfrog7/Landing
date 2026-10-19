@@ -54,6 +54,13 @@ export const EN = {
     title: 'I work with the leading insurers in Peru',
   },
 
+  mepo: {
+    salute: 'Hi, I’m Mepo 🐨 “Kuyaymi!”, which in Quechua means “it is affection”. And that’s how I’ll look after you: with a hug and lots of love.',
+    sign1: 'Welcome',
+    sign2: 'Follow the path',
+    sign3: 'How can I help you?',
+  },
+
   why: {
     cta: 'Book a consultation',
     role: 'Insurance broker (natural person)',
@@ -87,7 +94,7 @@ export const EN = {
     tag1: 'Duration: 15 minutes (FREE)',
     tag2: 'Format: Google Meet or Phone Call',
     tag3: 'Focus: Technical review, no jargon',
-    meipoTip: 'You will receive an instant confirmation on your WhatsApp and Google Calendar with the direct link.',
+    mepoTip: 'You will receive an instant confirmation on your WhatsApp and Google Calendar with the direct link.',
     privacy: 'Your data is protected under professional secrecy (Law No. 29733).',
     step1: 'Step 1: Choose a Day and Time',
     slotsTitle: 'Available times for the selected day:',

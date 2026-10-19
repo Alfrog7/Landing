@@ -39,9 +39,9 @@ export default function Navbar() {
     };
   }, []);
 
-  // Logo: regreso suave al inicio + saludo de Meipo
+  // Logo: regreso suave al inicio + saludo de Mepo
   const goHome = (event: MouseEvent) => {
-    window.dispatchEvent(new Event('meipo-wave'));
+    window.dispatchEvent(new Event('mepo-wave'));
     if (window.location.pathname === '/') {
       event.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });

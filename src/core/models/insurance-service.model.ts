@@ -17,6 +17,6 @@ export interface ServiceDetail {
   image: string;
 
   specs: ServiceSpecs;
-  meipoTip: string;
+  mepoTip: string;
 }
 

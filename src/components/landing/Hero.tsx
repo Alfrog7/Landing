@@ -1,7 +1,7 @@
 import { ArrowDown, Building2, Check, Users } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { AudienceCategory } from '../../core/models/insurance-service.model';
-import { Meipo } from './Meipo';
+import { Mepo } from './Mepo';
 
 interface HeroProps {
   activeTab: AudienceCategory;
@@ -99,7 +99,7 @@ export function Hero({ activeTab, onTabChange }: HeroProps) {
                 </span>
               </div>
             </div>
-            <Meipo size={150} class="hero__meipo" />
+            <Mepo size={150} class="hero__mepo" />
             <figcaption class="hero__doc-note">{tr.t('hero.docExample')}</figcaption>
           </figure>
         </div>

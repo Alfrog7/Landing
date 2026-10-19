@@ -4,7 +4,7 @@ import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
 import { CalendarSelector } from './CalendarSelector';
-import { Meipo } from './Meipo';
+import { Mepo } from './Mepo';
 import { GoogleCalendarBooking } from './GoogleCalendarBooking';
 import { GOOGLE_CALENDAR_BOOKING } from '../../core/config/booking.config';
 import { useAdvisorPhoto } from './useAdvisorPhoto';
@@ -94,8 +94,8 @@ export function AppointmentScheduler() {
               </ul>
 
               <div class="scheduler__tip">
-                <Meipo size={46} />
-                <p>{tr.t('schedule.meipoTip')}</p>
+                <Mepo size={46} />
+                <p>{tr.t('schedule.mepoTip')}</p>
               </div>
 
               <p class="scheduler__privacy">{tr.t('schedule.privacy')}</p>

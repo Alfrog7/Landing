@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { ArrowRight } from 'lucide-preact';
 import { Accordion } from '../ui/Accordion';
+import { MepoWelcome } from '../landing/MepoWelcome';
 import { Hero } from '../landing/Hero';
 import { SolutionsCarousel } from '../landing/SolutionsCarousel';
 import { HowItWorks } from '../landing/HowItWorks';
@@ -24,6 +25,8 @@ export default function LandingPage() {
 
   return (
     <app-landing>
+      <MepoWelcome />
+
       <Hero activeTab={activeTab} onTabChange={setActiveTab} />
 
       <SolutionsCarousel activeTab={activeTab} onDetailPressed={setDetail} />

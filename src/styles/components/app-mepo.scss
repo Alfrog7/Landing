@@ -1,26 +1,26 @@
-app-meipo {
-  .meipo-svg {
+app-mepo {
+  .mepo-svg {
     display: block;
     max-width: 100%;
     transform-box: fill-box;
     transform-origin: center bottom;
   }
-  .meipo-svg--wave {
-    animation: meipo-greet 1.4s ease;
+  .mepo-svg--wave {
+    animation: mepo-greet 1.4s ease;
   }
-  .meipo-svg--wave .meipo-eye--right {
+  .mepo-svg--wave .mepo-eye--right {
     transform-box: fill-box;
     transform-origin: center;
-    animation: meipo-wink 1.4s ease;
+    animation: mepo-wink 1.4s ease;
   }
-  .meipo-svg--wave .meipo-arm--right {
+  .mepo-svg--wave .mepo-arm--right {
     transform-box: fill-box;
     transform-origin: center;
-    animation: meipo-arm 1.4s ease;
+    animation: mepo-arm 1.4s ease;
   }
   
   // Saludo: saltito con leve guiñada
-  @keyframes meipo-greet {
+  @keyframes mepo-greet {
     0% {
       transform: translateY(0) scale(1);
     }
@@ -38,7 +38,7 @@ app-meipo {
     }
   }
   // Guiño del ojo derecho
-  @keyframes meipo-wink {
+  @keyframes mepo-wink {
     0%,
     24% {
       transform: scaleY(1);
@@ -55,7 +55,7 @@ app-meipo {
     }
   }
   // Movimiento de brazo al saludar
-  @keyframes meipo-arm {
+  @keyframes mepo-arm {
     0% {
       transform: translateY(0);
     }
@@ -74,9 +74,9 @@ app-meipo {
   }
   
   @media (prefers-reduced-motion: reduce) {
-    .meipo-svg--wave,
-    .meipo-svg--wave .meipo-eye--right,
-    .meipo-svg--wave .meipo-arm--right {
+    .mepo-svg--wave,
+    .mepo-svg--wave .mepo-eye--right,
+    .mepo-svg--wave .mepo-arm--right {
       animation: none;
     }
   }

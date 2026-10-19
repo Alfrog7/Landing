@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 
-export function Meipo({ size = 180, class: className }: { size?: number; class?: string }) {
+export function Mepo({ size = 180, class: className }: { size?: number; class?: string }) {
   const [waving, setWaving] = useState(false);
   const waveTimer = useRef<number | null>(null);
 
@@ -16,9 +16,9 @@ export function Meipo({ size = 180, class: className }: { size?: number; class?:
         waveTimer.current = window.setTimeout(() => setWaving(false), 1500);
       });
     };
-    window.addEventListener('meipo-wave', onWave);
+    window.addEventListener('mepo-wave', onWave);
     return () => {
-      window.removeEventListener('meipo-wave', onWave);
+      window.removeEventListener('mepo-wave', onWave);
       if (waveTimer.current !== null) {
         window.clearTimeout(waveTimer.current);
       }
@@ -26,7 +26,7 @@ export function Meipo({ size = 180, class: className }: { size?: number; class?:
   }, []);
 
   return (
-    <app-meipo class={className}>
+    <app-mepo class={className}>
       <svg
         width={size}
         height={size}
@@ -34,8 +34,8 @@ export function Meipo({ size = 180, class: className }: { size?: number; class?:
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="Meipo, el koala asesor con gafas y tableta"
-        class={`meipo-svg${waving ? ' meipo-svg--wave' : ''}`}
+        aria-label="Mepo, el koala asesor con gafas y tableta"
+        class={`mepo-svg${waving ? ' mepo-svg--wave' : ''}`}
       >
         {/* Orejas */}
         <circle cx="42" cy="66" r="30" fill="#8FA6AD" />
@@ -50,7 +50,7 @@ export function Meipo({ size = 180, class: className }: { size?: number; class?:
         <path d="M103 96h14" stroke="#0F172A" stroke-width="5" stroke-linecap="round" />
         {/* Ojos */}
         <circle cx="82" cy="96" r="5" fill="#0F172A" />
-        <circle cx="138" cy="96" r="5" fill="#0F172A" class="meipo-eye--right" />
+        <circle cx="138" cy="96" r="5" fill="#0F172A" class="mepo-eye--right" />
         <circle cx="84" cy="94" r="1.6" fill="#FFFFFF" />
         <circle cx="140" cy="94" r="1.6" fill="#FFFFFF" />
         {/* Nariz */}
@@ -68,11 +68,11 @@ export function Meipo({ size = 180, class: className }: { size?: number; class?:
         <rect x="82" y="184" width="56" height="6" rx="3" fill="#10B981" />
         <rect x="82" y="196" width="40" height="6" rx="3" fill="#E2E8F0" />
         <rect x="82" y="208" width="48" height="6" rx="3" fill="#E2E8F0" />
-        <circle cx="58" cy="192" r="12" fill="#A8BFC7" class="meipo-arm--left" />
-        <circle cx="162" cy="192" r="12" fill="#A8BFC7" class="meipo-arm--right" />
+        <circle cx="58" cy="192" r="12" fill="#A8BFC7" class="mepo-arm--left" />
+        <circle cx="162" cy="192" r="12" fill="#A8BFC7" class="mepo-arm--right" />
         {/* Corazoncito */}
         <path d="M176 26c4-6 14-4 14 4 0 6-8 11-14 14-6-3-14-8-14-14 0-8 10-10 14-4z" fill="#F97316" />
       </svg>
-    </app-meipo>
+    </app-mepo>
   );
 }

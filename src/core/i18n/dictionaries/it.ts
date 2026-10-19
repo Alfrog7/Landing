@@ -54,6 +54,13 @@ export const IT = {
     title: 'Lavoro con le principali assicurazioni del Perù',
   },
 
+  mepo: {
+    salute: 'Ciao, sono Mepo 🐨 «Kuyaymi», che in quechua significa «è tenerezza». E così ti prenderò in cura: con un abbraccio e tanta tenerezza.',
+    sign1: 'Benvenuto',
+    sign2: 'Segui il cammino',
+    sign3: 'Come posso aiutarti?',
+  },
+
   why: {
     cta: 'Prenota una consulenza',
     role: 'Broker assicurativa persona fisica',
@@ -87,7 +94,7 @@ export const IT = {
     tag1: 'Durata: 15 minuti (GRATIS)',
     tag2: 'Modalità: Google Meet o chiamata',
     tag3: 'Approccio: Valutazione tecnica senza tecnicismi',
-    meipoTip: 'Riceverai una conferma immediata su WhatsApp e Google Calendar con il link diretto.',
+    mepoTip: 'Riceverai una conferma immediata su WhatsApp e Google Calendar con il link diretto.',
     privacy: 'I tuoi dati sono protetti dal segreto professionale (Legge N. 29733).',
     step1: 'Passo 1: Scegli giorno ed orario',
     slotsTitle: 'Orari per il giorno selezionato:',
