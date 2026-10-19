@@ -130,6 +130,8 @@ export const FR = {
 
   modal: {
     close: 'Fermer la fiche',
+    about: 'Ce que c\u2019est',
+    protection: 'Ce que cela couvre',
     coberturas: 'Garanties',
     requisitos: 'Documents requis',
     emissionLabel: 'Délai d\u2019émission :',

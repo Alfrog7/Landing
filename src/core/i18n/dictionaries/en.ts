@@ -130,6 +130,8 @@ export const EN = {
 
   modal: {
     close: 'Close details',
+    about: 'What it is',
+    protection: 'What it protects',
     coberturas: 'Coverage',
     requisitos: 'Issuance Requirements',
     emissionLabel: 'Issuance time:',

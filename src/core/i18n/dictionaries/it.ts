@@ -130,6 +130,8 @@ export const IT = {
 
   modal: {
     close: 'Chiudi la scheda',
+    about: 'Che cos\u2019\u00e8',
+    protection: 'Cosa ti protegge',
     coberturas: 'Coperture',
     requisitos: 'Documenti Richiesti',
     emissionLabel: 'Tempo di emissione:',

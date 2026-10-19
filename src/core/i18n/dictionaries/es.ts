@@ -130,6 +130,8 @@ export const ES = {
 
   modal: {
     close: 'Cerrar ficha',
+    about: 'Qué es',
+    protection: 'Qué te protege',
     coberturas: 'Coberturas',
     requisitos: 'Requisitos de Emisión',
     emissionLabel: 'Tiempo de emisión:',
