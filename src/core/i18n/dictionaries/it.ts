@@ -130,6 +130,8 @@ export const IT = {
 
   modal: {
     close: 'Chiudi la scheda',
+    about: 'Che cos\u2019\u00e8',
+    protection: 'Cosa ti protegge',
     coberturas: 'Coperture',
     requisitos: 'Documenti Richiesti',
     emissionLabel: 'Tempo di emissione:',
@@ -161,6 +163,65 @@ export const IT = {
     rights: 'Tutti i diritti riservati.',
   },
 
+  video: {
+    placeholder: 'Presto: Melanie te lo spiega in 1 minuto',
+  },
+
+  form: {
+    title: 'Ciò che mi serve per preventivarti',
+    name: 'Nome completo',
+    email: 'E-mail',
+    phone: 'Cellulare',
+    consent: 'Accetto il trattamento dei miei dati personali',
+    submit: 'Preventivo su WhatsApp',
+  },
+
+  fields: {
+    ruc: 'RUC',
+    tipoFianza: 'Tipo di fideiussione',
+    tipoFianzaOptions: [
+      'Serietà dell’offerta',
+      'Fedele esecuzione',
+      'Anticipo diretto',
+      'Anticipo materiali',
+      'Fideiussioni doganali',
+    ],
+    monto: 'Importo da fideiungere',
+    plazo: 'Durata',
+    entidad: 'Ente richiedente',
+    ventas: 'Vendite annuali a credito',
+    clientes: 'Numero di clienti',
+    canal: 'Locale o export',
+    canalOptions: [
+      'Locale',
+      'Export',
+    ],
+    tipoObra: 'Tipo di opera',
+    montoObra: 'Importo dell’opera',
+    plazoObra: 'Durata dell’opera',
+    actividad: 'Attività economica',
+    trabajadores: 'Numero di dipendenti',
+    planilla: 'Nominativa mensile',
+    edades: 'Età di ogni persona',
+    distrito: 'Distretto',
+    edad: 'Età',
+    ocupacion: 'Professione',
+    montoVida: 'Importo da proteggere',
+    marca: 'Marca',
+    modelo: 'Modello',
+    anio: 'Anno',
+    valorAuto: 'Valore del veicolo',
+    condicion: 'Proprietario o inquilino',
+    condicionOptions: [
+      'Proprietario',
+      'Inquilino',
+    ],
+    valorCasa: 'Valore appross. della casa',
+    valorContenidos: 'Valore appross. del contenuto',
+    destino: 'Destinazione',
+    fechas: 'Date del viaggio',
+    edadesViajeros: 'Età dei viaggiatori',
+  },
   services: {
     'cartas-fianza': {
       title: 'Fideiussioni',

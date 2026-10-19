@@ -1,16 +1,28 @@
 # Bitácora de issues — Landing "Mel · Corredora de Seguros"
 
-> Contexto para futuras sesiones: el proyecto está migrado de Angular 21 a **Astro 7 + Preact**
-> (rama `develop`, commit `c5d3808`). El feedback oficial de Melanie vive en
-> `.opencode/skills/landing-design/Mejoras para la página web — Melanie Calderón, Asesora de Seguros.md`.
-> Las issues #4–#19 del repo ejecutan ese feedback (flujo: 1 issue → 1 branch `feat/issue-N-*` → PR a `develop`).
-> Comandos: `npm run dev` (puerto 4321), `npm run build`, `npm run check`. Node requerido ≥22.22 (instalado v24.20).
+> **LEE ESTO PRIMERO (nuevo chat):** el proyecto está en **Astro 7 + Preact** (migrado de Angular 21).
+> El feedback oficial de Melanie vive en `.opencode/skills/landing-design/Mejoras para la página web — Melanie Calderón, Asesora de Seguros.md`.
+> Las issues #4–#19 del repo (`Alfrog7/Landing`) ejecutan ese feedback.
+> Antes de actuar, verificar estado real con `gh`: `gh issue list`, `gh pr list` (estados cambian entre sesiones).
+>
+> **Flujo de trabajo:** 1 issue → 1 rama `feat/issue-N-*` → PR a `develop` con `Closes #N` + etiqueta del milestone → tras el **merge, cerrar la issue MANUALMENTE** (GitHub no auto-cierra porque la rama default es `main`, no `develop`).
+>
+> **Comandos:** `npm run dev` (puerto **4321**), `npm run build`, `npm run check` (type-check de Astro). Node ≥22.22 (instalado v24.20 vía winget).
+>
+> **Lecciones técnicas acumuladas:**
+> - ⚠️ La herramienta de escritura puede corromper UTF-8 con acentos (mojibake). El editor normal (`edit`) SÍ preserva UTF-8. Para contenido nuevo con acentos: script Node con escapes `\uXXXX` → `fs.writeFileSync(path, content, 'utf8')` y verificar con `s.includes('Calderón')`.
+> - `gh issue/pr create --body` multilínea falla en PowerShell 5.1 → usar `--body-file` con markdown en `%TEMP%\opencode\`.
+> - Los diccionarios y `landing.data.ts` usan **CRLF**: en Node comparar con `.trim()`, usar `.split('\n')` + `join('\n')` y `replace()` con `\r?\n`.
+> - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
+> - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
+>
+> **Estado en vivo al cerrar el chat anterior:** rama activa `feat/issue-11-ficha-nueva` con **PR #27 abierto** (esperando aceptación). Al fusionarse, cerrar issue #11 a mano. Siguiente issue: **#12** (carrusel de tipos en fichas formales).
 
 ---
 
-## Issue #4 — [SBS] Datos maestros (COMPLETADA — PR #20)
+## Issue #4 — [SBS] Datos maestros (COMPLETADA — PR #20, mergeado)
 
-**Rama:** `feat/issue-4-datos-maestros` · **PR:** https://github.com/Alfrog7/Landing/pull/20 · **Commit:** `10850a1`
+**Rama:** `feat/issue-4-datos-maestros` · **PR:** https://github.com/Alfrog7/Landing/pull/20 · **Commits:** `10850a1`, `3d4041c`
 
 ### Qué se hizo
 
@@ -18,176 +30,164 @@
    - `ownerName`: `Melanie O. Calderón Vega` (antes "Melanie Silva Alarcón").
    - `licenseId`: `Registro SBS N-4050` (antes "Matrícula J-0941").
    - `roleTitle`: `Corredora de seguros persona natural – seguros generales y de vida`.
-   - `brandName: 'Mel'`, `brandTitle: 'Mel – Corredora de Seguros'`, `firstName: 'Melanie'` (para mensajes conversacionales).
+   - `brandName: 'Mel'`, `brandTitle: 'Mel – Corredora de Seguros'`, `firstName: 'Melanie'` (mensajes conversacionales).
    - NUEVO `legalLine`: "Melanie O. Calderón Vega · Corredora de Seguros persona natural · Registro SBS N-4050" (línea legal persistente, fuente única).
    - NUEVO `experience`: "Más de 15 años de experiencia · Registrada en la SBS desde el 7 de julio de 2011".
    - `contact.email`: `vivefelizviveseguro@gmail.com` · `contact.phone`: "Por confirmar (escribir por WhatsApp)" con comentario `TODO-CONTACTO` (número real pendiente → issue #19; `whatsappNumber` 51987654321 se conserva SOLO como número funcional de los enlaces wa.me).
    - `assets.advisorPhotoReal` → `/assets/images/mepo/ICON.png` (foto real entregada; fallback a `profile.svg` intacto).
-2. **`src/layouts/BaseLayout.astro`**: `<title>` por defecto = `brandTitle | legalLine` y meta description en 1ª persona con Registro N-4050. Import de `BRAND_CONFIG` (fuente única, cero duplicación).
+2. **`src/layouts/BaseLayout.astro`**: `<title>` por defecto = `brandTitle | legalLine` y meta description en 1ª persona con Registro N-4050. Import de `BRAND_CONFIG` (fuente única).
 3. **`src/components/landing/Hero.tsx`**: sello del certificado de ejemplo `J-0941` → `N-4050`.
-4. **`src/components/landing/WhyMelanie.tsx`**: badge de la foto ahora usa `brand.legalLine` completo.
-5. **`src/core/services/whatsapp.service.ts`**: mensajes usan `BRAND_CONFIG.firstName`; los 4 builders anexan firma `— Melanie O. Calderón Vega, corredora de seguros persona natural` (constante `SIGNATURE`). `const message` → `let message` para permitir la firma.
-6. **i18n `src/core/i18n/dictionaries/{es,en,fr,it}.ts`**:
-   - `hero.badge` → línea legal completa en los 4 idiomas.
-   - `why.role` → "corredora de seguros persona natural" (sin "Colegiada SBS").
-   - `why.track` → experiencia + fecha de registro SBS.
-   - `why.title` → "¿Por qué asesorarte con Melanie?" (sin "Silva").
-   - `navbar.subtitle` → "Corredora de Seguros" (variantes por idioma).
-   - `footer.contactTitle` → sin "nos/-nous/-ci" plural ("Hablemos" / "Get in touch!" / "Contactez-moi !" / "Contattami!").
-   - `footer.emailLabel` → "Correo de corredora de seguros persona natural:" (rótulo obligatorio).
-   - `footer.credentialLine` → "…persona natural · Registro SBS N-4050."
-   - `footer.insurersTitle` → "Aseguradoras con las que trabajo" (evita prometer alianza).
-7. **Datos sueltos**: `landing.data.ts` FAQ (sin "colegiada"), `faqs.data.ts` FAQ del broker (sin "colegiada", sin lista de aseguradoras, sin "no la empresa"), `GoogleCalendarBooking.tsx` title (sin "Silva"), `CotizadorWizard.tsx` placeholder de teléfono neutral, `global.scss` comentario de cabecera.
-
-### Verificación ejecutada
-
-- `npm run check`: **0 errores / 0 warnings** · `npm run build`: **5 páginas OK**.
-- Script de auditoría sobre `src/`: **0 apariciones** de "Silva", "J-0941", "melaniesilva", "Colegiada", "987 654", "contacto@" (única excepción: `whatsappNumber` funcional con `TODO-CONTACTO`).
-
-### Lecciones técnicas (importante para próximos PR)
-
-- ⚠️ La herramienta de escritura de archivos corrompió UTF-8 en `brand.config.ts` (mojibake "Calderón"→"CalderÃ³n"). **Solución usada**: script Node con escapes `\uXXXX` (ASCII puro) en `node -e` o archivo `.js` temporal → `fs.writeFileSync(path, content, 'utf8')`. El editor normal de archivos SÍ preserva UTF-8 (probado en diccionarios). Verificar SIEMPRE con `s.includes('Calderón')` tras escribir textos con acentos.
-- El formulario de `gh issue create`/`gh pr create` con `--body` multilínea falla en PowerShell 5.1 → usar siempre `--body-file` con el markdown en `%TEMP%\opencode\`.
-- Nota: la versión Angular anterior (con el rediseño y las mejoras de accesibilidad) quedó preservada en la rama `backup/angular-redesign-accesibilidad` por si hay que portar ideas.
-
-### Pendiente externo (no bloquea el merge)
-
-- Número de trabajo real (teléfono/WhatsApp) → issue #19 (`TODO-CONTACTO` en `brand.config.ts`).
-
----
-
-## Estado de las demás issues (pendientes)
-
----
-
-## Issue #5 — [SBS] Eliminar promesas exactas (COMPLETADA — PR #21)
-
-### Qué se hizo
-
-1. **Diccionarios i18n (es/en/fr/it)** — 15 líneas por idioma:
-   - `services.cartas-fianza.badge`: "Emisión 48h" → **"Emisión ágil"**; `emision` "Máximo 48 horas…" → "Gestión ágil tras aprobación de línea afianzadora".
-   - `services.seguro-credito.badge`: "Recupero 90%" → **"Atención prioritaria"**; `emision` "3 a 5 días hábiles" → "Evaluación de cartera con atención prioritaria".
-   - `services.sctr-vida-ley.badge`: "Pase < 2h" → **"Constancia ágil"**; `emision` "menos de 2 horas" → "Emisión ágil con código digital".
-   - `services.polizas-ingenieria.emision`: "48 a 72 horas" → "Estructuración técnica con atención prioritaria".
-   - `services.vida-devolucion.badge`: "Retorno 100%+" → **"Ahorro con respaldo"**; `emision` "en 5 días" → "con seguimiento directo".
-   - `services.vehicular.emision`: "24 a 48 horas" → "Cotización y emisión ágiles".
-   - `services.hogar.emision`: "en 24 horas sin inspección" → "Emisión sin inspección para sumas estándar".
-   - `services.asistencia-viaje.emision`: "menos de 1 hora" → "Certificado digital con atención prioritaria".
-   - `services.salud-eps.emision`: "24 a 48 horas" → "Activación ágil".
-   - `why.block2Text`: "Entrega en menos de 2 horas…" → "Gestión ágil y prioritaria de constancias…".
-   - `faq.a2`: "en menos de 48 horas / 2 horas" → gestión ágil + atención prioritaria.
-   - Conservados (no son promesas de resultado): coberturas con porcentajes legales (10%, 90% indemnity), "100% gratuito", "100% directo", "Auxilio 24/7", "24 horas de asistencia" (feature de producto).
-2. **`src/core/data/landing.data.ts`**: `badgeTime` y `specs.tiempoEmision` de los 9 servicios espejan los nuevos textos; FAQ a2 estática corregida.
-3. **SVGs en `public/assets/images/services/`** (badges de texto dentro de la ilustración):
-   - `seguro-credito.svg`: "S/ 9,900" → "Cuentas B2B" · "90 %" → "Morosidad"
-   - `sctr-mineria.svg`: "< 2 h" → "Express"
-   - `fianzas-obras.svg`: "48 h" → "Express"
-   - `seguro-hogar.svg`: "100 %" → "Familiar"
-   - `vida-ahorro.svg`: "+ 100 %" → "Ahorro"
-
-### Verificación ejecutada
-
-- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
-- Script anti-promesas sobre diccionarios + data + SVGs: 0 restantes (24/7 y "CAR" se conservan como atributos de producto).
-
-### Técnica usada
-
-- Reemplazos por número de línea vía Node con escapes `\uXXXX` (los números de línea no se desplazan porque cada reemplazo es 1 línea → 1 línea). OJO: los números de línea corresponden al estado del archivo en esta rama; recalcular si se edita antes.
-
----
-
-## Issue #6 — [SBS] Primera persona singular (COMPLETADA — PR #22)
-
-### Qué se hizo
-
-Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
-
-1. **`how.s1Text/s2Text/s3Text`** (4 idiomas): "Mapeamos/Pedimos/Revisamos/coordinamos…" → "Mapeo/Pido/Reviso/coordin…" (fr: "Je cartographie/demande/vérifie/coordonne").
-2. **`faq.a1`**: "cotizamos en simultáneo" → "cotizo en simultáneo" ("we quote" / "je chiffre" / "preparo preventivi" en it).
-3. **`faq.a3`**: "trasladamos/we move/nous transférons" → primera persona.
-4. **`services.*.tip`** (meipoTip de las 9 fichas, 4 idiomas): "Evaluamos/Emitimos/Revisamos/Comparamos/te ayudamos/la emitimos" → singular; y se **retiraron nombres de aseguradoras** de los tips de fianza, vehicular y salud (quedan "varias afianzadoras/aseguradoras"); "la tasa de prima más baja" → "una tasa conveniente/avantageuse" (anti-superlativo).
-5. **`matrix.consult`** (en: "Ask us" → "Ask me"; fr: "Nous consulter" → "Me consulter").
-6. **`landing.data.ts`**: los 8 `meipoTip` + FAQ a1 espejan los nuevos textos.
-7. **`faqs.data.ts`**: "Trabajamos emisiones express… el mismo día" → "Trabajo emisiones con gestión ágil…" (sin promesa de día fijo).
-
-### Criterios verificados
-
-- Regex de barrida (nosotros/nuestro/somos/-amos plurales/we/our/nous/notre/noi/siamo/…) sobre `src/`: **0 coincidencias** en líneas de contenido.
-- "S.A.C." solo aparece como **empresa cliente ficticia** (certificado de ejemplo del Hero y placeholder del cotizador) — uso legítimo, no describe la estructura de Melanie.
-- `npm run check`: 0 errores · `npm run build`: 5 páginas OK · sin mojibake (verificado por bytes).
-
----
-
-## Issue #7 — Franja de logos reemplaza la Matriz Multiaseguradora (COMPLETADA — PR #23)
-
-### Qué se hizo
-
-1. **Nuevo** `src/components/landing/InsurerLogoStrip.tsx`: franja con título i18n "Trabajo con las principales aseguradoras del Perú" y las **13 aseguradoras** del feedback (Mapfre, Pacífico, Rimac, La Positiva, Chubb, Crecer, Protecta Security, Secrex Cesce, InSur, Avla, AuguStar, Sanitas, Quálitas). Mantiene `id="aseguradoras"` para que sigan funcionando el link del navbar y el redirect `/coberturas-sctr`.
-2. **Nuevo** `src/styles/components/app-insurer-logo-strip.scss` (registrado en `_index.scss`): logos a 40px de alto, `grayscale(100%) + opacity .55` que se **colorean al hover** (y `:focus-within`), responsive con flex-wrap.
-3. **7 wordmarks provisionales** creados en `public/assets/images/insurers/` (`crecer`, `protecta`, `secrex`, `insur`, `augustar`, `sanitas`, `qualitas` .svg) con comentario "Logotipo provisional" → reemplazar por archivos oficiales cuando lleguen (**issue #19**).
-4. **Eliminado**: `InsurersCoverageTable.tsx`, `app-insurers-coverage-table.scss`, `INSURERS_MATRIX_DATA` (de `landing.data.ts`) y `CoverageAvailability` + `InsurerCoverageRow` (del modelo).
-5. **i18n (4 idiomas)**: bloque `matrix.*` completo retirado; añadido `strip.title`.
-
-### Técnica / trampas
-
-- `landing.data.ts` y los diccionarios usan **CRLF**: en Node, comparar con `.trim() === '];'` y usar `.split('\n')` seguido de `join('\n')` conserva los `\r` finales — los `replace()` con `\r?\n` evitan sorpresas.
-- Verificación con script: LandingPage usa la franja y ya no la matriz; `_index.scss` registra el nuevo SCSS; diccionarios sin `matrix:` y con `strip:`; modelo sin tipos de la matriz.
-
-| # | Issue | Milestone |
-|---|---|---|
-| #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | ✅ M1 |
-| #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | ✅ M1 |
-| #7 | Franja de logos reemplaza Matriz Multiaseguradora | ✅ M2 |
-| #8 | Tarjetas simplificadas + tarjetas de Personas | ✅ M2 |
-| #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | ✅ M2 |
-
----
-
-## Issue #9 — Mepo: bienvenida con letreros y saludo "¡Kuyaymi!" (COMPLETADA — PR #25)
-
-### Qué se hizo
-
-1. **Renombrado global Meipo → Mepo** (16 archivos): `Meipo.tsx` → `Mepo.tsx`, `app-meipo.scss` → `app-mepo.scss`, evento `meipo-wave` → `mepo-wave`, clases `meipo-*`/`hero__meipo` → `mepo-*`/`hero__mepo`, clave i18n `meipoTip` → `mepoTip`, campo `meipoTip` → `mepoTip` en modelo/data, `aria-label` "Mepo, el koala…".
-2. **i18n**: bloque nuevo `mepo { salute, sign1..sign3 }` en 4 idiomas con el saludo literal aprobado ("¡Kuyaymi!, que en quechua significa 'es cariño'…").
-3. **Nuevo** `MepoWelcome.tsx` + `app-mepo-welcome.scss`: bloque superior de la Home (antes del Hero) con la imagen `mepo-bienvenida.jpeg` y **3 letreros de madera como botones reales** (enlaces con `aria-label`, `:focus-visible`): "Bienvenido" → inicio · "Sigue el camino" → `/#soluciones` · "¿En qué te puedo servir?" → WhatsApp prellenado. Responsive <900px apilado.
-4. **⚠️ Los suricatos siguen en la imagen entregada** (el feedback los prohíbe por derechos de Compare the Market). Mitigación implementada: la imagen se recorta por CSS (`width: 148%; margin-left: -48%`) para mostrar solo el ~68% derecho (Mepo + letreros) y **nunca mostrar los suricatos**. Pendiente en **issue #19**: pedir a Melanie una imagen corregida sin suricatos (idealmente con los letreros ya limpios).
-5. Nota menor: el letrero 3 de la imagen dice "En que te puedo servir?" (sin tilde ni apertura) — los botones reales usan el texto correcto de i18n, independiente de la imagen.
+4. **`src/components/landing/WhyMelanie.tsx`**: badge de la foto usa `brand.legalLine` completo.
+5. **`src/core/services/whatsapp.service.ts`**: mensajes usan `BRAND_CONFIG.firstName`; los builders anexan firma `— Melanie O. Calderón Vega, corredora de seguros persona natural` (constante `SIGNATURE`).
+6. **i18n `{es,en,fr,it}.ts`**: `hero.badge` → línea legal; `why.role` → "corredora de seguros persona natural"; `why.track` → experiencia + fecha SBS; `why.title` sin "Silva"; `navbar.subtitle` → "Corredora de Seguros"; `footer.contactTitle` sin plural ("Hablemos"); `footer.emailLabel` → "Correo de corredora de seguros persona natural:"; `footer.credentialLine` → "…persona natural · Registro SBS N-4050."; `footer.insurersTitle` → "Aseguradoras con las que trabajo".
+7. **Datos sueltos**: `landing.data.ts` FAQ sin "colegiada"; `faqs.data.ts` sin "colegiada"/lista de aseguradoras/"no la empresa"; `GoogleCalendarBooking.tsx` sin "Silva"; `CotizadorWizard.tsx` placeholder neutro; `global.scss` cabecera.
 
 ### Verificación
 
-- `npm run check`: 0 errores · `npm run build`: 5 páginas OK
-- Script: `app-mepo-welcome` y la imagen presentes en el build prerenderizado; 0 "Meipo" en build; bloque `mepo` con saludo y 3 letreros en los 4 idiomas; `MepoWelcome` antes de `Hero` en LandingPage.
-| #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Auditoría `src/`: 0 apariciones de "Silva", "J-0941", "melaniesilva", "Colegiada", "987 654", "contacto@" (única excepción: `whatsappNumber` funcional con `TODO-CONTACTO`).
 
 ---
 
-## Issue #10 — Ambiente de color por seguro + Mepo condicional (COMPLETADA — PR #26)
+## Issue #5 — [SBS] Eliminar promesas exactas (COMPLETADA — PR #21, mergeado)
 
 ### Qué se hizo
 
-1. **Nuevo** `src/styles/components/_service-themes.scss` (registrado primero en `_index.scss`): variables `--svc-accent / --svc-accent-dark / --svc-accent-contrast / --svc-secondary / --svc-secondary-contrast / --svc-tint` con fallback a la identidad del sitio; **10 paletas** vía `[data-svc='<service.id>']`:
-   - Cartas fianza: marino #1B2A5E + dorado #F5B50A · Crédito: azul acero #28619B + gris · Obras: grafito #333B41 + amarillo obra · SCTR: azul #175E9D + naranja #F26B21 · Salud(&EPS): salvia #64755B + crema · Hogar: terracota #A85430 + beige · Vida: lavanda #6C5AA7 + dorado suave · Vehicular: rojo vino #7A2E2E · Viajes: turquesa #0B7280 + arena. (Nota: si #11 separa EPS de Salud, reservar verde menta #237F56 para EPS.)
-   - Contraste AA: todos los acentos elegidos con blanco ≥4.5:1 (verificado por luminancia).
-2. **Ficha** (`ServiceDetailModal.tsx` + SCSS): `data-svc` en `.detail`; tag con accent, badge de tiempo con secondary, `detail__regulatory`/checkmarks con accent, `detail__emission` con tint, CTA con accent + hover accent-dark.
-3. **Tarjeta** (`SolutionsCarousel.tsx` + SCSS): `data-svc` en `.card`; badge con tint/borde accent y CTA con underline accent al hover (reemplaza el naranja fijo).
-4. **Mepo condicional**: campo `mepo: boolean` en el modelo + las 9 entradas de `landing.data.ts`; el modal renderiza el tip de Mepo **solo** donde aplica: no en fianzas/crédito/obras/SCTR (false), sí en Vida/Salud/Hogar/Vehicular/Viajes (true).
+1. **i18n (4 idiomas)** — 15 líneas por idioma:
+   - `cartas-fianza.badge`: "Emisión 48h" → **"Emisión ágil"**; `emision` → "Gestión ágil tras aprobación de línea afianzadora".
+   - `seguro-credito.badge`: "Recupero 90%" → **"Atención prioritaria"**; `emision` → "con atención prioritaria".
+   - `sctr-vida-ley.badge`: "Pase < 2h" → **"Constancia ágil"**; `emision` → "Emisión ágil con código digital".
+   - `polizas-ingenieria.emision`: "48 a 72 horas" → "con atención prioritaria".
+   - `vida-devolucion.badge`: "Retorno 100%+" → **"Ahorro con respaldo"**; `emision` → "con seguimiento directo".
+   - `vehicular.emision`: "24 a 48 horas" → "Cotización y emisión ágiles".
+   - `hogar.emision`: "en 24 horas" → "Emisión sin inspección para sumas estándar".
+   - `asistencia-viaje.emision`: "menos de 1 hora" → "con atención prioritaria".
+   - `salud-eps.emision`: "24 a 48 horas" → "Activación ágil".
+   - `why.block2Text` y `faq.a2` suavizados (sin "menos de 2/48 horas").
+   - Conservados (no son promesas): porcentajes legales de coberturas (10%, 90% indemnity), "100% gratuito", "100% directo", "Auxilio 24/7", "asistencia 24 horas" (features).
+2. **`landing.data.ts`**: `badgeTime` y `specs.tiempoEmision` espejan los nuevos textos; FAQ a2 estática corregida.
+3. **SVGs de servicios**: `seguro-credito.svg` "S/ 9,900"→"Cuentas B2B" y "90 %"→"Morosidad" · `sctr-mineria.svg` "< 2 h"→"Express" · `fianzas-obras.svg` "48 h"→"Express" · `seguro-hogar.svg` "100 %"→"Familiar" · `vida-ahorro.svg` "+ 100 %"→"Ahorro".
+
+### Técnica
+
+- Reemplazos por número de línea vía Node con escapes `\uXXXX` (1 línea → 1 línea, sin desplazamiento). Los números de línea valen para el estado del archivo de esa rama; recalcular si se edita antes.
+
+---
+
+## Issue #6 — [SBS] Primera persona singular (COMPLETADA — PR #22, mergeado)
+
+### Qué se hizo
+
+Barrida de lenguaje societario/plural (47 reemplazos):
+
+1. **`how.s1Text/s2Text/s3Text`** (4 idiomas): "Mapeamos/Pedimos/Revisamos/coordinamos" → "Mapeo/Pido/Reviso/coordin" (fr: "Je cartographie/demande/vérifie").
+2. **`faq.a1`**: "cotizamos" → "cotizo" ("we quote"/"je chiffre"/"preparo preventivi").
+3. **`faq.a3`**: "trasladamos/we move/nous transférons" → singular.
+4. **`services.*.tip`** (9 fichas × 4 idiomas): verbos en 1ª persona + sin nombres de aseguradoras en tips (fianza, vehicular, salud) + "la tasa de prima más baja" → "una tasa conveniente" (anti-superlativo).
+5. **`matrix.consult`**: "Ask us" → "Ask me"; "Nous consulter" → "Me consulter".
+6. **`landing.data.ts`** y **`faqs.data.ts`**: espejados ("Trabajamos emisiones express… el mismo día" → "Trabajo emisiones con gestión ágil…").
+
+### Verificación
+
+- Regex de barrida (nosotros/nuestro/somos/verbos -amos/we/our/nous/notre/noi/siamo) sobre `src/`: 0 coincidencias en contenido.
+- "S.A.C." solo como **empresa cliente ficticia** (certificado de ejemplo del Hero y placeholder del cotizador) — uso legítimo.
+
+---
+
+## Issue #7 — Franja de logos reemplaza la Matriz (COMPLETADA — PR #23, mergeado)
+
+### Qué se hizo
+
+1. **Nuevo** `src/components/landing/InsurerLogoStrip.tsx`: título i18n "Trabajo con las principales aseguradoras del Perú" + **13 aseguradoras** (Mapfre, Pacífico, Rimac, La Positiva, Chubb, Crecer, Protecta Security, Secrex Cesce, InSur, Avla, AuguStar, Sanitas, Quálitas). Conserva `id="aseguradoras"` (navbar + redirect `/coberturas-sctr` siguen funcionando).
+2. **Nuevo** `app-insurer-logo-strip.scss`: logos 40px, `grayscale(100%) + opacity .55` → color al hover/`focus-within`, flex-wrap.
+3. **7 wordmarks provisionales** en `public/assets/images/insurers/` (`crecer`, `protecta`, `secrex`, `insur`, `augustar`, `sanitas`, `qualitas` .svg) marcados "provisional" → reemplazar por archivos oficiales (**issue #19**).
+4. **Eliminado**: `InsurersCoverageTable.tsx`, su SCSS, `INSURERS_MATRIX_DATA` y los tipos `CoverageAvailability`/`InsurerCoverageRow` del modelo.
+5. **i18n**: bloque `matrix.*` completo retirado; añadido `strip.title`.
+6. Incluye asset `solunion.jpeg` (se usará en la ficha de crédito, issue #12 o futuras).
+
+---
+
+## Issue #8 — Tarjetas simplificadas (COMPLETADA — PR #24, mergeado)
+
+### Qué se hizo
+
+1. **Títulos simples** (i18n ×4 idiomas): "Cartas fianza" · "Seguro de crédito" · "SCTR y Vida Ley" · "Obras y construcción" · "Vehicular y SOAT" · "Hogar" · "Viajes" · "Vida" · "Salud" (antes: Cartas Fianza Express, Planilla Obligatoria (SCTR & Vida Ley), Pólizas de Ingeniería & RC, Vehicular (Soat + Todo Riesgo), Hogar & Multirriesgo, Asistencia en Viaje, Vida con Devolución, Salud Integral & EPS).
+2. **Sin aseguradoras**: eliminada la línea `card__insurers` de la tarjeta (`SolutionsCarousel.tsx`), el bloque "Aseguradoras Aliadas" del modal, la clave `modal.aliadas` (4 idiomas), el campo `insurers` de las 9 entradas y del modelo `ServiceDetail`. SCSS muerto limpiado (`card__insurers`, `detail__insurers`, `detail__pill`).
+3. **Pestaña Personas** verificada por datos: 5 tarjetas (Vida, Salud, Vehicular y SOAT, Hogar, Viajes).
+4. "Vida con Devolución" se conserva como tema del agendador y prosa del a3 (no son títulos de tarjeta).
+
+---
+
+## Issue #9 — Mepo: bienvenida y saludo "¡Kuyaymi!" (COMPLETADA — PR #25, mergeado)
+
+### Qué se hizo
+
+1. **Renombrado global Meipo → Mepo** (20 archivos): `Meipo.tsx` → `Mepo.tsx`, `app-meipo.scss` → `app-mepo.scss`, evento `meipo-wave` → `mepo-wave`, clases `meipo-*`/`hero__meipo` → `mepo-*`/`hero__mepo`, clave i18n `meipoTip` → `mepoTip`, campo `meipoTip` → `mepoTip` en modelo/data, aria-labels.
+2. **i18n**: bloque nuevo `mepo { salute, sign1..sign3 }` en 4 idiomas con el saludo literal aprobado ("¡Kuyaymi!, que en quechua significa 'es cariño'…").
+3. **Nuevo** `MepoWelcome.tsx` + `app-mepo-welcome.scss`: bloque superior de la Home (antes del Hero) con `mepo-bienvenida.jpeg` y **3 letreros como botones reales** (aria-label, focus-visible): "Bienvenido" → inicio · "Sigue el camino" → `/#soluciones` · "¿En qué te puedo servir?" → WhatsApp prellenado. Responsive <900px apilado.
+4. **Estilo de los letreros corregido por feedback del usuario**: verde-bosque institucional (`--color-primary` #0B7A57 + borde `--color-primary-dark` + hover) — NO el marrón madera original (no cuadraba con la identidad "papel frío + tinta verde-bosque").
+5. **⚠️ Los suricatos siguen en la imagen entregada** (prohibidos por derechos de Compare the Market): mitigado con recorte CSS (`width: 148%; margin-left: -48%` — muestra el ~68% derecho: Mepo + letreros). Asset corregido pendiente en **issue #19**. Nota: el letrero 3 de la imagen dice "En que te puedo servir?" sin apertura — los botones usan i18n correcto.
+
+---
+
+## Issue #10 — Ambiente de color por seguro + Mepo condicional (COMPLETADA — PR #26, mergeado)
+
+### Qué se hizo
+
+1. **Nuevo** `src/styles/components/_service-themes.scss` (registrado primero en `_index.scss`): variables `--svc-accent / --svc-accent-dark / --svc-accent-contrast / --svc-secondary / --svc-secondary-contrast / --svc-tint` con fallback a la identidad; **10 paletas** vía `[data-svc='<service.id>']`:
+   - Cartas fianza: marino #1B2A5E + dorado #F5B50A · Crédito: azul acero #28619B + gris · Obras: grafito #333B41 + amarillo obra · SCTR: azul #175E9D + naranja #F26B21 · Salud(&EPS): salvia #64755B + crema · Hogar: terracota #A85430 + beige · Vida: lavanda #6C5AA7 + dorado suave · Vehicular: rojo vino #7A2E2E · Viajes: turquesa #0B7280 + arena. (Si #12+ separa EPS de Salud: reservar verde menta #237F56 para EPS.)
+   - Contraste AA: acentos con blanco ≥4.5:1 (verificado por luminancia).
+2. **Ficha** (`ServiceDetailModal.tsx` + SCSS): `data-svc` en `.detail` — tag accent, badge de tiempo secondary, regulatory/checkmarks accent, emission tint, CTA accent + hover dark.
+3. **Tarjeta** (`SolutionsCarousel.tsx` + SCSS): `data-svc` en `.card` — badge tint/borde accent, CTA underline accent al hover (ya no naranja fijo).
+4. **Mepo condicional**: campo `mepo: boolean` en modelo + 9 servicios; el tip de Mepo solo en Vida/Salud/Hogar/Vehicular/Viajes (true); NO en Cartas fianza/Crédito/Obras/SCTR (false).
 5. Estructura/orden/logo intactos: solo cambia el ambiente.
 
-### Técnica / trampas
+---
 
-- El renombrado anterior (Meipo→Mepo) también tocó `landing.data.ts`/modelo (`meipoTip`→`mepoTip`): los scripts de inserción deben buscar `mepoTip:`.
-- Inserción de `mepo:` tras el cierre multilinea de `mepoTip:` (regex `'.*',\s*$`), de abajo hacia arriba para no desplazar índices.
+## Issue #11 — Nueva estructura de ficha (COMPLETADA — **PR #27 ABIERTO, pendiente de merge**)
 
-| # | Issue | Milestone |
-|---|---|---|
-| #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | ✅ M2 |
-| #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
-| #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | M3 |
-| #12 | Carrusel de tipos en fichas formales | M3 |
-| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 |
-| #14 | "Dos perfiles, una sola profesional" (usa ICON.png) | M4 |
-| #15 | "Área de Riesgos Virtual" | M4 |
-| #16 | Botón "¿Emergencia?" | M4 |
-| #17 | Contenido de presentación (logo MEL, "¿Qué es un corredor?", "Tu bróker") | M4 |
-| #18 | Footer legal SBS | M4 |
-| #19 | [Pendientes externos] checklist de entregables de Melanie | — |
+**Rama:** `feat/issue-11-ficha-nueva` · **PR:** https://github.com/Alfrog7/Landing/pull/27 · **Commit:** `75697eb` (+ bitácora)
+
+**Corrección tras revisión de Melanie (2026-10-19, commit `f103cfe`):** el modal mostraba el texto crudo `modal.about` / `modal.protection` porque esas claves nunca se agregaron a los diccionarios. Añadidas en 4 idiomas según el feedback (§4: "Qué es", "Qué te protege"); `form.title` ("Para cotizarte necesito") y el botón "Cotizar por WhatsApp" ya eran correctos. El video queda con portada "Muy pronto" hasta que Melanie envíe el enlace (issue #19).
+
+### Qué se hizo
+
+1. **Modelo**: nuevo `QuoteFormField { key, type?: 'text'|'select' }` (etiqueta i18n `fields.<key>`, opciones `fields.<key>Options`).
+2. **Datos**: nuevo `QUOTE_FORM_FIELDS: Record<serviceId, QuoteFormField[]>` con los campos exactos de la tabla del feedback (fianza: RUC/tipo/monto/plazo/entidad; crédito: RUC/ventas/clientes/canal; obras: RUC/tipo/monto/plazo; SCTR: RUC/actividad/trabajadores/planilla; salud: edades/distrito; vida: edad/ocupación/monto; vehicular: marca/modelo/año/valor; hogar: condición/distrito/valor casa/valor contenido; viajes: destino/fechas/edades).
+3. **`ServiceDetailModal.tsx`** reescrito — orden literal del feedback: 1) **video 16:9** con portada + "Muy pronto: Melanie te lo explica en 1 minuto"; 2) **Qué es** (2 líneas, `summary`); 3) **Qué te protege** (3 puntos, `coberturas.slice(0,3)`); 4) **formulario corto** (nombre/correo/celular + campos del seguro + checkbox de consentimiento); 5) **CTA "Cotizar por WhatsApp"** prellenado. Retirados: bloque de requisitos y caja de "tiempo de emisión".
+4. **`whatsapp.service.ts`**: nuevo `buildFichaQuoteUrl(serviceTitle, fields[])` — "Hola Melanie, quiero cotizar *X*." + bullets + firma persona natural.
+5. **i18n (4 idiomas)**: `video.placeholder`, `modal.about`, `modal.protection`, `form.{title,name,email,phone,consent,submit}`, `fields.*` (29 etiquetas + 3 selects: 5 tipos de fianza, local/exportación, propietario/inquilino).
+6. **SCSS**: `.detail__video` (16:9 + overlay `color-mix` del accent), `.detail__form-grid` (2 col → 1 col <860px), `.detail__consent`.
+7. Mantiene: foco trampado/Escape, tema por seguro, Mepo condicional.
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: 9 servicios en QUOTE_FORM_FIELDS, builder presente, video/about/protege/consent/CTA en el modal, requisitos fuera de la ficha, diccionarios sin mojibake.
+
+---
+
+## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
+
+| Issue | Título corto | Milestone | Estado | PR |
+|---|---|---|---|---|
+| #4 | Datos maestros SBS (nombre, N-4050, correo, foto) | M1 | ✅ Mergeada | #20 |
+| #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h) | M1 | ✅ Mergeada | #21 |
+| #6 | Primera persona singular | M1 | ✅ Mergeada | #22 |
+| #7 | Franja de logos reemplaza matriz | M2 | ✅ Mergeada | #23 |
+| #8 | Tarjetas simplificadas (nombres cortos, sin aseguradoras) | M2 | ✅ Mergeada | #24 |
+| #9 | Mepo bienvenida + Kuyaymi + renombrado | M2 | ✅ Mergeada | #25 |
+| #10 | Ambiente de color por seguro + Mepo condicional | M3 | ✅ Mergeada | #26 |
+| #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | 🔶 PR abierto | #27 |
+| #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ⬜ Pendiente | — |
+| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ⬜ Pendiente | — |
+| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ⬜ Pendiente | — |
+| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
+| #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
+| #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
+| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |
+| #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
+
+### Pendientes externos resumidos (detalle en issue #19)
+
+Teléfono/WhatsApp real · 7 logos oficiales (Crecer, Protecta, Secrex Cesce, InSur, AuguStar, Sanitas, Quálitas) · imagen de bienvenida sin suricatos · detalles planes Esencial/Integral · lista teléfonos de siniestros · archivo logo MEL · URL LinkedIn · videos por seguro · imagen "tu bróker" · permisos fotos Vida Ley.

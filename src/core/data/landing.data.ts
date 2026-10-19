@@ -1,4 +1,4 @@
-import type { ServiceDetail } from '../models/insurance-service.model';
+import type { QuoteFormField, ServiceDetail } from '../models/insurance-service.model';
 
 export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
   // SEGUROS PARA EMPRESAS
@@ -232,8 +232,64 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     mepoTip:
       'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
     mepo: true,
+// Formulario corto de cotización por seguro (feedback §4: tabla "Datos que pide").
   },
 ];
+
+// A los campos específicos se suman nombre, correo, celular y aceptación de datos.
+export const QUOTE_FORM_FIELDS: Record<string, QuoteFormField[]> = {
+  'cartas-fianza': [
+    { key: 'ruc' },
+    { key: 'tipoFianza', type: 'select' },
+    { key: 'monto' },
+    { key: 'plazo' },
+    { key: 'entidad' },
+  ],
+  'seguro-credito': [
+    { key: 'ruc' },
+    { key: 'ventas' },
+    { key: 'clientes' },
+    { key: 'canal', type: 'select' },
+  ],
+  'polizas-ingenieria': [
+    { key: 'ruc' },
+    { key: 'tipoObra' },
+    { key: 'montoObra' },
+    { key: 'plazoObra' },
+  ],
+  'sctr-vida-ley': [
+    { key: 'ruc' },
+    { key: 'actividad' },
+    { key: 'trabajadores' },
+    { key: 'planilla' },
+  ],
+  'salud-eps': [
+    { key: 'edades' },
+    { key: 'distrito' },
+  ],
+  'vida-devolucion': [
+    { key: 'edad' },
+    { key: 'ocupacion' },
+    { key: 'montoVida' },
+  ],
+  'vehicular-todo-riesgo': [
+    { key: 'marca' },
+    { key: 'modelo' },
+    { key: 'anio' },
+    { key: 'valorAuto' },
+  ],
+  'hogar-multirriesgo': [
+    { key: 'condicion', type: 'select' },
+    { key: 'distrito' },
+    { key: 'valorCasa' },
+    { key: 'valorContenidos' },
+  ],
+  'asistencia-viaje': [
+    { key: 'destino' },
+    { key: 'fechas' },
+    { key: 'edadesViajeros' },
+  ],
+};
 
 export const LANDING_FAQS_DATA = [
   {

@@ -159,6 +159,93 @@ app-service-detail-modal {
     border-radius: var(--radius-sm);
     font-size: 0.9rem;
   }
+  // Slot de video 16:9 con portada "Muy pronto" mientras no exista el video
+  .detail__video {
+    position: relative;
+    margin: 0 0 1.25rem;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1.5px solid var(--color-ink);
+  }
+  .detail__video-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+  }
+  .detail__video-note {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--svc-accent-contrast);
+    background: color-mix(in srgb, var(--svc-accent) 78%, transparent);
+  }
+
+  .detail__about {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  // Formulario corto de cotización
+  .detail__form {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .detail__form h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-stretch: 100%;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .detail__form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .detail__form-grid input,
+  .detail__form-grid select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-ink);
+    background: var(--color-surface);
+  }
+  .detail__form-grid input:focus,
+  .detail__form-grid select:focus {
+    border-color: var(--svc-accent);
+    outline: none;
+  }
+  .detail__consent {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.85rem;
+    color: var(--color-body);
+  }
+  .detail__consent input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--svc-accent);
+  }
+
   .detail__cta {
     width: 100%;
     margin-top: 0.5rem;
@@ -188,6 +275,9 @@ app-service-detail-modal {
     }
     .detail__content {
       padding: 1.5rem 1.25rem;
+    }
+    .detail__form-grid {
+      grid-template-columns: 1fr;
     }
   }
 }

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'preact/hooks';
-import { CircleCheck, FileText, X } from 'lucide-preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import { CircleCheck, X } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { ServiceDetail } from '../../core/models/insurance-service.model';
+import { QUOTE_FORM_FIELDS } from '../../core/data/landing.data';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { Mepo } from './Mepo';
 
@@ -15,6 +16,8 @@ interface ServiceDetailModalProps {
 
 // Diálogo modal: capa a pantalla completa que cierra al hacer clic fuera o con Escape,
 // enfoca el botón de cierre al abrir, atrapa el foco y lo devuelve al origen al cerrar.
+// Estructura de ficha (feedback §4): video 16:9 -> qué es -> qué te protege (3 puntos)
+// -> formulario corto por seguro -> botón "Cotizar por WhatsApp".
 export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps) {
   const tr = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,12 +61,24 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
   }, []);
 
   const key = `services.${service.id}`;
-  const coberturas = tr.list(`${key}.coberturas`);
-  const requisitos = tr.list(`${key}.requisitos`);
+  const coberturas = tr.list(`${key}.coberturas`).slice(0, 3);
   const entidades = tr.tOptional(`${key}.entidades`);
+  const extraFields = QUOTE_FORM_FIELDS[service.id] ?? [];
 
-  const quote = () => {
-    const url = WhatsAppService.buildServiceUrl(tr.t(`${key}.title`), tr.t(`${key}.tag`));
+  const [form, setForm] = useState<Record<string, string>>({});
+  const setField = (name: string, value: string) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const submit = (event: Event) => {
+    event.preventDefault();
+    const fields = [
+      { label: tr.t('form.name'), value: form.name ?? '' },
+      { label: tr.t('form.email'), value: form.email ?? '' },
+      { label: tr.t('form.phone'), value: form.phone ?? '' },
+      ...extraFields.map((f) => ({ label: tr.t(`fields.${f.key}`), value: form[f.key] ?? '' })),
+    ];
+    const url = WhatsAppService.buildFichaQuoteUrl(tr.t(`${key}.title`), fields);
     window.open(url, '_blank', 'noopener,noreferrer');
     onClose();
   };
@@ -97,8 +112,24 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                 <h2 class="detail__title">{tr.t(`${key}.title`)}</h2>
                 {entidades && <p class="detail__regulatory">{entidades}</p>}
 
+                {/* 1. Espacio para el video de Melanie (16:9), con portada mientras no exista */}
+                <figure class="detail__video">
+                  <img src={service.image} alt="" class="detail__video-cover" loading="lazy" />
+                  <figcaption class="detail__video-note">
+                    <span aria-hidden="true">▶</span>
+                    {tr.t('video.placeholder')}
+                  </figcaption>
+                </figure>
+
+                {/* 2. Qué es (2 líneas) */}
                 <section class="detail__block">
-                  <h3>{tr.t('modal.coberturas')}</h3>
+                  <h3>{tr.t('modal.about')}</h3>
+                  <p class="detail__about">{tr.t(`${key}.summary`)}</p>
+                </section>
+
+                {/* 3. Qué te protege (3 puntos) */}
+                <section class="detail__block">
+                  <h3>{tr.t('modal.protection')}</h3>
                   <ul>
                     {coberturas.map((item) => (
                       <li key={item}>
@@ -109,24 +140,79 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                   </ul>
                 </section>
 
-                <section class="detail__block">
-                  <h3>{tr.t('modal.requisitos')}</h3>
-                  <ul>
-                    {requisitos.map((item) => (
-                      <li key={item}>
-                        <FileText size={18} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <p class="detail__emission">
-                    <strong>{tr.t('modal.emissionLabel')}</strong> {tr.t(`${key}.emision`)}
-                  </p>
-                </section>
+                {/* 4. Formulario corto con los datos del seguro */}
+                <form class="detail__form" onSubmit={submit}>
+                  <h3>{tr.t('form.title')}</h3>
+                  <div class="detail__form-grid">
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder={tr.t('form.name')}
+                      value={form.name ?? ''}
+                      onInput={(e) => setField('name', (e.target as HTMLInputElement).value)}
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder={tr.t('form.email')}
+                      value={form.email ?? ''}
+                      onInput={(e) => setField('email', (e.target as HTMLInputElement).value)}
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      placeholder={tr.t('form.phone')}
+                      value={form.phone ?? ''}
+                      onInput={(e) => setField('phone', (e.target as HTMLInputElement).value)}
+                    />
+                    {extraFields.map((f) =>
+                      f.type === 'select' ? (
+                        <select
+                          key={f.key}
+                          name={f.key}
+                          required
+                          value={form[f.key] ?? ''}
+                          onInput={(e) => setField(f.key, (e.target as HTMLSelectElement).value)}
+                        >
+                          <option value="" disabled>
+                            {tr.t(`fields.${f.key}`)}
+                          </option>
+                          {tr.list(`fields.${f.key}Options`).map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          key={f.key}
+                          type="text"
+                          name={f.key}
+                          placeholder={tr.t(`fields.${f.key}`)}
+                          value={form[f.key] ?? ''}
+                          onInput={(e) => setField(f.key, (e.target as HTMLInputElement).value)}
+                        />
+                      ),
+                    )}
+                  </div>
+                  <label class="detail__consent">
+                    <input
+                      type="checkbox"
+                      required
+                      checked={form.consent === 'ok'}
+                      onInput={(e) => setField('consent', (e.target as HTMLInputElement).checked ? 'ok' : '')}
+                    />
+                    {tr.t('form.consent')}
+                  </label>
 
-                <button type="button" class="detail__cta" onClick={quote}>
-                  {tr.t('modal.ctaPrefix') + tr.t(`${key}.title`) + tr.t('modal.ctaSuffix')}
-                </button>
+                  {/* 5. Botón de cotización por WhatsApp con mensaje prellenado */}
+                  <button type="submit" class="detail__cta">
+                    {tr.t('form.submit')}
+                  </button>
+                </form>
               </div>
             </div>
           </app-service-detail-modal>

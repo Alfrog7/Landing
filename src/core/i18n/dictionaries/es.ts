@@ -130,6 +130,8 @@ export const ES = {
 
   modal: {
     close: 'Cerrar ficha',
+    about: 'Qué es',
+    protection: 'Qué te protege',
     coberturas: 'Coberturas',
     requisitos: 'Requisitos de Emisión',
     emissionLabel: 'Tiempo de emisión:',
@@ -161,6 +163,65 @@ export const ES = {
     rights: 'Todos los derechos reservados.',
   },
 
+  video: {
+    placeholder: 'Muy pronto: Melanie te lo explica en 1 minuto',
+  },
+
+  form: {
+    title: 'Para cotizarte necesito',
+    name: 'Nombre completo',
+    email: 'Correo',
+    phone: 'Celular',
+    consent: 'Acepto el tratamiento de mis datos personales',
+    submit: 'Cotizar por WhatsApp',
+  },
+
+  fields: {
+    ruc: 'RUC',
+    tipoFianza: 'Tipo de fianza',
+    tipoFianzaOptions: [
+      'Seriedad de oferta',
+      'Fiel cumplimiento',
+      'Adelanto directo',
+      'Adelanto de materiales',
+      'Aduaneras',
+    ],
+    monto: 'Monto a afianzar',
+    plazo: 'Plazo',
+    entidad: 'Entidad que la pide',
+    ventas: 'Ventas anuales a crédito',
+    clientes: 'N.º de clientes',
+    canal: 'Local o exportación',
+    canalOptions: [
+      'Local',
+      'Exportación',
+    ],
+    tipoObra: 'Tipo de obra',
+    montoObra: 'Monto de la obra',
+    plazoObra: 'Plazo de la obra',
+    actividad: 'Actividad económica',
+    trabajadores: 'N.º de trabajadores',
+    planilla: 'Planilla mensual',
+    edades: 'Edades de cada persona',
+    distrito: 'Distrito',
+    edad: 'Edad',
+    ocupacion: 'Ocupación',
+    montoVida: 'Monto a dejar protegido',
+    marca: 'Marca',
+    modelo: 'Modelo',
+    anio: 'Año',
+    valorAuto: 'Valor del auto',
+    condicion: 'Propietario o inquilino',
+    condicionOptions: [
+      'Propietario',
+      'Inquilino',
+    ],
+    valorCasa: 'Valor aproximado de la casa',
+    valorContenidos: 'Valor aproximado del contenido',
+    destino: 'Destino',
+    fechas: 'Fechas del viaje',
+    edadesViajeros: 'Edades de los viajeros',
+  },
   services: {
     'cartas-fianza': {
       title: 'Cartas fianza',
