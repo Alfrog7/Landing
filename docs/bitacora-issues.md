@@ -148,6 +148,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 **Rama:** `feat/issue-11-ficha-nueva` · **PR:** https://github.com/Alfrog7/Landing/pull/27 · **Commit:** `75697eb` (+ bitácora)
 
+**Corrección tras revisión de Melanie (2026-10-19, commit `f103cfe`):** el modal mostraba el texto crudo `modal.about` / `modal.protection` porque esas claves nunca se agregaron a los diccionarios. Añadidas en 4 idiomas según el feedback (§4: "Qué es", "Qué te protege"); `form.title` ("Para cotizarte necesito") y el botón "Cotizar por WhatsApp" ya eran correctos. El video queda con portada "Muy pronto" hasta que Melanie envíe el enlace (issue #19).
+
 ### Qué se hizo
 
 1. **Modelo**: nuevo `QuoteFormField { key, type?: 'text'|'select' }` (etiqueta i18n `fields.<key>`, opciones `fields.<key>Options`).
