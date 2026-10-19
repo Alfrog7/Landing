@@ -54,7 +54,7 @@
   gap: 0.8rem;
 }
 
-// Botones letrero de madera
+// Botones letrero: verde-bosque institucional (identidad del sitio)
 .welcome__sign {
   display: flex;
   align-items: center;
@@ -65,16 +65,16 @@
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
-  background: linear-gradient(180deg, #8b5e3c 0%, #6b4423 100%);
-  border: 1px solid #4a2f16;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), var(--shadow-md);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .welcome__sign:hover {
   transform: translateY(-2px);
-  filter: brightness(1.08);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), var(--shadow-card-hover);
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .welcome__sign:focus-visible {
