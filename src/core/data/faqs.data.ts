@@ -46,9 +46,9 @@ export const FAQS: FaqItem[] = [
     category: 'Seguro Vida Ley',
   },
   {
-    question: '¿Cuál es la ventaja de cotizar con una corredora colegiada SBS?',
+    question: '¿Cuál es la ventaja de cotizar con una corredora de seguros persona natural?',
     answer:
-      'La corredora colegiada licita tu riesgo ante múltiples aseguradoras (Rímac, Pacífico, Mapfre, La Positiva), negocia primas y responde ante siniestros como agente del contratante, sin sobrecosto: las aseguradoras pagan la comisión, no la empresa.',
+      'La corredora persona natural licita tu riesgo ante múltiples aseguradoras, negocia primas y responde ante siniestros como agente del contratante, sin sobrecosto: las aseguradoras pagan la comisión según ley, sin afectar tu prima.',
     category: 'Rol del Broker',
   },
   {

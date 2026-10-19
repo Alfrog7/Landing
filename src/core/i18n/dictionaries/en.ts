@@ -1,6 +1,6 @@
 export const EN = {
   navbar: {
-    subtitle: 'Insurance Advisory',
+    subtitle: 'Insurance Broker',
     linksSolutions: 'Solutions',
     linksWhy: 'Why Melanie?',
     linksInsurers: 'Insurers',
@@ -16,7 +16,7 @@ export const EN = {
   },
 
   hero: {
-    badge: 'SBS License J-0941 · Licensed Individual Advisor',
+    badge: 'Melanie O. Calderón Vega · Insurance Broker (natural person) · SBS Registration N-4050',
     title: 'Taking care of your company and your loved ones can be this simple.',
     lead: 'Compare and manage your coverage with licensed technical advice, with no red tape and direct, personal attention.',
     tabsAria: 'Client type',
@@ -75,9 +75,9 @@ export const EN = {
 
   why: {
     cta: 'Book a consultation',
-    role: 'SBS-Licensed Insurance Broker',
-    track: 'Individual broker licensed by the SBS',
-    title: 'Why get advice from Melanie Silva?',
+    role: 'Insurance broker (natural person)',
+    track: 'More than 15 years of experience · Registered with the SBS since July 7, 2011',
+    title: 'Why get advice from Melanie?',
     block1Title: '100% direct and human treatment',
     block1Text: 'You talk directly with Melanie via WhatsApp or a call, with no impersonal bots or phone switchboards in emergencies.',
     block2Title: 'Express issuance of certificates and bonds',
@@ -158,19 +158,19 @@ export const EN = {
     linkFaq: 'Frequently Asked Questions',
     linkCotizador: 'Quote Tool',
     linkAgendar: 'Book a Call',
-    contactTitle: 'Contact us!',
+    contactTitle: 'Get in touch!',
     phoneLabel: 'Phone:',
-    emailLabel: 'Email:',
+    emailLabel: 'Insurance broker (natural person) email:',
     scheduleLabel: 'Hours:',
     scheduleValue: 'Monday to Friday: 8:30 AM - 6:30 PM',
     locationLabel: 'Location:',
-    insurersTitle: 'Partner insurers',
+    insurersTitle: 'Insurers I work with',
     sbsChannel: 'SBS Whistleblowing Channel',
     privacy: 'Privacy Policy',
     terms: 'Terms and Conditions',
     comingSoon: 'Coming soon',
     emergency: 'Urgent support for mine gate entries',
-    credentialLine: 'SBS-Licensed Insurance Broker.',
+    credentialLine: 'Insurance broker (natural person) · SBS Registration N-4050.',
     rights: 'All rights reserved.',
   },
 

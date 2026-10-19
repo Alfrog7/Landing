@@ -1,15 +1,15 @@
 ---
 import '../styles/global.scss';
 import '../styles/components/_index.scss';
+import { BRAND_CONFIG } from '../core/config/brand.config';
 
 interface Props {
   title?: string;
   bodyClass?: string;
 }
 
-const { title = 'Melanie · Asesoría en Seguros | Colegiada SBS J-0941' } = Astro.props;
-const description =
-  'Compara y gestiona tus coberturas con Melanie Silva Alarcón, Corredora de Seguros Colegiada SBS (Matrícula J-0941). Empresas y personas: cartas fianza, SCTR, salud, vida y más — sin burocracia y con trato directo.';
+const { title = `${BRAND_CONFIG.brandTitle} | ${BRAND_CONFIG.legalLine}` } = Astro.props;
+const description = `${BRAND_CONFIG.ownerName}, corredora de seguros persona natural (Registro SBS N-4050). Yo te asesoro en seguros generales y de vida para empresas y personas: cartas fianza, SCTR, salud, hogar, vida, vehicular y viajes — sin burocracia y con trato directo.`;
 ---
 
 <!doctype html>

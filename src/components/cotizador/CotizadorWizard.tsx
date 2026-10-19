@@ -312,7 +312,7 @@ export default function CotizadorWizard() {
                 name="contactPhone"
                 inputMode="numeric"
                 maxLength={9}
-                placeholder="987654321"
+                placeholder="999000000"
                 value={contactPhone}
                 onInput={(e) => setContactPhone(digitsOnly(e, 9))}
               />

@@ -25,7 +25,7 @@ export function GoogleCalendarBooking({ booking }: { booking: NonNullable<Calend
             <iframe
               class="gcal__frame"
               src={booking.url}
-              title="Agendar una cita con Melanie Silva"
+              title="Agendar una cita con Melanie O. Calderón Vega"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
             ></iframe>

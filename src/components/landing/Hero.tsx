@@ -95,7 +95,7 @@ export function Hero({ activeTab, onTabChange }: HeroProps) {
                 <span class="hero__doc-stamp" aria-hidden="true">
                   <Check size={18} />
                   <b>SBS</b>
-                  <em>J-0941</em>
+                  <em>N-4050</em>
                 </span>
               </div>
             </div>
