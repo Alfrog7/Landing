@@ -138,8 +138,7 @@ Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
 | #5 | Eliminar promesas exactas (25%, 90%, 48h, <2h, 24h, S/ 9,900) | ✅ M1 |
 | #6 | Primera persona singular y cero términos societarios (barrida completa i18n) | ✅ M1 |
 | #7 | Franja de logos reemplaza Matriz Multiaseguradora | ✅ M2 |
-| #7 | Franja de logos reemplaza Matriz Multiaseguradora | M2 |
-| #8 | Tarjetas simplificadas + tarjetas de Personas | M2 |
+| #8 | Tarjetas simplificadas + tarjetas de Personas | ✅ M2 |
 | #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | M2 |
 | #10 | Ambiente de color por seguro + Mepo condicional | M3 |
 | #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | M3 |

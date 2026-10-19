@@ -15,7 +15,7 @@ export interface ServiceDetail {
   badgeTime: string;
   summary: string;
   image: string;
-  insurers: string[];
+
   specs: ServiceSpecs;
   meipoTip: string;
 }

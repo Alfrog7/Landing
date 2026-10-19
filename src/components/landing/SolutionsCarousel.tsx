@@ -41,9 +41,6 @@ function SolutionCard({ service, onDetailPressed }: SolutionCardProps) {
         <div class="card__body">
           <h3 class="card__title">{tr.t(`services.${service.id}.title`)}</h3>
           <p class="card__summary">{tr.t(`services.${service.id}.summary`)}</p>
-          <p class="card__insurers">
-            <span>{tr.t('modal.aliadas')}</span> {service.insurers.join(', ')}
-          </p>
           <button type="button" class="card__cta" onClick={open}>
             {tr.t('carousel.cardCta')}
             <ArrowRight size={16} />

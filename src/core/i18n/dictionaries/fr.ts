@@ -125,7 +125,6 @@ export const FR = {
     close: 'Fermer la fiche',
     coberturas: 'Garanties',
     requisitos: 'Documents requis',
-    aliadas: 'Assureurs partenaires',
     emissionLabel: 'Délai d\u2019émission :',
     ctaPrefix: 'Demander un devis pour ',
     ctaSuffix: ' via WhatsApp',
@@ -157,7 +156,7 @@ export const FR = {
 
   services: {
     'cartas-fianza': {
-      title: 'Cautionnements Express',
+      title: 'Cautionnements',
       tag: 'Garanties Contractuelles',
       badge: 'Émission agile',
       summary: 'Exécution, Avance Directe et Matériaux pour les appels d\u2019offres publics et les chantiers privés.',
@@ -177,7 +176,7 @@ export const FR = {
       tip: 'J\u2019évalue votre ligne de caution auprès de plusieurs sociétés de caution en parallèle pour vous obtenir un taux de prime avantageux, sans frais de gestion.',
     },
     'seguro-credito': {
-      title: 'Assurance Crédit',
+      title: 'Assurance-crédit',
       tag: 'Protection Financière',
       badge: 'Attention prioritaire',
       summary: 'Sécurisez vos créances commerciales contre la morosité prolongée ou la faillite de vos clients.',
@@ -194,7 +193,7 @@ export const FR = {
       tip: 'Vendez à 30, 60 ou 90 jours en toute sérénité : si votre acheteur fait faillite ou ne paie pas, votre capital est assuré.',
     },
     'sctr-vida-ley': {
-      title: 'Paie Obligatoire (SCTR & Vida Ley)',
+      title: 'SCTR & Vie Ley',
       tag: 'Conformité SUNAFIL',
       badge: 'Attestation rapide',
       summary: 'SCTR Santé, SCTR Retraite et Vida Ley avec certificats immédiats pour l\u2019accès aux sites.',
@@ -211,7 +210,7 @@ export const FR = {
       tip: 'Une entrée d\u2019urgence à la mine ou au chantier ? Je délivre le certificat provisoire validé pour que votre personnel entre à temps.',
     },
     'polizas-ingenieria': {
-      title: 'Polices d\u2019Ingénierie & RC',
+      title: 'Chantiers & construction',
       tag: 'Travaux & Infrastructure',
       badge: 'Tous Risques',
       summary: 'Assurances CAR, EAR, TREC et Responsabilité Civile des dirigeants (D&O) pour les travaux civils.',
@@ -226,7 +225,7 @@ export const FR = {
       tip: 'Je vérifie les clauses exigées dans le contrat de votre donneur d\u2019ordre pour couvrir exactement ce qui est demandé, sans surcoûts inutiles.',
     },
     'vehicular-todo-riesgo': {
-      title: 'Auto (SOAT + Tous Risques)',
+      title: 'Auto & SOAT',
       tag: 'Protection Véhicule',
       badge: 'Assistance 24/7',
       summary: 'Couverture complète contre les chocs, le vol, le retournement et les dommages aux tiers, plus une assistance routière 24h/24.',
@@ -245,7 +244,7 @@ export const FR = {
       tip: 'Je compare la prime Tous Risques chez plusieurs assureurs selon votre modèle et votre district de stationnement : vous ne payez jamais trop.',
     },
     'hogar-multirriesgo': {
-      title: 'Habitation & Multirisques',
+      title: 'Habitation',
       tag: 'Patrimoine Familial',
       badge: 'Incendie + Séisme',
       summary: 'Protégez votre logement et son contenu contre l\u2019incendie, les séismes, le vol et la responsabilité civile familiale.',
@@ -263,7 +262,7 @@ export const FR = {
       tip: 'Capital assuré : je définis la couverture selon la valeur de reconstruction de votre logement, pas son prix d\u2019achat.',
     },
     'asistencia-viaje': {
-      title: 'Assistance Voyage',
+      title: 'Voyages',
       tag: 'Voyagez Tranquille',
       badge: 'Couverture mondiale',
       summary: 'Assistance médicale internationale, retards de bagages et annulation de voyage pour vos vacances ou démarches à l\u2019étranger.',
@@ -280,7 +279,7 @@ export const FR = {
       tip: 'Si vous voyagez en Europe, vérifiez que votre police respecte le règlement Schengen (minimum 30 000 EUR de couverture médicale) ; je la gère avec attention prioritaire.',
     },
     'vida-devolucion': {
-      title: 'Vie avec Remboursement',
+      title: 'Vie',
       tag: 'Épargne Intelligente',
       badge: 'Épargne sécurisée',
       summary: 'Remplace l\u2019assurance emprunteur bancaire par une police qui vous restitue votre argent avec rendement.',
@@ -297,7 +296,7 @@ export const FR = {
       tip: 'N\u2019offrez pas l\u2019assurance emprunteur à la banque. En nantissant cette police, la totalité des mensualités s\u2019accumule en votre faveur et vous la percevez à l\u2019échéance.',
     },
     'salud-eps': {
-      title: 'Santé Intégrale & EPS',
+      title: 'Santé',
       tag: 'Médecine Privée',
       badge: 'Cliniques de premier plan',
       summary: 'Soins ambulatoires, chirurgies et hospitalisations dans des cliniques privées de premier ordre dans tout le pays.',
