@@ -222,6 +222,50 @@ export const ES = {
     fechas: 'Fechas del viaje',
     edadesViajeros: 'Edades de los viajeros',
   },
+
+  // Carrusel de tipos de las fichas formales (feedback §4, issue #12).
+  // names[i] debe coincidir con la opción del select correspondiente para preseleccionar.
+  typeCarousels: {
+    title: 'Tipos de este seguro',
+    prev: 'Tipo anterior',
+    next: 'Tipo siguiente',
+    'cartas-fianza': {
+      cta: 'Cotizar esta fianza',
+      names: [
+        'Seriedad de oferta',
+        'Fiel cumplimiento',
+        'Adelanto directo',
+        'Adelanto de materiales',
+        'Aduaneras',
+      ],
+      phrases: [
+        'Garantiza que mantienes tu oferta en la licitación.',
+        'Respalda que cumplirás el contrato.',
+        'Respalda el dinero que te adelanta la entidad.',
+        'Respalda el buen uso del adelanto para materiales.',
+        'Para operaciones de comercio exterior.',
+      ],
+    },
+    'seguro-credito': {
+      cta: 'Cotizar este seguro',
+      names: ['Local', 'Exportación'],
+      phrases: [
+        'Protege tus cuentas por cobrar con clientes del mercado nacional.',
+        'Cubre tus ventas a crédito hacia el exterior.',
+      ],
+    },
+    'polizas-ingenieria': {
+      cta: 'Cotizar esta póliza',
+      names: ['Obra civil', 'Montaje e instalaciones', 'Equipos y maquinaria', 'Responsabilidad Civil'],
+      phrases: [
+        'Cubre daños materiales durante la construcción.',
+        'Protege el montaje y las pruebas de plantas e instalaciones.',
+        'Responde por daños accidentales o volcadura de maquinaria en campo.',
+        'Cubre daños a terceros y predios colindantes.',
+      ],
+    },
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cartas fianza',

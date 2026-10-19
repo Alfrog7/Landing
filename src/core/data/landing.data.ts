@@ -236,6 +236,14 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
   },
 ];
 
+// Carrusel de tipos en las fichas formales (feedback §4, issue #12):
+// servicio -> campo del formulario que se preselecciona con "Cotizar esta...".
+export const TYPE_CAROUSEL_FIELDS: Record<string, string> = {
+  'cartas-fianza': 'tipoFianza',
+  'seguro-credito': 'canal',
+  'polizas-ingenieria': 'tipoObra',
+};
+
 // A los campos específicos se suman nombre, correo, celular y aceptación de datos.
 export const QUOTE_FORM_FIELDS: Record<string, QuoteFormField[]> = {
   'cartas-fianza': [

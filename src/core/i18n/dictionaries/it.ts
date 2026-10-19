@@ -222,6 +222,47 @@ export const IT = {
     fechas: 'Date del viaggio',
     edadesViajeros: 'Età dei viaggiatori',
   },
+  typeCarousels: {
+    title: 'Tipi di questa assicurazione',
+    prev: 'Tipo precedente',
+    next: 'Tipo successivo',
+    'cartas-fianza': {
+      cta: 'Preventiva per questa fideiussione',
+      names: [
+        'Serietà dell’offerta',
+        'Fedele esecuzione',
+        'Anticipo diretto',
+        'Anticipo materiali',
+        'Fideiussioni doganali',
+      ],
+      phrases: [
+        'Garantisce che mantieni la tua offerta in gara.',
+        'Tutela l’adempimento del contratto.',
+        'Tutela il denaro che l’ente ti anticipa.',
+        'Tutela il buon uso dell’anticipo per materiali.',
+        'Per le operazioni di commercio estero.',
+      ],
+    },
+    'seguro-credito': {
+      cta: 'Preventiva per questa polizza',
+      names: ['Locale', 'Export'],
+      phrases: [
+        'Protegge i tuoi crediti verso clienti del mercato nazionale.',
+        'Copre le tue vendite a credito verso l’estero.',
+      ],
+    },
+    'polizas-ingenieria': {
+      cta: 'Preventiva per questa polizza',
+      names: ['Opera civile', 'Montaggio e impianti', 'Attrezzature e macchinari', 'Responsabilità civile'],
+      phrases: [
+        'Copre i danni materiali durante la costruzione.',
+        'Protegge il montaggio e le prove di impianti.',
+        'Risponde di danni accidentali o ribaltamento di macchinari in cantiere.',
+        'Copre i danni a terzi e alle proprietà confinanti.',
+      ],
+    },
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Fideiussioni',
