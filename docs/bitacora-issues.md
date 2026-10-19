@@ -157,7 +157,31 @@ Barrida completa de lenguaje societario/plural en 6 archivos (47 reemplazos):
 
 - `npm run check`: 0 errores · `npm run build`: 5 páginas OK
 - Script: `app-mepo-welcome` y la imagen presentes en el build prerenderizado; 0 "Meipo" en build; bloque `mepo` con saludo y 3 letreros en los 4 idiomas; `MepoWelcome` antes de `Hero` en LandingPage.
-| #10 | Ambiente de color por seguro + Mepo condicional | M3 |
+| #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
+
+---
+
+## Issue #10 — Ambiente de color por seguro + Mepo condicional (COMPLETADA — PR #26)
+
+### Qué se hizo
+
+1. **Nuevo** `src/styles/components/_service-themes.scss` (registrado primero en `_index.scss`): variables `--svc-accent / --svc-accent-dark / --svc-accent-contrast / --svc-secondary / --svc-secondary-contrast / --svc-tint` con fallback a la identidad del sitio; **10 paletas** vía `[data-svc='<service.id>']`:
+   - Cartas fianza: marino #1B2A5E + dorado #F5B50A · Crédito: azul acero #28619B + gris · Obras: grafito #333B41 + amarillo obra · SCTR: azul #175E9D + naranja #F26B21 · Salud(&EPS): salvia #64755B + crema · Hogar: terracota #A85430 + beige · Vida: lavanda #6C5AA7 + dorado suave · Vehicular: rojo vino #7A2E2E · Viajes: turquesa #0B7280 + arena. (Nota: si #11 separa EPS de Salud, reservar verde menta #237F56 para EPS.)
+   - Contraste AA: todos los acentos elegidos con blanco ≥4.5:1 (verificado por luminancia).
+2. **Ficha** (`ServiceDetailModal.tsx` + SCSS): `data-svc` en `.detail`; tag con accent, badge de tiempo con secondary, `detail__regulatory`/checkmarks con accent, `detail__emission` con tint, CTA con accent + hover accent-dark.
+3. **Tarjeta** (`SolutionsCarousel.tsx` + SCSS): `data-svc` en `.card`; badge con tint/borde accent y CTA con underline accent al hover (reemplaza el naranja fijo).
+4. **Mepo condicional**: campo `mepo: boolean` en el modelo + las 9 entradas de `landing.data.ts`; el modal renderiza el tip de Mepo **solo** donde aplica: no en fianzas/crédito/obras/SCTR (false), sí en Vida/Salud/Hogar/Vehicular/Viajes (true).
+5. Estructura/orden/logo intactos: solo cambia el ambiente.
+
+### Técnica / trampas
+
+- El renombrado anterior (Meipo→Mepo) también tocó `landing.data.ts`/modelo (`meipoTip`→`mepoTip`): los scripts de inserción deben buscar `mepoTip:`.
+- Inserción de `mepo:` tras el cierre multilinea de `mepoTip:` (regex `'.*',\s*$`), de abajo hacia arriba para no desplazar índices.
+
+| # | Issue | Milestone |
+|---|---|---|
+| #9 | Mepo: 3 letreros-botón + saludo "¡Kuyaymi!" (renombrar Meipo→Mepo en código y textos) | ✅ M2 |
+| #10 | Ambiente de color por seguro + Mepo condicional | ✅ M3 |
 | #11 | Nueva ficha (video "Muy pronto", formulario por seguro, WhatsApp prellenado) | M3 |
 | #12 | Carrusel de tipos en fichas formales | M3 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 |

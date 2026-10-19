@@ -19,7 +19,7 @@ function SolutionCard({ service, onDetailPressed }: SolutionCardProps) {
 
   return (
     <app-solution-card>
-      <article class="card" onClick={() => onDetailPressed(service)}>
+      <article class="card" data-svc={service.id} onClick={() => onDetailPressed(service)}>
         <div class="card__media">
           <img
             class="card__bg"

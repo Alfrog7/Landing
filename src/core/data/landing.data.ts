@@ -28,6 +28,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Evalúo tu línea de fianza con varias afianzadoras en simultáneo para conseguirte una tasa conveniente sin costo de gestión.',
+    mepo: false,
   },
   {
     id: 'seguro-credito',
@@ -52,6 +53,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Vende al crédito a 30, 60 o 90 días con total tranquilidad: si tu comprador quiebra o no paga, recuperas tu capital asegurado.',
+    mepo: false,
   },
   {
     id: 'sctr-vida-ley',
@@ -76,6 +78,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       '¿Tienes una emergencia de ingreso a mina u obra? Emito la constancia provisional validada para que tu personal entre a tiempo.',
+    mepo: false,
   },
   {
     id: 'polizas-ingenieria',
@@ -98,6 +101,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Reviso las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
+    mepo: false,
   },
 
   // SEGUROS PARA PERSONAS & FAMILIAS
@@ -124,6 +128,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'No regales el desgravamen al banco. Al endosar esta póliza, todo el monto mensual se acumula a tu favor y lo cobras al vencer el plazo.',
+    mepo: true,
   },
   {
     id: 'salud-eps',
@@ -148,6 +153,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Te ayudo a comparar copagos y deducibles entre aseguradoras para elegir la red de clínicas más conveniente.',
+    mepo: true,
   },
   {
     id: 'vehicular-todo-riesgo',
@@ -174,6 +180,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Comparo la prima Todo Riesgo entre aseguradoras según tu modelo y distrito de pernocte, para que no pagues de más.',
+    mepo: true,
   },
   {
     id: 'hogar-multirriesgo',
@@ -199,6 +206,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Suma suficiente: te ayudo a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
+    mepo: true,
   },
   {
     id: 'asistencia-viaje',
@@ -223,6 +231,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     },
     mepoTip:
       'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
+    mepo: true,
   },
 ];
 
