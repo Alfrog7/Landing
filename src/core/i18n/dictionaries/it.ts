@@ -50,27 +50,8 @@ export const IT = {
     pageAria: 'Vai alla pagina',
   },
 
-  matrix: {
-    eyebrow: 'Confronto trasparente',
-    title: 'Matrice Multi-Assicurativa: Coperture per Compagnia',
-    subtitle: 'Melanie preventiva in parallelo per trovare la tariffa più competitiva del mercato per ogni tipo di rischio.',
-    neutral: 'Indipendenza al 100%: consulenza personalizzata e gratuita per l\u2019assicurato',
-    tableAria: 'Tabella di disponibilità per assicuratore',
-    colService: 'Servizio / Polizza',
-    row: {
-      cartasFianza: 'Fideiussioni (Gare OSCE)',
-      seguroCredito: 'Assicurazione Credito (Fatture B2B)',
-      sctr: 'SCTR Salute & Pensione',
-      vidaLey: 'Assicurazione Vida Ley',
-      car: 'Polize Ingegneria (CAR / EAR)',
-      do: 'Responsabilità Civile Dirigenti (D&O)',
-      desgravamen: 'Vita con Rimborso (Prestito)',
-      salud: 'Salute Individuale & EPS',
-    },
-    available: 'Disponibile',
-    consult: 'Consultereci',
-    ctaBtn: 'Scopri quale copertura è adatta alla mia azienda',
-    notAvailable: 'Non disponibile',
+  strip: {
+    title: 'Lavoro con le principali assicurazioni del Perù',
   },
 
   why: {

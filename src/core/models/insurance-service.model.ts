@@ -1,5 +1,4 @@
 export type AudienceCategory = 'empresas' | 'personas';
-export type CoverageAvailability = boolean | 'consultar';
 
 export interface ServiceSpecs {
   coberturas: string[];
@@ -21,12 +20,3 @@ export interface ServiceDetail {
   meipoTip: string;
 }
 
-export interface InsurerCoverageRow {
-  serviceName: string;
-  rimac: CoverageAvailability;
-  pacifico: CoverageAvailability;
-  mapfre: CoverageAvailability;
-  positiva: CoverageAvailability;
-  insurAvla: CoverageAvailability;
-  chubb: CoverageAvailability;
-}

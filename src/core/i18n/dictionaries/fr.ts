@@ -50,27 +50,8 @@ export const FR = {
     pageAria: 'Aller à la page',
   },
 
-  matrix: {
-    eyebrow: 'Comparaison transparente',
-    title: 'Matrice Multi-assureurs : Garanties par Compagnie',
-    subtitle: 'Melanie chiffre en parallèle pour trouver le taux le plus compétitif du marché selon chaque type de risque.',
-    neutral: 'Indépendance à 100% : conseil personnalisé et gratuit pour l\u2019assuré',
-    tableAria: 'Tableau de disponibilité par assureur',
-    colService: 'Service / Police',
-    row: {
-      cartasFianza: 'Cautionnements (Appels d\u2019offres OSCE)',
-      seguroCredito: 'Assurance Crédit (Factures B2B)',
-      sctr: 'SCTR Santé & Retraite',
-      vidaLey: 'Assurance Vida Ley',
-      car: 'Polices d\u2019Ingénierie (CAR / EAR)',
-      do: 'Responsabilité Civile des Dirigeants (D&O)',
-      desgravamen: 'Vie avec Remboursement (Prêt)',
-      salud: 'Santé Individuelle & EPS',
-    },
-    available: 'Disponible',
-    consult: 'Me consulter',
-    ctaBtn: 'Savoir quelle couverture convient à mon entreprise',
-    notAvailable: 'Non disponible',
+  strip: {
+    title: 'Je travaille avec les principaux assureurs du Pérou',
   },
 
   why: {

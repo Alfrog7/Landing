@@ -4,7 +4,7 @@ import { Accordion } from '../ui/Accordion';
 import { Hero } from '../landing/Hero';
 import { SolutionsCarousel } from '../landing/SolutionsCarousel';
 import { HowItWorks } from '../landing/HowItWorks';
-import { InsurersCoverageTable } from '../landing/InsurersCoverageTable';
+import { InsurerLogoStrip } from '../landing/InsurerLogoStrip';
 import { WhyMelanie } from '../landing/WhyMelanie';
 import { AppointmentScheduler } from '../landing/AppointmentScheduler';
 import { ServiceDetailModal } from '../landing/ServiceDetailModal';
@@ -30,7 +30,7 @@ export default function LandingPage() {
 
       <HowItWorks />
 
-      <InsurersCoverageTable />
+      <InsurerLogoStrip />
 
       <WhyMelanie />
 

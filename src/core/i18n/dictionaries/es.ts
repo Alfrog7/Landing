@@ -50,27 +50,8 @@ export const ES = {
     pageAria: 'Ir a la página',
   },
 
-  matrix: {
-    eyebrow: 'Comparativa transparente',
-    title: 'Matriz Multiaseguradora: Cobertura por Entidad',
-    subtitle: 'Melanie cotiza en simultáneo para encontrar la tasa más competitiva del mercado según el tipo de riesgo.',
-    neutral: '100% independiente: asesoría personalizada y gratuita para el asegurado',
-    tableAria: 'Tabla de disponibilidad por aseguradora',
-    colService: 'Servicio / Póliza',
-    row: {
-      cartasFianza: 'Cartas Fianza (Licitaciones OSCE)',
-      seguroCredito: 'Seguro de Crédito (Facturas B2B)',
-      sctr: 'SCTR Salud y Pensión',
-      vidaLey: 'Seguro Vida Ley',
-      car: 'Pólizas de Ingeniería (CAR / EAR)',
-      do: 'Responsabilidad Civil D&O',
-      desgravamen: 'Vida con Devolución (Desgravamen)',
-      salud: 'Salud Individual y EPS',
-    },
-    available: 'Disponible',
-    consult: 'Consultar',
-    ctaBtn: 'Consultar qué cobertura se adapta a mi empresa',
-    notAvailable: 'No disponible',
+  strip: {
+    title: 'Trabajo con las principales aseguradoras del Perú',
   },
 
   why: {
