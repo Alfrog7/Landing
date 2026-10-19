@@ -54,6 +54,13 @@ export const FR = {
     title: 'Je travaille avec les principaux assureurs du Pérou',
   },
 
+  mepo: {
+    salute: 'Bonjour, je suis Mepo 🐨 « Kuyaymi », qui en quechua signifie « c’est de la tendresse ». Et c’est ainsi que je vais prendre soin de toi : avec un câlin et beaucoup de tendresse.',
+    sign1: 'Bienvenue',
+    sign2: 'Suis le chemin',
+    sign3: 'Comment puis-je t’aider ?',
+  },
+
   why: {
     cta: 'Prendre rendez-vous',
     role: 'Courtière d\u2019assurance à titre individuel',
@@ -87,7 +94,7 @@ export const FR = {
     tag1: 'Durée : 15 minutes (GRATUIT)',
     tag2: 'Format : Google Meet ou appel téléphonique',
     tag3: 'Approche : Évaluation technique sans jargon',
-    meipoTip: 'Vous recevrez une confirmation instantanée sur votre WhatsApp et Google Calendar avec le lien direct.',
+    mepoTip: 'Vous recevrez une confirmation instantanée sur votre WhatsApp et Google Calendar avec le lien direct.',
     privacy: 'Vos données sont protégées par le secret professionnel (Loi n° 29733).',
     step1: 'Étape 1 : Choisissez le jour et l\u2019heure',
     slotsTitle: 'Horaires pour le jour sélectionné :',

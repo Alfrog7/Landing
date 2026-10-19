@@ -26,7 +26,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       tiempoEmision: 'Gestión ágil tras aprobación de línea afianzadora',
       entidadesNormativas: 'Válidas para OSCE, SEACE y Contratos Privados',
     },
-    meipoTip:
+    mepoTip:
       'Evalúo tu línea de fianza con varias afianzadoras en simultáneo para conseguirte una tasa conveniente sin costo de gestión.',
   },
   {
@@ -50,7 +50,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Evaluación de cartera con atención prioritaria',
     },
-    meipoTip:
+    mepoTip:
       'Vende al crédito a 30, 60 o 90 días con total tranquilidad: si tu comprador quiebra o no paga, recuperas tu capital asegurado.',
   },
   {
@@ -74,7 +74,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Emisión ágil con código digital',
     },
-    meipoTip:
+    mepoTip:
       '¿Tienes una emergencia de ingreso a mina u obra? Emito la constancia provisional validada para que tu personal entre a tiempo.',
   },
   {
@@ -96,7 +96,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       requisitos: ['Memoria descriptiva y presupuesto de obra', 'Cronograma de ejecución valorizado'],
       tiempoEmision: 'Estructuración técnica con atención prioritaria',
     },
-    meipoTip:
+    mepoTip:
       'Reviso las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
   },
 
@@ -122,7 +122,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Emisión e informe de endoso bancario con seguimiento directo',
     },
-    meipoTip:
+    mepoTip:
       'No regales el desgravamen al banco. Al endosar esta póliza, todo el monto mensual se acumula a tu favor y lo cobras al vencer el plazo.',
   },
   {
@@ -146,7 +146,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Activación ágil',
     },
-    meipoTip:
+    mepoTip:
       'Te ayudo a comparar copagos y deducibles entre aseguradoras para elegir la red de clínicas más conveniente.',
   },
   {
@@ -172,7 +172,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Cotización y emisión ágiles',
     },
-    meipoTip:
+    mepoTip:
       'Comparo la prima Todo Riesgo entre aseguradoras según tu modelo y distrito de pernocte, para que no pagues de más.',
   },
   {
@@ -197,7 +197,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Emisión sin inspección para sumas estándar',
     },
-    meipoTip:
+    mepoTip:
       'Suma suficiente: te ayudo a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
   },
   {
@@ -221,7 +221,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
       ],
       tiempoEmision: 'Certificado digital con atención prioritaria',
     },
-    meipoTip:
+    mepoTip:
       'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la gestiono con atención prioritaria.',
   },
 ];

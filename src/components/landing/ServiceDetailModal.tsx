@@ -3,7 +3,7 @@ import { CircleCheck, FileText, X } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { ServiceDetail } from '../../core/models/insurance-service.model';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
-import { Meipo } from './Meipo';
+import { Mepo } from './Mepo';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -86,7 +86,7 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                   <span class="detail__time">{tr.t(`${key}.badge`)}</span>
                 </div>
                 <div class="detail__tip">
-                  <Meipo size={52} />
+                  <Mepo size={52} />
                   <p>{tr.t(`${key}.tip`)}</p>
                 </div>
               </aside>

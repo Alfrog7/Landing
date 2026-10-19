@@ -1,0 +1,115 @@
+// Bienvenida de Mepo: letreros de madera como botones (feedback §3)
+.welcome {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  background: var(--color-bg);
+}
+
+.welcome__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.welcome__grid > * {
+  min-width: 0;
+}
+
+.welcome__media {
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  // Recorte del tercio izquierdo: la imagen original incluye suricatos no autorizados
+  box-shadow: var(--shadow-card-catalog);
+}
+
+.welcome__photo {
+  // Muestra ~68% derecho de la imagen (Mepo + los 3 letreros), oculta los suricatos
+  width: 148%;
+  max-width: none;
+  margin-left: -48%;
+  height: auto;
+  display: block;
+}
+
+.welcome__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.welcome__salute {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--color-heading);
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1rem;
+}
+
+.welcome__signs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+// Botones letrero de madera
+.welcome__sign {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  background: linear-gradient(180deg, #8b5e3c 0%, #6b4423 100%);
+  border: 1px solid #4a2f16;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.welcome__sign:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.18), var(--shadow-card-hover);
+}
+
+.welcome__sign:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.welcome__sign-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.welcome__sign--green .welcome__sign-icon {
+  background: #16a34a;
+}
+
+.welcome__sign--orange .welcome__sign-icon {
+  background: #ea580c;
+}
+
+.welcome__sign--blue .welcome__sign-icon {
+  background: #0284c7;
+}
+
+@media (max-width: 900px) {
+  .welcome__grid {
+    grid-template-columns: 1fr;
+  }
+  .welcome__photo {
+    width: 148%;
+    margin-left: -48%;
+  }
+}

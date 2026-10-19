@@ -54,6 +54,13 @@ export const ES = {
     title: 'Trabajo con las principales aseguradoras del Perú',
   },
 
+  mepo: {
+    salute: 'Hola, soy Mepo 🐨 ¡Kuyaymi!, que en quechua significa "es cariño". Y así te voy a cuidar: con un abrazo y mucho cariño.',
+    sign1: 'Bienvenido',
+    sign2: 'Sigue el camino',
+    sign3: '¿En qué te puedo servir?',
+  },
+
   why: {
     cta: 'Agendar una asesoría',
     role: 'Corredora de seguros persona natural',
@@ -87,7 +94,7 @@ export const ES = {
     tag1: 'Duración: 15 minutos (GRATIS)',
     tag2: 'Modalidad: Google Meet o Llamada',
     tag3: 'Enfoque: Evaluación técnica sin tecnicismos',
-    meipoTip: 'Te llegará una confirmación instantánea a tu WhatsApp y Google Calendar con el enlace directo.',
+    mepoTip: 'Te llegará una confirmación instantánea a tu WhatsApp y Google Calendar con el enlace directo.',
     privacy: 'Tus datos están protegidos bajo secreto profesional (Ley Nº 29733).',
     step1: 'Paso 1: Selecciona Día y Hora',
     slotsTitle: 'Horarios para el día seleccionado:',
