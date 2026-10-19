@@ -13,5 +13,5 @@
   <g fill="#F5B50A" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><rect x="246" y="290" width="38" height="38"/><rect x="356" y="290" width="38" height="38"/></g>
   <path d="M265 290v38M246 309h38M375 290v38M356 309h38" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
   <path d="M320 172L364 186.56V226.08C364 255.2 339.36 269.76 320 276C300.64 269.76 276 255.2 276 226.08V186.56Z" fill="#FFFFFF" stroke="#10201B" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M302.4 228 l12.100000000000001 12.100000000000001 l24.200000000000003 -26.400000000000002" fill="none" stroke="#10201B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="430" y="120" width="100" height="38" rx="4" fill="#F5B50A" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><text x="480" y="146" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#10201B">100 %</text>
+  <rect x="430" y="120" width="100" height="38" rx="4" fill="#F5B50A" stroke="#10201B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><text x="480" y="146" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#10201B">Familiar</text>
 </svg>

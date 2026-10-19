@@ -7,7 +7,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     category: 'empresas',
     title: 'Cartas Fianza Express',
     tag: 'Garantías Contractuales',
-    badgeTime: 'Emisión 48h',
+    badgeTime: 'Emisión ágil',
     summary:
       'Fiel Cumplimiento, Adelanto Directo y Materiales para licitaciones públicas y obras privadas.',
     image: '/assets/images/services/fianzas-obras.svg',
@@ -24,7 +24,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'Bases integradas o contrato firmado',
         'Estados financieros de los dos últimos ejercicios contables',
       ],
-      tiempoEmision: 'Máximo 48 horas tras aprobación de línea afianzadora',
+      tiempoEmision: 'Gestión ágil tras aprobación de línea afianzadora',
       entidadesNormativas: 'Válidas para OSCE, SEACE y Contratos Privados',
     },
     meipoTip:
@@ -35,7 +35,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     category: 'empresas',
     title: 'Seguro de Crédito',
     tag: 'Protección Financiera',
-    badgeTime: 'Recupero 90%',
+    badgeTime: 'Atención prioritaria',
     summary:
       'Asegura tus cuentas por cobrar comerciales contra morosidad prolongada o quiebra de clientes.',
     image: '/assets/images/services/seguro-credito.svg',
@@ -50,7 +50,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'Facturación comercial anual mínima requerida',
         'Relación de principales clientes con líneas de crédito abiertas',
       ],
-      tiempoEmision: 'Evaluación de cartera en 3 a 5 días hábiles',
+      tiempoEmision: 'Evaluación de cartera con atención prioritaria',
     },
     meipoTip:
       'Vende al crédito a 30, 60 o 90 días con total tranquilidad: si tu comprador quiebra o no paga, recuperas tu capital asegurado.',
@@ -60,7 +60,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     category: 'empresas',
     title: 'Planilla Obligatoria (SCTR & Vida Ley)',
     tag: 'Cumplimiento SUNAFIL',
-    badgeTime: 'Pase < 2h',
+    badgeTime: 'Constancia ágil',
     summary:
       'SCTR Salud, SCTR Pensión y Seguro Vida Ley con constancias inmediatas para acceso a garita.',
     image: '/assets/images/services/sctr-mineria.svg',
@@ -75,7 +75,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'T-Registro de colaboradores en nómina',
         'Planilla mensual en formato Excel con actividades declaradas',
       ],
-      tiempoEmision: 'Emisión express en menos de 2 horas con código digital',
+      tiempoEmision: 'Emisión ágil con código digital',
     },
     meipoTip:
       '¿Tienes una emergencia de ingreso a mina u obra? Emitimos la constancia provisional validada para que tu personal entre a tiempo.',
@@ -98,7 +98,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'Responsabilidad Civil extracontractual frente a terceros y predios colindantes',
       ],
       requisitos: ['Memoria descriptiva y presupuesto de obra', 'Cronograma de ejecución valorizado'],
-      tiempoEmision: 'Estructuración técnica en 48 a 72 horas',
+      tiempoEmision: 'Estructuración técnica con atención prioritaria',
     },
     meipoTip:
       'Revisamos las cláusulas exigidas en el contrato de tu mandante para blindar exactamente lo que piden, sin sobrecostos innecesarios.',
@@ -110,7 +110,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
     category: 'personas',
     title: 'Vida con Devolución',
     tag: 'Ahorro Inteligente',
-    badgeTime: 'Retorno 100%+',
+    badgeTime: 'Ahorro con respaldo',
     summary:
       'Reemplaza el seguro de desgravamen bancario por una póliza que te devuelve el dinero con rentabilidad.',
     image: '/assets/images/services/vida-ahorro.svg',
@@ -125,7 +125,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'DNI del asegurado titular',
         'Cronograma o saldo actual del crédito hipotecario/vehicular',
       ],
-      tiempoEmision: 'Emisión e informe de endoso bancario en 5 días',
+      tiempoEmision: 'Emisión e informe de endoso bancario con seguimiento directo',
     },
     meipoTip:
       'No regales el desgravamen al banco. Al endosar esta póliza, todo el monto mensual se acumula a tu favor y lo cobras al vencer el plazo.',
@@ -150,7 +150,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'DNI de titulares y dependientes',
         'Declaración jurada de salud sin preexistencias no declaradas',
       ],
-      tiempoEmision: 'Activación en 24 a 48 horas',
+      tiempoEmision: 'Activación ágil',
     },
     meipoTip:
       'Te ayudamos a comparar copagos y deducibles entre Sanitas, Pacífico y Rímac para elegir la red de clínicas más conveniente.',
@@ -177,7 +177,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'DNI del asegurado y tarjeta de propiedad',
         'Inspección física del vehículo según caso y antigüedad',
       ],
-      tiempoEmision: 'Cotización y emisión en 24 a 48 horas',
+      tiempoEmision: 'Cotización y emisión ágiles',
     },
     meipoTip:
       'Comparamos la prima Todo Riesgo entre Rímac, Pacífico y Mapfre según tu modelo y distrito de pernocte, para que no pagues de más.',
@@ -203,7 +203,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'Dirección y características de la vivienda (materiales, m², pisos)',
         'DNI del asegurado y declaración del valor del contenido',
       ],
-      tiempoEmision: 'Emisión en 24 horas sin inspección para sumas estándar',
+      tiempoEmision: 'Emisión sin inspección para sumas estándar',
     },
     meipoTip:
       'Suma suficiente: te ayudamos a definir la suma asegurada según el valor de reconstrucción de tu vivienda, no según el precio de compra.',
@@ -228,7 +228,7 @@ export const SERVICES_CATALOG_DATA: ServiceDetail[] = [
         'Pasaporte o DNI del viajero titular y acompañantes',
         'Fechas de salida y retorno del viaje',
       ],
-      tiempoEmision: 'Certificado digital en menos de 1 hora',
+      tiempoEmision: 'Certificado digital con atención prioritaria',
     },
     meipoTip:
       'Si viajas a Europa revisa que tu póliza cumpla el requisito Schengen (mínimo 30,000 EUR de cobertura médica); la emitimos el mismo día.',
@@ -321,7 +321,7 @@ export const LANDING_FAQS_DATA = [
     question:
       '¿En cuánto tiempo obtengo una Carta Fianza o una constancia SCTR urgente?',
     answer:
-      'Cartas Fianza en menos de 48 horas y constancias SCTR con código de barras digital en menos de 2 horas, listas para pases de garita mineros, de obra y firmas con el Estado.',
+      'Cartas Fianza con gestión ágil y constancias SCTR con código de barras digital y atención prioritaria, listas para pases de garita mineros, de obra y firmas con el Estado.',
   },
   {
     question:
