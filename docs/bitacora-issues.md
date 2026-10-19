@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** rama activa `feat/issue-11-ficha-nueva` con **PR #27 abierto** (esperando aceptación). Al fusionarse, cerrar issue #11 a mano. Siguiente issue: **#12** (carrusel de tipos en fichas formales).
+> **Estado en vivo al cerrar el chat anterior:** issue #11 cerrada (PR #27 mergeado + corrección de claves `modal.about/protection`). Activa `feat/issue-12-carrusel-tipos` con **PR #28 abierto** (esperando revisión). Siguiente issue: **#13** (carta fianza en 7 pasos + 3 casos de Vida).
 
 ---
 
@@ -144,9 +144,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #11 — Nueva estructura de ficha (COMPLETADA — **PR #27 ABIERTO, pendiente de merge**)
+## Issue #11 — Nueva estructura de ficha (COMPLETADA — PR #27, mergeado)
 
-**Rama:** `feat/issue-11-ficha-nueva` · **PR:** https://github.com/Alfrog7/Landing/pull/27 · **Commit:** `75697eb` (+ bitácora)
+**Rama:** `feat/issue-11-ficha-nueva` · **PR:** https://github.com/Alfrog7/Landing/pull/27 · **Commits:** `75697eb`, `f103cfe`, `4b488be`
 
 **Corrección tras revisión de Melanie (2026-10-19, commit `f103cfe`):** el modal mostraba el texto crudo `modal.about` / `modal.protection` porque esas claves nunca se agregaron a los diccionarios. Añadidas en 4 idiomas según el feedback (§4: "Qué es", "Qué te protege"); `form.title` ("Para cotizarte necesito") y el botón "Cotizar por WhatsApp" ya eran correctos. El video queda con portada "Muy pronto" hasta que Melanie envíe el enlace (issue #19).
 
@@ -167,6 +167,26 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #12 — Carrusel de tipos en fichas formales (COMPLETADA — **PR #28 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-12-carrusel-tipos` · **PR:** https://github.com/Alfrog7/Landing/pull/28 · **Commit:** `0b1986b`
+
+### Qué se hizo
+
+1. **Nuevo componente** `ServiceTypeCarousel.tsx`: carrusel embla con lámina por tipo (icono lucide + nombre + frase corta + botón de cotización), flechas prev/next, puntos navegables con `aria-label`. Fondo azul marino #1B2A5E con detalles dorados #F5B50A (feedback §4 literal).
+2. **Autoplay** 4,5 s: se detiene en hover/foco (`mouseenter`/`focusin`) y NO arranca con `prefers-reduced-motion`. Al elegir un tipo, scroll suave al formulario (instantáneo con reduced-motion).
+3. **Preselección**: `TYPE_CAROUSEL_FIELDS` en `landing.data.ts` (`cartas-fianza`→`tipoFianza`, `seguro-credito`→`canal`, `polizas-ingenieria`→`tipoObra`); el botón fija el campo y baja al form. Solo estas 3 fichas formales tienen carrusel.
+4. **i18n (4 idiomas)**: bloque `typeCarousels` (`title`, `prev`, `next`, `cta`, pares `names`/`phrases`). Los `names` coinciden 1:1 con las opciones del select (`tipoFianzaOptions`, `canalOptions`) en los 4 idiomas — verificado por script.
+5. **Tipos**: fianzas = los 5 literales del feedback; crédito (Local/Exportación) y obras (Obra civil/Montaje e instalaciones/Equipos y maquinaria/Responsabilidad Civil) son **provisionales** — el feedback no los define, confirmar con Melanie (nota dejada en el PR).
+6. Integrado en `ServiceDetailModal.tsx` entre el video y "Qué es".
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: `names` ≡ opciones del select en 4 idiomas; sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -178,8 +198,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #8 | Tarjetas simplificadas (nombres cortos, sin aseguradoras) | M2 | ✅ Mergeada | #24 |
 | #9 | Mepo bienvenida + Kuyaymi + renombrado | M2 | ✅ Mergeada | #25 |
 | #10 | Ambiente de color por seguro + Mepo condicional | M3 | ✅ Mergeada | #26 |
-| #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | 🔶 PR abierto | #27 |
-| #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ⬜ Pendiente | — |
+| #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | ✅ Mergeada | #27 |
+| #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | 🔶 PR abierto | #28 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ⬜ Pendiente | — |
 | #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ⬜ Pendiente | — |
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
