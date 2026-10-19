@@ -68,7 +68,7 @@ export const FR = {
       salud: 'Santé Individuelle & EPS',
     },
     available: 'Disponible',
-    consult: 'Nous consulter',
+    consult: 'Me consulter',
     ctaBtn: 'Savoir quelle couverture convient à mon entreprise',
     notAvailable: 'Non disponible',
   },
@@ -89,11 +89,11 @@ export const FR = {
   how: {
     title: 'Quatre étapes jusqu’à une police gérée',
     s1Title: 'Diagnostic des risques et de la masse salariale',
-    s1Text: 'Nous cartographions les activités à haut risque, le recensement des salariés (T-Registro) et les exigences contractuelles du donneur d’ordre.',
+    s1Text: 'Je cartographie les activités à haut risque, le recensement des salariés (T-Registro) et les exigences contractuelles du donneur d\u2019ordre.',
     s2Title: 'Appel d’offres multimarque',
-    s2Text: 'Nous demandons des devis à Rímac, Pacífico, Mapfre et La Positiva pour comparer primes, avenants et conditions.',
+    s2Text: 'Je demande des devis à Rímac, Pacífico, Mapfre et La Positiva pour comparer primes, avenants et conditions.',
     s3Title: 'Émission et validation de la police',
-    s3Text: 'Nous vérifions polices et attestations, la couverture exacte pour les accès et coordonnons le paiement de la prime.',
+    s3Text: 'Je vérifie polices et attestations, la couverture exacte pour les accès et je coordonne le paiement de la prime.',
     s4Title: 'Accompagnement continu',
     s4Text: 'Mouvements mensuels du personnel, soutien en cas de sinistre, renouvellement annuel et améliorations de garanties quand le marché le permet.',
   },
@@ -133,11 +133,11 @@ export const FR = {
     eyebrow: 'Questions fréquentes',
     title: 'Réponses rapides avant de demander un devis',
     q1: 'Y a-t-il un coût supplémentaire pour souscrire mon assurance via un courtier agréé ?',
-    a1: 'Non. Le conseil, la comparaison et la gestion sont 100% gratuits pour l\u2019assuré : l\u2019assureur verse la commission selon la loi, sans augmenter votre prime. De plus, étant indépendante, nous chiffrons en parallèle avec toutes les compagnies régulées par la SBS pour vous offrir la meilleure option.',
+    a1: 'Non. Le conseil, la comparaison et la gestion sont 100% gratuits pour l\u2019assuré : l\u2019assureur verse la commission selon la loi, sans augmenter votre prime. De plus, étant indépendante, je chiffre en parallèle avec toutes les compagnies régulées par la SBS pour vous offrir la meilleure option.',
     q2: 'Combien de temps pour obtenir un cautionnement ou un certificat SCTR urgent ?',
     a2: 'Cautionnements avec gestion rapide et certificats SCTR avec code-barres numérique et attention prioritaire, prêts pour les entrées de mine, les laissez-passer d\u2019entrepreneurs et les signatures avec l\u2019État.',
     q3: 'Comment fonctionne le remplacement de l\u2019assurance de prêt par une police de vie ?',
-    a3: 'Au lieu de payer l\u2019assurance de prêt à la banque, nous transférons ce coût vers une police Vie avec Remboursement adossée à votre crédit : vous conservez la garantie exigée et, à la fin du prêt, vous récupérez les primes versées sous forme d\u2019épargne.',
+    a3: 'Au lieu de payer l\u2019assurance de prêt à la banque, je transfère ce coût vers une police Vie avec Remboursement adossée à votre crédit : vous conservez la garantie exigée et, à la fin du prêt, vous récupérerez les primes versées sous forme d\u2019épargne.',
   },
 
   modal: {
@@ -193,7 +193,7 @@ export const FR = {
       ],
       emision: 'Gestion agile après approbation de la ligne de caution',
       entidades: 'Valables pour OSCE, SEACE et contrats privés',
-      tip: 'Nous évaluons votre ligne de caution auprès d\u2019AVLA, Insur et Secrex en parallèle pour vous obtenir le taux de prime le plus bas, sans frais de gestion.',
+      tip: 'J\u2019évalue votre ligne de caution auprès de plusieurs sociétés de caution en parallèle pour vous obtenir un taux de prime avantageux, sans frais de gestion.',
     },
     'seguro-credito': {
       title: 'Assurance Crédit',
@@ -227,7 +227,7 @@ export const FR = {
         'Nomin mensuelle sur Excel avec activités déclarées',
       ],
       emision: 'Émission agile avec code numérique',
-      tip: 'Une entrée d\u2019urgence à la mine ou au chantier ? Nous émettons le certificat provisoire validé pour que votre personnel entre à temps.',
+      tip: 'Une entrée d\u2019urgence à la mine ou au chantier ? Je délivre le certificat provisoire validé pour que votre personnel entre à temps.',
     },
     'polizas-ingenieria': {
       title: 'Polices d\u2019Ingénierie & RC',
@@ -242,7 +242,7 @@ export const FR = {
       ],
       requisitos: ['Notice descriptive et budget des travaux', 'Planning d\u2019exécution valorisé'],
       emision: 'Structuration technique avec attention prioritaire',
-      tip: 'Nous vérifions les clauses exigées dans le contrat de votre donneur d\u2019ordre pour couvrir exactement ce qui est demandé, sans surcoûts inutiles.',
+      tip: 'Je vérifie les clauses exigées dans le contrat de votre donneur d\u2019ordre pour couvrir exactement ce qui est demandé, sans surcoûts inutiles.',
     },
     'vehicular-todo-riesgo': {
       title: 'Auto (SOAT + Tous Risques)',
@@ -261,7 +261,7 @@ export const FR = {
         'Inspection physique du véhicule selon le cas et l\u2019antériorité',
       ],
       emision: 'Devis et émission agiles',
-      tip: 'Nous comparons la prime Tous Risques chez Rímac, Pacífico et Mapfre selon votre modèle et votre district de stationnement : vous ne payez jamais trop.',
+      tip: 'Je compare la prime Tous Risques chez plusieurs assureurs selon votre modèle et votre district de stationnement : vous ne payez jamais trop.',
     },
     'hogar-multirriesgo': {
       title: 'Habitation & Multirisques',
@@ -279,7 +279,7 @@ export const FR = {
         'DNI de l\u2019assuré et déclaration de la valeur du contenu',
       ],
       emision: 'Émission sans inspection pour les sommes standards',
-      tip: 'Capital assuré : nous définissons la couverture selon la valeur de reconstruction de votre logement, pas son prix d\u2019achat.',
+      tip: 'Capital assuré : je définis la couverture selon la valeur de reconstruction de votre logement, pas son prix d\u2019achat.',
     },
     'asistencia-viaje': {
       title: 'Assistance Voyage',
@@ -296,7 +296,7 @@ export const FR = {
         'Dates de départ et de retour du voyage',
       ],
       emision: 'Certificat numérique avec attention prioritaire',
-      tip: 'Si vous voyagez en Europe, vérifiez que votre police respecte le règlement Schengen (minimum 30 000 EUR de couverture médicale) ; nous l\u2019émettons le jour même.',
+      tip: 'Si vous voyagez en Europe, vérifiez que votre police respecte le règlement Schengen (minimum 30 000 EUR de couverture médicale) ; je la gère avec attention prioritaire.',
     },
     'vida-devolucion': {
       title: 'Vie avec Remboursement',
@@ -330,7 +330,7 @@ export const FR = {
         'Déclaration de santé sans antécédents non déclarés',
       ],
       emision: 'Activation agile',
-      tip: 'Nous vous aidons à comparer copaiements et franchises entre Sanitas, Pacífico et Rímac pour choisir le réseau de cliniques le plus avantageux.',
+      tip: 'Je vous aide à comparer copaiements et franchises entre assureurs pour choisir le réseau de cliniques le plus avantageux.',
     },
   },
 };

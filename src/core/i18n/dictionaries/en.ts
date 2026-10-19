@@ -68,7 +68,7 @@ export const EN = {
       salud: 'Individual Health & EPS',
     },
     available: 'Available',
-    consult: 'Ask us',
+    consult: 'Ask me',
     ctaBtn: 'Find out which coverage fits my company',
     notAvailable: 'Not available',
   },
@@ -89,11 +89,11 @@ export const EN = {
   how: {
     title: 'Four steps to a managed policy',
     s1Title: 'Risk and payroll assessment',
-    s1Text: 'We map the high-risk activities, the payroll headcount (T-Registro) and the contractual requirements of the main contractor.',
+    s1Text: 'I map the high-risk activities, the payroll headcount (T-Registro) and the contractual requirements of the main contractor.',
     s2Title: 'Multi-insurer tender',
-    s2Text: 'We request quotes from Rímac, Pacífico, Mapfre and La Positiva to compare premiums, endorsements and terms.',
+    s2Text: 'I request quotes from Rímac, Pacífico, Mapfre and La Positiva to compare premiums, endorsements and terms.',
     s3Title: 'Policy issuance and validation',
-    s3Text: 'We review policies and certificates, verify the exact coverage for site gates and coordinate the premium payment.',
+    s3Text: 'I review policies and certificates, verify the exact coverage for site gates and coordinate the premium payment.',
     s4Title: 'Ongoing support',
     s4Text: 'Monthly payroll changes, claims support, annual renewal and coverage upgrades when the market allows.',
   },
@@ -133,11 +133,11 @@ export const EN = {
     eyebrow: 'Frequently asked questions',
     title: 'Quick answers before you get a quote',
     q1: 'Is there any extra cost for taking out my insurance through a licensed broker?',
-    a1: 'No. Advice, comparison and management are 100% free for the insured: the insurer pays the commission by law, without affecting your premium. Plus, being independent, we quote in parallel with every SBS-regulated insurer to give you the best option.',
+    a1: 'No. Advice, comparison and management are 100% free for the insured: the insurer pays the commission by law, without affecting your premium. Plus, being independent, I quote in parallel with every SBS-regulated insurer to give you the best option.',
     q2: 'How long does it take to get a Bond Letter or an urgent SCTR certificate?',
     a2: 'Bond Letters with agile handling and SCTR certificates with a digital barcode and priority attention, ready for mine gate entries, contractor passes and State signatures.',
     q3: 'How does replacing loan mortgage insurance with a life policy work?',
-    a3: 'Instead of paying mortgage insurance to the bank, we move that cost to a Life with Return policy endorsed to your loan: you keep the required coverage and, at the end of the loan, you receive the paid premiums back as savings.',
+    a3: 'Instead of paying mortgage insurance to the bank, I move that cost to a Life with Return policy endorsed to your loan: you keep the required coverage and, at the end of the loan, you receive the paid premiums back as savings.',
   },
 
   modal: {
@@ -193,7 +193,7 @@ export const EN = {
       ],
       emision: 'Agile handling after approval of the bonding line',
       entidades: 'Valid for OSCE, SEACE and Private Contracts',
-      tip: 'We evaluate your bonding line with AVLA, Insur and Secrex in parallel to get you the lowest premium rate at no management cost.',
+      tip: 'I evaluate your bonding line with several bonding companies in parallel to get you a competitive premium rate at no management cost.',
     },
     'seguro-credito': {
       title: 'Credit Insurance',
@@ -227,7 +227,7 @@ export const EN = {
         'Monthly payroll spreadsheet with declared activities',
       ],
       emision: 'Agile issuance with a digital code',
-      tip: 'Emergency staffing entry to a mine or site? We issue the validated provisional certificate so your staff gets in on time.',
+      tip: 'Emergency staffing entry to a mine or site? I issue the validated provisional certificate so your staff gets in on time.',
     },
     'polizas-ingenieria': {
       title: 'Engineering & Liability Policies',
@@ -242,7 +242,7 @@ export const EN = {
       ],
       requisitos: ['Descriptive report and works budget', 'Valued execution schedule'],
       emision: 'Technical structuring with priority attention',
-      tip: 'We review the clauses required by your client\u2019s contract to cover exactly what they ask for, with no unnecessary extra costs.',
+      tip: 'I review the clauses required by your client\u2019s contract to cover exactly what they ask for, with no unnecessary extra costs.',
     },
     'vehicular-todo-riesgo': {
       title: 'Auto (SOAT + All Risk)',
@@ -261,7 +261,7 @@ export const EN = {
         'Physical inspection of the vehicle depending on case and age',
       ],
       emision: 'Agile quotation and issuance',
-      tip: 'We compare the All Risk premium between Rímac, Pacífico and Mapfre based on your model and parking district so you never overpay.',
+      tip: 'I compare the All Risk premium between insurers based on your model and parking district so you never overpay.',
     },
     'hogar-multirriesgo': {
       title: 'Home & Multi-Risk',
@@ -279,7 +279,7 @@ export const EN = {
         'Insured ID and declared contents value',
       ],
       emision: 'Issued without inspection for standard sums',
-      tip: 'Sum insured: we help you set the coverage amount based on your home\u2019s rebuilding value, not its purchase price.',
+      tip: 'Sum insured: I help you set the coverage amount based on your home\u2019s rebuilding value, not its purchase price.',
     },
     'asistencia-viaje': {
       title: 'Travel Assistance',
@@ -296,7 +296,7 @@ export const EN = {
         'Departure and return dates of the trip',
       ],
       emision: 'Digital certificate with priority attention',
-      tip: 'Traveling to Europe? Make sure your policy meets the Schengen requirement (minimum EUR 30,000 medical coverage); we issue it the same day.',
+      tip: 'Traveling to Europe? Make sure your policy meets the Schengen requirement (minimum EUR 30,000 medical coverage); I handle it with priority attention.',
     },
     'vida-devolucion': {
       title: 'Life with Return',
@@ -330,7 +330,7 @@ export const EN = {
         'Health affidavit with no undeclared pre-existing conditions',
       ],
       emision: 'Agile activation',
-      tip: 'We help you compare copays and deductibles between Sanitas, Pacífico and Rímac to choose the most convenient clinic network.',
+      tip: 'I help you compare copays and deductibles between insurers to choose the most convenient clinic network.',
     },
   },
 };
