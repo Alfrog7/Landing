@@ -126,7 +126,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 2. **i18n**: bloque nuevo `mepo { salute, sign1..sign3 }` en 4 idiomas con el saludo literal aprobado ("¡Kuyaymi!, que en quechua significa 'es cariño'…").
 3. **Nuevo** `MepoWelcome.tsx` + `app-mepo-welcome.scss`: bloque superior de la Home (antes del Hero) con `mepo-bienvenida.jpeg` y **3 letreros como botones reales** (aria-label, focus-visible): "Bienvenido" → inicio · "Sigue el camino" → `/#soluciones` · "¿En qué te puedo servir?" → WhatsApp prellenado. Responsive <900px apilado.
 4. **Estilo de los letreros corregido por feedback del usuario**: verde-bosque institucional (`--color-primary` #0B7A57 + borde `--color-primary-dark` + hover) — NO el marrón madera original (no cuadraba con la identidad "papel frío + tinta verde-bosque").
-5. **⚠️ Los suricatos siguen en la imagen entregada** (prohibidos por derechos de Compare the Market): mitigado con recorte CSS (`width: 148%; margin-left: -48%` — muestra el ~68% derecho: Mepo + letreros). Asset corregido pendiente en **issue #19**. Nota: el letrero 3 de la imagen dice "En que te puedo servir?" sin apertura — los botones usan i18n correcto.
+5. **⚠️ Los suricatos siguen en la imagen entregada** (prohibidos por derechos de Compare the Market): mitigado con recorte CSS. **Actualizado en issue #15** (commit `7da1044`): ventana `object-fit: cover` (banda 5:4, `object-position: 87%`) que además elimina el espacio vacío; botones con la paleta de la especificación de Melanie (`docs/especificacion-koala-botones-melanie.md`) — verde esmeralda #007a4d, terracota #c45c18, azul cerúleo #0284c7. Asset corregido pendiente en **issue #19**. Nota: el letrero 3 de la imagen dice "En que te puedo servir?" sin apertura — los botones usan i18n correcto.
 
 ---
 
@@ -239,6 +239,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 4. CTA WhatsApp con mensaje prellenado "Hola Melanie, quiero saber más sobre el Área de Riesgos Virtual." vía `buildGenericUrl` (+ firma).
 5. Estructura **reservada** (comentario, no publicado) para "Seguridad y cámaras" con empresas aliadas.
 6. **i18n (4 idiomas)**: bloque `risk.*` completo. Integrado en `LandingPage.tsx`. Responsive: planes 2→1 col <860px.
+7. **Ajustes tras revisión** (commit `7da1044`): "Quiero saber más" y "Consultar por WhatsApp" quedaban pegados (ambos inline) → ahora bloque con 1.75rem de separación. Bienvenida de Mepo con la paleta/micro-interacciones de la especificación entregada y ventana de imagen sin espacio vacío (ver issue #9). La especificación se movió de `public/` a `docs/` (no debe servirse públicamente).
 
 ### Verificación
 
