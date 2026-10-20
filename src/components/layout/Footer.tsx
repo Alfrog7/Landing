@@ -16,7 +16,9 @@ export default function Footer() {
       <footer class="footer" id="contacto">
         <div class="container footer__grid">
           <div class="footer__brand">
-            <img src={brand.assets.logoDark} alt={brand.brandName} class="footer__logo" />
+            {/* TODO-LOGO-MEL: wordmark tipografico mientras llega el logo oficial (issue #19) */}
+            <span class="footer__logo" aria-hidden="true">MEL</span>
+            <p class="footer__lema">“{brand.lema}”</p>
             <p class="footer__credential">
               <strong>
                 {brand.brandName} · {tr.t('navbar.subtitle')}

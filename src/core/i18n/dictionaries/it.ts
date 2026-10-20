@@ -131,7 +131,9 @@ export const IT = {
     q2: 'In quanto tempo ottengo una fideiussione o un certificato SCTR urgente?',
     a2: 'Fideiussioni con gestione rapida e certificati SCTR con codice a barre digitale e attenzione prioritaria, pronti per accessi in miniera, passi per appaltatori e firme con lo Stato.',
     q3: 'Come funziona la sostituzione dell\u2019assicurazione prestito con una polizza vita?',
-    a3: 'Invece di pagare l\u2019assicurazione prestito alla banca, spostiamo quel costo su una polizza Vita con Rimborso abbinata al tuo finanziamento: mantieni la copertura richiesta e alla fine del prestito recuperi i premi versati come risparmio.',
+    a3: 'Invece di pagare l\u2019assicurazione prestito alla banca, sposto quel costo su una polizza Vita con Rimborso abbinata al tuo finanziamento: mantieni la copertura richiesta e alla fine del prestito recuperi i premi versati come risparmio.',
+    q4: 'Che cos’è un broker assicurativo?',
+    a4: 'Un broker assicurativo è un intermediario autorizzato e vigilato dalla SBS che ti consiglia in modo indipendente: faccio preventivi con più compagnie, confronto le coperture e ti accompagno dalla stipula fino al sinistro, senza costi aggiuntivi per te.',
   },
 
   modal: {
@@ -321,6 +323,12 @@ export const IT = {
     whatsapp: 'WhatsApp di Melanie (linea diretta)',
     pending: 'Da confermare',
     hint: 'Per un sinistro in corso scrivimi prima: guido il processo dall’inizio alla fine.',
+  },
+
+  broker: {
+    title: 'Tutto parte da un unico luogo: il tuo broker',
+    text: 'Qui collego la tua azienda con tutti gli alleati della sua operazione: avvocati, commercialisti, notai, banche e Risorse Umane.',
+    note: 'Sto preparando questa mappa di collegamenti. Molto presto.',
   },
 
   services: {

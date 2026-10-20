@@ -95,11 +95,14 @@ export default function Navbar() {
       <header class="navbar-wrap">
         <div class="navbar container">
           <a href="/" class="navbar__brand" aria-label="Inicio" onClick={goHome}>
-            <img
-              src={brand.assets.logoLight}
-              alt={`${brand.brandName} · ${brand.brandSubtitle}`}
-              class="navbar__brand-logo"
-            />
+            {/* TODO-LOGO-MEL: wordmark tipografico mientras llega el logo oficial (issue #19) */}
+            <span class="navbar__brand-mark" aria-hidden="true">MEL</span>
+            <span class="navbar__brand-text">
+              <span class="navbar__brand-name">{brand.ownerName}</span>
+              <span class="navbar__brand-legal">
+                {brand.sbsChip} · {brand.sbsChipShort}
+              </span>
+            </span>
           </a>
 
           <nav class="navbar__links" aria-label="Navegación principal">

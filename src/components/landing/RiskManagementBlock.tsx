@@ -78,6 +78,15 @@ export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory
               {tr.t('risk.whatsapp')}
             </a>
           </div>
+
+          {/* "Todo parte de un mismo lugar: tu bróker" (feedback §6, issue #17):
+              contenedor placeholder para el mapa de conexiones; la imagen llega
+              con la entrega de Melanie (issue #19) */}
+          <div class="risk__broker">
+            <p class="risk__broker-title">{tr.t('broker.title')}</p>
+            <p class="risk__broker-text">{tr.t('broker.text')}</p>
+            <span class="risk__broker-note">{tr.t('broker.note')}</span>
+          </div>
         </div>
       </section>
     </app-risk-management-block>

@@ -132,6 +132,8 @@ export const FR = {
     a2: 'Cautionnements avec gestion rapide et certificats SCTR avec code-barres numérique et attention prioritaire, prêts pour les entrées de mine, les laissez-passer d\u2019entrepreneurs et les signatures avec l\u2019État.',
     q3: 'Comment fonctionne le remplacement de l\u2019assurance de prêt par une police de vie ?',
     a3: 'Au lieu de payer l\u2019assurance de prêt à la banque, je transfère ce coût vers une police Vie avec Remboursement adossée à votre crédit : vous conservez la garantie exigée et, à la fin du prêt, vous récupérerez les primes versées sous forme d\u2019épargne.',
+    q4: 'Qu’est-ce qu’un courtier d’assurance ?',
+    a4: 'Un courtier d’assurance est un intermédiaire autorisé et supervisé par la SBS qui vous conseille de façon indépendante : je chiffre avec plusieurs assureurs, je compare les garanties et je vous accompagne de la souscription jusqu’au sinistre, sans frais supplémentaires pour vous.',
   },
 
   modal: {
@@ -321,6 +323,12 @@ export const FR = {
     whatsapp: 'WhatsApp de Melanie (ligne directe)',
     pending: 'À confirmer',
     hint: 'En cas de sinistre en cours, écrivez-moi d’abord : je guide le processus de bout en bout.',
+  },
+
+  broker: {
+    title: 'Tout part d’un même endroit : votre courtier',
+    text: 'C’est ici que je connecte votre entreprise avec tous les alliés de son opération : avocats, comptables, notaires, banques et RH.',
+    note: 'Je prépare cette carte de connexions. Très bientôt.',
   },
 
   services: {

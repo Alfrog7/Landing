@@ -16,6 +16,8 @@ export const BRAND_CONFIG = {
   sbsChipShort: 'Registro SBS N-4050',
   supervisionBadge: 'Corredora de Seguros persona natural · Registro SBS N-4050',
   experience: 'Más de 15 años de experiencia · Registrada en la SBS desde el 7 de julio de 2011',
+  // Lema de marca (presentación de Melanie, feedback §6)
+  lema: 'Protección y Trascendencia',
   quote:
     'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {

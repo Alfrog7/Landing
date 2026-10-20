@@ -323,6 +323,13 @@ export const LANDING_FAQS_DATA = [
     question:
       '¿Cómo funciona el reemplazo del seguro de desgravamen con una póliza de vida?',
     answer:
-      'En lugar de pagar el desgravamen al banco, trasladamos ese costo a una póliza de Vida con Devolución endosada a tu crédito: mantienes la cobertura exigida y al término del préstamo recuperas las primas aportadas como ahorro.',
+      'En lugar de pagar el desgravamen al banco, traslado ese costo a una póliza de Vida con Devolución endosada a tu crédito: mantienes la cobertura exigida y al término del préstamo recuperas las primas aportadas como ahorro.',
+  },
+  {
+    // Texto provisional (TODO-PRESENTACION): reemplazar por el literal de la
+    // presentación de Melanie cuando lo entregue (issue #19).
+    question: '¿Qué es un corredor de seguros?',
+    answer:
+      'Un corredor de seguros es un intermediario autorizado y supervisado por la SBS que te asesora de forma independiente: cotizo con varias aseguradoras, comparo coberturas y te acompaño desde la contratación hasta el siniestro, sin costo adicional para ti.',
   },
 ];

@@ -131,7 +131,9 @@ export const ES = {
     q2: '¿En cuánto tiempo obtengo una Carta Fianza o una constancia SCTR urgente?',
     a2: 'Cartas Fianza con gestión ágil y constancias SCTR con código de barras digital y atención prioritaria, listas para pases de garita mineros, de obra y firmas con el Estado.',
     q3: '¿Cómo funciona el reemplazo del seguro de desgravamen con una póliza de vida?',
-    a3: 'En lugar de pagar el desgravamen al banco, trasladamos ese costo a una póliza de Vida con Devolución endosada a tu crédito: mantienes la cobertura exigida y al término del préstamo recuperas las primas aportadas como ahorro.',
+    a3: 'En lugar de pagar el desgravamen al banco, traslado ese costo a una póliza de Vida con Devolución endosada a tu crédito: mantienes la cobertura exigida y al término del préstamo recuperas las primas aportadas como ahorro.',
+    q4: '¿Qué es un corredor de seguros?',
+    a4: 'Un corredor de seguros es un intermediario autorizado y supervisado por la SBS que te asesora de forma independiente: cotizo con varias aseguradoras, comparo coberturas y te acompaño desde la contratación hasta el siniestro, sin costo adicional para ti.',
   },
 
   modal: {
@@ -331,6 +333,13 @@ export const ES = {
     whatsapp: 'WhatsApp de Melanie (canal directo)',
     pending: 'Por confirmar',
     hint: 'En un siniestro en curso escríbeme primero: yo oriento el proceso de principio a fin.',
+  },
+
+  // "Todo parte de un mismo lugar: tu bróker" (feedback §6, issue #17).
+  broker: {
+    title: 'Todo parte de un mismo lugar: tu bróker',
+    text: 'Aquí conecto tu empresa con todos los aliados de su operación: abogados, contadores, notarios, bancos y RR. HH.',
+    note: 'Estoy preparando este mapa de conexiones. Muy pronto.',
   },
 
   services: {
