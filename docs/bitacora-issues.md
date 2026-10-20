@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #14 cerrada (PR #30 mergeado). Activa `feat/issue-15-area-riesgos` con **PR #31 abierto** (esperando revisión). Siguiente issue: **#16** (botón "¿Emergencia?" en navbar — M4).
+> **Estado en vivo al cerrar el chat anterior:** issue #15 cerrada (PR #31 mergeado; incluye ajustes de revisión: botones separados + bienvenida Mepo con paleta de especificación e imagen más grande/separada del navbar). Activa `feat/issue-16-boton-emergencia` con **PR #32 abierto** (esperando revisión). Siguiente issue: **#17** (contenido de presentación: logo MEL, "¿Qué es un corredor?", "Tu bróker" — M4).
 
 ---
 
@@ -227,9 +227,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #15 — Área de Riesgos Virtual (COMPLETADA — **PR #31 ABIERTO, pendiente de merge**)
+## Issue #15 — Área de Riesgos Virtual (COMPLETADA — PR #31, mergeado)
 
-**Rama:** `feat/issue-15-area-riesgos` · **PR:** https://github.com/Alfrog7/Landing/pull/31 · **Commit:** `9e909da`
+**Rama:** `feat/issue-15-area-riesgos` · **PR:** https://github.com/Alfrog7/Landing/pull/31 · **Commits:** `9e909da`, `7da1044`, `7f029e0`, `c9c1731`, `ef55777`
 
 ### Qué se hizo
 
@@ -248,6 +248,25 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #16 — Botón ¿Emergencia? en navbar (COMPLETADA — **PR #32 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-16-boton-emergencia` · **PR:** https://github.com/Alfrog7/Landing/pull/32 · **Commit:** `1354377`
+
+### Qué se hizo
+
+1. **Nuevo** `src/core/config/emergency.config.ts`: único punto de mantenimiento de los 13 teléfonos de siniestros (Mapfre…Quálitas) — vacíos con `TODO-EMERGENCIAS` hasta la entrega de Melanie (issue #19).
+2. **Nuevo** `EmergencyButton.tsx` + `app-emergency-button.scss` (registrado): popover accesible en la navbar — Escape/clic-fuera cierran, foco trampado (Tab/Shift+Tab) entre disparador y panel, foco vuelve al botón, `aria-expanded`/`aria-haspopup`/`role="dialog"`.
+3. Panel: CTA verde "WhatsApp de Melanie (canal directo)" (mensaje prellenado de emergencia + firma), lista de aseguradoras con `tel:` clicable ("Por confirmar" mientras no haya datos) y nota traducida.
+4. **Integrado en `Navbar.tsx`**: desktop en `.navbar__actions` y variante `mobile` a ancho completo dentro del drawer (panel estático).
+5. **i18n (4 idiomas)**: bloque `emergency.*`. Estilo sobrio (sin Mepo, sin rojo llamativo).
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: `emergency.*` en 4 idiomas, 13 contactos, literal "¿Emergencia?" en español, sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -263,8 +282,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ✅ Mergeada | #28 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ✅ Mergeada | #29 |
 | #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ✅ Mergeada | #30 |
-| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | 🔶 PR abierto | #31 |
-| #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
+| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ✅ Mergeada | #31 |
+| #16 | Botón "¿Emergencia?" en navbar | M4 | 🔶 PR abierto | #32 |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
 | #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |
 | #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
