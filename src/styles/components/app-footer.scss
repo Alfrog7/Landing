@@ -17,10 +17,22 @@ app-footer {
     flex-direction: column;
     gap: 1rem;
   }
+  // TODO-LOGO-MEL: wordmark tipografico mientras llega el logo oficial (issue #19)
   .footer__logo {
-    height: 44px;
-    width: auto;
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    color: #fff;
     align-self: flex-start;
+  }
+  // Lema de marca (presentacion de Melanie, feedback §6)
+  .footer__lema {
+    margin: 0;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.65);
   }
   .footer__credential {
     font-size: 0.9rem;

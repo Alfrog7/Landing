@@ -20,9 +20,40 @@ app-top-navbar {
     align-items: center;
     flex-shrink: 0;
   }
-  .navbar__brand-logo {
-    height: 2.5rem;
-    width: auto;
+  // TODO-LOGO-MEL: wordmark tipografico mientras llega el archivo del logo oficial.
+  // Al costado, la denominacion legal completa (lineamiento SBS, feedback §6)
+  .navbar__brand-mark {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 1;
+    color: var(--color-ink);
+  }
+  .navbar__brand-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.6rem;
+    padding-left: 0.6rem;
+    border-left: 1.5px solid var(--color-ink);
+    min-width: 0;
+  }
+  .navbar__brand-name {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .navbar__brand-legal {
+    font-size: 0.62rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-muted);
+    white-space: nowrap;
+    // La linea legal se parte en 2 ("persona natural" / "Registro SBS N-4050")
+    // para no empujar a los links del navbar
   }
   .navbar__links {
     display: flex;
@@ -193,7 +224,9 @@ app-top-navbar {
     .navbar__cta,
     .navbar__actions .navbar__lang,
     // El boton de emergencia del desktop se oculta: en movil vive en el drawer
-    .navbar__actions app-emergency-button {
+    .navbar__actions app-emergency-button,
+    // El texto legal deja espacio al drawer compacto (solo queda la marca MEL)
+    .navbar__brand-text {
       display: none;
     }
     .navbar__burger {

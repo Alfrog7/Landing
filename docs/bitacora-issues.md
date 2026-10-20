@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #15 cerrada (PR #31 mergeado; incluye ajustes de revisión: botones separados + bienvenida Mepo con paleta de especificación e imagen más grande/separada del navbar). Activa `feat/issue-16-boton-emergencia` con **PR #32 abierto** (esperando revisión). Siguiente issue: **#17** (contenido de presentación: logo MEL, "¿Qué es un corredor?", "Tu bróker" — M4).
+> **Estado en vivo al cerrar el chat anterior:** issue #16 cerrada (PR #32 mergeado, con ajustes responsive: duplicado oculto y anchos uniformes revertidos a pedido de Melanie). Activa `feat/issue-17-contenido-presentacion` con **PR #33 abierto** (esperando revisión). Siguiente issue: **#18** (footer legal SBS: logo SBS, Libro de Reclamaciones, Defensoría, LinkedIn).
 
 ---
 
@@ -248,9 +248,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #16 — Botón ¿Emergencia? en navbar (COMPLETADA — **PR #32 ABIERTO, pendiente de merge**)
+## Issue #16 — Botón ¿Emergencia? en navbar (COMPLETADA — PR #32, mergeado)
 
-**Rama:** `feat/issue-16-boton-emergencia` · **PR:** https://github.com/Alfrog7/Landing/pull/32 · **Commit:** `1354377`
+**Rama:** `feat/issue-16-boton-emergencia` · **PR:** https://github.com/Alfrog7/Landing/pull/32 · **Commits:** `1354377`, `9aaf34c`, `3ef9f7a`, `5594e8a`
 
 ### Qué se hizo
 
@@ -265,6 +265,26 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 - `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
 - Script: `emergency.*` en 4 idiomas, 13 contactos, literal "¿Emergencia?" en español, sin mojibake.
+
+---
+
+## Issue #17 — Contenido de presentación (COMPLETADA — **PR #33 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-17-contenido-presentacion` · **PR:** https://github.com/Alfrog7/Landing/pull/33 · **Commit:** `a94217e`
+
+### Qué se hizo
+
+1. **Navbar — marca MEL**: wordmark tipográfico "MEL" (`TODO-LOGO-MEL`, archivo oficial pendiente en issue #19) + denominación legal al costado: "Melanie O. Calderón Vega" / "Corredora de Seguros persona natural" / "Registro SBS N-4050" (legal en 2 líneas para no empujar los links — ajuste en commit `014ff1a`). En ≤1024px se compacta a la marca.
+2. **Footer — marca MEL + lema**: wordmark MEL + lema "Protección y Trascendencia" (nuevo campo `lema` en `brand.config.ts`, fuente única no i18n). Sin logo dorado (fénix) en ninguna vista.
+3. **FAQ "¿Qué es un corredor de seguros?"** como 4ª pregunta de la Home (`faq.q4/a4` ×4 idiomas + ítem en `LANDING_FAQS_DATA`). Texto provisional `TODO-PRESENTACION` — reemplazar por el literal de la presentación (issue #19).
+4. **Contenedor "Tu bróker"** dentro del bloque de Empresas (`risk__broker`, borde discontinuo): placeholder para el mapa de conexiones (abogados, contadores, notarios, bancos, RR. HH.); imagen pendiente (issue #19), sin datos falsos.
+5. **Fix residual**: a3 con plural societario — es "trasladamos"→"traslado", it "spostiamo"→"sposto" (también en `landing.data.ts`).
+6. "El hada de las garantías": NO va en la web (solo redes). Fotos de campo Vida Ley: sin publicar hasta permisos (issue #19).
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: claves nuevas en 4 idiomas, lema exacto, cero plurales en a3, sin fénix en config, sin mojibake.
 
 ---
 
@@ -284,8 +304,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ✅ Mergeada | #29 |
 | #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ✅ Mergeada | #30 |
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ✅ Mergeada | #31 |
-| #16 | Botón "¿Emergencia?" en navbar | M4 | 🔶 PR abierto | #32 |
-| #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
+| #16 | Botón "¿Emergencia?" en navbar | M4 | ✅ Mergeada | #32 |
+| #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | 🔶 PR abierto | #33 |
 | #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |
 | #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
 

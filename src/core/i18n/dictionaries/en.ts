@@ -132,6 +132,8 @@ export const EN = {
     a2: 'Bond Letters with agile handling and SCTR certificates with a digital barcode and priority attention, ready for mine gate entries, contractor passes and State signatures.',
     q3: 'How does replacing loan mortgage insurance with a life policy work?',
     a3: 'Instead of paying mortgage insurance to the bank, I move that cost to a Life with Return policy endorsed to your loan: you keep the required coverage and, at the end of the loan, you receive the paid premiums back as savings.',
+    q4: 'What is an insurance broker?',
+    a4: 'An insurance broker is an intermediary authorized and supervised by the SBS who advises you independently: I quote with several insurers, compare coverages and stay with you from contracting to the claim, at no extra cost to you.',
   },
 
   modal: {
@@ -321,6 +323,12 @@ export const EN = {
     whatsapp: 'Melanie\u2019s WhatsApp (direct line)',
     pending: 'To be confirmed',
     hint: 'For an ongoing claim, message me first: I guide the process from start to finish.',
+  },
+
+  broker: {
+    title: 'It all starts in one place: your broker',
+    text: 'This is where I connect your company with every ally in its operation: lawyers, accountants, notaries, banks and HR.',
+    note: 'I am preparing this connections map. Coming soon.',
   },
 
   services: {
