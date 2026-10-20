@@ -295,6 +295,34 @@ export const ES = {
     ],
   },
 
+  // Área de Riesgos Virtual (feedback §5, issue #15). Texto del bloque y precios
+  // literales del feedback; los detalles de los planes quedan a confirmación
+  // de Melanie (TODO-PLANES, issue #19).
+  risk: {
+    title: 'Área de Riesgos Virtual',
+    badge: 'Para empresas',
+    text: '¿Tu empresa no tiene área de riesgos? Yo puedo serlo. Una consultoría mensual que mantiene tus seguros, siniestros y obligaciones al día, para que tú te dedicas a tu negocio. Planes desde S/ 270 al mes.',
+    cta: 'Quiero saber más',
+    close: 'Ver menos',
+    planes: ['Esencial', 'Integral'],
+    esencialPrice: 'S/ 270',
+    integralPrice: 'S/ 370',
+    perMonth: '/mes',
+    esencialFeatures: [
+      'Revisión de pólizas',
+      'Calendario de renovaciones',
+      'Constancias SCTR',
+      'Acompañamiento en siniestros',
+    ],
+    integralNote: 'Todo lo anterior, más:',
+    integralFeatures: [
+      'Reporte mensual',
+      'Una visita al año',
+      'Orientación legal-laboral básica',
+    ],
+    whatsapp: 'Consultar por WhatsApp',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cartas fianza',

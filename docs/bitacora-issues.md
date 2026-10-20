@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #13 cerrada (PR #29 mergeado). Activa `feat/issue-14-dos-perfiles` con **PR #30 abierto** (esperando revisión). Siguiente issue: **#15** (Área de Riesgos Virtual con planes Esencial/Integral — M4).
+> **Estado en vivo al cerrar el chat anterior:** issue #14 cerrada (PR #30 mergeado). Activa `feat/issue-15-area-riesgos` con **PR #31 abierto** (esperando revisión). Siguiente issue: **#16** (botón "¿Emergencia?" en navbar — M4).
 
 ---
 
@@ -126,7 +126,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 2. **i18n**: bloque nuevo `mepo { salute, sign1..sign3 }` en 4 idiomas con el saludo literal aprobado ("¡Kuyaymi!, que en quechua significa 'es cariño'…").
 3. **Nuevo** `MepoWelcome.tsx` + `app-mepo-welcome.scss`: bloque superior de la Home (antes del Hero) con `mepo-bienvenida.jpeg` y **3 letreros como botones reales** (aria-label, focus-visible): "Bienvenido" → inicio · "Sigue el camino" → `/#soluciones` · "¿En qué te puedo servir?" → WhatsApp prellenado. Responsive <900px apilado.
 4. **Estilo de los letreros corregido por feedback del usuario**: verde-bosque institucional (`--color-primary` #0B7A57 + borde `--color-primary-dark` + hover) — NO el marrón madera original (no cuadraba con la identidad "papel frío + tinta verde-bosque").
-5. **⚠️ Los suricatos siguen en la imagen entregada** (prohibidos por derechos de Compare the Market): mitigado con recorte CSS (`width: 148%; margin-left: -48%` — muestra el ~68% derecho: Mepo + letreros). Asset corregido pendiente en **issue #19**. Nota: el letrero 3 de la imagen dice "En que te puedo servir?" sin apertura — los botones usan i18n correcto.
+5. **⚠️ Los suricatos siguen en la imagen entregada** (prohibidos por derechos de Compare the Market): mitigado con recorte CSS. **Actualizado en issue #15** (commit `7da1044`): ventana `object-fit: cover` (banda 5:4, `object-position: 87%`) que además elimina el espacio vacío; botones con la paleta de la especificación de Melanie (`docs/especificacion-koala-botones-melanie.md`) — verde esmeralda #007a4d, terracota #c45c18, azul cerúleo #0284c7. Asset corregido pendiente en **issue #19**. Nota: el letrero 3 de la imagen dice "En que te puedo servir?" sin apertura — los botones usan i18n correcto.
 
 ---
 
@@ -207,9 +207,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #14 — Dos perfiles, una sola profesional (COMPLETADA — **PR #30 ABIERTO, pendiente de merge**)
+## Issue #14 — Dos perfiles, una sola profesional (COMPLETADA — PR #30, mergeado)
 
-**Rama:** `feat/issue-14-dos-perfiles` · **PR:** https://github.com/Alfrog7/Landing/pull/30 · **Commit:** `3320674`
+**Rama:** `feat/issue-14-dos-perfiles` · **PR:** https://github.com/Alfrog7/Landing/pull/30 · **Commits:** `3320674`, `ac093f8`
 
 ### Qué se hizo
 
@@ -227,6 +227,27 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #15 — Área de Riesgos Virtual (COMPLETADA — **PR #31 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-15-area-riesgos` · **PR:** https://github.com/Alfrog7/Landing/pull/31 · **Commit:** `9e909da`
+
+### Qué se hizo
+
+1. **Nuevo** `RiskManagementBlock.tsx` + `app-risk-management-block.scss` (registrado en `_index.scss`): bloque "Área de Riesgos Virtual" en la parte Empresas de la Home, tras el carrusel, **visible solo con la pestaña Empresas activa**. Estilo corporativo sobrio (sin Mepo).
+2. **Texto literal del feedback** en el bloque, con precios aprobados S/ 270 y S/ 370 (no aplican la regla anti-cifras: son precios de servicio).
+3. Botón [Quiero saber más] expande (`aria-expanded`/`aria-controls`) las tarjetas: **Esencial** (revisión de pólizas, calendario de renovaciones, constancias SCTR, acompañamiento en siniestros) y **Integral** ("Todo lo anterior, más:" reporte mensual, una visita al año, orientación legal-laboral básica). Items con `TODO-PLANES` (confirmación de Melanie, issue #19).
+4. CTA WhatsApp con mensaje prellenado "Hola Melanie, quiero saber más sobre el Área de Riesgos Virtual." vía `buildGenericUrl` (+ firma).
+5. Estructura **reservada** (comentario, no publicado) para "Seguridad y cámaras" con empresas aliadas.
+6. **i18n (4 idiomas)**: bloque `risk.*` completo. Integrado en `LandingPage.tsx`. Responsive: planes 2→1 col <860px.
+7. **Ajustes tras revisión** (commit `7da1044`): "Quiero saber más" y "Consultar por WhatsApp" quedaban pegados (ambos inline) → ahora bloque con 1.75rem de separación. Bienvenida de Mepo con la paleta/micro-interacciones de la especificación entregada y ventana de imagen sin espacio vacío (ver issue #9). La especificación se movió de `public/` a `docs/` (no debe servirse públicamente).
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: `risk.*` en 4 idiomas, literales exactos en español, builder presente, sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -241,8 +262,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | ✅ Mergeada | #27 |
 | #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ✅ Mergeada | #28 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ✅ Mergeada | #29 |
-| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | 🔶 PR abierto | #30 |
-| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
+| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ✅ Mergeada | #30 |
+| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | 🔶 PR abierto | #31 |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
 | #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |

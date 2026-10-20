@@ -290,6 +290,31 @@ export const IT = {
     ],
   },
 
+  risk: {
+    title: 'Area Gestione Rischi Virtuale',
+    badge: 'Per le aziende',
+    text: 'La tua azienda non ha un ufficio rischi? Posso esserlo io. Una consulenza mensile che tiene assicurazioni, sinistri e adempimenti sempre aggiornati, così tu ti dedichi al tuo business. Piani da S/ 270 al mese.',
+    cta: 'Voglio saperne di più',
+    close: 'Mostra meno',
+    planes: ['Essenziale', 'Integrale'],
+    esencialPrice: 'S/ 270',
+    integralPrice: 'S/ 370',
+    perMonth: '/mese',
+    esencialFeatures: [
+      'Revisione delle polizze',
+      'Calendario dei rinnovi',
+      'Certificati SCTR',
+      'Assistenza nei sinistri',
+    ],
+    integralNote: 'Tutto quanto sopra, più:',
+    integralFeatures: [
+      'Report mensile',
+      'Una visita all\u2019anno',
+      'Orientamento legale-lavorativo di base',
+    ],
+    whatsapp: 'Consulenza via WhatsApp',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Fideiussioni',
