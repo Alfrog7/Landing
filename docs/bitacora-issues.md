@@ -274,7 +274,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ### Qué se hizo
 
-1. **Navbar — marca MEL**: wordmark tipográfico "MEL" (`TODO-LOGO-MEL`, archivo oficial pendiente en issue #19) + denominación legal al costado: "Melanie O. Calderón Vega" / "Corredora de Seguros persona natural · Registro SBS N-4050". En ≤1024px se compacta a la marca.
+1. **Navbar — marca MEL**: wordmark tipográfico "MEL" (`TODO-LOGO-MEL`, archivo oficial pendiente en issue #19) + denominación legal al costado: "Melanie O. Calderón Vega" / "Corredora de Seguros persona natural" / "Registro SBS N-4050" (legal en 2 líneas para no empujar los links — ajuste en commit `014ff1a`). En ≤1024px se compacta a la marca.
 2. **Footer — marca MEL + lema**: wordmark MEL + lema "Protección y Trascendencia" (nuevo campo `lema` en `brand.config.ts`, fuente única no i18n). Sin logo dorado (fénix) en ninguna vista.
 3. **FAQ "¿Qué es un corredor de seguros?"** como 4ª pregunta de la Home (`faq.q4/a4` ×4 idiomas + ítem en `LANDING_FAQS_DATA`). Texto provisional `TODO-PRESENTACION` — reemplazar por el literal de la presentación (issue #19).
 4. **Contenedor "Tu bróker"** dentro del bloque de Empresas (`risk__broker`, borde discontinuo): placeholder para el mapa de conexiones (abogados, contadores, notarios, bancos, RR. HH.); imagen pendiente (issue #19), sin datos falsos.
