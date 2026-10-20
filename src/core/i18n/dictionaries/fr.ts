@@ -263,6 +263,27 @@ export const FR = {
     },
   },
 
+  narratives: {
+    pasosTitle: 'La caution en 7 étapes',
+    pasos: [
+      'Vous gagnez un contrat',
+      'Vous m’indiquez les données',
+      'Je gère l’émission',
+      'La caution est émise',
+      'Vous la remettez',
+      'Je suis la validité',
+      'Vous exécutez et elle est libérée',
+    ],
+    pasosClose: 'C’est la garantie qui soutient votre engagement, et je la gère de bout en bout.',
+    casosTitle: 'Trois façons de protéger ce que vous aimez le plus',
+    casosNames: ['Prendre soin de vos parents', 'Fonds universitaire', 'Vie avec remboursement'],
+    casosPhrases: [
+      'Un soutien pour la santé et la tranquillité de ceux qui vous ont soigné.',
+      'Une épargne qui accompagne les études de vos enfants.',
+      'Protégez votre famille aujourd’hui et récupérez votre épargne au terme du contrat.',
+    ],
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cautionnements',

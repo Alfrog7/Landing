@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #11 cerrada (PR #27 mergeado + corrección de claves `modal.about/protection`). Activa `feat/issue-12-carrusel-tipos` con **PR #28 abierto** (esperando revisión). Siguiente issue: **#13** (carta fianza en 7 pasos + 3 casos de Vida).
+> **Estado en vivo al cerrar el chat anterior:** issue #12 cerrada (PR #28 mergeado). Activa `feat/issue-13-narrativa-marca` con **PR #29 abierto** (esperando revisión). Siguiente issue: **#14** ("Dos perfiles, una sola profesional" con ICON.png — M4).
 
 ---
 
@@ -167,9 +167,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #12 — Carrusel de tipos en fichas formales (COMPLETADA — **PR #28 ABIERTO, pendiente de merge**)
+## Issue #12 — Carrusel de tipos en fichas formales (COMPLETADA — PR #28, mergeado)
 
-**Rama:** `feat/issue-12-carrusel-tipos` · **PR:** https://github.com/Alfrog7/Landing/pull/28 · **Commit:** `0b1986b`
+**Rama:** `feat/issue-12-carrusel-tipos` · **PR:** https://github.com/Alfrog7/Landing/pull/28 · **Commits:** `0b1986b`, `afb499b`
 
 ### Qué se hizo
 
@@ -187,6 +187,26 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #13 — Narrativa de marca: 7 pasos + 3 casos de Vida (COMPLETADA — **PR #29 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-13-narrativa-marca` · **PR:** https://github.com/Alfrog7/Landing/pull/29 · **Commit:** `ff71b30`
+
+### Qué se hizo
+
+1. **Nuevo componente** `ServiceNarrative.tsx` con 2 variantes:
+   - `pasos` — "Carta fianza en 7 pasos" en la ficha de fianzas (entre "Qué te protege" y el formulario): stepper vertical numerado con los 7 pasos **literales del feedback** (Ganas un contrato → Me indicas los datos → Gestiono la emisión → Se emite → La entregas → Sigo la vigencia → Cumples y se libera) + cierre literal destacado ("Es la garantía que respalda que vas a cumplir, y yo la gestiono de principio a fin").
+   - `casos` — "Tres formas de proteger lo que más quieres" en la ficha de Vida (tras el formulario): 3 tarjetas (Cuidar a los padres, Fondo universitario, Vida con devolución) con icono lucide y frase breve.
+2. **Datos**: `SERVICE_NARRATIVES` en `landing.data.ts` — solo `cartas-fianza` → `pasos`, `vida-devolucion` → `casos`.
+3. **i18n (4 idiomas)**: bloque `narratives` (`pasosTitle`, 7 `pasos`, `pasosClose`, `casosTitle`, 3 pares `casosNames`/`casosPhrases`).
+4. **Estilos** en `app-service-detail-modal.scss`: stepper y tarjetas con variables del tema por seguro (marino/dorado fianzas, lavanda Vida); tarjetas 3 col → 1 col <860px. `app-stepper.scss` existente no reutilizable (scopeado a `app-stepper` del cotizador).
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: `narratives` en 4 idiomas, 7 pasos + cierre + 3 casos, literales del feedback intactos, sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -199,8 +219,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #9 | Mepo bienvenida + Kuyaymi + renombrado | M2 | ✅ Mergeada | #25 |
 | #10 | Ambiente de color por seguro + Mepo condicional | M3 | ✅ Mergeada | #26 |
 | #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | ✅ Mergeada | #27 |
-| #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | 🔶 PR abierto | #28 |
-| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ⬜ Pendiente | — |
+| #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ✅ Mergeada | #28 |
+| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | 🔶 PR abierto | #29 |
 | #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ⬜ Pendiente | — |
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
