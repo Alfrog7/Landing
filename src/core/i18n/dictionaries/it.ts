@@ -315,6 +315,14 @@ export const IT = {
     whatsapp: 'Consulenza via WhatsApp',
   },
 
+  emergency: {
+    button: 'Emergenza?',
+    title: 'Telefoni dei sinistri',
+    whatsapp: 'WhatsApp di Melanie (linea diretta)',
+    pending: 'Da confermare',
+    hint: 'Per un sinistro in corso scrivimi prima: guido il processo dall’inizio alla fine.',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Fideiussioni',

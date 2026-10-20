@@ -323,6 +323,16 @@ export const ES = {
     whatsapp: 'Consultar por WhatsApp',
   },
 
+  // Botón ¿Emergencia? (feedback §5, issue #16). Los teléfonos viven en
+  // emergency.config.ts (TODO-EMERGENCIAS, issue #19); aquí solo textos.
+  emergency: {
+    button: '¿Emergencia?',
+    title: 'Teléfonos de siniestros',
+    whatsapp: 'WhatsApp de Melanie (canal directo)',
+    pending: 'Por confirmar',
+    hint: 'En un siniestro en curso escríbeme primero: yo oriento el proceso de principio a fin.',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cartas fianza',
