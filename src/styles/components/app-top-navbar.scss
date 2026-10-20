@@ -63,15 +63,6 @@ app-top-navbar {
     background: var(--color-orange-dark);
   }
 
-  // Los 3 controles de acciones (emergencia, idioma, agendar) comparten ancho:
-  // el largo varia con el contenido, pero el ancho es identico
-  .navbar__actions app-emergency-button .emg__btn,
-  .navbar__lang-btn,
-  .navbar__cta {
-    min-width: 7.25rem;
-    justify-content: center;
-  }
-
   // Selector de idioma
   .navbar__lang {
     position: relative;
