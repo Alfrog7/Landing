@@ -222,6 +222,47 @@ export const FR = {
     fechas: 'Dates du voyage',
     edadesViajeros: 'Âges des voyageurs',
   },
+  typeCarousels: {
+    title: 'Types de cette assurance',
+    prev: 'Type précédent',
+    next: 'Type suivant',
+    'cartas-fianza': {
+      cta: 'Cotiser cette caution',
+      names: [
+        'Sérieux de l’offre',
+        'Exécution fidèle',
+        'Avance directe',
+        'Avance pour matériaux',
+        'Cautions douanières',
+      ],
+      phrases: [
+        'Garantit que vous maintenez votre offre dans l’appel d’offres.',
+        'Soutient votre bonne exécution du contrat.',
+        'Soutient l’argent que l’entité vous avance.',
+        'Soutient le bon usage de l’avance pour matériaux.',
+        'Pour les opérations de commerce extérieur.',
+      ],
+    },
+    'seguro-credito': {
+      cta: 'Cotiser ce contrat',
+      names: ['Local', 'Exportation'],
+      phrases: [
+        'Protège vos créances auprès de clients du marché national.',
+        'Couvre vos ventes à crédit vers l’étranger.',
+      ],
+    },
+    'polizas-ingenieria': {
+      cta: 'Cotiser cette police',
+      names: ['Chantier civil', 'Montage et installation', 'Équipements et machines', 'Responsabilité civile'],
+      phrases: [
+        'Couvre les dommages matériels pendant la construction.',
+        'Protège le montage et les essais d’installations.',
+        'Répond des dommages accidentels ou du retournement de machines.',
+        'Couvre les dommages aux tiers et aux propriétés voisines.',
+      ],
+    },
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cautionnements',

@@ -222,6 +222,47 @@ export const EN = {
     fechas: 'Travel dates',
     edadesViajeros: 'Travelers’ ages',
   },
+  typeCarousels: {
+    title: 'Types of this insurance',
+    prev: 'Previous type',
+    next: 'Next type',
+    'cartas-fianza': {
+      cta: 'Quote this bond',
+      names: [
+        'Bid bond',
+        'Performance bond',
+        'Advance payment bond',
+        'Materials advance bond',
+        'Customs bonds',
+      ],
+      phrases: [
+        'Guarantees that you keep your offer in the tender.',
+        'Backs your fulfilment of the contract.',
+        'Backs the money the entity advances you.',
+        'Backs the proper use of the materials advance.',
+        'For foreign trade operations.',
+      ],
+    },
+    'seguro-credito': {
+      cta: 'Quote this policy',
+      names: ['Domestic', 'Export'],
+      phrases: [
+        'Protects your receivables from domestic customers.',
+        'Covers your credit sales abroad.',
+      ],
+    },
+    'polizas-ingenieria': {
+      cta: 'Quote this policy',
+      names: ['Civil works', 'Erection and installation', 'Equipment and machinery', 'Liability'],
+      phrases: [
+        'Covers material damage during construction.',
+        'Protects the erection and testing of plants and facilities.',
+        'Responds for accidental damage or machinery overturning on site.',
+        'Covers damage to third parties and adjoining properties.',
+      ],
+    },
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Bond letters',

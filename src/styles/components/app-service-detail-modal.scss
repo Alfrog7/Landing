@@ -264,6 +264,114 @@ app-service-detail-modal {
     background: var(--svc-accent-dark);
   }
 
+  // Carrusel de tipos (feedback §4, issue #12): solo fichas formales.
+  // Fondo azul marino con detalles dorados, autoplay + flechas + puntos.
+  .detail__carousel {
+    margin: 0 0 1.25rem;
+    padding: 1rem;
+    background: #1b2a5e;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+  }
+  .detail__carousel-viewport {
+    overflow: hidden;
+  }
+  .detail__carousel-track {
+    display: flex;
+  }
+  .detail__carousel-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .detail__carousel-icon {
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(245 181 10 / 15%);
+    color: #f5b50a;
+    border: 1.5px solid rgb(245 181 10 / 55%);
+  }
+  .detail__carousel-body {
+    min-width: 0;
+  }
+  .detail__carousel-name {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f5b50a;
+  }
+  .detail__carousel-phrase {
+    margin: 0 0 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #f2f4fa;
+  }
+  .detail__carousel-cta {
+    padding: 0.55rem 0.9rem;
+    background: #f5b50a;
+    color: #1b2a5e;
+    border: 1.5px solid #f5b50a;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .detail__carousel-cta:hover {
+    background: #ffd257;
+  }
+  .detail__carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+  .detail__carousel-arrow {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #f5b50a;
+    border: 1.5px solid rgb(245 181 10 / 55%);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .detail__carousel-arrow:hover {
+    background: rgb(245 181 10 / 15%);
+  }
+  .detail__carousel-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .detail__carousel-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgb(245 181 10 / 70%);
+    background: transparent;
+    cursor: pointer;
+  }
+  .detail__carousel-dot[aria-current='true'] {
+    background: #f5b50a;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .detail__carousel .detail__carousel-track {
+      scroll-behavior: auto;
+    }
+  }
+
   @media (max-width: 860px) {
     .detail {
       grid-template-columns: 1fr;
@@ -278,6 +386,9 @@ app-service-detail-modal {
     }
     .detail__form-grid {
       grid-template-columns: 1fr;
+    }
+    .detail__carousel-slide {
+      align-items: flex-start;
     }
   }
 }
