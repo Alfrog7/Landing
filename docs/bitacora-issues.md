@@ -288,9 +288,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #18 — Footer legal SBS (COMPLETADA — **PR ABIERTO, pendiente de merge**)
+## Issue #18 — Footer legal SBS (COMPLETADA — **PR #34 ABIERTO, pendiente de merge**)
 
-**Rama:** `feat/issue-18-footer-legal-sbs`
+**Rama:** `feat/issue-18-footer-legal-sbs` · **PR:** https://github.com/Alfrog7/Landing/pull/34 · **Commit:** `1ad556c`
 
 ### Qué se hizo
 
@@ -328,7 +328,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ✅ Mergeada | #31 |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ✅ Mergeada | #32 |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ✅ Mergeada | #33 |
-| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | 🔶 En curso | — |
+| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | 🔶 PR abierto | #34 |
 | #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
 
 ### Pendientes externos resumidos (detalle en issue #19)
