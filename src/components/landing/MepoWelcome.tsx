@@ -1,9 +1,10 @@
 import { useTranslation } from '../../core/i18n/i18n';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 
-// Bienvenida de Mepo (feedback §3): los 3 letreros de madera funcionan como botones.
-// La imagen entregada incluye suricatos prohibidos por el feedback (derechos de terceros,
-// ver issue #19): se recorta el tercio izquierdo con CSS para mostrarlos nunca.
+// Bienvenida de Mepo (feedback §3 + especificacion koala de Melanie): los 3 letreros
+// de madera funcionan como botones con la paleta armonizada de la especificacion.
+// La imagen entregada incluye suricatos prohibidos por el feedback (derechos de
+// terceros, ver issue #19): ventana object-fit centrada en Mepo + letreros.
 const askUrl = WhatsAppService.buildGenericUrl(
   'quiero saber en qu\u00e9 me puedes servir, Melanie.'
 );
@@ -34,18 +35,27 @@ export function MepoWelcome() {
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8" /><path d="M5 10v10h14V10" /></svg>
                 </span>
                 <b>{tr.t('mepo.sign1')}</b>
+                <span class="welcome__sign-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+                </span>
               </a>
               <a class="welcome__sign welcome__sign--orange" href="/#soluciones" aria-label={`${tr.t('mepo.sign2')} — ${tr.t('carousel.eyebrow')}`}>
                 <span class="welcome__sign-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6" /><path d="M6 12l6-6 6 6" /></svg>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
                 </span>
                 <b>{tr.t('mepo.sign2')}</b>
+                <span class="welcome__sign-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+                </span>
               </a>
               <a class="welcome__sign welcome__sign--blue" href={askUrl} target="_blank" rel="noopener noreferrer" aria-label={`${tr.t('mepo.sign3')} — WhatsApp`}>
                 <span class="welcome__sign-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.1 1-1.1 1.8" /><circle cx="12" cy="16.6" r="0.6" fill="#fff" stroke="none" /></svg>
                 </span>
                 <b>{tr.t('mepo.sign3')}</b>
+                <span class="welcome__sign-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+                </span>
               </a>
             </nav>
           </div>

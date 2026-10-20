@@ -34,7 +34,8 @@ app-risk-management-block {
     line-height: 1.6;
   }
   .risk__toggle {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     gap: 0.5rem;
     padding: 0.8rem 1.4rem;
@@ -111,9 +112,11 @@ app-risk-management-block {
     color: var(--color-primary-text);
   }
   .risk__whatsapp {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
-    margin-top: 1.5rem;
+    // Separacion clara respecto del toggle y de las tarjetas de planes
+    margin-top: 1.75rem;
     padding: 0.8rem 1.4rem;
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
