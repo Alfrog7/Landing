@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #16 cerrada (PR #32 mergeado, con ajustes responsive: duplicado oculto y anchos uniformes revertidos a pedido de Melanie). Activa `feat/issue-17-contenido-presentacion` con **PR #33 abierto** (esperando revisión). Siguiente issue: **#18** (footer legal SBS: logo SBS, Libro de Reclamaciones, Defensoría, LinkedIn).
+> **Estado en vivo al cerrar el chat anterior:** issue #17 cerrada (PR #33 mergeado). Activa `feat/issue-18-footer-legal-sbs`. Siguiente issue: **#19** (checklist de pendientes externos de Melanie).
 
 ---
 
@@ -268,9 +268,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #17 — Contenido de presentación (COMPLETADA — **PR #33 ABIERTO, pendiente de merge**)
+## Issue #17 — Contenido de presentación (COMPLETADA — PR #33, mergeado; issue cerrada 2026-10-20)
 
-**Rama:** `feat/issue-17-contenido-presentacion` · **PR:** https://github.com/Alfrog7/Landing/pull/33 · **Commit:** `a94217e`
+**Rama:** `feat/issue-17-contenido-presentacion` · **PR:** https://github.com/Alfrog7/Landing/pull/33 · **Commits:** `a94217e`, `014ff1a`
 
 ### Qué se hizo
 
@@ -285,6 +285,28 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 - `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
 - Script: claves nuevas en 4 idiomas, lema exacto, cero plurales en a3, sin fénix en config, sin mojibake.
+
+---
+
+## Issue #18 — Footer legal SBS (COMPLETADA — **PR #34 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-18-footer-legal-sbs` · **PR:** https://github.com/Alfrog7/Landing/pull/34 · **Commit:** `1ad556c`
+
+### Qué se hizo
+
+1. **Logo SBS + Registro**: chip `.footer__sbs` en la columna de marca — placeholder "SBS" (caja blanca, texto "SBS") + `brand.licenseId` ("Registro SBS N-4050"). `TODO-LOGO-SBS`: NO se imita el logo oficial; reemplazar por el asset real cuando lo entregue Melanie (issue #19).
+2. **Libro de Reclamaciones**: enlace placeholder deshabilitado con icono `BookOpen` y tooltip "Disponible próximamente" (`TODO-LIBRO-RECLAMOS`: apuntar a página propia cuando exista).
+3. **Defensoría del Asegurado**: enlace real `https://www.defaseg.com.pe/` (DEFASEG, creada por APESEG) con `target="_blank"` + `rel="noopener noreferrer"`. ⚠️ La issue decía "defensoriadelasegurado.com"; el sitio oficial verificado es **defaseg.com.pe**.
+4. **LinkedIn**: enlace placeholder deshabilitado con icono `Link2` (no existe `Linkedin` en la versión instalada de lucide-preact) + `TODO-LINKEDIN` (URL del perfil pendiente, issue #19).
+5. **Privacidad / Términos / Canal de denuncias SBS**: se mantienen deshabilitados (estado previo, issue no exige publicarlos).
+6. **Correo con rótulo**: ya presente ("Correo de corredora de seguros persona natural:" — issue #4), intacto.
+7. **Columna de aseguradoras alineada con la franja**: `STRIP_INSURERS` (13 aseguradoras) ahora es `export const` en `InsurerLogoStrip.tsx` y el footer la importa — una sola fuente. Se retiró el array viejo `brand.insurers` (4 logos) de `brand.config.ts`, que contradecía a la franja.
+8. **i18n (4 idiomas)**: `footer.libroReclamaciones`, `footer.defensoria`, `footer.linkedin`. SCSS: `.footer__sbs`, `.footer__linkedin`, enlaces legales con icono, logos del footer 38→32px (13 logos con wrap).
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: claves nuevas en 4 idiomas, `defaseg.com.pe`, 2 `noopener noreferrer`, `TODO-LOGO-SBS` + `TODO-LINKEDIN`, 13 aseguradoras, sin mojibake.
 
 ---
 
@@ -305,8 +327,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ✅ Mergeada | #30 |
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ✅ Mergeada | #31 |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ✅ Mergeada | #32 |
-| #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | 🔶 PR abierto | #33 |
-| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |
+| #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ✅ Mergeada | #33 |
+| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | 🔶 PR abierto | #34 |
 | #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
 
 ### Pendientes externos resumidos (detalle en issue #19)

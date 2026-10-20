@@ -37,10 +37,6 @@ export const BRAND_CONFIG = {
     advisorPhotoReal: '/assets/images/mepo/ICON.png',
     advisorPhoto: '/assets/images/advisor/profile.svg',
   },
-  insurers: [
-    { id: 'rimac', name: 'Rímac Seguros', logo: '/assets/images/insurers/rimac.svg' },
-    { id: 'pacifico', name: 'Pacífico Seguros', logo: '/assets/images/insurers/pacifico.svg' },
-    { id: 'mapfre', name: 'Mapfre', logo: '/assets/images/insurers/mapfre.svg' },
-    { id: 'positiva', name: 'La Positiva', logo: '/assets/images/insurers/positiva.svg' },
-  ],
+  // Las aseguradoras viven en STRIP_INSURERS (landing/InsurerLogoStrip.tsx):
+  // franja y footer comparten la misma lista de 13 (issue #18).
 } as const;

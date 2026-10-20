@@ -8,7 +8,8 @@ export interface StripInsurer {
 
 // Franja de aseguradoras (reemplaza a la Matriz Multiaseguradora).
 // Logos oficiales disponibles + wordmarks provisionales (TODO-LOGOS: issue #19).
-const STRIP_INSURERS: StripInsurer[] = [
+// Exportada también para el footer: misma lista, una sola fuente (issue #18).
+export const STRIP_INSURERS: StripInsurer[] = [
   { id: 'mapfre', name: 'Mapfre', logo: '/assets/images/insurers/mapfre.svg' },
   { id: 'pacifico', name: 'Pacífico Seguros', logo: '/assets/images/insurers/pacifico.svg' },
   { id: 'rimac', name: 'Rímac Seguros', logo: '/assets/images/insurers/rimac.svg' },
