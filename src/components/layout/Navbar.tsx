@@ -100,7 +100,9 @@ export default function Navbar() {
             <span class="navbar__brand-text">
               <span class="navbar__brand-name">{brand.ownerName}</span>
               <span class="navbar__brand-legal">
-                {brand.sbsChip} · {brand.sbsChipShort}
+                {brand.sbsChip}
+                <br />
+                {brand.sbsChipShort}
               </span>
             </span>
           </a>

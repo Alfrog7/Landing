@@ -49,9 +49,11 @@ app-top-navbar {
   .navbar__brand-legal {
     font-size: 0.62rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.35;
     color: var(--color-muted);
     white-space: nowrap;
+    // La linea legal se parte en 2 ("persona natural" / "Registro SBS N-4050")
+    // para no empujar a los links del navbar
   }
   .navbar__links {
     display: flex;
