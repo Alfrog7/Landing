@@ -1,12 +1,14 @@
 // Bienvenida de Mepo: letreros de madera como botones (feedback §3)
 .welcome {
-  padding-block: clamp(2rem, 5vw, 3.5rem);
+  // La navbar es fija (4.25rem): separar la bienvenida de la barra
+  padding-top: calc(4.25rem + clamp(1.5rem, 4vw, 2.75rem));
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
   background: var(--color-bg);
 }
 
 .welcome__grid {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-columns: 1.4fr 0.6fr;
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
 }
