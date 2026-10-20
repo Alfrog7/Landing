@@ -290,6 +290,31 @@ export const EN = {
     ],
   },
 
+  risk: {
+    title: 'Virtual Risk Management Area',
+    badge: 'For companies',
+    text: 'Does your company not have a risk department? I can be it. A monthly consultancy that keeps your insurance, claims and obligations up to date, so you can focus on your business. Plans from S/ 270 per month.',
+    cta: 'I want to learn more',
+    close: 'Show less',
+    planes: ['Essential', 'Integral'],
+    esencialPrice: 'S/ 270',
+    integralPrice: 'S/ 370',
+    perMonth: '/month',
+    esencialFeatures: [
+      'Policy review',
+      'Renewal calendar',
+      'SCTR certificates',
+      'Claims support',
+    ],
+    integralNote: 'Everything above, plus:',
+    integralFeatures: [
+      'Monthly report',
+      'One on-site visit per year',
+      'Basic legal-labor guidance',
+    ],
+    whatsapp: 'Ask via WhatsApp',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Bond letters',

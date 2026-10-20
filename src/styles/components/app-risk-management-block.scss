@@ -1,0 +1,137 @@
+app-risk-management-block {
+  // Bloque "Area de Riesgos Virtual" (feedback §5, issue #15): corporativo sobrio,
+  // sin Mepo, coherente con el ambiente empresarial.
+  .risk {
+    padding-top: 0;
+  }
+  .risk__card {
+    position: relative;
+    padding: 2rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+  .risk__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.7rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .risk .section-title {
+    margin-bottom: 0.75rem;
+  }
+  .risk__text {
+    margin: 0 0 1.5rem;
+    max-width: 62ch;
+    color: var(--color-body);
+    line-height: 1.6;
+  }
+  .risk__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    background: var(--color-ink);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .risk__toggle:hover {
+    background: var(--color-primary);
+  }
+  .risk__chevron {
+    transition: transform 0.15s ease;
+  }
+  .risk__chevron--up {
+    transform: rotate(180deg);
+  }
+  .risk__plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .risk__plan {
+    padding: 1.25rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+  }
+  .risk__plan h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+  }
+  .risk__price {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary-text);
+  }
+  .risk__price span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+  .risk__note {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .risk__plan ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .risk__plan li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+  .risk__plan li svg {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--color-primary-text);
+  }
+  .risk__whatsapp {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.4rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    color: var(--color-ink);
+    font-weight: 700;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .risk__whatsapp:hover {
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  @media (max-width: 860px) {
+    .risk__card {
+      padding: 1.5rem 1.25rem;
+    }
+    .risk__plans {
+      grid-template-columns: 1fr;
+    }
+  }
+}

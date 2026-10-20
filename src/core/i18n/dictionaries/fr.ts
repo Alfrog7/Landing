@@ -290,6 +290,31 @@ export const FR = {
     ],
   },
 
+  risk: {
+    title: 'Espace Gestion des Risques Virtuelle',
+    badge: 'Pour les entreprises',
+    text: 'Votre entreprise n\u2019a pas de service des risques ? Je peux l\u2019être. Une consultance mensuelle qui maintient vos assurances, sinistres et obligations à jour, pour que vous vous consacriez à votre activité. Des plans à partir de S/ 270 par mois.',
+    cta: 'Je veux en savoir plus',
+    close: 'Voir moins',
+    planes: ['Essentiel', 'Intégral'],
+    esencialPrice: 'S/ 270',
+    integralPrice: 'S/ 370',
+    perMonth: '/mois',
+    esencialFeatures: [
+      'Révision des polices',
+      'Calendrier des renouvellements',
+      'Attestations SCTR',
+      'Accompagnement en cas de sinistre',
+    ],
+    integralNote: 'Tout ce qui précède, plus :',
+    integralFeatures: [
+      'Rapport mensuel',
+      'Une visite par an',
+      'Orientation juridico-laborale de base',
+    ],
+    whatsapp: 'Consulter via WhatsApp',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cautionnements',

@@ -4,6 +4,7 @@ import { Accordion } from '../ui/Accordion';
 import { MepoWelcome } from '../landing/MepoWelcome';
 import { Hero } from '../landing/Hero';
 import { SolutionsCarousel } from '../landing/SolutionsCarousel';
+import { RiskManagementBlock } from '../landing/RiskManagementBlock';
 import { HowItWorks } from '../landing/HowItWorks';
 import { InsurerLogoStrip } from '../landing/InsurerLogoStrip';
 import { WhyMelanie } from '../landing/WhyMelanie';
@@ -30,6 +31,9 @@ export default function LandingPage() {
       <Hero activeTab={activeTab} onTabChange={setActiveTab} />
 
       <SolutionsCarousel activeTab={activeTab} onDetailPressed={setDetail} />
+
+      {/* Área de Riesgos Virtual (feedback §5, issue #15): solo con la pestaña Empresas activa */}
+      <RiskManagementBlock activeTab={activeTab} />
 
       <HowItWorks />
 
