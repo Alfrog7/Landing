@@ -82,7 +82,48 @@ app-why-melanie {
   }
 
   .why__title {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+  }
+  // Texto literal aprobado por Melanie (feedback §5, issue #14)
+  .why__intro {
+    margin: 0 0 1.5rem;
+    color: var(--color-body);
+    max-width: 62ch;
+  }
+  // Tarjetas Abogada | Corredora de seguros
+  .why__profiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2.25rem;
+  }
+  .why__profile-card {
+    padding: 1.1rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+  .why__profile-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: 0.6rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .why__profile-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+  .why__profile-card p {
+    margin: 0;
+    color: var(--color-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
   // Tres razones en filas separadas por filetes: el título a la izquierda, el detalle a la derecha
   .why__block {
@@ -105,7 +146,7 @@ app-why-melanie {
     color: var(--color-body);
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
     .why__profile,
     .why__blocks {
       grid-column: 1 / -1;
@@ -120,8 +161,11 @@ app-why-melanie {
     .why__block {
       grid-template-columns: 1fr;
     }
+    .why__profiles {
+      grid-template-columns: 1fr;
+    }
   }
-  @media (min-width: 960px) and (max-height: 820px) {
+  @media (min-width: 1024px) and (max-height: 820px) {
     .why__photo {
       aspect-ratio: 4 / 2.4;
     }
