@@ -266,6 +266,29 @@ export const ES = {
     },
   },
 
+  // Narrativas de marca dentro de fichas (feedback §6, issue #13).
+  // Los 7 pasos y el cierre son literales aprobados por Melanie (no parafrasear).
+  narratives: {
+    pasosTitle: 'Carta fianza en 7 pasos',
+    pasos: [
+      'Ganas un contrato',
+      'Me indicas los datos',
+      'Gestiono la emisión',
+      'Se emite',
+      'La entregas',
+      'Sigo la vigencia',
+      'Cumples y se libera',
+    ],
+    pasosClose: 'Es la garantía que respalda que vas a cumplir, y yo la gestiono de principio a fin.',
+    casosTitle: 'Tres formas de proteger lo que más quieres',
+    casosNames: ['Cuidar a los padres', 'Fondo universitario', 'Vida con devolución'],
+    casosPhrases: [
+      'Un respaldo para la salud y la tranquilidad de quienes te cuidaron.',
+      'Un ahorro que acompaña los estudios de tus hijos.',
+      'Protege a tu familia hoy y recupera tu ahorro al final del plazo.',
+    ],
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Cartas fianza',

@@ -263,6 +263,27 @@ export const EN = {
     },
   },
 
+  narratives: {
+    pasosTitle: 'Surety bond in 7 steps',
+    pasos: [
+      'You win a contract',
+      'You give me the details',
+      'I manage the issuance',
+      'The bond is issued',
+      'You deliver it',
+      'I follow up on its validity',
+      'You fulfil and it is released',
+    ],
+    pasosClose: 'It is the guarantee that backs your commitment, and I manage it from start to finish.',
+    casosTitle: 'Three ways to protect what you love most',
+    casosNames: ['Caring for your parents', 'College fund', 'Life with return'],
+    casosPhrases: [
+      'Backing for the health and peace of mind of those who cared for you.',
+      'Savings that support your children\u2019s education.',
+      'Protect your family today and get your savings back at the end of the term.',
+    ],
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Bond letters',

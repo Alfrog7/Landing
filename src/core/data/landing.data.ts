@@ -244,6 +244,13 @@ export const TYPE_CAROUSEL_FIELDS: Record<string, string> = {
   'polizas-ingenieria': 'tipoObra',
 };
 
+// Narrativas de marca dentro de fichas (feedback §6, issue #13):
+// servicio -> tipo de narrativa ('pasos' = linea de 7 pasos; 'casos' = 3 tarjetas de casos).
+export const SERVICE_NARRATIVES: Record<string, 'pasos' | 'casos'> = {
+  'cartas-fianza': 'pasos',
+  'vida-devolucion': 'casos',
+};
+
 // A los campos específicos se suman nombre, correo, celular y aceptación de datos.
 export const QUOTE_FORM_FIELDS: Record<string, QuoteFormField[]> = {
   'cartas-fianza': [

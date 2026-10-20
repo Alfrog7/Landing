@@ -2,8 +2,13 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import { CircleCheck, X } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import type { ServiceDetail } from '../../core/models/insurance-service.model';
-import { QUOTE_FORM_FIELDS, TYPE_CAROUSEL_FIELDS } from '../../core/data/landing.data';
+import {
+  QUOTE_FORM_FIELDS,
+  SERVICE_NARRATIVES,
+  TYPE_CAROUSEL_FIELDS,
+} from '../../core/data/landing.data';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
+import { ServiceNarrative } from './ServiceNarrative';
 import { ServiceTypeCarousel } from './ServiceTypeCarousel';
 import { Mepo } from './Mepo';
 
@@ -66,6 +71,7 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
   const entidades = tr.tOptional(`${key}.entidades`);
   const extraFields = QUOTE_FORM_FIELDS[service.id] ?? [];
   const carouselField = TYPE_CAROUSEL_FIELDS[service.id];
+  const narrative = SERVICE_NARRATIVES[service.id];
 
   const [form, setForm] = useState<Record<string, string>>({});
   const setField = (name: string, value: string) => {
@@ -157,6 +163,9 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                   </ul>
                 </section>
 
+                {/* Carta fianza en 7 pasos (feedback §6, issue #13), solo en la ficha de fianzas */}
+                {narrative === 'pasos' && <ServiceNarrative variant="pasos" />}
+
                 {/* 4. Formulario corto con los datos del seguro */}
                 <form class="detail__form" onSubmit={submit}>
                   <h3>{tr.t('form.title')}</h3>
@@ -230,6 +239,9 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                     {tr.t('form.submit')}
                   </button>
                 </form>
+
+                {/* Tres formas de proteger lo que más quieres (feedback §6, issue #13), solo en la ficha de Vida */}
+                {narrative === 'casos' && <ServiceNarrative variant="casos" />}
               </div>
             </div>
           </app-service-detail-modal>

@@ -263,6 +263,27 @@ export const IT = {
     },
   },
 
+  narratives: {
+    pasosTitle: 'La fideiussione in 7 passi',
+    pasos: [
+      'Vinci un contratto',
+      'Mi fornisci i dati',
+      'Gestisco l’emissione',
+      'La fideiussione viene emessa',
+      'La consegni',
+      'Seguo la validità',
+      'Adempi e viene liberata',
+    ],
+    pasosClose: 'È la garanzia che tutela il tuo impegno, e la gestisco dall’inizio alla fine.',
+    casosTitle: 'Tre modi per proteggere ciò che ami di più',
+    casosNames: ['Prendersi cura dei genitori', 'Fondo universitario', 'Vita con restituzione'],
+    casosPhrases: [
+      'Un sostegno per la salute e la serenità di chi si è preso cura di te.',
+      'Un risparmio che accompagna gli studi dei tuoi figli.',
+      'Proteggi la famiglia oggi e recuperi il risparmio alla scadenza.',
+    ],
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Fideiussioni',

@@ -372,6 +372,84 @@ app-service-detail-modal {
     }
   }
 
+  // Narrativa de marca (feedback §6, issue #13): 7 pasos de la carta fianza
+  // y 3 casos de Vida; usan el tema --svc de la ficha (marino/dorado, lavanda).
+  .detail__pasos-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .detail__pasos-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .detail__pasos-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--svc-accent);
+    color: var(--svc-accent-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .detail__pasos-close {
+    margin: 0.75rem 0 0;
+    padding: 0.7rem 0.9rem;
+    background: var(--svc-tint);
+    border-left: 3px solid var(--svc-accent);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .detail__casos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+  .detail__casos-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 0.85rem;
+    background: var(--svc-tint);
+    border: 1.5px solid var(--svc-accent);
+    border-radius: var(--radius-sm);
+  }
+  .detail__casos-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--svc-accent);
+    color: var(--svc-accent-contrast);
+  }
+  .detail__casos-card h4 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--svc-accent-dark);
+  }
+  .detail__casos-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+
   @media (max-width: 860px) {
     .detail {
       grid-template-columns: 1fr;
@@ -389,6 +467,9 @@ app-service-detail-modal {
     }
     .detail__carousel-slide {
       align-items: flex-start;
+    }
+    .detail__casos-grid {
+      grid-template-columns: 1fr;
     }
   }
 }
