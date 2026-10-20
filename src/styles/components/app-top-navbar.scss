@@ -63,6 +63,15 @@ app-top-navbar {
     background: var(--color-orange-dark);
   }
 
+  // Los 3 controles de acciones (emergencia, idioma, agendar) comparten ancho:
+  // el largo varia con el contenido, pero el ancho es identico
+  .navbar__actions app-emergency-button .emg__btn,
+  .navbar__lang-btn,
+  .navbar__cta {
+    min-width: 7.25rem;
+    justify-content: center;
+  }
+
   // Selector de idioma
   .navbar__lang {
     position: relative;
@@ -191,7 +200,9 @@ app-top-navbar {
   @media (max-width: 1024px) {
     .navbar__links,
     .navbar__cta,
-    .navbar__actions .navbar__lang {
+    .navbar__actions .navbar__lang,
+    // El boton de emergencia del desktop se oculta: en movil vive en el drawer
+    .navbar__actions app-emergency-button {
       display: none;
     }
     .navbar__burger {
