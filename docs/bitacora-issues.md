@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #13 cerrada (PR #29 mergeado). Activa `feat/issue-14-dos-perfiles` con **PR #30 abierto** (esperando revisión). Siguiente issue: **#15** (Área de Riesgos Virtual con planes Esencial/Integral — M4).
+> **Estado en vivo al cerrar el chat anterior:** issue #14 cerrada (PR #30 mergeado). Activa `feat/issue-15-area-riesgos` con **PR #31 abierto** (esperando revisión). Siguiente issue: **#16** (botón "¿Emergencia?" en navbar — M4).
 
 ---
 
@@ -207,9 +207,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #14 — Dos perfiles, una sola profesional (COMPLETADA — **PR #30 ABIERTO, pendiente de merge**)
+## Issue #14 — Dos perfiles, una sola profesional (COMPLETADA — PR #30, mergeado)
 
-**Rama:** `feat/issue-14-dos-perfiles` · **PR:** https://github.com/Alfrog7/Landing/pull/30 · **Commit:** `3320674`
+**Rama:** `feat/issue-14-dos-perfiles` · **PR:** https://github.com/Alfrog7/Landing/pull/30 · **Commits:** `3320674`, `ac093f8`
 
 ### Qué se hizo
 
@@ -227,6 +227,26 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #15 — Área de Riesgos Virtual (COMPLETADA — **PR #31 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-15-area-riesgos` · **PR:** https://github.com/Alfrog7/Landing/pull/31 · **Commit:** `9e909da`
+
+### Qué se hizo
+
+1. **Nuevo** `RiskManagementBlock.tsx` + `app-risk-management-block.scss` (registrado en `_index.scss`): bloque "Área de Riesgos Virtual" en la parte Empresas de la Home, tras el carrusel, **visible solo con la pestaña Empresas activa**. Estilo corporativo sobrio (sin Mepo).
+2. **Texto literal del feedback** en el bloque, con precios aprobados S/ 270 y S/ 370 (no aplican la regla anti-cifras: son precios de servicio).
+3. Botón [Quiero saber más] expande (`aria-expanded`/`aria-controls`) las tarjetas: **Esencial** (revisión de pólizas, calendario de renovaciones, constancias SCTR, acompañamiento en siniestros) y **Integral** ("Todo lo anterior, más:" reporte mensual, una visita al año, orientación legal-laboral básica). Items con `TODO-PLANES` (confirmación de Melanie, issue #19).
+4. CTA WhatsApp con mensaje prellenado "Hola Melanie, quiero saber más sobre el Área de Riesgos Virtual." vía `buildGenericUrl` (+ firma).
+5. Estructura **reservada** (comentario, no publicado) para "Seguridad y cámaras" con empresas aliadas.
+6. **i18n (4 idiomas)**: bloque `risk.*` completo. Integrado en `LandingPage.tsx`. Responsive: planes 2→1 col <860px.
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: `risk.*` en 4 idiomas, literales exactos en español, builder presente, sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -241,8 +261,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | ✅ Mergeada | #27 |
 | #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ✅ Mergeada | #28 |
 | #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ✅ Mergeada | #29 |
-| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | 🔶 PR abierto | #30 |
-| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
+| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ✅ Mergeada | #30 |
+| #15 | "Área de Riesgos Virtual" (2 planes) | M4 | 🔶 PR abierto | #31 |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
 | #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ⬜ Pendiente | — |
