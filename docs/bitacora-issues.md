@@ -259,7 +259,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 3. Panel: CTA verde "WhatsApp de Melanie (canal directo)" (mensaje prellenado de emergencia + firma), lista de aseguradoras con `tel:` clicable ("Por confirmar" mientras no haya datos) y nota traducida.
 4. **Integrado en `Navbar.tsx`**: desktop en `.navbar__actions` y variante `mobile` a ancho completo dentro del drawer (panel estático).
 5. **i18n (4 idiomas)**: bloque `emergency.*`. Estilo sobrio (sin Mepo, sin rojo llamativo).
-6. **Corrección responsive** (commit `9aaf34c`): ocultado el botón de emergencia del desktop en ≤1024px (quedaba duplicado con el del drawer) y los 3 controles de acciones (emergencia, idioma, agendar) igualados a `min-width: 7.25rem` con contenido centrado — el largo varía, el ancho no.
+6. **Corrección responsive** (commits `9aaf34c`/`3ef9f7a`): ocultado el botón de emergencia del desktop en ≤1024px (quedaba duplicado con el del drawer) — se conserva. La igualación de anchos de los 3 controles de acciones se **revirtió**: desalineaba el ritmo visual de los links del navbar (Soluciones…Preguntas).
 
 ### Verificación
 
