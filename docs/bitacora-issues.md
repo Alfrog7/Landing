@@ -16,7 +16,7 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #12 cerrada (PR #28 mergeado). Activa `feat/issue-13-narrativa-marca` con **PR #29 abierto** (esperando revisión). Siguiente issue: **#14** ("Dos perfiles, una sola profesional" con ICON.png — M4).
+> **Estado en vivo al cerrar el chat anterior:** issue #13 cerrada (PR #29 mergeado). Activa `feat/issue-14-dos-perfiles` con **PR #30 abierto** (esperando revisión). Siguiente issue: **#15** (Área de Riesgos Virtual con planes Esencial/Integral — M4).
 
 ---
 
@@ -187,9 +187,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #13 — Narrativa de marca: 7 pasos + 3 casos de Vida (COMPLETADA — **PR #29 ABIERTO, pendiente de merge**)
+## Issue #13 — Narrativa de marca: 7 pasos + 3 casos de Vida (COMPLETADA — PR #29, mergeado)
 
-**Rama:** `feat/issue-13-narrativa-marca` · **PR:** https://github.com/Alfrog7/Landing/pull/29 · **Commit:** `ff71b30`
+**Rama:** `feat/issue-13-narrativa-marca` · **PR:** https://github.com/Alfrog7/Landing/pull/29 · **Commits:** `ff71b30`, `7caf964`
 
 ### Qué se hizo
 
@@ -207,6 +207,26 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
+## Issue #14 — Dos perfiles, una sola profesional (COMPLETADA — **PR #30 ABIERTO, pendiente de merge**)
+
+**Rama:** `feat/issue-14-dos-perfiles` · **PR:** https://github.com/Alfrog7/Landing/pull/30 · **Commit:** `3320674`
+
+### Qué se hizo
+
+1. **Rework `WhyMelanie.tsx`**: la sección `sobre-melanie` ahora es "Dos perfiles, una sola profesional" (feedback §5). Ancla `/#sobre-melanie` intacta (navbar + redirect `/asesoria`).
+2. **Foto real**: `ICON.png` (entregada por Melanie, ya apuntada por `advisorPhotoReal` desde issue #4) con fallback al placeholder, `loading="lazy"`, `decoding="async"` y `width/height` definidos.
+3. **Texto literal aprobado** como intro: "Soy abogada y bróker de seguros. No solo te consigo la mejor cobertura al mejor precio: también te cuido legalmente y te acompaño en todo el proceso, incluido el siniestro."
+4. **Dos tarjetas lado a lado**: "Abogada" (Scale) y "Corredora de seguros" (ShieldCheck), con frase breve en 1ª persona cada una. Etiqueta legal completa visible (badge bajo la foto).
+5. Los 3 bloques de beneficios se conservan debajo; `block3Title` "Respaldo colegiado regulado…" → "Respaldo regulado ante la SBS" (sin figura colegiada).
+6. **i18n (4 idiomas)**: `why.{title,profilesIntro,profile1*,profile2*}` nuevos. **SCSS**: intro + tarjetas; grid principal colapsa <1024px (spec), tarjetas <560px.
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK.
+- Script: claves en 4 idiomas, literal exacto en español, cero "colegiad*", sin mojibake.
+
+---
+
 ## Tabla de estado general (canónica — actualizar SIEMPRE esta tabla)
 
 | Issue | Título corto | Milestone | Estado | PR |
@@ -220,8 +240,8 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #10 | Ambiente de color por seguro + Mepo condicional | M3 | ✅ Mergeada | #26 |
 | #11 | Nueva ficha (video, form por seguro, WhatsApp) | M3 | ✅ Mergeada | #27 |
 | #12 | Carrusel de tipos en fichas formales (fianza×5, crédito, obras) | M3 | ✅ Mergeada | #28 |
-| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | 🔶 PR abierto | #29 |
-| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | ⬜ Pendiente | — |
+| #13 | Carta fianza en 7 pasos + 3 casos de Vida | M3 | ✅ Mergeada | #29 |
+| #14 | "Dos perfiles, una sola profesional" (ICON.png) | M4 | 🔶 PR abierto | #30 |
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ⬜ Pendiente | — |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ⬜ Pendiente | — |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ⬜ Pendiente | — |
