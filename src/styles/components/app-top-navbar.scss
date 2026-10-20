@@ -191,7 +191,9 @@ app-top-navbar {
   @media (max-width: 1024px) {
     .navbar__links,
     .navbar__cta,
-    .navbar__actions .navbar__lang {
+    .navbar__actions .navbar__lang,
+    // El boton de emergencia del desktop se oculta: en movil vive en el drawer
+    .navbar__actions app-emergency-button {
       display: none;
     }
     .navbar__burger {

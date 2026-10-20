@@ -1,0 +1,124 @@
+app-emergency-button {
+  display: block;
+  // Boton sobrio y confiable: canal de siniestros, sin decoracion llamativa
+  .emg {
+    position: relative;
+  }
+  .emg__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1rem;
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .emg__btn:hover {
+    background: var(--color-ink);
+    color: #fff;
+  }
+  .emg__panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    z-index: 70;
+    width: min(21rem, 92vw);
+    max-height: min(26rem, 70vh);
+    overflow-y: auto;
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    box-shadow: 0 12px 24px -6px rgb(0 0 0 / 18%);
+  }
+  .emg__panel:focus,
+  .emg__panel:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  .emg__title {
+    margin: 0 0 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-ink);
+  }
+  .emg__wa {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .emg__wa:hover {
+    background: var(--color-primary-dark);
+  }
+  .emg__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .emg__list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.15rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.88rem;
+  }
+  .emg__insurer {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .emg__phone {
+    font-weight: 700;
+    color: var(--color-ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  a.emg__phone:hover {
+    text-decoration: underline;
+  }
+  .emg__phone--pending {
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+  .emg__hint {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+
+  // Variante dentro del drawer movil: boton y panel a ancho completo, estaticos
+  &.emg-wrap--mobile {
+    width: 100%;
+  }
+  .emg--mobile {
+    width: 100%;
+  }
+  .emg--mobile .emg__btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .emg--mobile .emg__panel {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin: 0.5rem 0 0.25rem;
+    box-shadow: none;
+  }
+}

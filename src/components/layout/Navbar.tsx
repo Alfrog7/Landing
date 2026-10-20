@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Calendar, Check, ChevronDown, Globe, Menu, X } from 'lucide-preact';
 import { WhatsAppIcon } from '../ui/WhatsAppIcon';
+import { EmergencyButton } from './EmergencyButton';
 import { BRAND_CONFIG } from '../../core/config/brand.config';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
 import { useTranslation } from '../../core/i18n/i18n';
@@ -110,6 +111,7 @@ export default function Navbar() {
           </nav>
 
           <div class="navbar__actions">
+            <EmergencyButton />
             {langSelector(false)}
             <a href="/#agendar" class="navbar__cta">
               <Calendar size={15} />
@@ -135,6 +137,8 @@ export default function Navbar() {
                 {tr.t(link.labelKey)}
               </a>
             ))}
+
+            <EmergencyButton mobile />
 
             <a class="navbar__mobile-wa" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon size={18} />

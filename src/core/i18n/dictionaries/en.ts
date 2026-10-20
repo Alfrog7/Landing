@@ -315,6 +315,14 @@ export const EN = {
     whatsapp: 'Ask via WhatsApp',
   },
 
+  emergency: {
+    button: 'Emergency?',
+    title: 'Claims phone numbers',
+    whatsapp: 'Melanie\u2019s WhatsApp (direct line)',
+    pending: 'To be confirmed',
+    hint: 'For an ongoing claim, message me first: I guide the process from start to finish.',
+  },
+
   services: {
     'cartas-fianza': {
       title: 'Bond letters',
