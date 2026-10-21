@@ -38,6 +38,7 @@ app-risk-management-block {
     width: fit-content;
     align-items: center;
     gap: 0.5rem;
+    min-height: 3rem;
     padding: 0.8rem 1.4rem;
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
@@ -117,10 +118,14 @@ app-risk-management-block {
     align-items: center;
     // Separacion clara respecto del toggle y de las tarjetas de planes
     margin-top: 1.75rem;
+    // Mismo alto y tipografia que el boton "Quiero saber mas"
+    min-height: 3rem;
     padding: 0.8rem 1.4rem;
     border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-sm);
     color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
     font-weight: 700;
     transition: background 0.15s ease, color 0.15s ease;
   }
