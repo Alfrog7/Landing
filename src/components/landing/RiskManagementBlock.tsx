@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useRef } from 'preact/hooks';
 import { CircleCheck, ChevronDown, ShieldAlert } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
@@ -15,6 +15,17 @@ import type { AudienceCategory } from '../../core/models/insurance-service.model
 export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory }) {
   const tr = useTranslation();
   const [open, setOpen] = useState(false);
+  // Demo del mapa (TODO-BROKER-IMG): el hub "MEL" es arrastrable y al soltar
+  // vuelve a su posicion central con la transicion CSS (efecto de rebote)
+  const hubRef = useRef<HTMLSpanElement>(null);
+  const [hubDragging, setHubDragging] = useState(false);
+  const hubDrag = useRef({ active: false, startX: 0, startY: 0 });
+
+  const setHubTransform = (dx: number, dy: number) => {
+    if (hubRef.current) {
+      hubRef.current.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+    }
+  };
 
   if (activeTab !== 'empresas') {
     return null;
@@ -99,7 +110,33 @@ export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory
                 <line x1="50" y1="20" x2="30" y2="34" vector-effect="non-scaling-stroke" />
                 <line x1="50" y1="20" x2="70" y2="34" vector-effect="non-scaling-stroke" />
               </svg>
-              <span class="risk__broker-node risk__broker-node--hub">
+              <span
+                ref={hubRef}
+                class={`risk__broker-node risk__broker-node--hub${hubDragging ? ' risk__broker-node--hub--dragging' : ''}`}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  hubDrag.current = { active: true, startX: e.clientX, startY: e.clientY };
+                  (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+                  setHubDragging(true);
+                }}
+                onPointerMove={(e) => {
+                  const d = hubDrag.current;
+                  if (!d.active) {
+                    return;
+                  }
+                  setHubTransform(e.clientX - d.startX, e.clientY - d.startY);
+                }}
+                onPointerUp={() => {
+                  hubDrag.current.active = false;
+                  setHubDragging(false);
+                  setHubTransform(0, 0);
+                }}
+                onPointerCancel={() => {
+                  hubDrag.current.active = false;
+                  setHubDragging(false);
+                  setHubTransform(0, 0);
+                }}
+              >
                 MEL
                 <span>{tr.t('broker.hub')}</span>
               </span>

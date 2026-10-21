@@ -207,6 +207,15 @@ app-risk-management-block {
     letter-spacing: 0.14em;
     color: #fff;
     text-align: center;
+    // Arrastrable: al soltar, la transicion devuelve el hub al centro (rebote)
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.3, 1.15);
+  }
+  .risk__broker-node--hub--dragging {
+    transition: none;
+    cursor: grabbing;
   }
   .risk__broker-node--hub span {
     font-family: var(--font-body);

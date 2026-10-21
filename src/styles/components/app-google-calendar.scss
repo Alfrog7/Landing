@@ -9,10 +9,21 @@ app-google-calendar {
     border-radius: var(--radius-lg);
     overflow: hidden;
   }
+  // Ajuste fino de recortes (contenido del iframe no editable, cross-origin):
+  // --gcal-crop-top oculta el encabezado con el nombre de la cuenta de prueba
+  // (p. ej. "Hugo Márquez Diestra"); --gcal-crop-right oculta la scrollbar
+  // interna (la linea que aparece al bajar). Variar si queda un borde visible.
+  .gcal__viewport {
+    --gcal-crop-top: 52px;
+    --gcal-crop-right: 48px;
+    position: relative;
+    overflow: hidden;
+  }
   .gcal__frame {
     display: block;
-    width: 100%;
-    height: clamp(420px, calc(100svh - 17rem), 680px);
+    width: calc(100% + var(--gcal-crop-right));
+    height: calc(clamp(420px, calc(100svh - 17rem), 680px) + var(--gcal-crop-top));
+    margin-top: calc(-1 * var(--gcal-crop-top));
     border: 0;
     background: var(--color-surface);
   }
@@ -51,7 +62,7 @@ app-google-calendar {
   @media (max-width: 760px) {
     .gcal__frame {
       display: none;
-      height: 760px;
+      height: calc(760px + var(--gcal-crop-top));
     }
     .gcal--open .gcal__frame {
       display: block;
