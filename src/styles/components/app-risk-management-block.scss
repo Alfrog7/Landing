@@ -129,16 +129,17 @@ app-risk-management-block {
     color: #fff;
   }
 
-  // "Tu broker" (feedback §6, issue #17): placeholder sobrio sin datos falsos
+  // "Tu broker" (feedback §6, issue #17): misma linea y fondo que la tarjeta
+  // del Area de Riesgos Virtual (borde solido ink + fondo surface)
   .risk__broker {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1.25rem;
     padding: 1.5rem;
-    border: 1.5px dashed var(--color-border-strong);
+    border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-lg);
-    background: var(--color-bg);
+    background: var(--color-surface);
   }
   .risk__broker-title {
     margin: 0;
