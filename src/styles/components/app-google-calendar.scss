@@ -60,6 +60,11 @@ app-google-calendar {
   }
   // Móvil: el calendario aparece al pulsar "Elegir horario"
   @media (max-width: 760px) {
+    // En movil el encabezado de la cuenta de prueba es mas alto: recorte mayor
+    // (ajustar --gcal-crop-top si "Hugo Marquez Diestra" asoma un borde)
+    .gcal__viewport {
+      --gcal-crop-top: 104px;
+    }
     .gcal__frame {
       display: none;
       height: calc(760px + var(--gcal-crop-top));
