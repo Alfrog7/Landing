@@ -16,7 +16,27 @@
 > - ⚠️ Al insertar bloques con `indexOf`: recalcular índices DESPUÉS de cada replace que cambie la longitud del contenido (bug documentado en issue #11).
 > - Los builders de `whatsapp.service.ts` usan `let message` (no `const`) porque anexan `SIGNATURE` (firma legal persona natural).
 >
-> **Estado en vivo al cerrar el chat anterior:** issue #17 cerrada (PR #33 mergeado). Activa `feat/issue-18-footer-legal-sbs`. Siguiente issue: **#19** (checklist de pendientes externos de Melanie).
+> **Estado en vivo al cerrar el chat anterior:** PR #35 (rama de pruebas) mergeado; issues #4–#18 completadas. Única issue activa: **#19** (checklist de pendientes externos de Melanie). Rama de mejoras `chore/repo-mejoras` en curso (README, assets de Mepo, optimización del dev server).
+
+---
+
+## Rama de pruebas — `feat/video-prueba-fichas` (PR #35, MERGEADO)
+
+**PR:** https://github.com/Alfrog7/Landing/pull/35 · **Commits:** `b36853f`, `ccea1ab`, `68b6de2`, `9d2f935`, `6605554`, `6c3c127`, `49f4c37`
+
+### Qué se probó/agregó (contenido provisional marcado con TODO, issue #19)
+
+1. **Videos de fichas**: nuevo `SERVICE_VIDEOS` en `landing.data.ts`; el modal embebe iframe 16:9 (youtube-nocookie, lazy, fullscreen) si hay URL; si no, portada "Muy pronto". Video de PRUEBA solo en Cartas Fianza (`TODO-VIDEO`).
+2. **LinkedIn provisional**: campo `linkedin` en `brand.config.ts` con URL de prueba (perfil de Alfredo), enlace real en el footer; etiqueta "LinkedIn de Melanie" se conserva para el cambio definitivo (`TODO-LINKEDIN`).
+3. **Teléfono de prueba**: `contact.phone` → `+51 987 654 321` (`TODO-CONTACTO`).
+4. **Demo del mapa "Tu bróker"**: hub "MEL · Tu bróker" verde + 5 chips aliados (i18n `broker.hub`/`broker.allies` ×4) conectados por líneas discontinuas SVG. El hub es **arrastrable** (pointer events + `touch-action: none`), las líneas lo siguen en tiempo real y al soltar **hub + líneas vuelven juntos** animados (tween JS easeOutCubic 450ms). Contenedor unificado con la tarjeta de Riesgos (borde sólido tinta + fondo surface). `TODO-BROKER-IMG`: imagen oficial de Melanie pendiente.
+5. **SolUnion en la franja** (14 aseguradoras): `solunion.jpeg` entregada; `mix-blend-mode: multiply` para fundir el fondo claro. SVG oficial pendiente (`TODO-LOGOS`).
+6. **Animaciones de scroll**: `.reveal` (fade+slide) en secciones con id de la Home vía IntersectionObserver en `LandingPage.tsx` (re-animan al volver; disabled con `prefers-reduced-motion`).
+7. **Calendario Google**: `.gcal__viewport` recorta el encabezado interno de la cuenta de prueba ("Hugo Márquez Diestra", `--gcal-crop-top: 52px`) y oculta la scrollbar interna (`--gcal-crop-right: 48px`). "Citas de prueba"/"Citas de 30 min" intactos. Ajuste fino con las 2 variables.
+
+### Verificación
+
+- `npm run check`: 0 errores · `npm run build`: 5 páginas OK en cada commit.
 
 ---
 
@@ -288,9 +308,9 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 
 ---
 
-## Issue #18 — Footer legal SBS (COMPLETADA — **PR #34 ABIERTO, pendiente de merge**)
+## Issue #18 — Footer legal SBS (COMPLETADA — PR #34, mergeado; issue cerrada 2026-10-20)
 
-**Rama:** `feat/issue-18-footer-legal-sbs` · **PR:** https://github.com/Alfrog7/Landing/pull/34 · **Commit:** `1ad556c`
+**Rama:** `feat/issue-18-footer-legal-sbs` · **PR:** https://github.com/Alfrog7/Landing/pull/34 · **Commits:** `1ad556c`, `766863a`
 
 ### Qué se hizo
 
@@ -328,7 +348,7 @@ Barrida de lenguaje societario/plural (47 reemplazos):
 | #15 | "Área de Riesgos Virtual" (2 planes) | M4 | ✅ Mergeada | #31 |
 | #16 | Botón "¿Emergencia?" en navbar | M4 | ✅ Mergeada | #32 |
 | #17 | Contenido presentación (logo MEL, corredor, tu bróker) | M4 | ✅ Mergeada | #33 |
-| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | 🔶 PR abierto | #34 |
+| #18 | Footer legal SBS (SBS, Libro Reclamaciones, Defensoría, LinkedIn) | M4 | ✅ Mergeada | #34 |
 | #19 | [Pendientes externos] entregables de Melanie | — | ⬜ Abierta (checklist) | — |
 
 ### Pendientes externos resumidos (detalle en issue #19)
