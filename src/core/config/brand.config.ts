@@ -23,7 +23,9 @@ export const BRAND_CONFIG = {
   contact: {
     // TODO-CONTACTO (issue #19): numero DE PRUEBA; reemplazar por el de trabajo oficial de Melanie
     phone: '+51 987 654 321',
-    whatsappNumber: '51987654321',
+    // TODO-CONTACTO (issue #19): numero DE PRUEBA para probar la interaccion de
+    // los enlaces wa.me; reemplazar por el numero de trabajo oficial de Melanie
+    whatsappNumber: '51997187292',
     email: 'vivefelizviveseguro@gmail.com',
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
     location: 'Perú',
