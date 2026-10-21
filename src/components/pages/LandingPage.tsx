@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { ArrowRight } from 'lucide-preact';
 import { Accordion } from '../ui/Accordion';
 import { MepoWelcome } from '../landing/MepoWelcome';
@@ -18,6 +18,32 @@ export default function LandingPage() {
   const tr = useTranslation();
   const [activeTab, setActiveTab] = useState<AudienceCategory>('empresas');
   const [detail, setDetail] = useState<ServiceDetail | null>(null);
+
+  // Animación de aparición de las secciones al avanzar y volver con el scroll
+  // (IntersectionObserver): entran con fade+slide, salen y se re-animan al regresar.
+  // Las secciones se montan/desmontan con la pestaña activa -> dependencia activeTab.
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          entry.target.classList.toggle('reveal--visible', entry.isIntersecting);
+        }
+      },
+      // Margen interno: dispara cuando la sección entra al 88% visible de la pantalla
+      { rootMargin: '-12% 0px -12% 0px', threshold: 0 }
+    );
+    const sections = document.querySelectorAll<HTMLElement>('app-landing section[id]');
+    for (const section of sections) {
+      section.classList.add('reveal');
+      observer.observe(section);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [activeTab]);
 
   const faqs = LANDING_FAQS_DATA.map((_, index) => ({
     question: tr.t(`faq.q${index + 1}`),

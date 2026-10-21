@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useRef } from 'preact/hooks';
 import { CircleCheck, ChevronDown, ShieldAlert } from 'lucide-preact';
 import { useTranslation } from '../../core/i18n/i18n';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
@@ -12,9 +12,62 @@ import type { AudienceCategory } from '../../core/models/insurance-service.model
 // "Area de Riesgos Virtual" (feedback §5, issue #15): bloque destacado de la parte
 // Empresas, visible solo con la pestana Empresas activa. CTA expande las tarjetas
 // de planes Esencial/Integral y cierra con consulta por WhatsApp prellenada.
+
+// Anclas de los 5 aliados en el espacio del viewBox del mapa (100 x 40)
+const ALLY_ANCHORS: Array<[number, number]> = [
+  [12, 9],
+  [50, 4],
+  [88, 9],
+  [30, 34],
+  [70, 34],
+];
 export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory }) {
   const tr = useTranslation();
   const [open, setOpen] = useState(false);
+  // Demo del mapa (TODO-BROKER-IMG): el hub "MEL" es arrastrable y al soltar
+  // vuelve a su posicion central con la transicion CSS (efecto de rebote)
+  const hubRef = useRef<HTMLSpanElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const linesRef = useRef<SVGLineElement[]>([]);
+  const [hubDragging, setHubDragging] = useState(false);
+  const hubDrag = useRef({ active: false, startX: 0, startY: 0, dx: 0, dy: 0 });
+  const rafRef = useRef(0);
+
+  // Mueve el hub y estira las lineas: el extremo "hub" de cada linea sigue al
+  // arrastre (el ancla del aliado queda fija). px -> unidades del viewBox
+  const drawHub = (dx: number, dy: number) => {
+    if (hubRef.current) {
+      hubRef.current.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+    }
+    const map = mapRef.current;
+    if (!map) {
+      return;
+    }
+    const rect = map.getBoundingClientRect();
+    const vx = (dx / rect.width) * 100;
+    const vy = (dy / rect.height) * 40;
+    for (const line of linesRef.current) {
+      line?.setAttribute('x1', String(50 + vx));
+      line?.setAttribute('y1', String(20 + vy));
+    }
+  };
+
+  // Al soltar: hub y lineas vuelven a su lugar animados (tween en JS, easing suave)
+  const releaseHub = () => {
+    const from = { dx: hubDrag.current.dx, dy: hubDrag.current.dy };
+    cancelAnimationFrame(rafRef.current);
+    const start = performance.now();
+    const DURATION = 450;
+    const step = (now: number) => {
+      const p = Math.min(1, (now - start) / DURATION);
+      const ease = 1 - Math.pow(1 - p, 3);
+      drawHub(from.dx * (1 - ease), from.dy * (1 - ease));
+      if (p < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      }
+    };
+    rafRef.current = requestAnimationFrame(step);
+  };
 
   if (activeTab !== 'empresas') {
     return null;
@@ -80,11 +133,77 @@ export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory
           </div>
 
           {/* "Todo parte de un mismo lugar: tu bróker" (feedback §6, issue #17):
-              contenedor placeholder para el mapa de conexiones; la imagen llega
-              con la entrega de Melanie (issue #19) */}
+              contenedor con DEMOSTRACIÓN provisional del mapa de conexiones.
+              TODO-BROKER-IMG (issue #19): se reemplaza por la imagen oficial
+              cuando Melanie la entregue */}
           <div class="risk__broker">
             <p class="risk__broker-title">{tr.t('broker.title')}</p>
             <p class="risk__broker-text">{tr.t('broker.text')}</p>
+            <div class="risk__broker-map" role="img" aria-label={tr.t('broker.title')} ref={mapRef}>
+              <svg
+                class="risk__broker-lines"
+                viewBox="0 0 100 40"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                {ALLY_ANCHORS.map((anchor, index) => (
+                  <line
+                    key={index}
+                    ref={(el) => {
+                      if (el) {
+                        linesRef.current[index] = el;
+                      }
+                    }}
+                    x1="50"
+                    y1="20"
+                    x2={anchor[0]}
+                    y2={anchor[1]}
+                    vector-effect="non-scaling-stroke"
+                  />
+                ))}
+              </svg>
+              <span
+                ref={hubRef}
+                class={`risk__broker-node risk__broker-node--hub${hubDragging ? ' risk__broker-node--hub--dragging' : ''}`}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  cancelAnimationFrame(rafRef.current);
+                  hubDrag.current = { active: true, startX: e.clientX, startY: e.clientY, dx: 0, dy: 0 };
+                  (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+                  setHubDragging(true);
+                }}
+                onPointerMove={(e) => {
+                  const d = hubDrag.current;
+                  if (!d.active) {
+                    return;
+                  }
+                  d.dx = e.clientX - d.startX;
+                  d.dy = e.clientY - d.startY;
+                  drawHub(d.dx, d.dy);
+                }}
+                onPointerUp={() => {
+                  hubDrag.current.active = false;
+                  setHubDragging(false);
+                  releaseHub();
+                }}
+                onPointerCancel={() => {
+                  hubDrag.current.active = false;
+                  setHubDragging(false);
+                  releaseHub();
+                }}
+              >
+                MEL
+                <span>{tr.t('broker.hub')}</span>
+              </span>
+              {tr.list('broker.allies').map((ally, index) => (
+                <span
+                  key={ally}
+                  class={`risk__broker-node risk__broker-node--ally risk__broker-node--${index + 1}`}
+                >
+                  {ally}
+                </span>
+              ))}
+            </div>
             <span class="risk__broker-note">{tr.t('broker.note')}</span>
           </div>
         </div>

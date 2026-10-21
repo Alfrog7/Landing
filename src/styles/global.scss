@@ -189,6 +189,21 @@ section[id].section-arriving {
   animation: section-arrive 1.05s ease-out;
 }
 
+// Aparición de las secciones al avanzar y volver con el scroll (issue #35, prueba):
+// la clase la añade el IntersectionObserver de LandingPage; al salir de pantalla
+// se retira y la sección se re-animará al regresar
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -196,6 +211,12 @@ section[id].section-arriving {
   section[id]:target,
   section[id].section-arriving {
     animation: none;
+  }
+  .reveal,
+  .reveal--visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

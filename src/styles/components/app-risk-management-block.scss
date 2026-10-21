@@ -129,16 +129,17 @@ app-risk-management-block {
     color: #fff;
   }
 
-  // "Tu broker" (feedback §6, issue #17): placeholder sobrio sin datos falsos
+  // "Tu broker" (feedback §6, issue #17): misma linea y fondo que la tarjeta
+  // del Area de Riesgos Virtual (borde solido ink + fondo surface)
   .risk__broker {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1.25rem;
     padding: 1.5rem;
-    border: 1.5px dashed var(--color-border-strong);
+    border: 1.5px solid var(--color-ink);
     border-radius: var(--radius-lg);
-    background: var(--color-bg);
+    background: var(--color-surface);
   }
   .risk__broker-title {
     margin: 0;
@@ -163,6 +164,70 @@ app-risk-management-block {
     font-weight: 700;
     color: var(--color-ink);
   }
+  // DEMOSTRACION provisional del mapa de conexiones (TODO-BROKER-IMG, issue #19):
+  // hub "MEL" al centro + 5 aliados con lineas discontinuas; se reemplaza por
+  // la imagen oficial cuando la entregue Melanie
+  .risk__broker-map {
+    position: relative;
+    aspect-ratio: 5 / 2;
+    margin-top: 1rem;
+  }
+  .risk__broker-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    stroke: var(--color-border-strong);
+    stroke-dasharray: 4 4;
+  }
+  .risk__broker-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 999px;
+    background: var(--color-surface);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .risk__broker-node--hub {
+    left: 50%;
+    top: 50%;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.55rem 1.1rem;
+    border: 1.5px solid var(--color-primary-dark);
+    background: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    color: #fff;
+    text-align: center;
+    // Arrastrable: el retorno animado lo hace el tween JS (hub + lineas juntas)
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+  .risk__broker-node--hub--dragging {
+    cursor: grabbing;
+  }
+  .risk__broker-node--hub span {
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    opacity: 0.85;
+  }
+  .risk__broker-node--ally:nth-child(3) { left: 12%; top: 22%; }
+  .risk__broker-node--ally:nth-child(4) { left: 50%; top: 10%; }
+  .risk__broker-node--ally:nth-child(5) { left: 88%; top: 22%; }
+  .risk__broker-node--ally:nth-child(6) { left: 30%; top: 85%; }
+  .risk__broker-node--ally:nth-child(7) { left: 70%; top: 85%; }
 
   @media (max-width: 860px) {
     .risk__card {
@@ -170,6 +235,23 @@ app-risk-management-block {
     }
     .risk__plans {
       grid-template-columns: 1fr;
+    }
+    // En movil el mapa demo pasa a fila flexible (sin lineas SVG)
+    .risk__broker-map {
+      aspect-ratio: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    .risk__broker-lines {
+      display: none;
+    }
+    .risk__broker-node--hub,
+    .risk__broker-node--ally {
+      position: static;
+      transform: none;
     }
   }
 }

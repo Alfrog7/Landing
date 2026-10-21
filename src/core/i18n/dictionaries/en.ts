@@ -332,6 +332,8 @@ export const EN = {
     title: 'It all starts in one place: your broker',
     text: 'This is where I connect your company with every ally in its operation: lawyers, accountants, notaries, banks and HR.',
     note: 'I am preparing this connections map. Coming soon.',
+    hub: 'Your broker',
+    allies: ['Lawyers', 'Accountants', 'Notaries', 'Banks', 'HR'],
   },
 
   services: {

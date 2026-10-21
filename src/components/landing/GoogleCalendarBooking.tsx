@@ -22,13 +22,17 @@ export function GoogleCalendarBooking({ booking }: { booking: NonNullable<Calend
                 {tr.t('schedule.pickSlot')}
               </button>
             </div>
-            <iframe
-              class="gcal__frame"
-              src={booking.url}
-              title="Agendar una cita con Melanie O. Calderón Vega"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            {/* .gcal__viewport recorta el encabezado interno de Google (nombre
+                de la cuenta del calendario de prueba) y la scrollbar interna */}
+            <div class="gcal__viewport">
+              <iframe
+                class="gcal__frame"
+                src={booking.url}
+                title="Agendar una cita con Melanie O. Calderón Vega"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
           </>
         ) : (
           <div class="gcal__link">

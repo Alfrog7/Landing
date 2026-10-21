@@ -34,6 +34,8 @@
   height: 40px;
   width: auto;
   object-fit: contain;
+  // Los logos con fondo blanco/claro (p. ej. solunion.jpeg) se funden con el fondo
+  mix-blend-mode: multiply;
   // Gris por defecto: se colorean al pasar el mouse
   filter: grayscale(100%);
   opacity: 0.55;
