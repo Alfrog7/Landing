@@ -23,6 +23,9 @@ export const STRIP_INSURERS: StripInsurer[] = [
   { id: 'augustar', name: 'AuguStar', logo: '/assets/images/insurers/augustar.svg' },
   { id: 'sanitas', name: 'Sanitas', logo: '/assets/images/insurers/sanitas.svg' },
   { id: 'qualitas', name: 'Quálitas', logo: '/assets/images/insurers/qualitas.svg' },
+  // Entregada por Melanie (wordmark "solunion · SOMOS IMPULSO"); pendiente versión
+  // vectorial oficial en issue #19
+  { id: 'solunion', name: 'SolUnion', logo: '/assets/images/insurers/solunion.jpeg' },
 ];
 
 export function InsurerLogoStrip() {
