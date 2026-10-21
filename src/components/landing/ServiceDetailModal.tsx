@@ -5,6 +5,7 @@ import type { ServiceDetail } from '../../core/models/insurance-service.model';
 import {
   QUOTE_FORM_FIELDS,
   SERVICE_NARRATIVES,
+  SERVICE_VIDEOS,
   TYPE_CAROUSEL_FIELDS,
 } from '../../core/data/landing.data';
 import { WhatsAppService } from '../../core/services/whatsapp.service';
@@ -120,13 +121,28 @@ export function ServiceDetailModal({ service, onClose }: ServiceDetailModalProps
                 <h2 class="detail__title">{tr.t(`${key}.title`)}</h2>
                 {entidades && <p class="detail__regulatory">{entidades}</p>}
 
-                {/* 1. Espacio para el video de Melanie (16:9), con portada mientras no exista */}
+                {/* 1. Espacio para el video de Melanie (16:9). Con URL en SERVICE_VIDEOS
+                    se embebe el video; sin URL se mantiene la portada "Muy pronto" */}
                 <figure class="detail__video">
-                  <img src={service.image} alt="" class="detail__video-cover" loading="lazy" />
-                  <figcaption class="detail__video-note">
-                    <span aria-hidden="true">▶</span>
-                    {tr.t('video.placeholder')}
-                  </figcaption>
+                  {SERVICE_VIDEOS[service.id] ? (
+                    <iframe
+                      class="detail__video-frame"
+                      src={SERVICE_VIDEOS[service.id]}
+                      title={tr.t(`${key}.title`)}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <>
+                      <img src={service.image} alt="" class="detail__video-cover" loading="lazy" />
+                      <figcaption class="detail__video-note">
+                        <span aria-hidden="true">▶</span>
+                        {tr.t('video.placeholder')}
+                      </figcaption>
+                    </>
+                  )}
                 </figure>
 
                 {/* Carrusel de tipos (feedback §4, issue #12): solo fichas formales.
