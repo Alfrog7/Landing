@@ -10,7 +10,7 @@ export const IT = {
     openMenu: 'Apri il menu',
     closeMenu: 'Chiudi il menu',
     ariaLang: 'Cambia lingua',
-    waChat: 'Parla su WhatsApp',
+    waChat: 'Dubbio? Scrivimi',
     waFloatAria: 'Parla con Melanie su WhatsApp',
     waMobile: 'WhatsApp',
   },
@@ -317,7 +317,7 @@ export const IT = {
       'Una visita all\u2019anno',
       'Orientamento legale-lavorativo di base',
     ],
-    whatsapp: 'Consulenza via WhatsApp',
+    whatsapp: 'Dubbio sui tuoi rischi? Scrivimi',
   },
 
   emergency: {
@@ -326,6 +326,22 @@ export const IT = {
     whatsapp: 'WhatsApp di Melanie (linea diretta)',
     pending: 'Da confermare',
     hint: 'Per un sinistro in corso scrivimi prima: guido il processo dall’inizio alla fine.',
+  },
+
+  // Modal del pulsante flottante «Dubbio? Scrivimi» (mini modulo di contatto).
+  ask: {
+    title: 'Dubbio? Ti rispondo su WhatsApp.',
+    intro: 'Lasciami il tuo nome, il tuo numero e la tua domanda: mi arriva un WhatsApp con i tuoi dati e ti rispondo personalmente su quella chat.',
+    required: '* Campi obbligatori',
+    name: 'Il tuo nome',
+    phone: 'Il tuo numero WhatsApp',
+    consulta: 'La tua domanda',
+    consent: 'Accetto di essere contattato/a su WhatsApp e il trattamento dei miei dati secondo l’informativa sulla privacy.',
+    errRequired: 'Questo dato è obbligatorio.',
+    errConsulta: 'Scrivi la tua domanda.',
+    errConsent: 'Ci serve la tua autorizzazione per scriverti.',
+    submit: 'Invia via WhatsApp',
+    close: 'Chiudi',
   },
 
   broker: {

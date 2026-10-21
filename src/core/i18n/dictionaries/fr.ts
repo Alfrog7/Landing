@@ -10,7 +10,7 @@ export const FR = {
     openMenu: 'Ouvrir le menu',
     closeMenu: 'Fermer le menu',
     ariaLang: 'Changer de langue',
-    waChat: 'Discuter sur WhatsApp',
+    waChat: 'Des doutes ? Écrivez-moi',
     waFloatAria: 'Discuter avec Melanie sur WhatsApp',
     waMobile: 'WhatsApp',
   },
@@ -317,7 +317,7 @@ export const FR = {
       'Une visite par an',
       'Orientation juridico-laborale de base',
     ],
-    whatsapp: 'Consulter via WhatsApp',
+    whatsapp: 'Des doutes sur vos risques ? Écrivez-moi',
   },
 
   emergency: {
@@ -326,6 +326,22 @@ export const FR = {
     whatsapp: 'WhatsApp de Melanie (ligne directe)',
     pending: 'À confirmer',
     hint: 'En cas de sinistre en cours, écrivez-moi d’abord : je guide le processus de bout en bout.',
+  },
+
+  // Modal du bouton flottant « Des doutes ? Écrivez-moi » (mini formulaire de contact).
+  ask: {
+    title: 'Des doutes ? Je vous réponds sur WhatsApp.',
+    intro: 'Laissez-moi votre nom, votre numéro et votre question : un WhatsApp avec vos coordonnées me parvient et je vous réponds moi-même sur ce chat.',
+    required: '* Champs obligatoires',
+    name: 'Votre nom',
+    phone: 'Votre numéro WhatsApp',
+    consulta: 'Votre question',
+    consent: 'J’accepte d’être contacté(e) sur WhatsApp et le traitement de mes données selon la politique de confidentialité.',
+    errRequired: 'Ce champ est obligatoire.',
+    errConsulta: 'Écrivez votre question.',
+    errConsent: 'Nous avons besoin de votre autorisation pour vous écrire.',
+    submit: 'Envoyer via WhatsApp',
+    close: 'Fermer',
   },
 
   broker: {

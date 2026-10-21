@@ -10,7 +10,7 @@ export const ES = {
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
     ariaLang: 'Cambiar idioma',
-    waChat: 'Conversar por WhatsApp',
+    waChat: '¿Dudas? Escríbeme',
     waFloatAria: 'Conversar con Melanie por WhatsApp',
     waMobile: 'WhatsApp',
   },
@@ -325,7 +325,7 @@ export const ES = {
       'Una visita al año',
       'Orientación legal-laboral básica',
     ],
-    whatsapp: 'Consultar por WhatsApp',
+    whatsapp: '¿Dudas sobre tus riesgos? Escríbeme',
   },
 
   // Botón ¿Emergencia? (feedback §5, issue #16). Los teléfonos viven en
@@ -336,6 +336,22 @@ export const ES = {
     whatsapp: 'WhatsApp de Melanie (canal directo)',
     pending: 'Por confirmar',
     hint: 'En un siniestro en curso escríbeme primero: yo oriento el proceso de principio a fin.',
+  },
+
+  // Modal del botón flotante "¿Dudas? Escríbeme" (mini-formulario de contacto).
+  ask: {
+    title: '¿Tienes dudas? Te respondo por WhatsApp.',
+    intro: 'Déjame tu nombre, tu número y tu consulta: me llega un WhatsApp con tus datos y te respondo yo misma por ese chat.',
+    required: '* Campos obligatorios',
+    name: 'Tu nombre',
+    phone: 'Tu número de WhatsApp',
+    consulta: 'Tu consulta',
+    consent: 'Acepto que me escribas por WhatsApp y el tratamiento de mis datos según la política de privacidad.',
+    errRequired: 'Este dato es obligatorio.',
+    errConsulta: 'Escribe tu consulta.',
+    errConsent: 'Necesitamos tu autorización para escribirte.',
+    submit: 'Enviar por WhatsApp',
+    close: 'Cerrar',
   },
 
   // "Todo parte de un mismo lugar: tu bróker" (feedback §6, issue #17).

@@ -10,7 +10,7 @@ export const EN = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     ariaLang: 'Change language',
-    waChat: 'Chat on WhatsApp',
+    waChat: 'Questions? Write to me',
     waFloatAria: 'Chat with Melanie on WhatsApp',
     waMobile: 'WhatsApp',
   },
@@ -317,7 +317,7 @@ export const EN = {
       'One on-site visit per year',
       'Basic legal-labor guidance',
     ],
-    whatsapp: 'Ask via WhatsApp',
+    whatsapp: 'Doubts about your risks? Write to me',
   },
 
   emergency: {
@@ -326,6 +326,22 @@ export const EN = {
     whatsapp: 'Melanie\u2019s WhatsApp (direct line)',
     pending: 'To be confirmed',
     hint: 'For an ongoing claim, message me first: I guide the process from start to finish.',
+  },
+
+  // Modal of the floating "Questions? Write to me" button (mini contact form).
+  ask: {
+    title: 'Questions? I answer you on WhatsApp.',
+    intro: 'Leave me your name, number and question: a WhatsApp message reaches me with your details and I answer you personally on that chat.',
+    required: '* Required fields',
+    name: 'Your name',
+    phone: 'Your WhatsApp number',
+    consulta: 'Your question',
+    consent: 'I agree to be contacted on WhatsApp and to the processing of my data under the privacy policy.',
+    errRequired: 'This field is required.',
+    errConsulta: 'Write your question.',
+    errConsent: 'We need your authorization to message you.',
+    submit: 'Send via WhatsApp',
+    close: 'Close',
   },
 
   broker: {
