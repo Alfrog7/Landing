@@ -66,13 +66,14 @@ export default function Footer() {
             <p class="footer__contact-item">
               <strong>{tr.t('footer.locationLabel')}</strong> {brand.contact.location}
             </p>
+            {/* TODO-LINKEDIN: URL PROVISIONAL de prueba (brand.config.linkedin);
+                cambiar por el perfil de Melanie cuando lo entregue (issue #19) */}
             <a
               class="footer__linkedin"
-              href="#"
-              {...disabledLink}
-              title={tr.t('footer.comingSoon')}
+              href={brand.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {/* TODO-LINKEDIN: URL del perfil de Melanie pendiente (issue #19) */}
               <Link2 size={15} />
               {tr.t('footer.linkedin')}
             </a>

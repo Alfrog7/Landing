@@ -28,6 +28,9 @@ export const BRAND_CONFIG = {
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
     location: 'Perú',
   },
+  // TODO-LINKEDIN (issue #19): URL PROVISIONAL de prueba (Alfredo). Reemplazar
+  // por el perfil de Melanie cuando lo entregue, igual que los videos y demás pendientes.
+  linkedin: 'https://www.linkedin.com/in/alfredo-rogger-guzman-moscol-33b340331/',
   assets: {
     logoLight: '/assets/images/brand/logo.svg',
     logoDark: '/assets/images/brand/logo-dark.svg',
