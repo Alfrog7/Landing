@@ -35,7 +35,11 @@ export default function LandingPage() {
       // Margen interno: dispara cuando la sección entra al 88% visible de la pantalla
       { rootMargin: '-12% 0px -12% 0px', threshold: 0 }
     );
-    const sections = document.querySelectorAll<HTMLElement>('app-landing section[id]');
+    // Secciones con id + los dos bloques sin id: la bienvenida de Mepo
+    // (section.welcome) y el contenedor "Tu broker" (div.risk__broker)
+    const sections = document.querySelectorAll<HTMLElement>(
+      'app-landing section[id], app-landing .welcome, app-landing .risk__broker'
+    );
     for (const section of sections) {
       section.classList.add('reveal');
       observer.observe(section);
