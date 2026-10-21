@@ -343,6 +343,8 @@ export const ES = {
     title: 'Todo parte de un mismo lugar: tu bróker',
     text: 'Aquí conecto tu empresa con todos los aliados de su operación: abogados, contadores, notarios, bancos y RR. HH.',
     note: 'Estoy preparando este mapa de conexiones. Muy pronto.',
+    hub: 'Tu bróker',
+    allies: ['Abogados', 'Contadores', 'Notarios', 'Bancos', 'RR. HH.'],
   },
 
   services: {

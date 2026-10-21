@@ -80,11 +80,38 @@ export function RiskManagementBlock({ activeTab }: { activeTab: AudienceCategory
           </div>
 
           {/* "Todo parte de un mismo lugar: tu bróker" (feedback §6, issue #17):
-              contenedor placeholder para el mapa de conexiones; la imagen llega
-              con la entrega de Melanie (issue #19) */}
+              contenedor con DEMOSTRACIÓN provisional del mapa de conexiones.
+              TODO-BROKER-IMG (issue #19): se reemplaza por la imagen oficial
+              cuando Melanie la entregue */}
           <div class="risk__broker">
             <p class="risk__broker-title">{tr.t('broker.title')}</p>
             <p class="risk__broker-text">{tr.t('broker.text')}</p>
+            <div class="risk__broker-map" role="img" aria-label={tr.t('broker.title')}>
+              <svg
+                class="risk__broker-lines"
+                viewBox="0 0 100 40"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <line x1="50" y1="20" x2="12" y2="9" vector-effect="non-scaling-stroke" />
+                <line x1="50" y1="20" x2="50" y2="4" vector-effect="non-scaling-stroke" />
+                <line x1="50" y1="20" x2="88" y2="9" vector-effect="non-scaling-stroke" />
+                <line x1="50" y1="20" x2="30" y2="34" vector-effect="non-scaling-stroke" />
+                <line x1="50" y1="20" x2="70" y2="34" vector-effect="non-scaling-stroke" />
+              </svg>
+              <span class="risk__broker-node risk__broker-node--hub">
+                MEL
+                <span>{tr.t('broker.hub')}</span>
+              </span>
+              {tr.list('broker.allies').map((ally, index) => (
+                <span
+                  key={ally}
+                  class={`risk__broker-node risk__broker-node--ally risk__broker-node--${index + 1}`}
+                >
+                  {ally}
+                </span>
+              ))}
+            </div>
             <span class="risk__broker-note">{tr.t('broker.note')}</span>
           </div>
         </div>

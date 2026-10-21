@@ -332,6 +332,8 @@ export const IT = {
     title: 'Tutto parte da un unico luogo: il tuo broker',
     text: 'Qui collego la tua azienda con tutti gli alleati della sua operazione: avvocati, commercialisti, notai, banche e Risorse Umane.',
     note: 'Sto preparando questa mappa di collegamenti. Molto presto.',
+    hub: 'Il tuo broker',
+    allies: ['Avvocati', 'Commercialisti', 'Notai', 'Banche', 'HR'],
   },
 
   services: {

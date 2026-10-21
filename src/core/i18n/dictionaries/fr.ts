@@ -332,6 +332,8 @@ export const FR = {
     title: 'Tout part d’un même endroit : votre courtier',
     text: 'C’est ici que je connecte votre entreprise avec tous les alliés de son opération : avocats, comptables, notaires, banques et RH.',
     note: 'Je prépare cette carte de connexions. Très bientôt.',
+    hub: 'Votre courtier',
+    allies: ['Avocats', 'Comptables', 'Notaires', 'Banques', 'RH'],
   },
 
   services: {

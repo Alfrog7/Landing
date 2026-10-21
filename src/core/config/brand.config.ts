@@ -21,8 +21,8 @@ export const BRAND_CONFIG = {
   quote:
     'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {
-    // TODO-CONTACTO: reemplazar por el número de trabajo oficial de Melanie
-    phone: 'Por confirmar (escribir por WhatsApp)',
+    // TODO-CONTACTO (issue #19): numero DE PRUEBA; reemplazar por el de trabajo oficial de Melanie
+    phone: '+51 987 654 321',
     whatsappNumber: '51987654321',
     email: 'vivefelizviveseguro@gmail.com',
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
