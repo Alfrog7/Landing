@@ -16,8 +16,10 @@ export const WhatsAppService = {
       `Hola ${BRAND_CONFIG.firstName}, solicito cotización express:`,
       `• *RUC:* ${draft.ruc}`,
       `• *Empresa:* ${draft.businessName}`,
+      `• *Actividad:* ${draft.actividad}`,
       `• *Póliza:* ${draft.productType}`,
       `• *Trabajadores:* ${draft.workersCount}`,
+      `• *Planilla mensual:* S/ ${draft.planillaMensual.toLocaleString('es-PE')}`,
       `• *Contacto:* ${draft.contactName}`,
     ].join('\n');
     message += `\n\n${SIGNATURE}`;
