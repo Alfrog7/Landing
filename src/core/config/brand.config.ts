@@ -22,10 +22,12 @@ export const BRAND_CONFIG = {
     'Mi compromiso no es venderte una póliza, sino defender tus intereses y agilizar tus constancias para que nunca pares operaciones.',
   contact: {
     // TODO-CONTACTO (issue #19): numero DE PRUEBA; reemplazar por el de trabajo oficial de Melanie
+    // Numero de prueba unificado (+51 987 654 321) para pantalla y todos los enlaces wa.me.
     phone: '+51 987 654 321',
-    // TODO-CONTACTO (issue #19): numero DE PRUEBA para probar la interaccion de
-    // los enlaces wa.me; reemplazar por el numero de trabajo oficial de Melanie
-    whatsappNumber: '51997187292',
+    // TODO-CONTACTO (issue #19): numero DE PRUEBA usado por TODOS los enlaces wa.me
+    // (misma cifra que phone, sin '+51' ni espacios); reemplazar por el numero de
+    // trabajo oficial de Melanie cuando lo entregue.
+    whatsappNumber: '51987654321',
     email: 'vivefelizviveseguro@gmail.com',
     schedule: 'Lunes a Viernes: 8:30 AM - 6:30 PM',
     location: 'Perú',
